@@ -23,7 +23,7 @@
 
     <!-- Content -->
     <div class="relative w-full px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32 2xl:px-48 pt-20 sm:pt-32 md:pt-64 lg:pt-80 pb-4 sm:pb-6 lg:pb-8 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-start overflow-hidden"
-         style="background-image: url('/assets/hero-bg1.png'), url('/assets/artwork.png'); background-repeat: no-repeat, no-repeat; background-position: left bottom, right bottom; background-size: clamp(200px, 40%, 600px) auto, clamp(250px, 45%, 900px) auto; background-origin: border-box, border-box; background-clip: border-box, border-box; background-attachment: fixed;">
+         style="background-image: url('/assets/hero-bg1.png'), url('/assets/artwork.png'); background-repeat: no-repeat, no-repeat; background-position: left bottom, right bottom; background-size: clamp(200px, 40%, 600px) auto, clamp(250px, 45%, 900px) auto; background-origin: border-box, border-box; background-clip: border-box, border-box; background-attachment: scroll, scroll;">
         <!-- Left: Text Content -->
         <div class="space-y-6 sm:space-y-8 lg:col-span-7 lg:transform lg:-translate-y-[30%]">
             <!-- Eyebrow -->
