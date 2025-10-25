@@ -10,24 +10,22 @@
  .hero .plyr__video-wrapper { height: 100% !important; }
 </style>
 
-<section class="hero relative min-h-[72vh] md:min-h-[68vh] flex items-start overflow-hidden bg-white dark:bg-slate-950 -mb-4 lg:-mb-8">
+<section class="hero relative min-h-[60vh] sm:min-h-[68vh] md:min-h-[72vh] flex items-start overflow-hidden bg-white dark:bg-slate-950 -mb-2 sm:-mb-4 lg:-mb-8">
     <!-- Pattern Background -->
     @php
         $patternUrl = $hero?->getFirstMediaUrl('pattern') ?: $event->getFirstMediaUrl('pattern');
     @endphp
     @if($patternUrl)
-        <div class="absolute inset-0 opacity-20 dark:opacity-25">
+        <div class="absolute inset-0 opacity-15 sm:opacity-20 dark:opacity-20 dark:sm:opacity-25">
             <img src="{{ $patternUrl }}" alt="" class="w-full h-full object-cover">
         </div>
     @endif
 
-    
-
     <!-- Content -->
-    <div class="relative w-full px-8 sm:px-12 lg:px-24 xl:px-32 2xl:px-48 pt-[274px] pb-6 lg:pt-[290px] lg:pb-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start overflow-hidden"
-         style="background-image: url('/assets/hero-bg1.png'), url('/assets/artwork.png'); background-repeat: no-repeat, no-repeat; background-position: left bottom, right bottom; background-size: clamp(312px, 52%, 1040px) auto, clamp(416px, 60%, 1560px) auto; background-origin: border-box, border-box; background-clip: border-box, border-box;">
+    <div class="relative w-full px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32 2xl:px-48 pt-20 sm:pt-32 md:pt-64 lg:pt-80 pb-4 sm:pb-6 lg:pb-8 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-start overflow-hidden"
+         style="background-image: url('/assets/hero-bg1.png'), url('/assets/artwork.png'); background-repeat: no-repeat, no-repeat; background-position: left bottom, right bottom; background-size: clamp(200px, 40%, 600px) auto, clamp(250px, 45%, 900px) auto; background-origin: border-box, border-box; background-clip: border-box, border-box; background-attachment: fixed;">
         <!-- Left: Text Content -->
-        <div class="space-y-8 lg:col-span-7 lg:transform lg:-translate-y-[30%]">
+        <div class="space-y-6 sm:space-y-8 lg:col-span-7 lg:transform lg:-translate-y-[30%]">
             <!-- Eyebrow -->
             <div class="inline-flex items-center gap-2 px-5 py-2 bg-white dark:bg-slate-900/60 rounded-full border border-gray-200 dark:border-slate-700 shadow-sm">
                 <span class="w-2 h-2 bg-teal-500 rounded-full"></span>
@@ -42,17 +40,17 @@
                     $heroDesc = $event->hero_description;
                 @endphp
                 @if($heading)
-                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-gray-900 dark:text-white leading-[1.05]">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-gray-900 dark:text-white leading-[1.1] sm:leading-[1.05]">
                         {{ $heading }}
                     </h1>
                 @endif
                 @if($desc)
-                    <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 font-medium">
+                    <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-300 font-medium">
                         {{ $desc }}
                     </p>
                 @endif
                 @if($heroDesc)
-                    <p class="text-base md:text-lg text-gray-600 dark:text-gray-300">
+                    <p class="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 dark:text-gray-300">
                         {{ $heroDesc }}
                     </p>
                 @endif
@@ -93,15 +91,24 @@
             <!-- CTA Buttons -->
             <div class="flex flex-col sm:flex-row gap-4 pt-4">
                 @php
-                    $reserveUrl = $event->primary_cta_url ?? $hero?->cta_url ?? '#register';
-                    $learnUrl = $event->secondary_cta_url ?? '#learn-more';
+                    if ((int) ($event->year ?? 0) === 2024) {
+                        $primaryCtaLabel = 'Explore ALG 2025';
+                        $primaryCtaUrl = route('events.show', ['year' => 2025]);
+                        $secondaryCtaLabel = 'Explore the #ALG2024 Speakers';
+                        $secondaryCtaUrl = route('speakers.alg-2024');
+                    } else {
+                        $primaryCtaLabel = 'Reserve your seat';
+                        $primaryCtaUrl = route('seat-reservations.create');
+                        $secondaryCtaLabel = 'Learn more';
+                        $secondaryCtaUrl = url('/about');
+                    }
                 @endphp
-                <a href="{{ $reserveUrl }}" class="h-11 px-6 inline-flex items-center justify-center bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 shadow-lg hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 text-center gap-2">
-                    <span>Reserve your seat</span>
+                <a href="{{ $primaryCtaUrl }}" class="h-11 px-6 inline-flex items-center justify-center bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 shadow-lg hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 text-center gap-2">
+                    <span>{{ $primaryCtaLabel }}</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </a>
-                <a href="{{ $learnUrl }}" class="h-11 px-6 inline-flex items-center justify-center bg-white dark:bg-slate-900 text-teal-600 dark:text-teal-400 hover:bg-gray-50 dark:hover:bg-slate-800 font-semibold rounded-full border-2 border-teal-600 dark:border-teal-400 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 text-center">
-                    Learn more
+                <a href="{{ $secondaryCtaUrl }}" class="h-11 px-6 inline-flex items-center justify-center bg-white dark:bg-slate-900 text-teal-600 dark:text-teal-400 hover:bg-gray-50 dark:hover:bg-slate-800 font-semibold rounded-full border-2 border-teal-600 dark:border-teal-400 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 text-center">
+                    {{ $secondaryCtaLabel }}
                 </a>
             </div>
         </div>
@@ -113,10 +120,10 @@
             $videoUrl = $hero?->video_url;
             $videoType = $hero?->video_type ?? 'youtube';
         @endphp
-        <!-- Absolutely positioned media at lg+ per spec -->
-        <div class="hidden lg:block absolute right-8 sm:right-12 lg:right-24 xl:right-32 2xl:right-48 bottom-0 w-[420px] z-10 transform translate-x-[-20%] translate-y-[-40%] group">
-            <!-- Patterned vertical band remains behind, tied to section background -->
-            <div class="relative rounded-t-3xl overflow-hidden shadow-2xl w-full aspect-[4/3] transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-0.5">
+        <!-- Media: visible on mobile, absolutely positioned at lg+ -->
+        <div class="lg:absolute lg:right-8 sm:lg:right-12 lg:right-24 xl:right-32 2xl:right-48 lg:bottom-0 lg:z-10 lg:transform lg:translate-x-[-20%] lg:translate-y-[-40%] w-full lg:w-[420px] mt-6 sm:mt-8 lg:mt-0 group">
+            <!-- Media container -->
+            <div class="relative rounded-2xl lg:rounded-t-3xl overflow-hidden shadow-lg lg:shadow-2xl w-full aspect-video lg:aspect-[4/3] transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-0.5">
                 @if($contentType === 'video' && $videoUrl)
                     @if($videoType === 'youtube')
                         <div data-plyr-provider="youtube" data-plyr-embed-id="{{ basename(parse_url($videoUrl, PHP_URL_PATH), '.php') }}" class="w-full h-full block"></div>
@@ -134,6 +141,9 @@
                                     const el = document.querySelector('[data-plyr-provider="youtube"]');
                                     el.setAttribute('data-plyr-embed-id', videoId);
                                     new Plyr(el, {
+                                        autoplay: true,
+                                        muted: true,
+                                        loop: { active: true },
                                         controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'pip', 'fullscreen'],
                                         settings: ['quality', 'speed'],
                                         quality: { default: 720, options: [360, 720, 1080] },
@@ -162,6 +172,9 @@
                                     const el = document.querySelector('[data-plyr-provider="vimeo"]');
                                     el.setAttribute('data-plyr-embed-id', videoId);
                                     new Plyr(el, {
+                                        autoplay: true,
+                                        muted: true,
+                                        loop: { active: true },
                                         controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'pip', 'fullscreen'],
                                         settings: ['quality', 'speed'],
                                         quality: { default: 720, options: [360, 720, 1080] },

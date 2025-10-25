@@ -12,9 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (DB::getDriverName() === 'sqlite') {
-            return; // SQLite doesn't support MODIFY/ENUM; skip for dev
-        }
+        // Drop and recreate the enum column with correct values
         DB::statement("ALTER TABLE heroes MODIFY content_type ENUM('image', 'video') DEFAULT 'image'");
     }
 
@@ -23,9 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        if (DB::getDriverName() === 'sqlite') {
-            return;
-        }
         DB::statement("ALTER TABLE heroes MODIFY content_type ENUM('image', 'youtube') DEFAULT 'image'");
     }
 };

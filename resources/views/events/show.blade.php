@@ -89,58 +89,233 @@
 
     @if((int) $event->year === 2024)
         @php
-            $speakerCount = $event->speakers?->count() ?? 0;
+            // Get speakers from event days (not direct event relationship)
+            $allSpeakers = ($event->days ?? collect())->flatMap(fn($d) => $d->speakers ?? collect())->unique('id');
+            $speakerCount = $allSpeakers->count();
             $dayCount = $event->days?->count() ?? 0;
             $sessionCount = $event->days?->flatMap(fn($d) => $d->sessions)->count()
                 ?: ($event->sessions?->count() ?? 0);
-            $topSpeakers = $event->speakers?->take(6) ?? collect();
+            $topSpeakers = $allSpeakers->take(6);
+            $themeTitle = $event->hero_title ?: ($event->subtitle ?: 'ALG 2024 Theme');
+            $themeBody = $event->hero_description ?: ($event->description ?: null);
+            $quotes = $allSpeakers->filter(fn($s) => filled($s->quote ?? null))->values();
         @endphp
 
         <!-- ALG 2024 Highlights -->
         <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 mb-10">
-                    <div>
-                        <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">ALG 2024 Highlights</h2>
-                        @if($event->subtitle)
-                            <p class="mt-3 text-gray-600 dark:text-gray-300 max-w-2xl">{{ $event->subtitle }}</p>
-                        @endif
+                <!-- Highlights Description -->
+                <div>
+                    <div class="inline-flex h-1 w-24 rounded-full bg-teal-500"></div>
+                    <h3 class="mt-6 text-2xl md:text-4xl font-semibold text-gray-900 dark:text-white tracking-tight">ALG 2024 Highlights</h3>
+                    <div class="mt-4 prose prose-invert max-w-4xl text-gray-700 dark:text-gray-300 text-lg leading-relaxed space-y-4">
+                        <p>The Annual Leaders Gathering 2024, held on November 14 and 16 at the Sheraton Kampala Hotel, brought together a remarkable assembly of leaders, innovators, and thinkers from diverse fields and regions.</p>
+                        <p>This year's theme centered around driving impactful leadership and fostering global collaborations to tackle pressing challenges. Through dynamic sessions, keynotes, and interactive workshops, #ALG2024 empowered participants with actionable strategies and insights to create sustainable solutions for today's global issues.</p>
+                        <p>By connecting over 500 attendees from 15+ countries, #ALG2024 provided a platform to share innovative ideas, forge meaningful partnerships, and chart a path for transformative leadership in an interconnected world.</p>
                     </div>
-                    <div class="grid grid-cols-3 gap-4 w-full lg:w-auto">
-                        <div class="p-4 rounded-2xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 text-center">
-                            <p class="text-3xl font-extrabold text-gray-900 dark:text-white">{{ $speakerCount }}</p>
-                            <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">Speakers</p>
+
+                    <!-- Statistics -->
+                    <div class="mt-10 flex gap-2 sm:gap-3 max-w-full overflow-x-auto pb-2">
+                        <div class="group relative flex-shrink-0">
+                            <div class="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-teal-600/10 rounded-lg blur-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                            <div class="relative p-3 rounded-lg bg-white/50 dark:bg-slate-900/50 border border-teal-200/30 dark:border-teal-800/30 backdrop-blur-sm hover:border-teal-300/60 dark:hover:border-teal-700/60 transition-all duration-300">
+                                <div class="flex flex-col items-center text-center">
+                                    <p class="text-lg sm:text-xl font-bold bg-gradient-to-r from-teal-600 to-teal-500 bg-clip-text text-transparent">{{ $speakerCount }}</p>
+                                    <p class="mt-0.5 text-xs font-semibold text-gray-700 dark:text-gray-300 tracking-wide uppercase">Speakers</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="p-4 rounded-2xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 text-center">
-                            <p class="text-3xl font-extrabold text-gray-900 dark:text-white">{{ $sessionCount }}</p>
-                            <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">Sessions</p>
+
+                        <div class="group relative flex-shrink-0">
+                            <div class="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-teal-600/10 rounded-lg blur-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                            <div class="relative p-3 rounded-lg bg-white/50 dark:bg-slate-900/50 border border-teal-200/30 dark:border-teal-800/30 backdrop-blur-sm hover:border-teal-300/60 dark:hover:border-teal-700/60 transition-all duration-300">
+                                <div class="flex flex-col items-center text-center">
+                                    <p class="text-lg sm:text-xl font-bold bg-gradient-to-r from-teal-600 to-teal-500 bg-clip-text text-transparent">{{ $sessionCount }}</p>
+                                    <p class="mt-0.5 text-xs font-semibold text-gray-700 dark:text-gray-300 tracking-wide uppercase">Sessions</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="p-4 rounded-2xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 text-center">
-                            <p class="text-3xl font-extrabold text-gray-900 dark:text-white">{{ $dayCount }}</p>
-                            <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">Days</p>
+
+                        <div class="group relative flex-shrink-0">
+                            <div class="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-teal-600/10 rounded-lg blur-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                            <div class="relative p-3 rounded-lg bg-white/50 dark:bg-slate-900/50 border border-teal-200/30 dark:border-teal-800/30 backdrop-blur-sm hover:border-teal-300/60 dark:hover:border-teal-700/60 transition-all duration-300">
+                                <div class="flex flex-col items-center text-center">
+                                    <p class="text-lg sm:text-xl font-bold bg-gradient-to-r from-teal-600 to-teal-500 bg-clip-text text-transparent">{{ $dayCount }}</p>
+                                    <p class="mt-0.5 text-xs font-semibold text-gray-700 dark:text-gray-300 tracking-wide uppercase">Days</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                @if($topSpeakers->count())
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-                        @foreach($topSpeakers as $sp)
-                            @php $img = $sp->getFirstMediaUrl('headshot', 'avatar') ?: $sp->getFirstMediaUrl('headshot'); @endphp
-                            <div class="relative aspect-square rounded-2xl overflow-hidden bg-gray-100 dark:bg-slate-900 border border-gray-200 dark:border-slate-800">
-                                @if($img)
-                                    <img src="{{ $img }}" alt="{{ $sp->name }}" class="w-full h-full object-cover">
-                                @else
-                                    <div class="w-full h-full flex items-center justify-center text-gray-400">{{ Str::of($sp->name)->substr(0,1) }}</div>
-                                @endif
-                                <div class="absolute inset-x-0 bottom-0 p-2 bg-gradient-to-t from-black/60 to-transparent">
-                                    <p class="text-xs font-semibold text-white truncate">{{ $sp->name }}</p>
+                @if($themeBody)
+                <!-- Theme block -->
+                <div class="mt-10">
+                    <div class="inline-flex h-1 w-24 rounded-full bg-teal-500"></div>
+                    <h3 class="mt-6 text-2xl md:text-4xl font-semibold text-gray-900 dark:text-white tracking-tight">{{ $themeTitle }}</h3>
+                    <p class="mt-3 text-gray-600 dark:text-gray-300 text-lg leading-relaxed max-w-4xl">{{ $themeBody }}</p>
+                </div>
+                @endif
+
+            </div>
+        </section>
+
+
+
+        @if($quotes->count())
+        <!-- Quotes Section (before Program) -->
+        <section class="py-16 bg-white dark:bg-slate-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-10">
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">In their words</h3>
+                    <p class="mt-2 text-gray-600 dark:text-gray-300">Reflections from ALG 2024 speakers</p>
+                </div>
+                <div x-data="{
+                        i: 0,
+                        size: {{ $quotes->count() }},
+                        timer: null,
+                        intervalMs: 8000,
+                        hovering: false,
+                        start(){ this.stop(); this.timer = setInterval(()=>{ if(!this.hovering){ this.next() } }, this.intervalMs) },
+                        stop(){ if(this.timer){ clearInterval(this.timer); this.timer = null } },
+                        next(){ this.i = (this.i + 1) % this.size },
+                        prev(){ this.i = (this.i - 1 + this.size) % this.size },
+                        go(n){ this.i = n }
+                    }"
+                     x-init="start()"
+                     @mouseenter="hovering=true"
+                     @mouseleave="hovering=false; start()"
+                     class="relative"
+                >
+                    <div class="overflow-hidden rounded-3xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-lg">
+                        @foreach($quotes as $idx => $s)
+                            @php $avatar = $s->getFirstMediaUrl('headshot', 'avatar') ?: $s->getFirstMediaUrl('headshot'); @endphp
+                            <div x-show="i === {{ $idx }}" x-transition.opacity class="p-8 sm:p-12">
+                                <svg class="w-10 h-10 text-teal-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 17h3l2-4V7H6v6h3l-2 4zm7 0h3l2-4V7h-6v6h3l-2 4z"/></svg>
+                                <p class="mt-4 text-xl sm:text-2xl text-gray-800 dark:text-gray-100 leading-relaxed">"{{ $s->quote }}"</p>
+                                <div class="mt-6 flex items-center gap-4">
+                                    @if($avatar)
+                                        <img src="{{ $avatar }}" alt="{{ $s->name }}" class="w-12 h-12 rounded-full object-cover">
+                                    @endif
+                                    <div>
+                                        <p class="font-semibold text-gray-900 dark:text-white">{{ $s->name }}</p>
+                                        @if($s->title || $s->company)
+                                            <p class="text-sm text-gray-600 dark:text-gray-400">{{ $s->title }}@if($s->title && $s->company) • @endif{{ $s->company }}</p>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
                     </div>
-                @endif
+                    <div class="mt-4 flex items-center justify-between">
+                        <button @click="prev()" class="h-10 w-10 inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-slate-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-800" aria-label="Previous">‹</button>
+                        <div class="flex items-center gap-3">
+                            @foreach($quotes as $idx => $s)
+                                <button @click="go({{ $idx }})" class="relative w-6 h-2 rounded-full bg-gray-300 dark:bg-slate-700 overflow-hidden" :aria-current="i==={{ $idx }}">
+                                    <span class="absolute inset-y-0 left-0 bg-teal-600" :style="i==={{ $idx }} ? 'width:100%; transition: width 5s linear' : 'width:0'" ></span>
+                                </button>
+                            @endforeach
+                        </div>
+                        <button @click="next()" class="h-10 w-10 inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-slate-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-800" aria-label="Next">›</button>
+                    </div>
+                </div>
             </div>
         </section>
+        @endif
+
+        @php
+            $days = $event->days ?? collect();
+        @endphp
+        @if($days->count())
+        <!-- Program Timeline -->
+        <section class="py-16 bg-gray-50 dark:bg-slate-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">Program / Speakers</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed max-w-3xl mb-8">Through impactful discussions, keynote addresses, and hands-on workshops, experience a gathering dedicated to advancing leadership, institutional growth, and human capital development across the continent.</p>
+                <div class="space-y-8">
+                    @foreach($days as $day)
+                        @php $sessions = ($day->sessions ?? collect())->sortBy('start_at'); @endphp
+                        <div class="rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 overflow-hidden">
+                            <button type="button" class="w-full flex items-center justify-between px-5 py-4 text-left" x-data="{open:true}" @click="open=!open" :aria-expanded="open.toString()">
+                                <div>
+                                    <p class="text-sm font-semibold text-teal-600 dark:text-teal-400">{{ optional($day->date)->format('M j, Y') ?: 'Day' }}</p>
+                                    @if($day->title)
+                                        <h4 class="text-xl font-bold text-gray-900 dark:text-white">{{ $day->title }}</h4>
+                                    @endif
+                                </div>
+                                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div class="px-5 pb-5" x-show="open" x-transition>
+                                <ol class="relative border-s border-gray-200 dark:border-slate-800">
+                                    @forelse($sessions as $session)
+                                        <li class="pl-6 py-6 border-b border-gray-200 dark:border-slate-800 last:border-b-0">
+                                            <span class="absolute -left-1.5 mt-3 w-3 h-3 rounded-full bg-teal-500"></span>
+                                            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                                                <div class="flex-1">
+                                                    <div class="flex items-center gap-3 mb-3">
+                                                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300 text-xs font-semibold border border-teal-200/60 dark:border-teal-800/60">
+                                                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                                                            {{ optional($session->start_time)->format('g:i A') }} @if($session->end_time)– {{ optional($session->end_time)->format('g:i A') }}@endif
+                                                        </span>
+                                                    </div>
+                                                    <h5 class="text-gray-900 dark:text-white">
+                                                        @php
+                                                            $parts = preg_split('/([\d]+|[IVX]+)/', $session->title, -1, PREG_SPLIT_DELIM_CAPTURE);
+                                                        @endphp
+                                                        @foreach($parts as $part)
+                                                            @if(preg_match('/^[\d]+$/', $part) || preg_match('/^[IVX]+$/', $part))
+                                                                <span class="text-5xl font-bold">{{ $part }}</span>
+                                                            @elseif(trim($part) !== '')
+                                                                <span class="text-lg font-semibold">{{ $part }}</span>
+                                                            @endif
+                                                        @endforeach
+                                                    </h5>
+                                                    @if($session->theme)
+                                                        <div class="mt-2 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-teal-50 to-teal-100 dark:from-teal-900/30 dark:to-teal-800/30 border border-teal-200/60 dark:border-teal-800/60">
+                                                            <svg class="w-4 h-4 text-teal-600 dark:text-teal-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                                            <span class="text-sm font-semibold text-teal-700 dark:text-teal-300">{{ $session->theme }}</span>
+                                                        </div>
+                                                    @endif
+                                                    @if($session->description)
+                                                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-3">{{ $session->description }}</p>
+                                                    @endif
+                                                </div>
+                                                @if(($session->speakers ?? collect())->count())
+                                                    <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                                        @foreach($session->speakers as $ss)
+                                                            @php $a = $ss->getFirstMediaUrl('headshot', 'avatar') ?: $ss->getFirstMediaUrl('headshot'); @endphp
+                                                            <div class="flex items-start gap-4 p-4 rounded-2xl bg-white dark:bg-slate-950 border border-gray-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-300">
+                                                                @if($a)
+                                                                    <img src="{{ $a }}" class="w-16 h-16 rounded-xl object-cover flex-shrink-0" alt="{{ $ss->name }}">
+                                                                @else
+                                                                    <div class="w-16 h-16 rounded-xl bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-lg font-semibold text-gray-600 flex-shrink-0">{{ Str::of($ss->name)->substr(0,1) }}</div>
+                                                                @endif
+                                                                <div class="flex-1 min-w-0">
+                                                                    @if(optional($ss->pivot)->role)
+                                                                        <p class="text-xs font-semibold text-teal-600 dark:text-teal-400 uppercase tracking-wide">{{ $ss->pivot->role }}</p>
+                                                                    @endif
+                                                                    <h6 class="mt-1 text-sm font-semibold text-gray-900 dark:text-white truncate">{{ $ss->name }}</h6>
+                                                                    @if($ss->title || $ss->company)
+                                                                        <p class="mt-0.5 text-xs text-gray-600 dark:text-gray-400 truncate">{{ $ss->title }}@if($ss->title && $ss->company) • @endif{{ $ss->company }}</p>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        </li>
+                                    @empty
+                                        <li class="pl-6 py-5 text-gray-500 dark:text-gray-400">No sessions found for this day.</li>
+                                    @endforelse
+                                </ol>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+        @endif
     @endif
 
     <!-- Featured Speakers Section -->
@@ -264,259 +439,42 @@
     @endphp
     @if($ctaLabel && $ctaUrl)
         <section class="py-16 bg-gradient-to-r from-teal-500 to-orange-500">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-                <h3 class="text-2xl md:text-3xl font-bold text-white">Be part of ALG {{ $event->year }} — reserve your seat today.</h3>
-                <a href="{{ $ctaUrl }}" class="px-8 py-4 bg-white/95 text-teal-700 font-semibold rounded-full shadow-lg hover:bg-white transition">
-                    {{ $ctaLabel }}
-                </a>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6"
+                     x-data="{ open:false, email:'', loading:false, submitted:false, error:null, openToggle(){ this.open=!this.open; if(this.open){ this.$nextTick(()=> this.$refs.ctaEmail?.focus()); } }, async submit(){ if(!this.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email)){ this.error='Please enter a valid email.'; return; } this.loading=true; this.error=null; try{ const res = await fetch('{{ route('newsletter.subscribe') }}', { method:'POST', headers:{ 'Content-Type':'application/json', 'X-CSRF-TOKEN':'{{ csrf_token() }}' }, body: JSON.stringify({ email:this.email }) }); if(!res.ok){ const d = await res.json(); throw new Error((d.errors && (d.errors.email?.[0]||'Invalid email'))||'Subscription failed'); } this.submitted=true; this.email=''; setTimeout(()=>{ this.submitted=false; this.open=false; }, 2200); }catch(e){ this.error = e.message || 'Something went wrong'; } finally{ this.loading=false; } } }">
+                    <h3 class="text-2xl md:text-3xl font-bold text-white">Be part of ALG {{ $event->year }} — reserve your seat today.</h3>
+                    <div class="flex flex-wrap items-center gap-3">
+                        <a href="{{ $ctaUrl }}" class="shrink-0 whitespace-nowrap px-8 py-4 bg-white/95 text-teal-700 font-semibold rounded-full hover:bg-white transition">{{ $ctaLabel }}</a>
+                        <button type="button" @click="openToggle()" :aria-expanded="open.toString()" class="shrink-0 whitespace-nowrap px-8 py-4 rounded-full bg-teal-700/20 text-white font-semibold hover:bg-teal-700/30 transition">Get updates</button>
+                        <div class="basis-full w-full" x-show="open"
+                             x-transition:enter="transition ease-out duration-500"
+                             x-transition:enter-start="opacity-0 translate-y-2 scale-95"
+                             x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                             x-transition:leave="transition ease-in duration-400"
+                             x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                             x-transition:leave-end="opacity-0 translate-y-1 scale-95">
+                            <div class="mt-3 rounded-2xl bg-white/90 backdrop-blur px-3 py-2">
+                                <form @submit.prevent="submit" class="flex items-center gap-2" @keydown.enter.prevent="submit">
+                                    <label for="cta-email" class="sr-only">Email</label>
+                                    <input id="cta-email" x-ref="ctaEmail" x-model="email" type="email" required placeholder="you@example.com" class="w-full sm:w-96 h-12 rounded-full bg-white text-gray-900 placeholder-gray-500 px-4 outline-none text-base" />
+                                    <button type="submit" :disabled="loading" class="inline-flex items-center justify-center h-12 px-6 rounded-full bg-teal-600 text-white font-semibold transition disabled:opacity-60">
+                                        <span x-show="!loading">Subscribe</span>
+                                        <span x-show="loading">Subscribing…</span>
+                                    </button>
+                                </form>
+                                <p x-show="submitted" x-transition.opacity.duration.200ms class="mt-2 text-sm text-teal-700" aria-live="polite">Thanks! You’re on the list.</p>
+                                <p x-show="error" x-transition.opacity.duration.200ms x-text="error" class="mt-1 text-sm text-orange-700" aria-live="assertive"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     @endif
 
-    <!-- Program Section -->
-    <section class="py-24 bg-gray-50 dark:bg-slate-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white tracking-tight mb-3">Program</h2>
-                <div class="h-1 w-20 mx-auto rounded-full bg-teal-500"></div>
-            </div>
+    
 
-            @if($event->days->count())
-                <div class="space-y-16">
-                    @foreach($event->days as $day)
-                        <div>
-                            <div class="flex items-baseline justify-between mb-8">
-                                <h3 class="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white">
-                                    {{ $day->title ?? ('Day ' . ($loop->index + 1)) }}
-                                </h3>
-                                @if($day->date_text || $day->date)
-                                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-sm text-gray-700 dark:text-gray-300">
-                                        <svg class="w-4 h-4 text-teal-600 dark:text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                                        {{ $day->date_text ?? $day->date->format('M d, Y') }}
-                                    </span>
-                                @endif
-                            </div>
-
-                            <div class="relative">
-                                <div class="absolute left-3 top-0 bottom-0 w-px bg-gray-200 dark:bg-slate-800"></div>
-                                <div class="space-y-8">
-                                    @forelse($day->sessions as $session)
-                                        <div class="relative pl-10">
-                                            <div class="absolute left-0 top-4 w-2.5 h-2.5 rounded-full bg-teal-500 shadow"></div>
-                                            <div class="p-6 rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus-within:ring-2 focus-within:ring-teal-500/40">
-                                                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                                                    <div>
-                                                        <h4 class="text-xl font-semibold text-gray-900 dark:text-white">{{ $session->title }}</h4>
-                                                        @if($session->theme)
-                                                            <p class="text-teal-700 dark:text-teal-300 font-medium">{{ $session->theme }}</p>
-                                                        @endif
-                                                    </div>
-                                                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 text-sm text-gray-700 dark:text-gray-300">
-                                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                                        {{ $session->start_time?->format('g:i A') }} - {{ $session->end_time?->format('g:i A') }}
-                                                    </div>
-                                                </div>
-
-                                                @if($session->speakers && $session->speakers->count())
-                                                    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                        @foreach($session->speakers as $sp)
-                                                            <div class="flex items-start gap-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-4 transition-all duration-300 hover:bg-white/90 dark:hover:bg-slate-900/70">
-                                                                @php $avatar = $sp->getFirstMediaUrl('headshot'); @endphp
-                                                                @if($avatar)
-                                                                    <img src="{{ $avatar }}" alt="{{ $sp->name }}" class="w-10 h-10 rounded-full object-cover" />
-                                                                @else
-                                                                    <div class="w-10 h-10 rounded-full bg-teal-500"></div>
-                                                                @endif
-                                                                <div class="flex-1">
-                                                                    @if($sp->pivot?->role)
-                                                                        <p class="text-xs font-semibold text-teal-700 dark:text-teal-300 mb-0.5">{{ $sp->pivot->role }}</p>
-                                                                    @endif
-                                                                    <p class="font-semibold text-gray-900 dark:text-white">{{ $sp->name }}</p>
-                                                                    @if($sp->title || $sp->company)
-                                                                        <p class="text-sm text-gray-600 dark:text-gray-400">{{ $sp->title }}@if($sp->title && $sp->company) - @endif{{ $sp->company }}</p>
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                        @endforeach
-                                                    </div>
-                                                @endif
-
-                                                @if($session->items->count())
-                                                    <div class="mt-5 divide-y divide-gray-100 dark:divide-slate-800">
-                                                        @foreach($session->items as $item)
-                                                            <div class="py-4 flex flex-col md:flex-row md:items-start md:justify-between gap-3">
-                                                                <div>
-                                                                    <p class="font-semibold text-gray-900 dark:text-white">{{ $item->title }}</p>
-                                                                    @if($item->subtitle)
-                                                                        <p class="text-gray-600 dark:text-gray-400">{{ $item->subtitle }}</p>
-                                                                    @endif
-                                                                    @if($item->speakers->count())
-                                                                        <div class="mt-2 flex flex-wrap gap-2">
-                                                                            @foreach($item->speakers as $sp)
-                                                                                <span class="px-3 py-1 text-xs rounded-full bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-800">
-                                                                                    {{ $sp->name }}@if($sp->pivot?->role) • {{ $sp->pivot->role }}@endif
-                                                                                </span>
-                                                                            @endforeach
-                                                                        </div>
-                                                                    @endif
-                                                                </div>
-                                                                @if($item->moderator)
-                                                                    <div class="text-sm text-gray-600 dark:text-gray-400 md:text-right">
-                                                                        <span class="font-semibold text-gray-900 dark:text-white">Moderator:</span>
-                                                                        {{ $item->moderator->name }}
-                                                                    </div>
-                                                                @endif
-                                                            </div>
-                                                        @endforeach
-                                                    </div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    @empty
-                                        <p class="text-gray-600 dark:text-gray-400">No sessions added yet for this day.</p>
-                                    @endforelse
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            @else
-                <div class="space-y-6">
-                    @forelse($event->sessions as $session)
-                        <div class="p-6 rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
-                            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                                <div>
-                                    <h4 class="text-xl font-semibold text-gray-900 dark:text-white">{{ $session->title }}</h4>
-                                    @if($session->theme)
-                                        <p class="text-teal-700 dark:text-teal-300 font-medium">{{ $session->theme }}</p>
-                                    @endif
-                                </div>
-                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 text-sm text-gray-700 dark:text-gray-300">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                    {{ $session->start_time?->format('g:i A') }} - {{ $session->end_time?->format('g:i A') }}
-                                </div>
-                            </div>
-                        </div>
-                    @empty
-                        <p class="text-gray-600 dark:text-gray-400">Program details will be announced soon.</p>
-                    @endforelse
-                </div>
-            @endif
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 dark:bg-slate-950 text-white relative overflow-hidden">
-        <div class="pointer-events-none absolute -top-24 -right-16 w-[720px] h-[720px] opacity-[0.08]" style="background-image:url('{{ asset('assets/1x/hero-bg1.png') }}'); background-repeat:no-repeat; background-size:contain; background-position:center;"></div>
-        <div class="pointer-events-none absolute -bottom-28 -left-20 w-[680px] h-[680px] opacity-[0.08]" style="background-image:url('{{ asset('assets/1x/artwork.png') }}'); background-repeat:no-repeat; background-size:contain; background-position:center;"></div>
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                <!-- Brand -->
-                <div class="space-y-4">
-                    <a href="https://leoafricainstitute.org/" target="_blank" rel="noopener" aria-label="LéO Africa Institute" class="inline-flex items-center p-2 rounded-lg bg-white shadow-sm">
-                        <img src="/assets/logos/leo-africa-institute.png" alt="LéO Africa Institute" class="h-10 w-auto object-contain" loading="lazy">
-                    </a>
-                    <p class="text-gray-300 text-sm leading-relaxed">The Annual Leaders Gathering is LéO Africa Institute's flagship event.</p>
-                </div>
-
-                <!-- Newsletter -->
-                <div x-data="{
-                        email: '', submitted: false, error: null, loading: false,
-                        async submit() {
-                            this.loading = true; this.error = null;
-                            try {
-                                const res = await fetch('{{ route('newsletter.subscribe') }}', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                                    },
-                                    body: JSON.stringify({ email: this.email })
-                                });
-                                if (!res.ok) {
-                                    const data = await res.json();
-                                    throw new Error((data.errors && (data.errors.email?.[0] || 'Invalid email')) || 'Subscription failed');
-                                }
-                                this.submitted = true; this.email = '';
-                            } catch (e) {
-                                this.error = e.message || 'Something went wrong';
-                            } finally {
-                                this.loading = false;
-                            }
-                        }
-                    }" class="md:col-span-2">
-                    <h4 class="text-xs font-semibold tracking-[0.18em] text-teal-400 uppercase">Newsletter</h4>
-                    <p class="mt-3 text-gray-300 text-sm">Get ALG updates, highlights, and announcements.</p>
-                    <form class="mt-5 max-w-2xl" @submit.prevent="submit">
-                        <div class="flex items-center gap-3">
-                            <label for="footer-email" class="sr-only">Email</label>
-                            <input id="footer-email" x-model="email" type="email" required placeholder="you@example.com" class="w-full h-12 rounded-full bg-white text-gray-900 placeholder-gray-500 px-5 ring-1 ring-gray-300 focus:ring-2 focus:ring-teal-500 outline-none transition text-base" />
-                            <button type="submit" :disabled="loading" class="shrink-0 inline-flex items-center justify-center h-12 px-7 rounded-full bg-teal-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 disabled:opacity-60 disabled:cursor-not-allowed">
-                                <span x-show="!loading">Subscribe</span>
-                                <span x-show="loading">Subscribing…</span>
-                            </button>
-                        </div>
-                        <p x-show="submitted" x-transition.opacity.duration.300ms class="mt-3 text-sm text-teal-300">Thanks! You’re on the list.</p>
-                        <p x-show="error" x-transition.opacity.duration.300ms class="mt-2 text-sm text-orange-300" x-text="error"></p>
-                        <p class="mt-2 text-xs text-gray-400">We respect your privacy.</p>
-                    </form>
-                </div>
-
-                <!-- Programs -->
-                <div>
-                    <h4 class="text-xs font-semibold tracking-[0.18em] text-teal-400 uppercase">Programs</h4>
-                    <div class="mt-5 grid grid-cols-1 gap-4">
-                        <a href="https://leoafricainstitute.org/huduma/" target="_blank" rel="noopener" class="group flex items-center justify-between gap-4 p-3 h-16 rounded-xl bg-white dark:bg-white border border-gray-200/50 shadow-sm hover:shadow-lg transition">
-                            <span class="flex-1 flex items-center justify-center">
-                                <img src="/assets/logos/huduma-fellowship.svg" alt="Huduma Fellowship" class="max-h-10 w-auto object-contain" loading="lazy">
-                            </span>
-                            <svg class="w-4 h-4 text-white/60 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                        </a>
-                        <a href="https://leoafricainstitute.org/yelp/" target="_blank" rel="noopener" class="group flex items-center justify-between gap-4 p-3 h-16 rounded-xl bg-white dark:bg-white border border-gray-200/50 shadow-sm hover:shadow-lg transition">
-                            <span class="flex-1 flex items-center justify-center">
-                                <img src="/assets/logos/yelp.svg" alt="Young & Emerging Leaders Project (YELP)" class="max-h-12 w-auto object-contain" loading="lazy">
-                            </span>
-                            <svg class="w-4 h-4 text-white/60 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                        </a>
-                        <a href="https://leoafricareview.com" target="_blank" rel="noopener" class="group flex items-center justify-between gap-4 p-3 h-16 rounded-xl bg-white dark:bg-white border border-gray-200/50 shadow-sm hover:shadow-lg transition">
-                            <span class="flex-1 flex items-center justify-center">
-                                <img src="/assets/logos/leo-africa-review.png" alt="LéO Africa Review" class="max-h-10 w-auto object-contain" loading="lazy">
-                            </span>
-                            <svg class="w-4 h-4 text-white/60 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Connect -->
-                <div>
-                    <h4 class="text-xs font-semibold tracking-[0.18em] text-teal-400 uppercase">Connect</h4>
-                    <div class="mt-5 grid grid-cols-5 gap-3">
-                        <a href="https://x.com/LeoAfricaInst" target="_blank" rel="noopener" aria-label="X (Twitter)" class="group inline-flex items-center justify-center h-10 rounded-lg border border-white/10 text-gray-300 hover:text-white hover:border-white/30 transition">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21l-6.53 7.46L22.5 22h-6.69l-5.24-6.74L4.5 22H2l7.1-8.1L1.5 2h6.86l4.73 6.2L18.244 2Zm-1.17 18h1.86L7.01 4H5.06l12.014 16Z"/></svg>
-                        </a>
-                        <a href="https://www.facebook.com/LeOAfricaInstitute/" target="_blank" rel="noopener" aria-label="Facebook" class="group inline-flex items-center justify-center h-10 rounded-lg border border-white/10 text-gray-300 hover:text-white hover:border-white/30 transition">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7v-3h3.5V9.5A4.5 4.5 0 0 1 15 5h2.5v3H15a1 1 0 0 0-1 1V12h3.5l-.5 3H14v7A10 10 0 0 0 22 12Z"/></svg>
-                        </a>
-                        <a href="https://www.instagram.com/leoafricainst/" target="_blank" rel="noopener" aria-label="Instagram" class="group inline-flex items-center justify-center h-10 rounded-lg border border-white/10 text-gray-300 hover:text-white hover:border-white/30 transition">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.2A2.8 2.8 0 1 0 12 17.8 2.8 2.8 0 0 0 12 9.2Zm5.5-.95a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/></svg>
-                        </a>
-                        <a href="https://www.linkedin.com/company/18203194/admin/page-posts/published/" target="_blank" rel="noopener" aria-label="LinkedIn" class="group inline-flex items-center justify-center h-10 rounded-lg border border-white/10 text-gray-300 hover:text-white hover:border-white/30 transition">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.5 8h4V24h-4V8ZM8.5 8h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.1c0-1.7-.03-3.9-2.4-3.9-2.4 0-2.77 1.86-2.77 3.8V24h-4V8Z"/></svg>
-                        </a>
-                        <a href="https://www.flickr.com/photos/africaforum/" target="_blank" rel="noopener" aria-label="Flickr" class="group inline-flex items-center justify-center h-10 rounded-lg border border-white/10 text-gray-300 hover:text-white hover:border-white/30 transition">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><circle cx="7.5" cy="12" r="3.5"/><circle cx="16.5" cy="12" r="3.5"/></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="relative z-10 border-t border-white/10">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <p class="text-gray-400">© 2025 All rights reserved.</p>
-                <p class="text-gray-500 text-sm">Crafted with passion by <a href="https://www.index.ug" target="_blank" rel="noopener" class="text-teal-400 hover:text-teal-300 transition">Index Digital</a></p>
-            </div>
-        </div>
-    </footer>
+    <x-footer />
 
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
     <script>
