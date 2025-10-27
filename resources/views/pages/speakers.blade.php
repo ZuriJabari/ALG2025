@@ -33,7 +33,7 @@
                         <span class="w-2 h-2 rounded-full" style="background:#00C2B3"></span>
                         <span class="text-xs font-semibold text-gray-700 dark:text-gray-200">ALG 2025</span>
                     </div>
-                    <h1 class="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">Speakers</h1>
+                    <h1 class="mt-4 text-4xl sm:text-5xl font-normal tracking-tight text-gray-900 dark:text-white">Speakers</h1>
                     <p class="mt-3 text-lg text-gray-600 dark:text-gray-300 max-w-2xl">Speakers will be announced soon. Check again, please.</p>
                     
                     <!-- Countdown Clock -->

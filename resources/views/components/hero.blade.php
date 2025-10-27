@@ -40,7 +40,7 @@
                     $heroDesc = $event->hero_description;
                 @endphp
                 @if($heading)
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-gray-900 dark:text-white leading-[1.1] sm:leading-[1.05]">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal tracking-tight text-gray-900 dark:text-white leading-[1.1] sm:leading-[1.05]">
                         {{ $heading }}
                     </h1>
                 @endif

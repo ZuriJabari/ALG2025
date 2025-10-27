@@ -27,7 +27,7 @@
                     <span class="w-2 h-2 rounded-full" style="background:#00C2B3"></span>
                     <span class="text-xs font-semibold text-gray-700 dark:text-gray-200 tracking-wider">About ALG</span>
                 </div>
-                <h1 class="mt-5 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white">What is the Annual Leaders Gathering?</h1>
+                <h1 class="mt-5 text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-gray-900 dark:text-white">What is the Annual Leaders Gathering?</h1>
                 <p class="mt-6 text-lg sm:text-xl leading-relaxed text-gray-700 dark:text-gray-300">The Annual Leaders Gathering is the LéO Africa Institute’s signature convening platform. It brings together its growing networks of leaders for significant conversations, networking, and deliberation on actions necessary to address the day's challenges.</p>
                 <p class="mt-4 text-lg sm:text-xl leading-relaxed text-gray-700 dark:text-gray-300">Fellows of the Institute, emerging leaders in the public and private sector, as well as the Institute’s extended network across Africa, convene to reflect on the challenges facing society today and explore how different networks of innovators, entrepreneurs, and decision-makers can come together to address them.</p>
 

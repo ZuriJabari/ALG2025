@@ -20,7 +20,7 @@
           <span class="w-2 h-2 rounded-full" style="background:#00C2B3"></span>
           <span class="text-xs font-semibold text-gray-700 dark:text-gray-200 tracking-wider">Reserve Your Seat</span>
         </div>
-        <h1 class="mt-5 text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">Join us at #ALG2025</h1>
+        <h1 class="mt-5 text-4xl sm:text-5xl font-normal tracking-tight text-gray-900 dark:text-white">Join us at #ALG2025</h1>
         <p class="mt-4 text-lg text-gray-700 dark:text-gray-300">Share your details below to request a seat at the Annual Leaders Gathering. We’ll confirm your reservation by email.</p>
       </div>
 

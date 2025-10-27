@@ -33,7 +33,7 @@
                         <span class="w-2 h-2 rounded-full" style="background:#00C2B3"></span>
                         <span class="text-xs font-semibold text-gray-700 dark:text-gray-200">ALG 2024 Speakers</span>
                     </div>
-                    <h1 class="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">Visionary Leaders & Innovators</h1>
+                    <h1 class="mt-4 text-4xl sm:text-5xl font-normal tracking-tight text-gray-900 dark:text-white">Visionary Leaders & Innovators</h1>
                     <p class="mt-3 text-lg text-gray-600 dark:text-gray-300 max-w-2xl">Meet the extraordinary minds who shaped ALG 2024. Thought leaders, changemakers, and visionaries from across the continent, united by a passion for transformative leadership and continental impact.</p>
                 </div>
                 <div class="flex flex-wrap items-center gap-3">
