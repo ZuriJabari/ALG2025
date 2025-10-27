@@ -30,6 +30,11 @@
     });
 ">
     <x-header />
+    <!-- Page-level subtle artwork accents (visible on live homepage) -->
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+        <div class="absolute -top-28 -right-24 w-[460px] h-[460px] opacity-20 dark:opacity-12 hidden md:block mix-blend-multiply dark:mix-blend-normal" style="background-image:url('/assets/artwork.png'); background-repeat:no-repeat; background-size:contain; filter: blur(0.5px);"></div>
+        <div class="absolute -bottom-32 -left-20 w-[420px] h-[420px] opacity-18 dark:opacity-10 hidden lg:block mix-blend-multiply dark:mix-blend-normal" style="background-image:url('/assets/hero-bg1.png'); background-repeat:no-repeat; background-size:contain; transform: rotate(2deg);"></div>
+    </div>
     
     <x-hero :event="$event" :hero="$hero" />
 
