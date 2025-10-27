@@ -85,9 +85,13 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
                     <p class="text-sm font-semibold text-gray-700 dark:text-gray-300 whitespace-nowrap">Convened in partnership with</p>
-                    <div class="flex flex-wrap items-center gap-2 sm:gap-3">
-                        <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300 border border-teal-200/60 dark:border-teal-800/60 text-sm font-semibold">Konrad Adenauer Stiftung</span>
-                        <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 border border-orange-200/60 dark:border-orange-800/60 text-sm font-semibold">Segal Family Foundation</span>
+                    <div class="flex flex-wrap items-center gap-4 sm:gap-6">
+                        <a href="https://www.kas.de/en/web/uganda" target="_blank" rel="noopener" class="inline-flex items-center opacity-90 hover:opacity-100 transition-opacity" aria-label="Konrad Adenauer Stiftung">
+                            <img src="/assets/logos/konrad-adenauer-stiftung.png" alt="Konrad Adenauer Stiftung" class="h-8 sm:h-10 w-auto object-contain" loading="lazy">
+                        </a>
+                        <a href="https://www.segalfamilyfoundation.org/" target="_blank" rel="noopener" class="inline-flex items-center opacity-90 hover:opacity-100 transition-opacity" aria-label="Segal Family Foundation">
+                            <img src="/assets/logos/segal-family-foundation.png" alt="Segal Family Foundation" class="h-8 sm:h-10 w-auto object-contain" loading="lazy">
+                        </a>
                     </div>
                 </div>
             </div>
