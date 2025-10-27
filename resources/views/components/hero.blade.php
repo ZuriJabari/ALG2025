@@ -107,7 +107,7 @@
                     <span>{{ $primaryCtaLabel }}</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </a>
-                <a href="{{ $secondaryCtaUrl }}" class="h-11 px-6 inline-flex items-center justify-center bg-white dark:bg-slate-900 text-teal-600 dark:text-teal-400 hover:bg-gray-50 dark:hover:bg-slate-800 font-semibold rounded-full border-2 border-teal-600 dark:border-teal-400 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 text-center">
+                <a href="{{ $secondaryCtaUrl }}" class="h-11 px-6 inline-flex items-center justify-center bg-white dark:bg-slate-900 text-teal-600 dark:text-teal-400 hover:bg-gray-50 dark:hover:bg-slate-800 font-semibold rounded-full border border-teal-600/40 dark:border-teal-400/40 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 text-center">
                     {{ $secondaryCtaLabel }}
                 </a>
             </div>
