@@ -20,7 +20,7 @@
     <!-- Plyr Video Player -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 </head>
-<body class="antialiased bg-white dark:bg-slate-950" x-data="{ darkMode: (localStorage.getItem('darkMode') === null) ? true : (localStorage.getItem('darkMode') === 'true') }" x-init="
+<body class="relative overflow-hidden antialiased bg-white dark:bg-slate-950" x-data="{ darkMode: (localStorage.getItem('darkMode') === null) ? true : (localStorage.getItem('darkMode') === 'true') }" x-init="
     // Ensure html reflects state on init
     document.documentElement.classList.toggle('dark', darkMode);
     // Watch for changes to keep html class and localStorage in sync
