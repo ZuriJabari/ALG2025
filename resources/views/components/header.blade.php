@@ -1,4 +1,4 @@
-<header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-950/90 backdrop-blur transition-all duration-300 supports-[backdrop-filter]:backdrop-saturate-150 relative overflow-hidden" x-data="{ mobileMenuOpen: false, ignoreOutside: false }">
+<header data-header-version="v4" class="sticky top-0 z-50 bg-white/90 dark:bg-slate-950/90 backdrop-blur transition-all duration-300 supports-[backdrop-filter]:backdrop-saturate-150 relative overflow-hidden" x-data="{ mobileMenuOpen: false }">
     <div aria-hidden="true" class="pointer-events-none absolute -z-10 inset-0">
         <div class="absolute -top-12 -right-12 w-[320px] h-[320px] opacity-25 dark:opacity-15 hidden sm:block mix-blend-multiply dark:mix-blend-normal" style="background-image:url('/assets/artwork.png'); background-repeat:no-repeat; background-size:contain; filter: blur(0.5px);"></div>
         <div class="absolute -bottom-20 -left-10 w-[280px] h-[280px] opacity-20 dark:opacity-12 hidden md:block mix-blend-multiply dark:mix-blend-normal" style="background-image:url('/assets/hero-bg1.png'); background-repeat:no-repeat; background-size:contain; transform: rotate(2deg);"></div>
@@ -80,7 +80,7 @@
             </a>
 
             <!-- Mobile Menu Button -->
-            <button data-mobile-toggle class="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors" @click.stop="ignoreOutside = true; mobileMenuOpen = !mobileMenuOpen; setTimeout(()=> ignoreOutside = false, 150)" :aria-expanded="mobileMenuOpen.toString()">
+            <button data-mobile-toggle class="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors" @click.stop="mobileMenuOpen = !mobileMenuOpen" :aria-expanded="mobileMenuOpen.toString()">
                 <svg class="w-6 h-6" :class="{ 'hidden': mobileMenuOpen }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
@@ -94,12 +94,6 @@
 
     <!-- Mobile Menu -->
     <div class="md:hidden">
-        <!-- Backdrop overlay to capture outside taps -->
-        <div x-show="mobileMenuOpen"
-             x-transition.opacity
-             class="fixed inset-0 z-30 bg-black/10 dark:bg-black/30"
-             @click="mobileMenuOpen = false"
-             aria-hidden="true"></div>
         <div x-show="mobileMenuOpen" 
              x-transition:enter="transition ease-out duration-200"
              x-transition:enter-start="opacity-0 -translate-y-2"
@@ -107,7 +101,7 @@
              x-transition:leave="transition ease-in duration-150"
              x-transition:leave-start="opacity-100 translate-y-0"
              x-transition:leave-end="opacity-0 -translate-y-2"
-             @click.stop
+             @click.outside="mobileMenuOpen = false"
              class="absolute top-full left-0 right-0 bg-white dark:bg-slate-950 border-b border-gray-200 dark:border-slate-800 shadow-xl z-40">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-3">
                 @php
