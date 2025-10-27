@@ -176,43 +176,56 @@
                         timer: null,
                         intervalMs: 8000,
                         hovering: false,
+                        maxHeight: 0,
                         start(){ this.stop(); this.timer = setInterval(()=>{ if(!this.hovering){ this.next() } }, this.intervalMs) },
                         stop(){ if(this.timer){ clearInterval(this.timer); this.timer = null } },
-                        next(){ this.i = (this.i + 1) % this.size },
-                        prev(){ this.i = (this.i - 1 + this.size) % this.size },
-                        go(n){ this.i = n }
+                        next(){ this.i = (this.i + 1) % this.size; this.$nextTick(()=>this.compute()) },
+                        prev(){ this.i = (this.i - 1 + this.size) % this.size; this.$nextTick(()=>this.compute()) },
+                        go(n){ this.i = n; this.$nextTick(()=>this.compute()) },
+                        compute(){
+                            this.$nextTick(()=>{
+                                const c = this.$refs.slides;
+                                if(!c) return;
+                                const hs = Array.from(c.children).map(el => el.scrollHeight || 0);
+                                const m = Math.max(0, ...hs);
+                                this.maxHeight = m;
+                            });
+                        }
                     }"
-                     x-init="start()"
+                     x-init="compute(); start()"
                      @mouseenter="hovering=true"
                      @mouseleave="hovering=false; start()"
+                     @resize.window="compute()"
                      class="relative"
                 >
                     <div class="overflow-hidden rounded-3xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-lg">
-                        @foreach($quotes as $idx => $s)
-                            @php $avatar = $s->getFirstMediaUrl('headshot', 'avatar') ?: $s->getFirstMediaUrl('headshot'); @endphp
-                            <div x-show="i === {{ $idx }}" x-transition.opacity class="p-8 sm:p-12">
-                                <svg class="w-10 h-10 text-teal-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 17h3l2-4V7H6v6h3l-2 4zm7 0h3l2-4V7h-6v6h3l-2 4z"/></svg>
-                                <p class="mt-4 text-xl sm:text-2xl text-gray-800 dark:text-gray-100 leading-relaxed">"{{ $s->quote }}"</p>
-                                <div class="mt-6 flex items-center gap-4">
-                                    @if($avatar)
-                                        <img src="{{ $avatar }}" alt="{{ $s->name }}" class="w-12 h-12 rounded-full object-cover">
-                                    @endif
-                                    <div>
-                                        <p class="font-semibold text-gray-900 dark:text-white">{{ $s->name }}</p>
-                                        @if($s->title || $s->company)
-                                            <p class="text-sm text-gray-600 dark:text-gray-400">{{ $s->title }}@if($s->title && $s->company) • @endif{{ $s->company }}</p>
+                        <div x-ref="slides" class="relative" :style="{ height: maxHeight + 'px' }" aria-live="polite">
+                            @foreach($quotes as $idx => $s)
+                                @php $avatar = $s->getFirstMediaUrl('headshot', 'avatar') ?: $s->getFirstMediaUrl('headshot'); @endphp
+                                <div x-show="i === {{ $idx }}" x-transition.opacity.duration.500ms class="absolute inset-0 p-8 sm:p-12">
+                                    <svg class="w-10 h-10 text-teal-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 17h3l2-4V7H6v6h3l-2 4zm7 0h3l2-4V7h-6v6h3l-2 4z"/></svg>
+                                    <p class="mt-4 text-xl sm:text-2xl text-gray-800 dark:text-gray-100 leading-relaxed">"{{ $s->quote }}"</p>
+                                    <div class="mt-6 flex items-center gap-4">
+                                        @if($avatar)
+                                            <img src="{{ $avatar }}" alt="{{ $s->name }}" class="w-12 h-12 rounded-full object-cover">
                                         @endif
+                                        <div>
+                                            <p class="font-semibold text-gray-900 dark:text-white">{{ $s->name }}</p>
+                                            @if($s->title || $s->company)
+                                                <p class="text-sm text-gray-600 dark:text-gray-400">{{ $s->title }}@if($s->title && $s->company) • @endif{{ $s->company }}</p>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                     <div class="mt-4 flex items-center justify-between">
                         <button @click="prev()" class="h-10 w-10 inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-slate-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-800" aria-label="Previous">‹</button>
                         <div class="flex items-center gap-3">
                             @foreach($quotes as $idx => $s)
                                 <button @click="go({{ $idx }})" class="relative w-6 h-2 rounded-full bg-gray-300 dark:bg-slate-700 overflow-hidden" :aria-current="i==={{ $idx }}">
-                                    <span class="absolute inset-y-0 left-0 bg-teal-600" :style="i==={{ $idx }} ? 'width:100%; transition: width 5s linear' : 'width:0'" ></span>
+                                    <span class="absolute inset-y-0 left-0 bg-teal-600" :style="i==={{ $idx }} ? 'width:100%; transition: width 8s linear' : 'width:0'" ></span>
                                 </button>
                             @endforeach
                         </div>
