@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $event->title }} - ALG</title>
+    <meta name="alg-marker" content="events-show-accents-v1">
     @include('partials.analytics')
     <script>
         // Initialize theme before CSS loads: default DARK unless user explicitly set otherwise
@@ -31,7 +32,7 @@
 ">
     <x-header />
     <!-- Page-level subtle artwork accents (visible on live homepage) -->
-    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 z-0">
         <div class="absolute -top-28 -right-24 w-[460px] h-[460px] opacity-20 dark:opacity-12 hidden md:block mix-blend-multiply dark:mix-blend-normal" style="background-image:url('/assets/artwork.png'); background-repeat:no-repeat; background-size:contain; filter: blur(0.5px);"></div>
         <div class="absolute -bottom-32 -left-20 w-[420px] h-[420px] opacity-18 dark:opacity-10 hidden lg:block mix-blend-multiply dark:mix-blend-normal" style="background-image:url('/assets/hero-bg1.png'); background-repeat:no-repeat; background-size:contain; transform: rotate(2deg);"></div>
     </div>
