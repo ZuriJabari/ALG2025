@@ -56,41 +56,6 @@
                 @endif
             </div>
 
-            <!-- Meta Band: Date • Venue • Partners -->
-            @php
-                $is2025 = ((int) ($event->year ?? 0)) === 2025;
-                $dateText = $event->start_at ? $event->start_at->format('M j, Y') : ($is2025 ? 'Nov 22, 2025' : null);
-                $venueText = $event->location ?: ($is2025 ? 'Victoria Hall, Kampala Sheraton Hotel' : null);
-                $partners = $is2025 ? ['Konrad Adenauer Stiftung', 'Segal Family Foundation'] : [];
-            @endphp
-            @if($dateText || $venueText || !empty($partners))
-            <div class="mt-2 sm:mt-3 inline-flex flex-wrap items-center gap-2 sm:gap-2.5 px-4 py-2 rounded-full bg-white/70 dark:bg-slate-900/60 border border-gray-200 dark:border-slate-700 shadow-sm backdrop-blur">
-                @if($dateText)
-                    <span class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200">
-                        <svg class="w-4 h-4 text-teal-600 dark:text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                        <span>{{ $dateText }}</span>
-                    </span>
-                @endif
-                @if($venueText)
-                    <span class="text-gray-400 dark:text-slate-600">•</span>
-                    <span class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200">
-                        <svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                        <span>{{ $venueText }}</span>
-                    </span>
-                @endif
-                @if(!empty($partners))
-                    <span class="text-gray-400 dark:text-slate-600">•</span>
-                    <span class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200">
-                        <svg class="w-4 h-4 text-teal-600 dark:text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3-1.343 3-3S13.657 2 12 2 9 3.343 9 5s1.343 3 3 3zm0 2c-2.761 0-5 2.239-5 5v5h10v-5c0-2.761-2.239-5-5-5z"/></svg>
-                        <span>In partnership with</span>
-                        @foreach($partners as $p)
-                            <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300 border border-teal-200/60 dark:border-teal-800/60">{{ $p }}</span>
-                        @endforeach
-                    </span>
-                @endif
-            </div>
-            @endif
-
             <!-- Event Details -->
             <div class="flex flex-col sm:flex-row gap-6 text-gray-700 dark:text-gray-300">
                 @if($event->start_at)
