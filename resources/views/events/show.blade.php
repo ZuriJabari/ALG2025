@@ -49,7 +49,7 @@
         <section class="py-20 bg-white dark:bg-slate-950">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="inline-flex h-1 w-24 rounded-full bg-teal-500"></div>
-                <h2 class="mt-6 text-3xl md:text-5xl font-medium text-gray-900 dark:text-white tracking-tight">{{ $themeTitle }}</h2>
+                <h2 class="mt-6 text-3xl md:text-5xl font-normal text-gray-900 dark:text-white tracking-tight">{{ $themeTitle }}</h2>
                 @if($themeBody)
                     <p class="mt-4 text-gray-600 dark:text-gray-300 text-lg leading-relaxed max-w-4xl">{{ $themeBody }}</p>
                 @endif
@@ -80,12 +80,12 @@
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <div class="space-y-4">
                         <div class="inline-flex h-1 w-16 rounded-full bg-teal-500"></div>
-                        <h3 class="text-2xl md:text-3xl font-medium text-gray-900 dark:text-white">Concept Overview</h3>
+                        <h3 class="text-2xl md:text-3xl font-normal text-gray-900 dark:text-white">Concept Overview</h3>
                         <p class="text-gray-700 dark:text-gray-300 leading-relaxed">ALG {{ $event->year }} convenes cross‑sector leaders to explore how collaboration, impact, and excellence can accelerate transformation across Africa. Through dialogue and connection, participants co‑create partnerships and actions that move ideas to outcomes.</p>
                     </div>
                     <div class="space-y-4">
                         <div class="inline-flex h-1 w-16 rounded-full bg-teal-500"></div>
-                        <h3 class="text-2xl md:text-3xl font-medium text-gray-900 dark:text-white">Target Participants</h3>
+                        <h3 class="text-2xl md:text-3xl font-normal text-gray-900 dark:text-white">Target Participants</h3>
                         <ul class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-2">
                             <li class="flex items-start gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-teal-500"></span><span>Public sector leaders and policy shapers</span></li>
                             <li class="flex items-start gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-teal-500"></span><span>Private sector executives and entrepreneurs</span></li>
@@ -95,7 +95,7 @@
                     </div>
                     <div class="space-y-4">
                         <div class="inline-flex h-1 w-16 rounded-full bg-teal-500"></div>
-                        <h3 class="text-2xl md:text-3xl font-medium text-gray-900 dark:text-white">Expected Outcomes</h3>
+                        <h3 class="text-2xl md:text-3xl font-normal text-gray-900 dark:text-white">Expected Outcomes</h3>
                         <ul class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-2">
                             <li class="flex items-start gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-teal-500"></span><span>New partnerships formed and strengthened networks</span></li>
                             <li class="flex items-start gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-teal-500"></span><span>Actionable commitments and follow‑up collaboration tracks</span></li>
@@ -132,7 +132,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
                     <div>
                         <div class="inline-flex h-1 w-20 rounded-full bg-teal-500"></div>
-                        <h3 class="mt-4 text-2xl md:text-4xl font-medium text-gray-900 dark:text-white tracking-tight">Theme Rationale</h3>
+                        <h3 class="mt-4 text-2xl md:text-4xl font-normal text-gray-900 dark:text-white tracking-tight">Theme Rationale</h3>
                         <ul class="mt-5 space-y-4 text-gray-700 dark:text-gray-300 text-base leading-relaxed">
                             <li class="flex items-start gap-3"><span class="mt-1 w-2 h-2 rounded-full bg-teal-500"></span><span>Collaboration as foundation — multi‑sector partnerships and inclusive approaches that harness diverse perspectives.</span></li>
                             <li class="flex items-start gap-3"><span class="mt-1 w-2 h-2 rounded-full bg-teal-500"></span><span>Impact as measure — results‑oriented leadership focused on tangible outcomes for communities and institutions.</span></li>
@@ -172,7 +172,7 @@
         <section class="py-20 bg-gray-50 dark:bg-slate-900">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between mb-10">
-                    <h3 class="text-3xl md:text-4xl font-medium text-gray-900 dark:text-white tracking-tight">Featured Speakers</h3>
+                    <h3 class="text-3xl md:text-4xl font-normal text-gray-900 dark:text-white tracking-tight">Featured Speakers</h3>
                     <a href="/speakers" class="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-gray-800 dark:text-gray-200 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40">View Full Lineup
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </a>
@@ -211,7 +211,7 @@
                 <!-- Highlights Description -->
                 <div>
                     <div class="inline-flex h-1 w-24 rounded-full bg-teal-500"></div>
-                    <h3 class="mt-6 text-2xl md:text-4xl font-medium text-gray-900 dark:text-white tracking-tight">ALG 2024 Highlights</h3>
+                    <h3 class="mt-6 text-2xl md:text-4xl font-normal text-gray-900 dark:text-white tracking-tight">ALG 2024 Highlights</h3>
                     <div class="mt-4 prose prose-invert max-w-4xl text-gray-700 dark:text-gray-300 text-lg leading-relaxed space-y-4">
                         <p>The Annual Leaders Gathering 2024, held on November 14 and 16 at the Sheraton Kampala Hotel, brought together a remarkable assembly of leaders, innovators, and thinkers from diverse fields and regions.</p>
                         <p>This year's theme centered around driving impactful leadership and fostering global collaborations to tackle pressing challenges. Through dynamic sessions, keynotes, and interactive workshops, #ALG2024 empowered participants with actionable strategies and insights to create sustainable solutions for today's global issues.</p>
@@ -256,7 +256,7 @@
                 <!-- Theme block -->
                 <div class="mt-10">
                     <div class="inline-flex h-1 w-24 rounded-full bg-teal-500"></div>
-                    <h3 class="mt-6 text-2xl md:text-4xl font-medium text-gray-900 dark:text-white tracking-tight">{{ $themeTitle }}</h3>
+                    <h3 class="mt-6 text-2xl md:text-4xl font-normal text-gray-900 dark:text-white tracking-tight">{{ $themeTitle }}</h3>
                     <p class="mt-3 text-gray-600 dark:text-gray-300 text-lg leading-relaxed max-w-4xl">{{ $themeBody }}</p>
                 </div>
                 @endif
@@ -271,7 +271,7 @@
         <section class="py-16 bg-white dark:bg-slate-950">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="mb-10">
-                    <h3 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">In their words</h3>
+                    <h3 class="text-3xl md:text-4xl font-normal text-gray-900 dark:text-white">In their words</h3>
                     <p class="mt-2 text-gray-600 dark:text-gray-300">Reflections from ALG 2024 speakers</p>
                 </div>
                 <div x-data="{
@@ -347,7 +347,7 @@
         <!-- Program Timeline -->
         <section class="py-16 bg-gray-50 dark:bg-slate-900">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h3 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">Program / Speakers</h3>
+                <h3 class="text-3xl md:text-4xl font-normal text-gray-900 dark:text-white mb-3">Program / Speakers</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed max-w-3xl mb-8">Through impactful discussions, keynote addresses, and hands-on workshops, experience a gathering dedicated to advancing leadership, institutional growth, and human capital development across the continent.</p>
                 <div class="space-y-8">
                     @foreach($days as $day)
@@ -441,7 +441,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <!-- Section Header -->
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-medium text-gray-900 dark:text-white mb-4">
+                    <h2 class="text-4xl md:text-5xl font-normal text-gray-900 dark:text-white mb-4">
                         Featured Speakers
                     </h2>
                     <div class="w-16 h-1 bg-gradient-to-r from-teal-500 to-orange-500 mx-auto"></div>
@@ -516,7 +516,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <!-- Section Header -->
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                    <h2 class="text-4xl md:text-5xl font-normal text-gray-900 dark:text-white mb-4">
                         What to Expect
                     </h2>
                     <div class="w-16 h-1 bg-gradient-to-r from-teal-500 to-orange-500 mx-auto"></div>
