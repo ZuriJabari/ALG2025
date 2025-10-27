@@ -40,7 +40,12 @@ class AdminPanelProvider extends PanelProvider
                 // Analytics
                 $out = view('partials.analytics')->render();
                 // Temporary fallback styles for login when panel assets are blocked on host
-                try { $href = asset('assets/css/filament-login-fallback.css'); } catch (\Throwable $e) { $href = '/assets/css/filament-login-fallback.css'; }
+                try {
+                    $base = request()->getBaseUrl() ?: '';
+                } catch (\Throwable $e) {
+                    $base = '';
+                }
+                $href = rtrim($base, '/') . '/assets/css/filament-login-fallback.css';
                 $out .= "\n<link rel=\"stylesheet\" href=\"{$href}\">\n";
                 return $out;
             })
