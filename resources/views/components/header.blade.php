@@ -80,7 +80,7 @@
             </a>
 
             <!-- Mobile Menu Button -->
-            <button class="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors" @click="mobileMenuOpen = !mobileMenuOpen" :aria-expanded="mobileMenuOpen.toString()">
+            <button data-mobile-toggle class="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors" @click.stop="mobileMenuOpen = !mobileMenuOpen" :aria-expanded="mobileMenuOpen.toString()">
                 <svg class="w-6 h-6" :class="{ 'hidden': mobileMenuOpen }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
@@ -101,7 +101,7 @@
              x-transition:leave="transition ease-in duration-150"
              x-transition:leave-start="opacity-100 translate-y-0"
              x-transition:leave-end="opacity-0 -translate-y-2"
-             @click.outside="mobileMenuOpen = false"
+             @click.outside="if($event.target.closest('[data-mobile-toggle]')) return; mobileMenuOpen = false"
              class="absolute top-full left-0 right-0 bg-white dark:bg-slate-950 border-b border-gray-200 dark:border-slate-800 shadow-xl z-40">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-3">
                 @php
