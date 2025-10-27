@@ -49,34 +49,7 @@
                     <p class="mt-4 text-gray-600 dark:text-gray-300 text-lg leading-relaxed max-w-4xl">{{ $themeBody }}</p>
                 @endif
 
-    <!-- Contact Micro-CTA (refined) -->
-    <section class="py-10 bg-white dark:bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="relative group">
-                <!-- glow -->
-                <div class="absolute -inset-px rounded-2xl bg-gradient-to-r from-teal-500/25 via-emerald-500/20 to-cyan-500/25 blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <!-- card -->
-                <div class="relative rounded-2xl border border-teal-200/50 dark:border-teal-800/40 bg-white/70 dark:bg-slate-950/60 backdrop-blur px-5 py-5 sm:px-8 sm:py-6 shadow-sm">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 items-center">
-                        <div class="md:col-span-2">
-                            <div class="inline-flex items-center gap-2 text-teal-600 dark:text-teal-400 font-semibold text-xs tracking-widest uppercase">
-                                <span class="w-1.5 h-1.5 rounded-full bg-teal-500"></span>
-                                <span>Available on email</span>
-                            </div>
-                            <p class="mt-1 text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Questions about ALG {{ $event->year }}?</p>
-                            <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Reach us anytime — we aim to respond promptly.</p>
-                        </div>
-                        <div class="md:justify-self-end">
-                            <a href="mailto:alg@laoafricainstiute.org" class="relative inline-flex items-center gap-2 h-11 px-5 rounded-full text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/60 transition-all duration-300 shadow-lg hover:shadow-xl bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 hover:-translate-y-0.5">
-                                <svg class="w-4 h-4 opacity-95" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m0 0l4-4m-4 4l4 4"/></svg>
-                                <span class="truncate">alg@laoafricainstiute.org</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
                 <!-- Quote block -->
                 <div class="mt-10 relative max-w-3xl group">
@@ -608,6 +581,33 @@
             </div>
         </section>
     @endif
+
+    <!-- Contact Micro-CTA (moved to pre-footer) -->
+    <section class="py-12 bg-white dark:bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative group">
+                <div class="absolute -inset-px rounded-2xl bg-gradient-to-r from-teal-500/30 via-emerald-500/25 to-cyan-500/30 blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative rounded-2xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-5 py-6 sm:px-8 sm:py-7 shadow-lg">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 items-center">
+                        <div class="md:col-span-2">
+                            <div class="inline-flex items-center gap-2 text-teal-700 dark:text-teal-300 font-semibold text-xs tracking-widest uppercase">
+                                <span class="w-1.5 h-1.5 rounded-full bg-teal-500"></span>
+                                <span>Available on email</span>
+                            </div>
+                            <p class="mt-1 text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white">Questions about ALG {{ $event->year }}?</p>
+                            <p class="mt-1 text-base text-gray-800 dark:text-gray-200">Reach us anytime — we aim to respond promptly.</p>
+                        </div>
+                        <div class="md:justify-self-end">
+                            <a href="mailto:alg@laoafricainstiute.org" class="relative inline-flex items-center gap-2 h-11 px-5 rounded-full text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/60 transition-all duration-300 shadow-lg hover:shadow-xl bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 hover:-translate-y-0.5">
+                                <svg class="w-4 h-4 opacity-95" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 8l-9 6-9-6m18 8H3a2 2 0 01-2-2V8a2 2 0 012-2h18a2 2 0 012 2v6a2 2 0 01-2 2z"/></svg>
+                                <span class="truncate">alg@laoafricainstiute.org</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     
 
