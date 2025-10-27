@@ -18,7 +18,7 @@ class SeatReservationReceived extends Mailable
 
     public function build(): self
     {
-        return $this->subject('Your ALG seat reservation request')
+        return $this->subject('Thank You for Registering - ALG 2025')
             ->view('emails.seat_reservation_received');
     }
 }
