@@ -28,6 +28,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->viteTheme('resources/css/filament/admin/theme.css')
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -40,7 +41,7 @@ class AdminPanelProvider extends PanelProvider
                 // Analytics
                 $out = view('partials.analytics')->render();
                 // Temporary fallback styles for login when panel assets are blocked on host
-                try { $out .= view('partials.filament-login-fallback-styles')->render(); } catch (\Throwable $e) {}
+                $out .= "\n<link rel=\"stylesheet\" href=\"/assets/css/filament-login-fallback.css\">\n";
                 return $out;
             })
             ->discoverWidgets(app_path('Filament/Widgets'), 'App\\Filament\\Widgets')
