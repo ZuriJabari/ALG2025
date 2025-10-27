@@ -441,7 +441,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <!-- Section Header -->
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                    <h2 class="text-4xl md:text-5xl font-medium text-gray-900 dark:text-white mb-4">
                         Featured Speakers
                     </h2>
                     <div class="w-16 h-1 bg-gradient-to-r from-teal-500 to-orange-500 mx-auto"></div>
