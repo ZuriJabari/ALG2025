@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,11 +7,11 @@
     <title>{{ $event->title }} - ALG</title>
     @include('partials.analytics')
     <script>
-        // Initialize theme before CSS loads: default light (no class), enable dark if persisted
+        // Initialize theme before CSS loads: default DARK unless user explicitly set otherwise
         (function(){
             try {
                 var persisted = localStorage.getItem('darkMode');
-                var isDark = persisted === 'true';
+                var isDark = (persisted === null) ? true : (persisted === 'true');
                 document.documentElement.classList.toggle('dark', !!isDark);
             } catch (e) {}
         })();
@@ -20,7 +20,7 @@
     <!-- Plyr Video Player -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 </head>
-<body class="antialiased bg-white dark:bg-slate-950" x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }" x-init="
+<body class="antialiased bg-white dark:bg-slate-950" x-data="{ darkMode: (localStorage.getItem('darkMode') === null) ? true : (localStorage.getItem('darkMode') === 'true') }" x-init="
     // Ensure html reflects state on init
     document.documentElement.classList.toggle('dark', darkMode);
     // Watch for changes to keep html class and localStorage in sync
