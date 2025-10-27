@@ -81,16 +81,20 @@
         </section>
 
         <!-- Partners Strip -->
-        <section class="py-10 bg-white dark:bg-slate-950">
+        <section class="py-10 bg-gray-50 dark:bg-slate-900">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
-                    <p class="text-sm font-semibold text-gray-700 dark:text-gray-300 whitespace-nowrap">Convened in partnership with</p>
-                    <div class="flex flex-wrap items-center gap-4 sm:gap-6">
-                        <a href="https://www.kas.de/en/web/uganda" target="_blank" rel="noopener" class="inline-flex items-center opacity-90 hover:opacity-100 transition-opacity" aria-label="Konrad Adenauer Stiftung">
-                            <img src="/assets/logos/konrad-adenauer-stiftung.png" alt="Konrad Adenauer Stiftung" class="h-8 sm:h-10 w-auto object-contain" loading="lazy">
+                    <p class="text-sm font-semibold text-gray-800 dark:text-gray-200 whitespace-nowrap">Convened in partnership with</p>
+                    <div class="flex flex-wrap items-center gap-3 sm:gap-4">
+                        <a href="https://www.kas.de/en/web/uganda" target="_blank" rel="noopener" class="inline-flex items-center" aria-label="Konrad Adenauer Stiftung">
+                            <span class="inline-flex items-center px-3 py-2 rounded-md bg-white dark:bg-white border border-gray-200 shadow-sm ring-1 ring-black/5">
+                                <img src="/assets/logos/konrad-adenauer-stiftung.png" alt="Konrad Adenauer Stiftung" class="h-8 sm:h-10 w-auto object-contain" loading="lazy">
+                            </span>
                         </a>
-                        <a href="https://www.segalfamilyfoundation.org/" target="_blank" rel="noopener" class="inline-flex items-center opacity-90 hover:opacity-100 transition-opacity" aria-label="Segal Family Foundation">
-                            <img src="/assets/logos/segal-family-foundation.png" alt="Segal Family Foundation" class="h-8 sm:h-10 w-auto object-contain" loading="lazy">
+                        <a href="https://www.segalfamilyfoundation.org/" target="_blank" rel="noopener" class="inline-flex items-center" aria-label="Segal Family Foundation">
+                            <span class="inline-flex items-center px-3 py-2 rounded-md bg-white dark:bg-white border border-gray-200 shadow-sm ring-1 ring-black/5">
+                                <img src="/assets/logos/segal-family-foundation.svg" alt="Segal Family Foundation" class="h-8 sm:h-10 w-auto object-contain" loading="lazy">
+                            </span>
                         </a>
                     </div>
                 </div>
