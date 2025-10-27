@@ -18,6 +18,7 @@
         })();
     </script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script>!window.Alpine&&document.head.appendChild(Object.assign(document.createElement('script'),{defer:!0,src:'https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js'}));</script>
     <!-- Plyr Video Player -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 </head>
