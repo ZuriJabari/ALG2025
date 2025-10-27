@@ -1,4 +1,4 @@
-<header data-header-version="v4" class="sticky top-0 z-50 bg-white/90 dark:bg-slate-950/90 backdrop-blur transition-all duration-300 supports-[backdrop-filter]:backdrop-saturate-150 relative overflow-hidden" x-data="{ mobileMenuOpen: false }">
+<header data-header-version="v5" class="sticky top-0 z-50 bg-white/90 dark:bg-slate-950/90 backdrop-blur transition-all duration-300 supports-[backdrop-filter]:backdrop-saturate-150 relative overflow-hidden" x-data="{ menuOpen: false }">
     <div aria-hidden="true" class="pointer-events-none absolute -z-10 inset-0">
         <div class="absolute -top-12 -right-12 w-[320px] h-[320px] opacity-25 dark:opacity-15 hidden sm:block mix-blend-multiply dark:mix-blend-normal" style="background-image:url('/assets/artwork.png'); background-repeat:no-repeat; background-size:contain; filter: blur(0.5px);"></div>
         <div class="absolute -bottom-20 -left-10 w-[280px] h-[280px] opacity-20 dark:opacity-12 hidden md:block mix-blend-multiply dark:mix-blend-normal" style="background-image:url('/assets/hero-bg1.png'); background-repeat:no-repeat; background-size:contain; transform: rotate(2deg);"></div>
@@ -80,11 +80,11 @@
             </a>
 
             <!-- Mobile Menu Button -->
-            <button data-mobile-toggle class="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors" @click.stop="mobileMenuOpen = !mobileMenuOpen" :aria-expanded="mobileMenuOpen.toString()">
-                <svg class="w-6 h-6" :class="{ 'hidden': mobileMenuOpen }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button class="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors" @click="menuOpen = !menuOpen" :aria-expanded="menuOpen" aria-label="Toggle menu">
+                <svg class="w-6 h-6" x-show="!menuOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
-                <svg class="w-6 h-6" :class="{ 'hidden': !mobileMenuOpen }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6" x-show="menuOpen" x-cloak fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
@@ -92,16 +92,12 @@
     </nav>
     <div class="h-px bg-gradient-to-r from-teal-500/40 via-orange-400/40 to-teal-500/40"></div>
 
-    <!-- Mobile Menu -->
+    <!-- Mobile Menu Overlay -->
+    <div x-show="menuOpen" x-cloak @click="menuOpen = false" class="fixed inset-0 bg-black/20 dark:bg-black/40 z-40 md:hidden" style="display: none;"></div>
+    
+    <!-- Mobile Menu Panel -->
     <div class="md:hidden">
-        <div x-show="mobileMenuOpen" 
-             x-transition:enter="transition ease-out duration-200"
-             x-transition:enter-start="opacity-0 -translate-y-2"
-             x-transition:enter-end="opacity-100 translate-y-0"
-             x-transition:leave="transition ease-in duration-150"
-             x-transition:leave-start="opacity-100 translate-y-0"
-             x-transition:leave-end="opacity-0 -translate-y-2"
-             class="absolute top-full left-0 right-0 bg-red-500 border-b border-gray-200 dark:border-slate-800 shadow-xl z-[60]">
+        <div x-show="menuOpen" x-cloak @click.away="menuOpen = false" class="fixed top-[73px] left-0 right-0 bottom-0 bg-white dark:bg-slate-950 shadow-xl z-50 overflow-y-auto" style="display: none;">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-3">
                 @php
                     $primaryMenu = \App\Models\Domain\Menu::query()
@@ -145,3 +141,7 @@
         </div>
     </div>
 </header>
+
+<style>
+[x-cloak] { display: none !important; }
+</style>
