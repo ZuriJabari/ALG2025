@@ -36,10 +36,13 @@ class AdminPanelProvider extends PanelProvider
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->renderHook(
-                'panels::head.end',
-                fn (): string => view('partials.analytics')->render()
-            )
+            ->renderHook('panels::head.end', function (): string {
+                // Analytics
+                $out = view('partials.analytics')->render();
+                // Temporary fallback styles for login when panel assets are blocked on host
+                try { $out .= view('partials.filament-login-fallback-styles')->render(); } catch (\Throwable $e) {}
+                return $out;
+            })
             ->discoverWidgets(app_path('Filament/Widgets'), 'App\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
