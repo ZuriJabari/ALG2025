@@ -49,15 +49,31 @@
                     <p class="mt-4 text-gray-600 dark:text-gray-300 text-lg leading-relaxed max-w-4xl">{{ $themeBody }}</p>
                 @endif
 
-    <!-- Contact Micro-CTA -->
-    <section class="py-8 bg-white dark:bg-slate-950">
+    <!-- Contact Micro-CTA (refined) -->
+    <section class="py-10 bg-white dark:bg-slate-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                <p class="text-sm text-gray-700 dark:text-gray-300">Questions about ALG {{ $event->year }}?</p>
-                <a href="mailto:alg@laoafricainstiute.org" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300 border border-teal-200/60 dark:border-teal-800/60 text-sm font-semibold hover:bg-teal-100/70 dark:hover:bg-teal-900/30 transition-colors">
-                    alg@laoafricainstiute.org
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                </a>
+            <div class="relative group">
+                <!-- glow -->
+                <div class="absolute -inset-px rounded-2xl bg-gradient-to-r from-teal-500/25 via-emerald-500/20 to-cyan-500/25 blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <!-- card -->
+                <div class="relative rounded-2xl border border-teal-200/50 dark:border-teal-800/40 bg-white/70 dark:bg-slate-950/60 backdrop-blur px-5 py-5 sm:px-8 sm:py-6 shadow-sm">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 items-center">
+                        <div class="md:col-span-2">
+                            <div class="inline-flex items-center gap-2 text-teal-600 dark:text-teal-400 font-semibold text-xs tracking-widest uppercase">
+                                <span class="w-1.5 h-1.5 rounded-full bg-teal-500"></span>
+                                <span>We’re here to help</span>
+                            </div>
+                            <p class="mt-1 text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Questions about ALG {{ $event->year }}?</p>
+                            <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Get a response within 1–2 business days.</p>
+                        </div>
+                        <div class="md:justify-self-end">
+                            <a href="mailto:alg@laoafricainstiute.org" class="relative inline-flex items-center gap-2 h-11 px-5 rounded-full text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/60 transition-all duration-300 shadow-lg hover:shadow-xl bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 hover:-translate-y-0.5">
+                                <svg class="w-4 h-4 opacity-95" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m0 0l4-4m-4 4l4 4"/></svg>
+                                <span class="truncate">alg@laoafricainstiute.org</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
