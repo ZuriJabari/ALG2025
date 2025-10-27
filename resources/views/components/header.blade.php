@@ -19,26 +19,31 @@
                 @foreach($primaryMenu->items as $item)
                     @if(! $item->active) @continue @endif
                     @if($item->children->count())
-                        <div class="relative group">
-                            <a href="{{ $item->url ?? '#' }}" target="{{ $item->target ?? '_self' }}" class="relative inline-flex items-center gap-1 text-gray-700 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 font-medium text-sm transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 rounded">
+                        <div class="relative group/nav">
+                            <a href="{{ $item->url ?? '#' }}" target="{{ $item->target ?? '_self' }}" class="relative inline-flex items-center gap-1 px-1.5 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 font-medium text-sm transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40">
                                 {{ $item->label }}
-                                <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                                <svg class="w-4 h-4 opacity-70 transition-transform duration-300 group-hover/nav:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                                <span class="pointer-events-none absolute left-1 right-1 -bottom-1 h-px bg-gradient-to-r from-transparent via-teal-500/70 to-transparent opacity-0 scale-x-50 group-hover/nav:opacity-100 group-hover/nav:scale-x-100 transition-all duration-300"></span>
                             </a>
-                            <div class="absolute left-0 mt-3 w-52 rounded-lg border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out">
+                            <div class="absolute left-0 mt-3 w-56 rounded-xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl opacity-0 invisible translate-y-2 group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 transition-all duration-300 ease-out">
                                 <div class="py-2">
                                     @foreach($item->children as $child)
                                         @if(! $child->active) @continue @endif
-                                        <a href="{{ $child->url ?? '#' }}" target="{{ $child->target ?? '_self' }}" class="block px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-800">
-                                            {{ $child->label }}
+                                        <a href="{{ $child->url ?? '#' }}" target="{{ $child->target ?? '_self' }}" class="flex items-center justify-between px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:text-teal-700 dark:hover:text-teal-300 hover:bg-gray-50 dark:hover:bg-slate-800/70 transition-all">
+                                            <span>{{ $child->label }}</span>
+                                            <svg class="w-4 h-4 text-gray-300 dark:text-slate-600 group-hover/nav:text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                                         </a>
                                     @endforeach
                                 </div>
                             </div>
                         </div>
                     @else
-                        <a href="{{ $item->url ?? '#' }}" target="{{ $item->target ?? '_self' }}" class="relative text-gray-700 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 font-medium text-sm transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 rounded">
-                            {{ $item->label }}
-                        </a>
+                        <div class="relative group/nav">
+                            <a href="{{ $item->url ?? '#' }}" target="{{ $item->target ?? '_self' }}" class="relative inline-flex items-center px-1.5 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 font-medium text-sm transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40">
+                                {{ $item->label }}
+                                <span class="pointer-events-none absolute left-1 right-1 -bottom-1 h-px bg-gradient-to-r from-transparent via-teal-500/70 to-transparent opacity-0 scale-x-50 group-hover/nav:opacity-100 group-hover/nav:scale-x-100 transition-all duration-300"></span>
+                            </a>
+                        </div>
                     @endif
                 @endforeach
             @else
