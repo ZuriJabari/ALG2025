@@ -102,7 +102,7 @@
              x-transition:leave-start="opacity-100 translate-y-0"
              x-transition:leave-end="opacity-0 -translate-y-2"
              @click.outside="mobileMenuOpen = false"
-             class="absolute top-full left-0 right-0 bg-white dark:bg-slate-950 border-b border-gray-200 dark:border-slate-800 shadow-xl z-40">
+             class="absolute top-full left-0 right-0 bg-white dark:bg-slate-950 border-b border-gray-200 dark:border-slate-800 shadow-xl z-[60]">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-3">
                 @php
                     $primaryMenu = \App\Models\Domain\Menu::query()
