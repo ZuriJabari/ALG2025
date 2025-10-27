@@ -177,11 +177,11 @@
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </a>
                 </div>
-                <div class="relative rounded-3xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-12 text-center shadow-lg transition-all duration-500 hover:shadow-xl" x-data="{ open: false }">
+                <div class="relative rounded-3xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-8 sm:p-12 text-center shadow-lg transition-all duration-500 hover:shadow-xl" x-data="{ open: false }">
                         <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300">To be announced soon.</p>
-                        <div class="mt-6 flex items-center justify-center gap-3">
-                            <button type="button" @click="open = !open" class="inline-flex items-center gap-2 h-11 px-6 rounded-full bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">Get notified</button>
-                            <a href="/alg-2024" class="inline-flex items-center gap-2 h-11 px-6 rounded-full border border-teal-600/40 dark:border-teal-400/40 text-teal-700 dark:text-teal-300 hover:bg-teal-50/60 dark:hover:bg-slate-800 transition-all">See 2024 Highlights</a>
+                        <div class="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
+                            <button type="button" @click="open = !open" class="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full bg-gradient-to-r from-teal-500 to-teal-600 text-white text-sm font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 whitespace-nowrap">Get notified</button>
+                            <a href="/alg-2024" class="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full border border-teal-600/40 dark:border-teal-400/40 text-teal-700 dark:text-teal-300 text-sm hover:bg-teal-50/60 dark:hover:bg-slate-800 transition-all whitespace-nowrap">See 2024 Highlights</a>
                         </div>
                         <div x-show="open" x-collapse class="mt-8">
                             @include('partials.subscription-form')
