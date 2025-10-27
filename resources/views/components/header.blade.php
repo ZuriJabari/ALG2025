@@ -94,6 +94,12 @@
 
     <!-- Mobile Menu -->
     <div class="md:hidden">
+        <!-- Backdrop overlay to capture outside taps -->
+        <div x-show="mobileMenuOpen"
+             x-transition.opacity
+             class="fixed inset-0 z-30 bg-black/10 dark:bg-black/30"
+             @click="mobileMenuOpen = false"
+             aria-hidden="true"></div>
         <div x-show="mobileMenuOpen" 
              x-transition:enter="transition ease-out duration-200"
              x-transition:enter-start="opacity-0 -translate-y-2"
@@ -101,7 +107,7 @@
              x-transition:leave="transition ease-in duration-150"
              x-transition:leave-start="opacity-100 translate-y-0"
              x-transition:leave-end="opacity-0 -translate-y-2"
-             @click.outside="if(ignoreOutside) return; mobileMenuOpen = false"
+             @click.stop
              class="absolute top-full left-0 right-0 bg-white dark:bg-slate-950 border-b border-gray-200 dark:border-slate-800 shadow-xl z-40">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-3">
                 @php
