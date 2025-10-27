@@ -29,7 +29,7 @@
         <div class="lg:col-span-2 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-3xl p-6 sm:p-8">
           <div class="flex items-start justify-between">
             <div>
-              <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Request a seat</h2>
+              <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Reserve your seat</h2>
               <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Fields marked with * are required.</p>
             </div>
             <div class="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300 text-xs font-semibold">ALG {{ now()->year }}</div>
