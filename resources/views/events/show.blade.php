@@ -106,14 +106,14 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
                     <p class="text-sm font-semibold text-gray-800 dark:text-gray-200 whitespace-nowrap">Convened in partnership with</p>
-                    <div class="flex flex-wrap items-center gap-3 sm:gap-4">
-                        <a href="https://www.kas.de/en/web/uganda" target="_blank" rel="noopener" class="inline-flex items-center" aria-label="Konrad Adenauer Stiftung">
-                            <span class="inline-flex items-center px-3 py-2 rounded-md bg-white dark:bg-white border border-gray-200 shadow-sm ring-1 ring-black/5">
+                    <div class="flex flex-wrap items-center gap-3 sm:gap-4" x-data="{ ready:false }" x-init="setTimeout(()=>ready=true, 30)">
+                        <a href="https://www.kas.de/en/web/uganda" target="_blank" rel="noopener" class="inline-flex items-center group transition-all duration-500 ease-out" :class="ready ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'" style="transition-delay: 0ms" aria-label="Konrad Adenauer Stiftung">
+                            <span class="inline-flex items-center px-3 py-2 rounded-md bg-white dark:bg-white border border-gray-200 shadow-sm ring-1 ring-black/5 transition-all duration-300 transform group-hover:-translate-y-0.5 group-hover:scale-105 group-hover:ring-teal-500/30 group-hover:shadow-md group-hover:backdrop-blur-sm">
                                 <img src="/assets/logos/konrad-adenauer-stiftung.png" alt="Konrad Adenauer Stiftung" class="h-8 sm:h-10 w-auto object-contain" loading="lazy">
                             </span>
                         </a>
-                        <a href="https://www.segalfamilyfoundation.org/" target="_blank" rel="noopener" class="inline-flex items-center" aria-label="Segal Family Foundation">
-                            <span class="inline-flex items-center px-3 py-2 rounded-md bg-white dark:bg-white border border-gray-200 shadow-sm ring-1 ring-black/5">
+                        <a href="https://www.segalfamilyfoundation.org/" target="_blank" rel="noopener" class="inline-flex items-center group transition-all duration-500 ease-out" :class="ready ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'" style="transition-delay: 120ms" aria-label="Segal Family Foundation">
+                            <span class="inline-flex items-center px-3 py-2 rounded-md bg-white dark:bg-white border border-gray-200 shadow-sm ring-1 ring-black/5 transition-all duration-300 transform group-hover:-translate-y-0.5 group-hover:scale-105 group-hover:ring-teal-500/30 group-hover:shadow-md group-hover:backdrop-blur-sm">
                                 <img src="/assets/logos/segal-family-foundation.svg" alt="Segal Family Foundation" class="h-8 sm:h-10 w-auto object-contain" loading="lazy">
                             </span>
                         </a>
@@ -157,7 +157,6 @@
                         </div>
                         <div class="mt-5 flex items-center gap-3">
                             <a href="{{ route('seat-reservations.create') }}" class="px-5 h-11 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">Reserve your seat</a>
-                            <a href="{{ route('events.show', ['year' => 2025]) }}" class="px-5 h-11 inline-flex items-center justify-center rounded-full border-2 border-teal-600 dark:border-teal-400 text-teal-700 dark:text-teal-300 bg-white dark:bg-slate-900 hover:bg-gray-50 dark:hover:bg-slate-800 font-semibold transition-all">Read full overview</a>
                         </div>
                     </div>
                 </div>
