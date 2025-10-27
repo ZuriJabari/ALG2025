@@ -40,9 +40,19 @@ class AdminPanelProvider extends PanelProvider
                 // Analytics
                 $out = view('partials.analytics')->render();
                 // Temporary fallback styles for login when panel assets are blocked on host
-                // Production is deployed under /algevent as webroot
-                $href = '/algevent/assets/css/filament-login-fallback.css';
-                $out .= "\n<link rel=\"stylesheet\" href=\"{$href}\">\n";
+                $inline = '';
+                try {
+                    $path = public_path('assets/css/filament-login-fallback.css');
+                    if (is_file($path)) {
+                        $inline = file_get_contents($path) ?: '';
+                    }
+                } catch (\Throwable $e) {}
+                if ($inline !== '') {
+                    $out .= "\n<style>\n{$inline}\n</style>\n";
+                } else {
+                    // soft fallback if inline read fails
+                    $out .= "\n<link rel=\"stylesheet\" href=\"/assets/css/filament-login-fallback.css\">\n";
+                }
                 return $out;
             })
             ->discoverWidgets(app_path('Filament/Widgets'), 'App\\Filament\\Widgets')
