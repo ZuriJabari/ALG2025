@@ -61,10 +61,10 @@
                         <div class="md:col-span-2">
                             <div class="inline-flex items-center gap-2 text-teal-600 dark:text-teal-400 font-semibold text-xs tracking-widest uppercase">
                                 <span class="w-1.5 h-1.5 rounded-full bg-teal-500"></span>
-                                <span>We’re here to help</span>
+                                <span>Available on email</span>
                             </div>
                             <p class="mt-1 text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Questions about ALG {{ $event->year }}?</p>
-                            <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Get a response within 1–2 business days.</p>
+                            <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Reach us anytime — we aim to respond promptly.</p>
                         </div>
                         <div class="md:justify-self-end">
                             <a href="mailto:alg@laoafricainstiute.org" class="relative inline-flex items-center gap-2 h-11 px-5 rounded-full text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/60 transition-all duration-300 shadow-lg hover:shadow-xl bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 hover:-translate-y-0.5">
