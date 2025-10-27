@@ -19,8 +19,12 @@
             </style>
         @endif
     </head>
-    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-        <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
+    <body class="relative overflow-hidden bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+            <div class="absolute -top-24 -right-20 w-[420px] h-[420px] opacity-15 dark:opacity-10 hidden md:block" style="background-image:url('/assets/artwork.png'); background-repeat:no-repeat; background-size:contain; filter: blur(0.5px);"></div>
+            <div class="absolute -bottom-28 -left-16 w-[380px] h-[380px] opacity-15 dark:opacity-10 hidden lg:block" style="background-image:url('/assets/hero-bg1.png'); background-repeat:no-repeat; background-size:contain; transform: rotate(2deg);"></div>
+        </div>
+        <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-2 not-has-[nav]:hidden">
             @if (Route::has('login'))
                 <nav class="flex items-center justify-end gap-4">
                     @auth
@@ -49,9 +53,11 @@
                 </nav>
             @endif
         </header>
+        <div class="w-full lg:max-w-4xl max-w-[335px] h-px bg-gradient-to-r from-teal-500/40 via-orange-400/40 to-teal-500/40 mb-4"></div>
         <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
             <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
-                <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none">
+                <div class="relative text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none overflow-hidden">
+                    <div aria-hidden="true" class="pointer-events-none absolute -z-10 right-[-40px] top-[-40px] w-[260px] h-[260px] opacity-10 dark:opacity-10" style="background-image:url('/assets/artwork.png'); background-repeat:no-repeat; background-size:contain;"></div>
                     <h1 class="mb-1 font-medium">Let's get started</h1>
                     <p class="mb-2 text-[#706f6c] dark:text-[#A1A09A]">Laravel has an incredibly rich ecosystem. <br>We suggest starting with the following.</p>
                     <ul class="flex flex-col mb-4 lg:mb-6">

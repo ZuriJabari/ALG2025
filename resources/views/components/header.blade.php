@@ -1,4 +1,8 @@
-<header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-950/90 backdrop-blur transition-all duration-300 supports-[backdrop-filter]:backdrop-saturate-150" x-data="{ mobileMenuOpen: false }">
+<header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-950/90 backdrop-blur transition-all duration-300 supports-[backdrop-filter]:backdrop-saturate-150 relative overflow-hidden" x-data="{ mobileMenuOpen: false }">
+    <div aria-hidden="true" class="pointer-events-none absolute -z-10 inset-0">
+        <div class="absolute -top-10 -right-10 w-[260px] h-[260px] opacity-20 dark:opacity-15 hidden sm:block" style="background-image:url('/assets/artwork.png'); background-repeat:no-repeat; background-size:contain; filter: blur(0.5px);"></div>
+        <div class="absolute -bottom-16 -left-8 w-[220px] h-[220px] opacity-15 dark:opacity-10 hidden md:block" style="background-image:url('/assets/hero-bg1.png'); background-repeat:no-repeat; background-size:contain; transform: rotate(2deg);"></div>
+    </div>
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between">
         <!-- Logo -->
         <a href="/" class="flex items-center gap-2 group flex-shrink-0">
@@ -86,6 +90,7 @@
             </button>
         </div>
     </nav>
+    <div class="h-px bg-gradient-to-r from-teal-500/40 via-orange-400/40 to-teal-500/40"></div>
 
     <!-- Mobile Menu -->
     <div class="md:hidden">
