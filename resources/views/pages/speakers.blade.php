@@ -40,7 +40,7 @@
                     <div class="mt-8 flex gap-2 sm:gap-3 max-w-full overflow-x-auto pb-2" x-data="{
                         days: 0, hours: 0, minutes: 0, seconds: 0,
                         updateCountdown() {
-                            const target = new Date('2025-11-22T09:00:00').getTime();
+                            const target = new Date('2025-12-13T09:00:00').getTime();
                             const now = new Date().getTime();
                             const diff = target - now;
                             if (diff > 0) {
@@ -80,7 +80,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="mt-3 text-xs text-gray-500 dark:text-gray-400 font-medium">Until ALG 2025 • November 22, 9:00 AM</p>
+                    <p class="mt-3 text-xs text-gray-500 dark:text-gray-400 font-medium">Until ALG 2025 • December 13, 9:00 AM</p>
                 </div>
                 <div class="flex flex-wrap items-center gap-3" x-data="{ open:false, email:'', loading:false, submitted:false, error:null, openToggle(){ this.open=!this.open; if(this.open){ this.$nextTick(()=> this.$refs.heroEmail?.focus()); } }, async submit(){ if(!this.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email)){ this.error='Please enter a valid email.'; return; } this.loading=true; this.error=null; try{ const res = await fetch('{{ route('newsletter.subscribe') }}', { method:'POST', headers:{ 'Content-Type':'application/json', 'X-CSRF-TOKEN':'{{ csrf_token() }}' }, body: JSON.stringify({ email:this.email }) }); if(!res.ok){ const d = await res.json(); throw new Error((d.errors && (d.errors.email?.[0]||'Invalid email'))||'Subscription failed'); } this.submitted=true; this.email=''; setTimeout(()=>{ this.submitted=false; this.open=false; }, 2200); }catch(e){ this.error = e.message || 'Something went wrong'; } finally{ this.loading=false; } } }">
                     <a href="/events/2024" class="shrink-0 whitespace-nowrap inline-flex items-center gap-2 h-11 px-5 rounded-full border border-gray-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 backdrop-blur hover:bg-white dark:hover:bg-slate-900 text-gray-800 dark:text-gray-200 transition-all">View ALG 2024</a>

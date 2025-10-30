@@ -15,7 +15,7 @@
   <div class="container">
     <span class="badge">ALG 2025</span>
     <h1 style="margin-top:16px; font-size:24px; font-weight:600;">Dear {{ $fullName }},</h1>
-    <p style="margin-top:16px; font-size:16px; line-height:1.6;">Thank you for expressing interest in the 6th Annual Leaders Gathering on <strong>November 22nd, 2025</strong>!</p>
+    <p style="margin-top:16px; font-size:16px; line-height:1.6;">Thank you for expressing interest in the 6th Annual Leaders Gathering on <strong>December 13th, 2025</strong>!</p>
     <p style="margin-top:12px; font-size:16px; line-height:1.6;">We are delighted that you will be joining us as we gather under the theme <strong>"Building Together For Impact: Inspiring Excellence Through Transformative Leadership."</strong></p>
     <p style="margin-top:12px; font-size:16px; line-height:1.6;">We will be in touch shortly with detailed information to secure your seat and ensure you have everything you need to make the most of this gathering.</p>
     <p style="margin-top:12px; font-size:16px; line-height:1.6;">Looking forward to welcoming you to Kampala!</p>
