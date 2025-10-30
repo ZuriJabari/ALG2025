@@ -110,6 +110,22 @@
                             {{ $desc }}
                         </p>
                     @endif
+
+                    @php
+                        $dt = $event?->start_at ? \Illuminate\Support\Carbon::parse($event->start_at) : \Illuminate\Support\Carbon::create(2025,12,13,9,0);
+                        $when = $dt->format('F j, Y • g:i A');
+                        $where = $event->location ?: 'Kampala, Uganda';
+                    @endphp
+                    <div class="mt-5 flex flex-col sm:flex-row gap-2 sm:gap-3 text-white/90">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                            <span class="text-sm">{{ $when }}</span>
+                        </div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.657 0 3-1.343 3-3S13.657 5 12 5 9 6.343 9 8s1.343 3 3 3zm0 0c-4.418 0-8 2.239-8 5v2h16v-2c0-2.761-3.582-5-8-5z"/></svg>
+                            <span class="text-sm">{{ $where }}</span>
+                        </div>
+                    </div>
                     <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-3">
                         @php
                             $primaryCtaLabel = $event->primary_cta_label ?: 'Reserve your seat';
