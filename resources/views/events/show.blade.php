@@ -36,7 +36,7 @@
 ">
     <x-header />
     
-    <x-hero :event="$event" :hero="$hero" />
+    <x-hero-slider :event="$event" :hero="$hero" />
 
     @if((int) $event->year === 2025)
         @php
