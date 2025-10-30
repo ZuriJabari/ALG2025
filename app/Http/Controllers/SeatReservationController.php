@@ -22,7 +22,17 @@ class SeatReservationController extends Controller
             'sector' => ['required','in:Media,Public/Government,Corporate,Business,Civil Society'],
             'email' => ['required','email','max:255'],
             'phone' => ['nullable','string','max:40'],
+            'is_fellow' => ['required','in:0,1'],
+            'fellowship' => ['nullable','in:YELP,HUDUMA,The Griot Fellowship'],
         ]);
+
+        // Conditional requirement: fellowship when is_fellow=1
+        if (($data['is_fellow'] ?? '0') === '1' && empty($data['fellowship'])) {
+            return back()->withErrors(['fellowship' => 'Please select your fellowship.'])->withInput();
+        }
+
+        // Normalize types
+        $data['is_fellow'] = (bool) ((int)($data['is_fellow'] ?? 0));
 
         $reservation = SeatReservation::create($data);
 
@@ -48,10 +58,19 @@ class SeatReservationController extends Controller
 
         $callback = function() {
             $handle = fopen('php://output', 'w');
-            fputcsv($handle, ['ID','Full Name','Sector','Email','Phone','Created At']);
+            fputcsv($handle, ['ID','Full Name','Sector','Email','Phone','Is Fellow','Fellowship','Created At']);
             SeatReservation::orderByDesc('id')->chunk(500, function($rows) use ($handle) {
                 foreach ($rows as $r) {
-                    fputcsv($handle, [$r->id, $r->full_name, $r->sector, $r->email, $r->phone, $r->created_at]);
+                    fputcsv($handle, [
+                        $r->id,
+                        $r->full_name,
+                        $r->sector,
+                        $r->email,
+                        $r->phone,
+                        $r->is_fellow ? 'Yes' : 'No',
+                        $r->fellowship,
+                        $r->created_at,
+                    ]);
                 }
             });
             fclose($handle);

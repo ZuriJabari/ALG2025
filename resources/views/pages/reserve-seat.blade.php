@@ -40,7 +40,7 @@
             <div class="mt-6 mb-2 px-4 py-3 rounded-xl bg-teal-50 dark:bg-teal-900/20 text-teal-800 dark:text-teal-200">{{ session('status') }}</div>
           @endif
 
-          <form method="POST" action="{{ route('seat-reservations.store') }}" class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <form method="POST" action="{{ route('seat-reservations.store') }}" class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6" x-data="{ isFellow: {{ old('is_fellow', 0) ? '1' : '0' }} }">
           @csrf
           <div class="sm:col-span-2">
             <label for="full_name" class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Full names</label>
@@ -73,6 +73,35 @@
             <label for="phone" class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Phone Number</label>
             <input id="phone" name="phone" type="text" value="{{ old('phone') }}" class="mt-2 w-full h-12 rounded-xl bg-white dark:bg-slate-950 border border-gray-200 dark:border-slate-800 px-4 text-gray-900 dark:text-gray-100 outline-none focus:ring-4 focus:ring-teal-500/15 focus:border-teal-500/60" />
             @error('phone')<p class="mt-1 text-sm text-orange-600">{{ $message }}</p>@enderror
+          </div>
+
+          <div class="sm:col-span-2">
+            <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Are you a fellow?</span>
+            <div class="mt-2 flex items-center gap-6">
+              <label class="inline-flex items-center gap-2">
+                <input type="radio" name="is_fellow" value="1" @change="isFellow=1" {{ old('is_fellow')==='1' ? 'checked' : '' }} class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-600" />
+                <span class="text-sm text-gray-800 dark:text-gray-200">Yes</span>
+              </label>
+              <label class="inline-flex items-center gap-2">
+                <input type="radio" name="is_fellow" value="0" @change="isFellow=0" {{ old('is_fellow','0')==='0' ? 'checked' : '' }} class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-600" />
+                <span class="text-sm text-gray-800 dark:text-gray-200">No</span>
+              </label>
+            </div>
+            @error('is_fellow')<p class="mt-1 text-sm text-orange-600">{{ $message }}</p>@enderror
+          </div>
+
+          <div class="sm:col-span-2" x-show="isFellow==1" x-cloak>
+            <label for="fellowship" class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Select Fellowship</label>
+            <div class="mt-2 relative">
+              <select id="fellowship" name="fellowship" class="appearance-none w-full h-12 rounded-xl bg-white dark:bg-slate-950 border border-gray-200 dark:border-slate-800 px-4 pr-10 text-gray-900 dark:text-gray-100 outline-none transition-colors focus:ring-4 focus:ring-teal-500/15 focus:border-teal-500/60">
+                <option value="" disabled {{ old('fellowship') ? '' : 'selected' }}>Select fellowship</option>
+                @foreach(['YELP','HUDUMA','The Griot Fellowship'] as $f)
+                  <option value="{{ $f }}" @selected(old('fellowship')===$f)>{{ $f }}</option>
+                @endforeach
+              </select>
+              <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            @error('fellowship')<p class="mt-1 text-sm text-orange-600">{{ $message }}</p>@enderror
           </div>
 
           <div class="sm:col-span-2 flex items-center justify-between gap-4 pt-3">

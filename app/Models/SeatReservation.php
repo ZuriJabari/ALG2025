@@ -9,6 +9,6 @@ class SeatReservation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'full_name', 'sector', 'email', 'phone',
+        'full_name', 'sector', 'email', 'phone', 'is_fellow', 'fellowship',
     ];
 }
