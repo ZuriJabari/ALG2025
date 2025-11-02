@@ -50,37 +50,7 @@
             $quote = 'The most enduring change is never the work of solitary heroes, but of communities bound by shared purpose and mutual commitment.';
         @endphp
 
-        <!-- Concept Note: Overview, Participants, Outcomes -->
-        <section class="py-20 bg-white dark:bg-slate-950">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="space-y-4">
-                        <div class="inline-flex h-1 w-16 rounded-full bg-teal-500"></div>
-                        <h3 class="text-2xl md:text-3xl font-normal text-gray-900 dark:text-white">Concept Overview</h3>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">ALG {{ $event->year }} convenes cross‑sector leaders to explore how collaboration, impact, and excellence can accelerate transformation across Africa. Through dialogue and connection, participants co‑create partnerships and actions that move ideas to outcomes.</p>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="inline-flex h-1 w-16 rounded-full bg-teal-500"></div>
-                        <h3 class="text-2xl md:text-3xl font-normal text-gray-900 dark:text-white">Target Participants</h3>
-                        <ul class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-2">
-                            <li class="flex items-start gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-teal-500"></span><span>Public sector leaders and policy shapers</span></li>
-                            <li class="flex items-start gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-teal-500"></span><span>Private sector executives and entrepreneurs</span></li>
-                            <li class="flex items-start gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-teal-500"></span><span>Civil society and philanthropy leaders</span></li>
-                            <li class="flex items-start gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-teal-500"></span><span>Academia, media, and innovation ecosystem builders</span></li>
-                        </ul>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="inline-flex h-1 w-16 rounded-full bg-teal-500"></div>
-                        <h3 class="text-2xl md:text-3xl font-normal text-gray-900 dark:text-white">Expected Outcomes</h3>
-                        <ul class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-2">
-                            <li class="flex items-start gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-teal-500"></span><span>New partnerships formed and strengthened networks</span></li>
-                            <li class="flex items-start gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-teal-500"></span><span>Actionable commitments and follow‑up collaboration tracks</span></li>
-                            <li class="flex items-start gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-teal-500"></span><span>Shared agenda for advancing collaborative leadership</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
 
         <!-- Partners Strip -->
         <section class="py-10 bg-gray-50 dark:bg-slate-900">
