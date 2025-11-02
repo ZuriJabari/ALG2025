@@ -86,8 +86,8 @@
                     </div>
                     <!-- Dark gradient for legibility (stronger on mobile) -->
                     <div class="absolute inset-0">
-                        <div class="block sm:hidden absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/15"></div>
-                        <div class="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"></div>
+                        <div class="block sm:hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/20"></div>
+                        <div class="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/15"></div>
                     </div>
                 </div>
             @endforeach
@@ -102,8 +102,10 @@
 
         <!-- Content -->
         <div class="relative z-10 h-full">
-            <div class="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 items-end pb-8 sm:pb-12">
-                <div class="lg:col-span-9">
+            <div class="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 items-end pb-8 sm:pb-12 relative">
+                <div class="lg:col-span-9 relative">
+                    <!-- Local text scrim for legibility -->
+                    <div aria-hidden="true" class="absolute -inset-x-4 -top-6 bottom-[-14px] sm:inset-x-auto sm:-left-6 sm:top-[-18px] sm:bottom-[-18px] sm:w-[min(92%,640px)] rounded-3xl bg-gradient-to-r from-black/65 via-black/35 to-transparent border border-white/10 backdrop-blur-sm pointer-events-none"></div>
                     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20">
                         <span class="w-2 h-2 rounded-full bg-teal-400"></span>
                         <span class="text-xs font-semibold tracking-wider text-white/90">{{ $event->subtitle ?: 'ALG ' . ($event->year ?? '2025') }}</span>
@@ -154,8 +156,8 @@
                 </div>
 
                 <!-- Controls / Indicators -->
-                <div class="lg:col-span-3 flex lg:justify-end items-end mt-6 lg:mt-0">
-                    <div class="flex items-center gap-3 bg-white/10 border border-white/15 rounded-full px-2 py-1 backdrop-blur">
+                <div class="lg:col-span-3 flex lg:justify-end items-end mt-6 lg:mt-0 absolute bottom-4 right-4 sm:bottom-5 sm:right-5 z-20 lg:static">
+                    <div class="flex items-center gap-3 bg-white/10 border border-white/15 rounded-full px-2 py-1 backdrop-blur shadow-md shadow-black/20">
                         <button type="button" @click="prev()" class="h-9 w-9 inline-flex items-center justify-center rounded-full text-white hover:bg-white/10">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                         </button>
