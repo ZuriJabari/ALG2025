@@ -59,7 +59,7 @@
     <!-- Subtle noise overlay for luxurious texture -->
     <div class="pointer-events-none absolute inset-0 opacity-[0.08] mix-blend-overlay" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><filter id=\"n\"><feTurbulence type=\"fractalNoise\" baseFrequency=\"0.65\" numOctaves=\"2\" stitchTiles=\"stitch\"/></filter><rect width=\"100%\" height=\"100%\" filter=\"url(%23n)\" opacity=\"0.35\"/></svg>');"></div>
 
-    <div class="relative w-full h-[80vh] sm:h-[75vh] lg:h-[78vh]" x-data="{
+    <div class="relative w-full h-[85vh] sm:h-[82vh] lg:h-[85vh]" x-data="{
         i: 0,
         size: {{ count($resolvedSlides) }},
         auto: true,
@@ -86,8 +86,8 @@
                     </div>
                     <!-- Dark gradient for legibility (stronger on mobile) -->
                     <div class="absolute inset-0">
-                        <div class="block sm:hidden absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-black/10"></div>
-                        <div class="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-black/5"></div>
+                        <div class="block sm:hidden absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/12"></div>
+                        <div class="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/65 via-black/30 to-black/8"></div>
                     </div>
                 </div>
             @endforeach
@@ -102,11 +102,11 @@
 
         <!-- Content -->
         <div class="relative z-10 h-full">
-            <div class="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 items-end pb-16 sm:pb-20 lg:pb-12 relative">
+            <div class="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 items-end pb-12 sm:pb-14 lg:pb-16 relative">
                 <div class="lg:col-span-9 relative">
                     <!-- Local text scrim for legibility (focused under text only) -->
-                    <div aria-hidden="true" class="absolute -inset-x-4 -top-6 bottom-[-16px] sm:inset-x-auto sm:-left-8 sm:top-[-20px] sm:bottom-[-20px] sm:max-w-3xl rounded-[32px] pointer-events-none"
-                         style="background: linear-gradient(90deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.52) 40%, rgba(0,0,0,0.32) 65%, rgba(0,0,0,0) 100%); backdrop-filter: blur(3px);"></div>
+                    <div aria-hidden="true" class="absolute -inset-x-4 -top-8 bottom-[-20px] sm:inset-x-auto sm:-left-10 sm:top-[-24px] sm:bottom-[-24px] sm:max-w-3xl rounded-[36px] pointer-events-none"
+                         style="background: linear-gradient(90deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.58) 38%, rgba(0,0,0,0.36) 62%, rgba(0,0,0,0.12) 82%, rgba(0,0,0,0) 100%); backdrop-filter: blur(4px);"></div>
                     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20">
                         <span class="w-2 h-2 rounded-full bg-teal-400"></span>
                         <span class="text-xs font-semibold tracking-wider text-white/90">{{ $event->subtitle ?: 'ALG ' . ($event->year ?? '2025') }}</span>
@@ -115,11 +115,11 @@
                         $displayTitle = $title ?: ($event->title ?? 'Annual Leaders Gathering');
                         $desc = $description ?: ($hero?->description ?: ($event->hero_description ?: $event->description));
                     @endphp
-                    <h1 class="mt-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.08] sm:leading-[1.05] tracking-tight text-white">
+                    <h1 class="mt-4 text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.1] sm:leading-[1.06] tracking-tight text-white">
                         {{ $displayTitle }}
                     </h1>
                     @if($desc)
-                        <p class="mt-3 sm:mt-4 max-w-3xl text-[15px] sm:text-lg md:text-xl text-white/85">
+                        <p class="mt-3 sm:mt-4 max-w-2xl text-[14.5px] sm:text-base md:text-lg text-white/90 leading-relaxed">
                             {{ $desc }}
                         </p>
                     @endif
@@ -129,7 +129,7 @@
                         $when = $dt->format('F j, Y • g:i A');
                         $where = $event->location ?: 'Kampala, Uganda';
                     @endphp
-                    <div class="mt-5 flex flex-col sm:flex-row gap-2 sm:gap-3 text-white">
+                    <div class="mt-4 sm:mt-5 flex flex-col sm:flex-row gap-2 sm:gap-3 text-white">
                         <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/40 border border-white/35 backdrop-blur-sm shadow-md shadow-black/10">
                             <svg class="w-4 h-4 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                             <span class="text-[12.5px] sm:text-[13.5px] font-medium tracking-normal leading-none">{{ $when }}</span>
@@ -139,25 +139,25 @@
                             <span class="text-[12.5px] sm:text-[13.5px] font-medium tracking-normal leading-none">{{ $where }}</span>
                         </div>
                     </div>
-                    <div class="relative z-10 mt-5 sm:mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-2.5 sm:gap-3">
+                    <div class="relative z-10 mt-5 sm:mt-7 flex flex-col sm:flex-row w-full sm:w-auto gap-2.5 sm:gap-3">
                         @php
                             $primaryCtaLabel = $event->primary_cta_label ?: 'Reserve your seat';
                             $primaryCtaUrl = $event->primary_cta_url ?: route('seat-reservations.create');
                             $secondaryCtaLabel = $event->secondary_cta_label ?: 'Learn more';
                             $secondaryCtaUrl = $event->secondary_cta_url ?: url('/about');
                         @endphp
-                        <a href="{{ $primaryCtaUrl }}" class="h-12 sm:h-11 px-6 inline-flex items-center justify-center bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 shadow-lg hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 text-center gap-2 w-full sm:w-auto">
+                        <a href="{{ $primaryCtaUrl }}" class="h-11 sm:h-11 px-6 inline-flex items-center justify-center bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white font-semibold text-[15px] rounded-full transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 shadow-lg hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 text-center gap-2 w-full sm:w-auto">
                             <span>{{ $primaryCtaLabel }}</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                         </a>
-                        <a href="{{ $secondaryCtaUrl }}" class="h-12 sm:h-11 px-6 inline-flex items-center justify-center bg-white/10 text-white hover:bg-white/15 font-semibold rounded-full border border-white/30 transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 text-center w-full sm:w-auto">
+                        <a href="{{ $secondaryCtaUrl }}" class="h-11 sm:h-11 px-6 inline-flex items-center justify-center bg-white/10 text-white hover:bg-white/15 font-semibold text-[15px] rounded-full border border-white/30 transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 text-center w-full sm:w-auto">
                             {{ $secondaryCtaLabel }}
                         </a>
                     </div>
                 </div>
 
                 <!-- Controls / Indicators -->
-                <div class="lg:col-span-3 flex justify-center lg:justify-end items-end mt-8 lg:mt-6 sm:absolute sm:z-20 lg:static sm:bottom-5 sm:right-5">
+                <div class="lg:col-span-3 flex justify-center lg:justify-end items-end mt-6 lg:mt-0 sm:absolute sm:z-20 lg:static sm:bottom-5 sm:right-5">
                     <div class="flex items-center gap-3 bg-white/10 border border-white/15 rounded-full px-2 py-1 backdrop-blur shadow-md shadow-black/20">
                         <button type="button" @click="prev()" class="h-9 w-9 inline-flex items-center justify-center rounded-full text-white hover:bg-white/10">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
