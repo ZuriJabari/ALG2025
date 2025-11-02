@@ -1,4 +1,4 @@
-@props(['slides' => null, 'event' => null, 'hero' => null])
+@props(['slides' => null, 'event' => null, 'hero' => null, 'title' => null, 'description' => null])
 
 @php
     /** @var \App\Models\Domain\Event|null $event */
@@ -101,10 +101,13 @@
                         <span class="w-2 h-2 rounded-full bg-teal-400"></span>
                         <span class="text-xs font-semibold tracking-wider text-white/90">{{ $event->subtitle ?: 'ALG ' . ($event->year ?? '2025') }}</span>
                     </div>
+                    @php
+                        $displayTitle = $title ?: ($event->title ?? 'Annual Leaders Gathering');
+                        $desc = $description ?: ($hero?->description ?: ($event->hero_description ?: $event->description));
+                    @endphp
                     <h1 class="mt-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.08] sm:leading-[1.05] tracking-tight text-white">
-                        {{ $event->title }}
+                        {{ $displayTitle }}
                     </h1>
-                    @php $desc = $hero?->description ?: ($event->hero_description ?: $event->description); @endphp
                     @if($desc)
                         <p class="mt-3 sm:mt-4 max-w-3xl text-[15px] sm:text-lg md:text-xl text-white/85">
                             {{ $desc }}
@@ -122,7 +125,7 @@
                             <span class="text-sm">{{ $when }}</span>
                         </div>
                         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.657 0 3-1.343 3-3S13.657 5 12 5 9 6.343 9 8s1.343 3 3 3zm0 0c-4.418 0-8 2.239-8 5v2h16v-2c0-2.761-3.582-5-8-5z"/></svg>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a7 7 0 00-7 7c0 5.25 7 11 7 11s7-5.75 7-11a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
                             <span class="text-sm">{{ $where }}</span>
                         </div>
                     </div>

@@ -36,7 +36,11 @@
 ">
     <x-header />
     
-    <x-hero-slider :event="$event" :hero="$hero" />
+    @php
+        $heroTitle = 'Introducing the 2025 Annual Leaders Gathering';
+        $heroDesc = 'The Annual Leaders Gathering is the LéO Africa Institute’s signature convening platform. It brings together its growing networks of leaders for significant conversations, networking, and deliberation on actions necessary to address the day\'s challenges.';
+    @endphp
+    <x-hero-slider :event="$event" :hero="$hero" :title="$heroTitle" :description="$heroDesc" />
 
     @if((int) $event->year === 2025)
         @php
@@ -45,34 +49,6 @@
                 ?: ($event->hero_description ?: $event->description);
             $quote = 'The most enduring change is never the work of solitary heroes, but of communities bound by shared purpose and mutual commitment.';
         @endphp
-        <!-- Theme Section -->
-        <section class="py-20 bg-white dark:bg-slate-950">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="inline-flex h-1 w-24 rounded-full bg-teal-500"></div>
-                <h2 class="mt-6 text-3xl md:text-5xl font-normal text-gray-900 dark:text-white tracking-tight">{{ $themeTitle }}</h2>
-                @if($themeBody)
-                    <p class="mt-4 text-gray-600 dark:text-gray-300 text-lg leading-relaxed max-w-4xl">{{ $themeBody }}</p>
-                @endif
-
-    
-
-                <!-- Quote block -->
-                <div class="mt-10 relative max-w-3xl group">
-                    <div class="rounded-[28px] bg-teal-600 text-white p-6 sm:p-8 shadow-2xl transition-all duration-500 ease-out transform group-hover:-translate-y-0.5 group-hover:shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)]">
-                        <div class="flex gap-4 items-start">
-                            <div class="flex-shrink-0">
-                                <svg class="w-10 h-10 opacity-80" fill="currentColor" viewBox="0 0 24 24"><path d="M7 17h3l2-4V7H6v6h3l-2 4zm7 0h3l2-4V7h-6v6h3l-2 4z"/></svg>
-                            </div>
-                            <p class="text-xl sm:text-2xl font-semibold leading-relaxed">"{{ $quote }}"</p>
-                        </div>
-                    </div>
-                    <div class="absolute -bottom-5 left-6 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/90 dark:bg-slate-900/90 text-teal-700 dark:text-teal-300 border border-teal-200/60 dark:border-teal-800/60 shadow-md transition-all duration-300 group-hover:-translate-y-0.5">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-4-4h-1M9 20H4v-2a4 4 0 014-4h1m0 0a4 4 0 004-4 4 4 0 00-4-4m0 8v-8m0 8a4 4 0 004 4"/></svg>
-                        <span class="text-sm font-semibold">Community: 200+ Fellows</span>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Concept Note: Overview, Participants, Outcomes -->
         <section class="py-20 bg-white dark:bg-slate-950">
@@ -127,46 +103,6 @@
             </div>
         </section>
 
-        <section class="py-16 bg-gray-50 dark:bg-slate-900">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-                    <div>
-                        <div class="inline-flex h-1 w-20 rounded-full bg-teal-500"></div>
-                        <h3 class="mt-4 text-2xl md:text-4xl font-normal text-gray-900 dark:text-white tracking-tight">Theme Rationale</h3>
-                        <ul class="mt-5 space-y-4 text-gray-700 dark:text-gray-300 text-base leading-relaxed">
-                            <li class="flex items-start gap-3"><span class="mt-1 w-2 h-2 rounded-full bg-teal-500"></span><span>Collaboration as foundation — multi‑sector partnerships and inclusive approaches that harness diverse perspectives.</span></li>
-                            <li class="flex items-start gap-3"><span class="mt-1 w-2 h-2 rounded-full bg-teal-500"></span><span>Impact as measure — results‑oriented leadership focused on tangible outcomes for communities and institutions.</span></li>
-                            <li class="flex items-start gap-3"><span class="mt-1 w-2 h-2 rounded-full bg-teal-500"></span><span>Excellence as standard — leaders who set high bars, innovate continuously, and model integrity.</span></li>
-                        </ul>
-                    </div>
-                    <div class="relative p-6 sm:p-8 rounded-3xl border border-gray-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 overflow-hidden">
-                        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image:url('/assets/artwork.png');background-repeat:no-repeat;background-position:right bottom;background-size:520px auto"></div>
-                        <h4 class="text-xl font-semibold text-gray-900 dark:text-white">Concept Snapshot</h4>
-                        <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div class="p-4 rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900">
-                                <p class="text-sm font-semibold text-teal-600 dark:text-teal-400">Why now</p>
-                                <p class="mt-1 text-sm text-gray-700 dark:text-gray-300">Rapid change demands collaborative, transformative leadership across Africa.</p>
-                            </div>
-                            <div class="p-4 rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900">
-                                <p class="text-sm font-semibold text-teal-600 dark:text-teal-400">What you’ll experience</p>
-                                <p class="mt-1 text-sm text-gray-700 dark:text-gray-300">Keynotes, panels, and curated networking to forge partnerships and action.</p>
-                            </div>
-                            <div class="p-4 rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900">
-                                <p class="text-sm font-semibold text-teal-600 dark:text-teal-400">Who attends</p>
-                                <p class="mt-1 text-sm text-gray-700 dark:text-gray-300">100–150 cross‑sector leaders: public, private, civil society, academia, and innovators.</p>
-                            </div>
-                            <div class="p-4 rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900">
-                                <p class="text-sm font-semibold text-teal-600 dark:text-teal-400">Outcomes</p>
-                                <p class="mt-1 text-sm text-gray-700 dark:text-gray-300">New partnerships, actionable plans, and a shared agenda for impact.</p>
-                            </div>
-                        </div>
-                        <div class="mt-5 flex items-center gap-3">
-                            <a href="{{ route('seat-reservations.create') }}" class="px-5 h-11 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">Reserve your seat</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Featured Speakers (TBA) -->
         <section class="py-20 bg-gray-50 dark:bg-slate-900">
