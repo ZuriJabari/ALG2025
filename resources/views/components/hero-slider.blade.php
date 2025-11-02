@@ -127,13 +127,13 @@
                         $where = $event->location ?: 'Kampala, Uganda';
                     @endphp
                     <div class="mt-5 flex flex-col sm:flex-row gap-2 sm:gap-3 text-white">
-                        <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/20 border border-white/40 backdrop-blur-md shadow-lg shadow-black/20 ring-1 ring-white/10">
-                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                            <span class="text-[13px] sm:text-sm font-semibold tracking-wide">{{ $when }}</span>
+                        <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/40 border border-white/35 backdrop-blur-sm shadow-md shadow-black/10">
+                            <svg class="w-4 h-4 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                            <span class="text-[12.5px] sm:text-[13.5px] font-medium tracking-normal leading-none">{{ $when }}</span>
                         </div>
-                        <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/20 border border-white/40 backdrop-blur-md shadow-lg shadow-black/20 ring-1 ring-white/10">
-                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a7 7 0 00-7 7c0 5.25 7 11 7 11s7-5.75 7-11a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
-                            <span class="text-[13px] sm:text-sm font-semibold tracking-wide">{{ $where }}</span>
+                        <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/40 border border-white/35 backdrop-blur-sm shadow-md shadow-black/10">
+                            <svg class="w-4 h-4 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a7 7 0 00-7 7c0 5.25 7 11 7 11s7-5.75 7-11a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                            <span class="text-[12.5px] sm:text-[13.5px] font-medium tracking-normal leading-none">{{ $where }}</span>
                         </div>
                     </div>
                     <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-3">
