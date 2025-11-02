@@ -86,8 +86,8 @@
                     </div>
                     <!-- Dark gradient for legibility (stronger on mobile) -->
                     <div class="absolute inset-0">
-                        <div class="block sm:hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/20"></div>
-                        <div class="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/15"></div>
+                        <div class="block sm:hidden absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-black/10"></div>
+                        <div class="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-black/5"></div>
                     </div>
                 </div>
             @endforeach
@@ -104,8 +104,9 @@
         <div class="relative z-10 h-full">
             <div class="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 items-end pb-8 sm:pb-12 relative">
                 <div class="lg:col-span-9 relative">
-                    <!-- Local text scrim for legibility -->
-                    <div aria-hidden="true" class="absolute -inset-x-4 -top-6 bottom-[-14px] sm:inset-x-auto sm:-left-6 sm:top-[-18px] sm:bottom-[-18px] sm:w-[min(92%,640px)] rounded-3xl bg-gradient-to-r from-black/65 via-black/35 to-transparent border border-white/10 backdrop-blur-sm pointer-events-none"></div>
+                    <!-- Local text scrim for legibility (focused under text only) -->
+                    <div aria-hidden="true" class="absolute -inset-x-4 -top-5 bottom-[-12px] sm:inset-x-auto sm:-left-6 sm:top-[-16px] sm:bottom-[-16px] sm:max-w-3xl rounded-[28px] pointer-events-none"
+                         style="background: linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.42) 45%, rgba(0,0,0,0.25) 70%, rgba(0,0,0,0) 100%); filter: saturate(105%); backdrop-filter: blur(2px);"></div>
                     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20">
                         <span class="w-2 h-2 rounded-full bg-teal-400"></span>
                         <span class="text-xs font-semibold tracking-wider text-white/90">{{ $event->subtitle ?: 'ALG ' . ($event->year ?? '2025') }}</span>
