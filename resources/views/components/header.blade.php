@@ -46,12 +46,22 @@
                         </div>
                     @endif
                 @endforeach
+                @php $hasAcb = $primaryMenu->items->contains(fn($i) => strcasecmp(trim($i->label), 'African Champions Breakfast') === 0); @endphp
+                @if(! $hasAcb)
+                    <div class="relative group/nav">
+                        <a href="/african-champions-breakfast" class="relative inline-flex items-center px-1.5 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 font-medium text-sm transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40">
+                            African Champions Breakfast
+                            <span class="pointer-events-none absolute left-1 right-1 -bottom-1 h-px bg-gradient-to-r from-transparent via-teal-500/70 to-transparent opacity-0 scale-x-50 group-hover/nav:opacity-100 group-hover/nav:scale-x-100 transition-all duration-300"></span>
+                        </a>
+                    </div>
+                @endif
             @else
                 <a href="/" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 font-medium text-sm transition-colors">Home</a>
                 <a href="/speakers" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 font-medium text-sm transition-colors">Speakers</a>
                 <a href="/alg-2024" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 font-medium text-sm transition-colors">ALG 2024</a>
                 <a href="/about" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 font-medium text-sm transition-colors">About</a>
                 <a href="/contact" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 font-medium text-sm transition-colors">Contact</a>
+                <a href="/african-champions-breakfast" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 font-medium text-sm transition-colors">African Champions Breakfast</a>
             @endif
         </div>
 
@@ -130,12 +140,17 @@
                             @endif
                         </div>
                     @endforeach
+                    @php $hasAcb = $primaryMenu->items->contains(fn($i) => strcasecmp(trim($i->label), 'African Champions Breakfast') === 0); @endphp
+                    @if(! $hasAcb)
+                        <a href="/african-champions-breakfast" class="block px-4 py-3 text-sm font-semibold text-gray-900 dark:text-white hover:bg-gradient-to-r hover:from-teal-50 hover:to-transparent dark:hover:from-teal-900/20 dark:hover:to-transparent rounded-lg transition-all duration-200 border-l-2 border-transparent hover:border-teal-500">African Champions Breakfast</a>
+                    @endif
                 @else
                     <a href="/" class="block px-4 py-3 text-sm font-semibold text-gray-900 dark:text-white hover:bg-gradient-to-r hover:from-teal-50 hover:to-transparent dark:hover:from-teal-900/20 dark:hover:to-transparent rounded-lg transition-all duration-200 border-l-2 border-transparent hover:border-teal-500">Home</a>
                     <a href="/speakers" class="block px-4 py-3 text-sm font-semibold text-gray-900 dark:text-white hover:bg-gradient-to-r hover:from-teal-50 hover:to-transparent dark:hover:from-teal-900/20 dark:hover:to-transparent rounded-lg transition-all duration-200 border-l-2 border-transparent hover:border-teal-500">Speakers</a>
                     <a href="/alg-2024" class="block px-4 py-3 text-sm font-semibold text-gray-900 dark:text-white hover:bg-gradient-to-r hover:from-teal-50 hover:to-transparent dark:hover:from-teal-900/20 dark:hover:to-transparent rounded-lg transition-all duration-200 border-l-2 border-transparent hover:border-teal-500">ALG 2024</a>
                     <a href="/about" class="block px-4 py-3 text-sm font-semibold text-gray-900 dark:text-white hover:bg-gradient-to-r hover:from-teal-50 hover:to-transparent dark:hover:from-teal-900/20 dark:hover:to-transparent rounded-lg transition-all duration-200 border-l-2 border-transparent hover:border-teal-500">About</a>
                     <a href="/contact" class="block px-4 py-3 text-sm font-semibold text-gray-900 dark:text-white hover:bg-gradient-to-r hover:from-teal-50 hover:to-transparent dark:hover:from-teal-900/20 dark:hover:to-transparent rounded-lg transition-all duration-200 border-l-2 border-transparent hover:border-teal-500">Contact</a>
+                    <a href="/african-champions-breakfast" class="block px-4 py-3 text-sm font-semibold text-gray-900 dark:text-white hover:bg-gradient-to-r hover:from-teal-50 hover:to-transparent dark:hover:from-teal-900/20 dark:hover:to-transparent rounded-lg transition-all duration-200 border-l-2 border-transparent hover:border-teal-500">African Champions Breakfast</a>
                 @endif
                 <div class="border-t border-gray-200 dark:border-slate-800 pt-4 mt-4">
                     <a href="{{ route('seat-reservations.create') }}" class="block w-full px-4 py-3 text-sm font-semibold text-white bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 rounded-lg text-center transition-all duration-200 transform hover:shadow-lg active:scale-95">

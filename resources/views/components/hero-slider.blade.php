@@ -1,4 +1,4 @@
-@props(['slides' => null, 'event' => null, 'hero' => null, 'title' => null, 'description' => null])
+@props(['slides' => null, 'event' => null, 'hero' => null, 'title' => null, 'description' => null, 'exclude' => null])
 
 @php
     /** @var \App\Models\Domain\Event|null $event */
@@ -45,6 +45,13 @@
     if (empty($resolvedSlides)) {
         $fallback = $hero?->getFirstMediaUrl('hero') ?: ($event?->getFirstMediaUrl('hero') ?: asset('assets/hero-bg1.png'));
         $resolvedSlides = [[ 'src' => $fallback, 'alt' => ($event->title ?? 'ALG') . ' hero' ]];
+    }
+
+    // 5) Optionally exclude slides by 1-based indices (e.g., [2] removes second slide)
+    if (is_array($exclude) && !empty($exclude)) {
+        $resolvedSlides = array_values(array_filter($resolvedSlides, function($s, $i) use ($exclude) {
+            return !in_array($i + 1, $exclude);
+        }, ARRAY_FILTER_USE_BOTH));
     }
 @endphp
 
@@ -119,14 +126,14 @@
                         $when = $dt->format('F j, Y • g:i A');
                         $where = $event->location ?: 'Kampala, Uganda';
                     @endphp
-                    <div class="mt-5 flex flex-col sm:flex-row gap-2 sm:gap-3 text-white/90">
-                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                            <span class="text-sm">{{ $when }}</span>
+                    <div class="mt-5 flex flex-col sm:flex-row gap-2 sm:gap-3 text-white">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/20 border border-white/40 backdrop-blur-md shadow-lg shadow-black/20 ring-1 ring-white/10">
+                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                            <span class="text-[13px] sm:text-sm font-semibold tracking-wide">{{ $when }}</span>
                         </div>
-                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a7 7 0 00-7 7c0 5.25 7 11 7 11s7-5.75 7-11a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
-                            <span class="text-sm">{{ $where }}</span>
+                        <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/20 border border-white/40 backdrop-blur-md shadow-lg shadow-black/20 ring-1 ring-white/10">
+                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a7 7 0 00-7 7c0 5.25 7 11 7 11s7-5.75 7-11a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                            <span class="text-[13px] sm:text-sm font-semibold tracking-wide">{{ $where }}</span>
                         </div>
                     </div>
                     <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-3">

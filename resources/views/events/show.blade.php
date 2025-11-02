@@ -40,7 +40,7 @@
         $heroTitle = 'Introducing the 2025 Annual Leaders Gathering';
         $heroDesc = 'The Annual Leaders Gathering is the LéO Africa Institute’s signature convening platform. It brings together its growing networks of leaders for significant conversations, networking, and deliberation on actions necessary to address the day\'s challenges.';
     @endphp
-    <x-hero-slider :event="$event" :hero="$hero" :title="$heroTitle" :description="$heroDesc" />
+    <x-hero-slider :event="$event" :hero="$hero" :title="$heroTitle" :description="$heroDesc" :exclude="[2]" />
 
     @if((int) $event->year === 2025)
         @php
@@ -511,9 +511,9 @@
                             <p class="mt-1 text-base text-gray-800 dark:text-gray-200">Reach us anytime — we aim to respond promptly.</p>
                         </div>
                         <div class="md:justify-self-end">
-                            <a href="mailto:alg@laoafricainstiute.org" class="relative inline-flex items-center gap-2 h-11 px-5 rounded-full text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/60 transition-all duration-300 shadow-lg hover:shadow-xl bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 hover:-translate-y-0.5">
+                            <a href="mailto:alg@leoafricainstitute.org" class="relative inline-flex items-center gap-2 h-11 px-5 rounded-full text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/60 transition-all duration-300 shadow-lg hover:shadow-xl bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 hover:-translate-y-0.5">
                                 <svg class="w-4 h-4 opacity-95" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 8l-9 6-9-6m18 8H3a2 2 0 01-2-2V8a2 2 0 012-2h18a2 2 0 012 2v6a2 2 0 01-2 2z"/></svg>
-                                <span class="truncate">alg@laoafricainstiute.org</span>
+                                <span class="truncate">alg@leoafricainstitute.org</span>
                             </a>
                         </div>
                     </div>

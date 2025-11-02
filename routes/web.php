@@ -61,6 +61,7 @@ Route::get('/alg-2024', function () {
 
 Route::view('/about', 'pages.about')->name('about');
 Route::view('/contact', 'pages.contact')->name('contact');
+Route::view('/african-champions-breakfast', 'pages.african-champions-breakfast')->name('acb');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

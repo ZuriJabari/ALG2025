@@ -31,6 +31,20 @@ class SeatReservationResource extends Resource
             ])->required(),
             Forms\Components\TextInput::make('email')->email()->required(),
             Forms\Components\TextInput::make('phone'),
+            Forms\Components\Radio::make('is_fellow')
+                ->label('Are you a fellow?')
+                ->options(['1' => 'Yes', '0' => 'No'])
+                ->inline()
+                ->default('0')
+                ->required(),
+            Forms\Components\Select::make('fellowship')
+                ->options([
+                    'YELP' => 'YELP',
+                    'HUDUMA' => 'HUDUMA',
+                    'The Griot Fellowship' => 'The Griot Fellowship',
+                ])
+                ->visible(fn (\Filament\Forms\Get $get) => $get('is_fellow') === '1')
+                ->required(fn (\Filament\Forms\Get $get) => $get('is_fellow') === '1'),
         ]);
     }
 
@@ -43,6 +57,8 @@ class SeatReservationResource extends Resource
                 Tables\Columns\TextColumn::make('sector')->sortable(),
                 Tables\Columns\TextColumn::make('email')->searchable(),
                 Tables\Columns\TextColumn::make('phone')->searchable(),
+                Tables\Columns\IconColumn::make('is_fellow')->boolean()->label('Fellow'),
+                Tables\Columns\TextColumn::make('fellowship')->label('Fellowship'),
                 Tables\Columns\TextColumn::make('created_at')->dateTime()->sortable(),
             ])
             ->filters([])
