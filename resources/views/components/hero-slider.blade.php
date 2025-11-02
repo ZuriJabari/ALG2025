@@ -157,7 +157,7 @@
                 </div>
 
                 <!-- Controls / Indicators -->
-                <div class="lg:col-span-3 flex justify-center lg:justify-end items-end mt-8 lg:mt-0 sm:absolute sm:z-20 lg:static sm:bottom-5 sm:right-5">
+                <div class="lg:col-span-3 flex justify-center lg:justify-end items-end mt-8 lg:mt-6 sm:absolute sm:z-20 lg:static sm:bottom-5 sm:right-5">
                     <div class="flex items-center gap-3 bg-white/10 border border-white/15 rounded-full px-2 py-1 backdrop-blur shadow-md shadow-black/20">
                         <button type="button" @click="prev()" class="h-9 w-9 inline-flex items-center justify-center rounded-full text-white hover:bg-white/10">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
