@@ -102,7 +102,7 @@
 
         <!-- Content -->
         <div class="relative z-10 h-full">
-            <div class="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 items-end pb-8 sm:pb-12 relative">
+            <div class="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 items-end pb-24 sm:pb-20 lg:pb-12 relative">
                 <div class="lg:col-span-9 relative">
                     <!-- Local text scrim for legibility (focused under text only) -->
                     <div aria-hidden="true" class="absolute -inset-x-4 -top-5 bottom-[-12px] sm:inset-x-auto sm:-left-6 sm:top-[-16px] sm:bottom-[-16px] sm:max-w-3xl rounded-[28px] pointer-events-none"
@@ -139,7 +139,7 @@
                             <span class="text-[12.5px] sm:text-[13.5px] font-medium tracking-normal leading-none">{{ $where }}</span>
                         </div>
                     </div>
-                    <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-3">
+                    <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-2 sm:gap-3">
                         @php
                             $primaryCtaLabel = $event->primary_cta_label ?: 'Reserve your seat';
                             $primaryCtaUrl = $event->primary_cta_url ?: route('seat-reservations.create');
@@ -157,7 +157,8 @@
                 </div>
 
                 <!-- Controls / Indicators -->
-                <div class="lg:col-span-3 flex lg:justify-end items-end mt-6 lg:mt-0 absolute bottom-4 right-4 sm:bottom-5 sm:right-5 z-20 lg:static">
+                <div class="lg:col-span-3 flex lg:justify-end items-end mt-6 lg:mt-0 absolute z-20 lg:static"
+                     style="bottom: calc(1rem + env(safe-area-inset-bottom)); right: calc(1rem + env(safe-area-inset-right));">
                     <div class="flex items-center gap-3 bg-white/10 border border-white/15 rounded-full px-2 py-1 backdrop-blur shadow-md shadow-black/20">
                         <button type="button" @click="prev()" class="h-9 w-9 inline-flex items-center justify-center rounded-full text-white hover:bg-white/10">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
