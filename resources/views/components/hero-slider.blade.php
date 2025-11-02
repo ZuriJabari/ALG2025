@@ -102,7 +102,7 @@
 
         <!-- Content -->
         <div class="relative z-10 h-full">
-            <div class="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 items-end pb-16 sm:pb-20 lg:pb-16 relative">
+            <div class="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 items-end pb-16 sm:pb-20 lg:pb-20 relative">
                 <div class="lg:col-span-9 relative">
                     <!-- Local text scrim for legibility (focused under text only) -->
                     <div aria-hidden="true" class="absolute -inset-x-4 -top-6 bottom-[-16px] sm:inset-x-auto sm:-left-8 sm:top-[-20px] sm:bottom-[-20px] sm:max-w-3xl rounded-[32px] pointer-events-none"
