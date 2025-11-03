@@ -73,7 +73,7 @@
     <div class="pointer-events-none absolute inset-0 opacity-[0.08] mix-blend-overlay" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><filter id=\"n\"><feTurbulence type=\"fractalNoise\" baseFrequency=\"0.65\" numOctaves=\"2\" stitchTiles=\"stitch\"/></filter><rect width=\"100%\" height=\"100%\" filter=\"url(%23n)\" opacity=\"0.35\"/></svg>');"></div>
     <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_80%_10%,rgba(20,184,166,0.18),transparent_60%)]"></div>
 
-    <div class="relative w-full {{ $full ? ($fullOffset ? 'h-auto' : 'h-screen') : 'h-[70vh] sm:h-[75vh] lg:h-[78vh]' }}" x-data="{
+    <div class="relative w-full {{ $full ? ($fullOffset ? 'h-auto' : 'h-screen') : 'h-[95vh] sm:h-[90vh] lg:h-[92vh]' }}" x-data="{
         i: 0,
         size: Math.min({{ count($resolvedSlides) }}, 2),
         auto: true,
@@ -116,11 +116,12 @@
 
         <!-- Content -->
         <div class="relative z-10 h-full">
-            <div class="h-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 items-center lg:items-end pt-16 sm:pt-20 pb-10 sm:pb-16 md:pb-20 relative">
-                <div class="lg:col-span-9 relative">
+            <div class="h-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 items-end pt-16 sm:pt-20 pb-2 sm:pb-4 md:pb-6 relative">
+                <div class="lg:col-span-9 relative flex h-full flex-col">
+                    <div class="h-[11vh] sm:h-[7vh] md:h-[7vh]"></div>
                     <!-- Local text scrim for legibility (focused under text only) -->
-                    <div aria-hidden="true" class="hidden sm:block absolute -inset-x-4 -top-6 bottom-[-16px] sm:inset-x-auto sm:-left-8 sm:top-[-20px] sm:bottom-[-20px] sm:max-w-3xl rounded-[32px] pointer-events-none"
-                         style="background: linear-gradient(90deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.52) 40%, rgba(0,0,0,0.32) 65%, rgba(0,0,0,0) 100%); backdrop-filter: blur(3px);"></div>
+                    <div aria-hidden="true" class="hidden sm:block absolute left-0 top-8 h-[220px] sm:h-[240px] w-full sm:max-w-xl rounded-[28px] pointer-events-none"
+                         style="background: linear-gradient(90deg, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.42) 40%, rgba(0,0,0,0.22) 65%, rgba(0,0,0,0) 100%); backdrop-filter: blur(2px);"></div>
                     <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 shadow-[0_0_0_1px_rgba(255,255,255,0.06)]">
                         <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-teal-400"></span>
                         <template x-if="i !== 1">
@@ -138,6 +139,7 @@
                         <div>
                             <h1 class="mt-1.5 sm:mt-3 md:mt-4 text-[26px] leading-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold sm:leading-[1.08] md:leading-[1.05] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-teal-200/90 drop-shadow-[0_6px_24px_rgba(0,0,0,0.25)]">Building Together For Impact</h1>
                             <p class="mt-1.5 sm:mt-3 text-[14px] sm:text-lg md:text-xl lg:text-2xl text-white/90">Inspiring Excellence Through <span class="text-teal-300">Transformative Leadership</span></p>
+                            <p class="mt-2 sm:mt-3 md:mt-4 max-w-3xl text-[13.5px] sm:text-[15px] md:text-lg text-white/85">As we convene the 6th edition, we build on five years of impactful dialogue, collaboration, and leadership development that have brought together changemakers, innovators, and visionaries committed to Africa's progress.</p>
                         </div>
                     </template>
                     <!-- Slide 1: About ALG (with long paragraph) -->
@@ -202,7 +204,7 @@
                     
 
                     @if($showPartners)
-                        <div class="absolute left-3 sm:left-6 bottom-4 sm:bottom-6 z-20 flex flex-col sm:flex-row items-start sm:items-center justify-start sm:justify-start gap-y-2.5 sm:gap-y-0 gap-x-0 sm:gap-x-4">
+                        <div class="mt-auto self-start z-20 flex flex-col sm:flex-row items-start sm:items-center justify-start gap-y-2.5 sm:gap-y-0 gap-x-0 sm:gap-x-4">
                             <!-- Row 1: Initiative -->
                             <div class="inline-flex items-center gap-2 sm:gap-2.5">
                                 <span class="text-[10px] sm:text-[13px] md:text-sm font-medium text-white/90">ALG is an Initiative of</span>
