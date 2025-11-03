@@ -6,7 +6,12 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>ALG 2025 – Annual Leaders Gathering</title>
   @include('partials.analytics')
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  @if(app()->environment('production'))
+    <link rel="stylesheet" href="{{ asset('build/assets/app-D1XMdw5q.css') }}">
+    <script type="module" src="{{ asset('build/assets/app-CXDpL9bK.js') }}"></script>
+  @else
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+  @endif
 </head>
 <body class="antialiased bg-white dark:bg-slate-950">
   <x-header />
