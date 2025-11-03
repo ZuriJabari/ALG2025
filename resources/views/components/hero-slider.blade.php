@@ -233,25 +233,7 @@
                     
                 </div>
 
-                <!-- Controls / Indicators -->
-                <div class="lg:col-span-3 hidden sm:flex justify-center lg:justify-end items-end mt-8 lg:mt-6 sm:absolute sm:z-20 lg:static sm:bottom-5 sm:right-5">
-                    <div class="flex items-center gap-3 bg-white/10 border border-white/15 rounded-full px-2 py-1 backdrop-blur shadow-md shadow-black/20">
-                        <button type="button" @click="prev()" class="h-9 w-9 inline-flex items-center justify-center rounded-full text-white hover:bg-white/15 transition-all duration-300 hover:scale-105">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                        </button>
-                        <div class="flex items-center gap-1.5">
-                            @foreach($resolvedSlides as $idx => $_)
-                                @if($idx > 1)
-                                    @break
-                                @endif
-                                <button type="button" @click="i={{ $idx }}" class="h-2.5 w-2.5 rounded-full transition-all duration-300" :class="i==={{ $idx }} ? 'bg-white shadow-[0_0_0_3px_rgba(255,255,255,0.35)] scale-110' : 'bg-white/40 hover:bg-white/60'" aria-label="Go to slide {{ $idx+1 }}"></button>
-                            @endforeach
-                        </div>
-                        <button type="button" @click="next()" class="h-9 w-9 inline-flex items-center justify-center rounded-full text-white hover:bg-white/15 transition-all duration-300 hover:scale-105">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                        </button>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
