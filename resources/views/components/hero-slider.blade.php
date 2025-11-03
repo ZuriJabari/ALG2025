@@ -116,18 +116,18 @@
 
         <!-- Content -->
         <div class="relative z-10 h-full">
-            <div class="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 items-end pb-16 sm:pb-20 lg:pb-20 relative">
+            <div class="h-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 items-end pb-12 sm:pb-16 md:pb-20 relative">
                 <div class="lg:col-span-9 relative">
                     <!-- Local text scrim for legibility (focused under text only) -->
                     <div aria-hidden="true" class="absolute -inset-x-4 -top-6 bottom-[-16px] sm:inset-x-auto sm:-left-8 sm:top-[-20px] sm:bottom-[-20px] sm:max-w-3xl rounded-[32px] pointer-events-none"
                          style="background: linear-gradient(90deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.52) 40%, rgba(0,0,0,0.32) 65%, rgba(0,0,0,0) 100%); backdrop-filter: blur(3px);"></div>
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 shadow-[0_0_0_1px_rgba(255,255,255,0.06)]">
-                        <span class="w-2 h-2 rounded-full bg-teal-400"></span>
+                    <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 shadow-[0_0_0_1px_rgba(255,255,255,0.06)]">
+                        <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-teal-400"></span>
                         <template x-if="i !== 1">
-                            <span class="text-xs font-semibold tracking-wider text-white/90">6th Annual Leaders Gathering 2025</span>
+                            <span class="text-[10px] sm:text-xs font-semibold tracking-wider text-white/90">6th Annual Leaders Gathering 2025</span>
                         </template>
                         <template x-if="i === 1">
-                            <span class="text-xs font-semibold tracking-wider text-white/90">The Annual Leaders Gathering (ALG)</span>
+                            <span class="text-[10px] sm:text-xs font-semibold tracking-wider text-white/90">The Annual Leaders Gathering (ALG)</span>
                         </template>
                     </div>
                     @php
@@ -136,29 +136,29 @@
                     <!-- Slide 0: Building Together For Impact (no long paragraph) -->
                     <template x-if="i === 0">
                         <div>
-                            <h1 class="mt-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.08] sm:leading-[1.05] tracking-tight text-white">Building Together For Impact</h1>
-                            <p class="mt-2 text-lg sm:text-xl md:text-2xl text-white/90">Inspiring Excellence Through Transformative Leadership</p>
+                            <h1 class="mt-2 sm:mt-3 md:mt-4 text-[28px] leading-[1.15] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal sm:leading-[1.08] md:leading-[1.05] tracking-tight text-white">Building Together For Impact</h1>
+                            <p class="mt-1.5 sm:mt-2 text-base sm:text-lg md:text-xl lg:text-2xl text-white/90">Inspiring Excellence Through Transformative Leadership</p>
                         </div>
                     </template>
                     <!-- Slide 1: About ALG (with long paragraph) -->
                     <template x-if="i === 1">
                         <div>
-                            <h1 class="mt-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.08] sm:leading-[1.05] tracking-tight text-white">About ALG</h1>
-                            <p class="mt-3 sm:mt-4 max-w-3xl text-[15px] sm:text-lg md:text-xl text-white/85">
-                                The Annual Leaders Gathering is the LéO Africa Institute’s signature convening platform. It brings together its growing networks of leaders for significant conversations, networking, and deliberation on actions necessary to address the day's challenges.
+                            <h1 class="mt-2 sm:mt-3 md:mt-4 text-[28px] leading-[1.15] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal sm:leading-[1.08] md:leading-[1.05] tracking-tight text-white">About ALG</h1>
+                            <p class="mt-2 sm:mt-3 md:mt-4 max-w-3xl text-sm sm:text-[15px] md:text-lg lg:text-xl text-white/85">
+                                The Annual Leaders Gathering is the LéO Africa Institute's signature convening platform. It brings together its growing networks of leaders for significant conversations, networking, and deliberation on actions necessary to address the day's challenges.
                             </p>
                         </div>
                     </template>
                     <!-- Slide 2: Announcing 2025 ALG Speakers -->
                     <template x-if="i === 2">
                         <div>
-                            <h1 class="mt-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.08] sm:leading-[1.05] tracking-tight text-white">Announcing 2025 ALG Speakers</h1>
+                            <h1 class="mt-2 sm:mt-3 md:mt-4 text-[28px] leading-[1.15] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal sm:leading-[1.08] md:leading-[1.05] tracking-tight text-white">Announcing 2025 ALG Speakers</h1>
                         </div>
                     </template>
                     <!-- Slide 3: Previous ALG Editions -->
                     <template x-if="i === 3">
                         <div>
-                            <h1 class="mt-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.08] sm:leading-[1.05] tracking-tight text-white">Previous ALG Editions</h1>
+                            <h1 class="mt-2 sm:mt-3 md:mt-4 text-[28px] leading-[1.15] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal sm:leading-[1.08] md:leading-[1.05] tracking-tight text-white">Previous ALG Editions</h1>
                         </div>
                     </template>
 
@@ -167,17 +167,17 @@
                         $when = $dt->format('F j, Y • g:i A');
                         $where = $event->location ?: 'Kampala, Uganda';
                     @endphp
-                    <div class="mt-5 flex flex-col sm:flex-row gap-2 sm:gap-3 text-white">
-                        <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/40 border border-white/35 backdrop-blur-sm shadow-md shadow-black/10">
-                            <svg class="w-4 h-4 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                            <span class="text-[12.5px] sm:text-[13.5px] font-medium tracking-normal leading-none">{{ $when }}</span>
+                    <div class="mt-3 sm:mt-4 md:mt-5 flex flex-col sm:flex-row gap-2 sm:gap-2.5 md:gap-3 text-white">
+                        <div class="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 rounded-full bg-black/40 border border-white/35 backdrop-blur-sm shadow-md shadow-black/10">
+                            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                            <span class="text-[11px] sm:text-[12.5px] md:text-[13.5px] font-medium tracking-normal leading-none">{{ $when }}</span>
                         </div>
-                        <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/40 border border-white/35 backdrop-blur-sm shadow-md shadow-black/10">
-                            <svg class="w-4 h-4 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a7 7 0 00-7 7c0 5.25 7 11 7 11s7-5.75 7-11a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
-                            <span class="text-[12.5px] sm:text-[13.5px] font-medium tracking-normal leading-none">{{ $where }}</span>
+                        <div class="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 rounded-full bg-black/40 border border-white/35 backdrop-blur-sm shadow-md shadow-black/10">
+                            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a7 7 0 00-7 7c0 5.25 7 11 7 11s7-5.75 7-11a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                            <span class="text-[11px] sm:text-[12.5px] md:text-[13.5px] font-medium tracking-normal leading-none">{{ $where }}</span>
                         </div>
                     </div>
-                    <div class="relative z-10 mt-5 sm:mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-2.5 sm:gap-3">
+                    <div class="relative z-10 mt-3 sm:mt-5 md:mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-2 sm:gap-2.5 md:gap-3">
                         @php
                             // Always use a clear Reserve CTA for the primary action
                             $computedPrimaryLabel = 'Reserve your seat';
@@ -185,34 +185,34 @@
                             $secondaryCtaLabel = $event->secondary_cta_label ?: 'Learn more';
                             $secondaryCtaUrl = $event->secondary_cta_url ?: url('/about');
                         @endphp
-                        <a href="{{ $computedPrimaryUrl }}" class="group relative h-12 sm:h-11 px-6 inline-flex items-center justify-center bg-teal-600 hover:bg-teal-500 text-white font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 shadow-lg hover:shadow-teal-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 text-center gap-2 w-full sm:w-auto">
+                        <a href="{{ $computedPrimaryUrl }}" class="group relative h-11 sm:h-11 md:h-12 px-5 sm:px-6 inline-flex items-center justify-center bg-teal-600 hover:bg-teal-500 text-white font-semibold text-sm sm:text-base rounded-full transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 shadow-lg hover:shadow-teal-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 text-center gap-2 w-full sm:w-auto">
                             <span class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/10"></span>
                             <span class="relative">{{ $computedPrimaryLabel }}</span>
-                            <svg class="relative w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            <svg class="relative w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                         </a>
-                        <a href="{{ $secondaryCtaUrl }}" class="h-12 sm:h-11 px-6 inline-flex items-center justify-center bg-white/10 text-white hover:bg-white/15 font-semibold rounded-full border border-white/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 text-center w-full sm:w-auto">
+                        <a href="{{ $secondaryCtaUrl }}" class="h-11 sm:h-11 md:h-12 px-5 sm:px-6 inline-flex items-center justify-center bg-white/10 text-white hover:bg-white/15 font-semibold text-sm sm:text-base rounded-full border border-white/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 text-center w-full sm:w-auto">
                             {{ $secondaryCtaLabel }}
                         </a>
                     </div>
 
                     @if($showPartners)
-                        <div class="mt-7 inline-flex items-center gap-3 px-3 py-2 rounded-2xl bg-black/35 border border-white/15 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.35)]">
-                            <span class="text-[13px] sm:text-sm font-semibold text-white/90">#ALG2025 is brought to you by</span>
-                            <span class="inline-flex items-center rounded-lg px-2 py-1 bg-white/5 border border-white/10 shadow-inner transition-transform duration-300 hover:-translate-y-0.5 group">
+                        <div class="mt-4 sm:mt-6 md:mt-7 flex flex-wrap items-center gap-2 sm:gap-2.5 md:gap-3 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl bg-black/35 border border-white/15 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.35)]">
+                            <span class="text-[11px] sm:text-[13px] md:text-sm font-semibold text-white/90">#ALG2025 is brought to you by</span>
+                            <span class="inline-flex items-center rounded-md sm:rounded-lg px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white/5 border border-white/10 shadow-inner transition-transform duration-300 hover:-translate-y-0.5 group">
                                 <a href="https://leoafricainstitute.org/" target="_blank" rel="noopener" aria-label="LéO Africa Institute" class="inline-flex items-center">
-                                    <img src="/assets/logos/Leo-africa-institute-light.svg" alt="LéO Africa Institute" class="h-9 md:h-10 w-auto object-contain align-middle drop-shadow transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy">
+                                    <img src="/assets/logos/Leo-africa-institute-light.svg" alt="LéO Africa Institute" class="h-7 sm:h-8 md:h-9 lg:h-10 w-auto object-contain align-middle drop-shadow transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy">
                                 </a>
                             </span>
-                            <span class="text-[13px] sm:text-sm font-semibold text-white/90">in partnership with</span>
-                            <span class="inline-flex items-center gap-2">
-                                <span class="inline-flex items-center rounded-lg px-2 py-1 bg-white/5 border border-white/10 shadow-inner transition-transform duration-300 hover:-translate-y-0.5">
+                            <span class="text-[11px] sm:text-[13px] md:text-sm font-semibold text-white/90">in partnership with</span>
+                            <span class="inline-flex items-center gap-1.5 sm:gap-2">
+                                <span class="inline-flex items-center rounded-md sm:rounded-lg px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white/5 border border-white/10 shadow-inner transition-transform duration-300 hover:-translate-y-0.5">
                                     <a href="https://www.kas.de/en/web/uganda" target="_blank" rel="noopener" aria-label="Konrad Adenauer Stiftung">
-                                        <img src="/assets/logos/KAS.png" alt="Konrad Adenauer Stiftung" class="h-9 md:h-10 w-auto object-contain align-middle drop-shadow" loading="lazy">
+                                        <img src="/assets/logos/KAS.png" alt="Konrad Adenauer Stiftung" class="h-7 sm:h-8 md:h-9 lg:h-10 w-auto object-contain align-middle drop-shadow" loading="lazy">
                                     </a>
                                 </span>
-                                <span class="inline-flex items-center rounded-lg px-2 py-1 bg-white/5 border border-white/10 shadow-inner transition-transform duration-300 hover:-translate-y-0.5">
+                                <span class="inline-flex items-center rounded-md sm:rounded-lg px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white/5 border border-white/10 shadow-inner transition-transform duration-300 hover:-translate-y-0.5">
                                     <a href="https://www.segalfamilyfoundation.org/" target="_blank" rel="noopener" aria-label="Segal Family Foundation">
-                                        <img src="/assets/logos/Segal-light.svg" alt="Segal Family Foundation" class="h-9 md:h-10 w-auto object-contain align-middle drop-shadow" loading="lazy">
+                                        <img src="/assets/logos/Segal-light.svg" alt="Segal Family Foundation" class="h-7 sm:h-8 md:h-9 lg:h-10 w-auto object-contain align-middle drop-shadow" loading="lazy">
                                     </a>
                                 </span>
                             </span>
