@@ -91,7 +91,7 @@
                     </a>
                     <a href="https://leoafricareview.com" target="_blank" rel="noopener" class="group flex items-center justify-start gap-4 p-3 h-16 rounded-xl transition transform hover:-translate-y-0.5">
                         <span class="flex items-center justify-start">
-                            <img src="/assets/logos/Leo-africa-review.png" alt="LéO Africa Review" class="max-h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy">
+                            <img src="/assets/logos/Leo-africa-review.svg" alt="LéO Africa Review" class="max-h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy">
                         </span>
                         <svg class="w-4 h-4 text-white/60 group-hover:text-teal-400 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </a>
