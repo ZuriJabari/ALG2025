@@ -195,38 +195,24 @@
                         </a>
                     </div>
 
-                    <!-- Stats Row -->
-                    <div class="mt-5 sm:mt-6 grid grid-cols-3 gap-2 sm:gap-3 max-w-md sm:max-w-lg">
-                        <div class="rounded-xl bg-black/35 border border-white/10 px-3 py-2 text-center">
-                            <div class="text-lg sm:text-xl font-semibold text-white">6th</div>
-                            <div class="text-[10px] sm:text-xs text-white/70">Annual Edition</div>
-                        </div>
-                        <div class="rounded-xl bg-black/35 border border-white/10 px-3 py-2 text-center">
-                            <div class="text-lg sm:text-xl font-semibold text-white">500+</div>
-                            <div class="text-[10px] sm:text-xs text-white/70">Attendees</div>
-                        </div>
-                        <div class="rounded-xl bg-black/35 border border-white/10 px-3 py-2 text-center">
-                            <div class="text-lg sm:text-xl font-semibold text-white">20+</div>
-                            <div class="text-[10px] sm:text-xs text-white/70">Partners</div>
-                        </div>
-                    </div>
+                    
 
                     @if($showPartners)
                         <div class="mt-4 sm:mt-6 md:mt-7 flex flex-wrap items-center gap-2 sm:gap-2.5 md:gap-3 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl bg-black/35 border border-white/15 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.35)]">
                             <span class="text-[11px] sm:text-[13px] md:text-sm font-semibold text-white/90">ALG is an Initiative of</span>
-                            <span class="inline-flex items-center rounded-md sm:rounded-lg px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white/5 transition-transform duration-300 hover:-translate-y-0.5 group">
+                            <span class="inline-flex items-center group">
                                 <a href="https://leoafricainstitute.org/" target="_blank" rel="noopener" aria-label="LéO Africa Institute" class="inline-flex items-center">
                                     <img src="/assets/logos/Leo-africa-institute-light.svg" alt="LéO Africa Institute" class="h-9 sm:h-10 md:h-11 lg:h-12 w-auto object-contain align-middle drop-shadow transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy">
                                 </a>
                             </span>
                             <span class="text-[11px] sm:text-[13px] md:text-sm font-semibold text-white/90">, convened in partnership with</span>
                             <span class="inline-flex items-center gap-1.5 sm:gap-2">
-                                <span class="inline-flex items-center rounded-md sm:rounded-lg px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white/5 transition-transform duration-300 hover:-translate-y-0.5">
+                                <span class="inline-flex items-center">
                                     <a href="https://www.kas.de/en/web/uganda" target="_blank" rel="noopener" aria-label="Konrad Adenauer Stiftung">
                                         <img src="/assets/logos/KAS.png" alt="Konrad Adenauer Stiftung" class="h-9 sm:h-10 md:h-11 lg:h-12 w-auto object-contain align-middle drop-shadow" loading="lazy">
                                     </a>
                                 </span>
-                                <span class="inline-flex items-center rounded-md sm:rounded-lg px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white/5 transition-transform duration-300 hover:-translate-y-0.5">
+                                <span class="inline-flex items-center">
                                     <a href="https://www.segalfamilyfoundation.org/" target="_blank" rel="noopener" aria-label="Segal Family Foundation">
                                         <img src="/assets/logos/Segal-light.svg" alt="Segal Family Foundation" class="h-9 sm:h-10 md:h-11 lg:h-12 w-auto object-contain align-middle drop-shadow" loading="lazy">
                                     </a>
@@ -235,15 +221,7 @@
                         </div>
                     @endif
 
-                    <!-- Partner Marquee -->
-                    <div class="mt-5 sm:mt-6 overflow-hidden" aria-hidden="true">
-                        <div class="flex items-center gap-6 animate-[scroll_30s_linear_infinite] opacity-80">
-                            <img src="/assets/logos/Leo-africa-institute-light.svg" alt="LéO Africa Institute" class="h-7 sm:h-8 w-auto object-contain">
-                            <img src="/assets/logos/KAS.png" alt="KAS" class="h-7 sm:h-8 w-auto object-contain">
-                            <img src="/assets/logos/Segal-light.svg" alt="Segal Family Foundation" class="h-7 sm:h-8 w-auto object-contain">
-                            <img src="/assets/logos/ALG.png" alt="ALG" class="h-7 sm:h-8 w-auto object-contain">
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <!-- Controls / Indicators -->
