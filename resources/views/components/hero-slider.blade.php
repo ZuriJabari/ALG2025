@@ -136,14 +136,14 @@
                     <!-- Slide 0: Building Together For Impact (no long paragraph) -->
                     <template x-if="i === 0">
                         <div>
-                            <h1 class="mt-2 sm:mt-3 md:mt-4 text-[28px] leading-[1.15] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal sm:leading-[1.08] md:leading-[1.05] tracking-tight text-white">Building Together For Impact</h1>
-                            <p class="mt-1.5 sm:mt-2 text-base sm:text-lg md:text-xl lg:text-2xl text-white/90">Inspiring Excellence Through Transformative Leadership</p>
+                            <h1 class="mt-2 sm:mt-3 md:mt-4 text-[28px] leading-[1.15] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold sm:leading-[1.08] md:leading-[1.05] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-teal-200/90 drop-shadow-[0_6px_24px_rgba(0,0,0,0.25)]">Building Together For Impact</h1>
+                            <p class="mt-2 sm:mt-3 text-[15px] sm:text-lg md:text-xl lg:text-2xl text-white/85">Inspiring Excellence Through <span class="text-teal-300">Transformative Leadership</span></p>
                         </div>
                     </template>
                     <!-- Slide 1: About ALG (with long paragraph) -->
                     <template x-if="i === 1">
                         <div>
-                            <h1 class="mt-2 sm:mt-3 md:mt-4 text-[28px] leading-[1.15] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal sm:leading-[1.08] md:leading-[1.05] tracking-tight text-white">About ALG</h1>
+                            <h1 class="mt-2 sm:mt-3 md:mt-4 text-[28px] leading-[1.15] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold sm:leading-[1.08] md:leading-[1.05] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-teal-200/90">About ALG</h1>
                             <p class="mt-2 sm:mt-3 md:mt-4 max-w-3xl text-sm sm:text-[15px] md:text-lg lg:text-xl text-white/85">
                                 The Annual Leaders Gathering is the LéO Africa Institute's signature convening platform. It brings together its growing networks of leaders for significant conversations, networking, and deliberation on actions necessary to address the day's challenges.
                             </p>
@@ -167,7 +167,7 @@
                         $when = $dt->format('F j, Y • g:i A');
                         $where = $event->location ?: 'Kampala, Uganda';
                     @endphp
-                    <div class="mt-3 sm:mt-4 md:mt-5 flex flex-col sm:flex-row gap-2 sm:gap-2.5 md:gap-3 text-white">
+                    <div class="mt-4 sm:mt-5 md:mt-6 flex flex-col sm:flex-row gap-2 sm:gap-2.5 md:gap-3 text-white">
                         <div class="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 rounded-full bg-black/40 border border-white/35 backdrop-blur-sm shadow-md shadow-black/10">
                             <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                             <span class="text-[11px] sm:text-[12.5px] md:text-[13.5px] font-medium tracking-normal leading-none">{{ $when }}</span>
@@ -177,7 +177,7 @@
                             <span class="text-[11px] sm:text-[12.5px] md:text-[13.5px] font-medium tracking-normal leading-none">{{ $where }}</span>
                         </div>
                     </div>
-                    <div class="relative z-10 mt-3 sm:mt-5 md:mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-2 sm:gap-2.5 md:gap-3">
+                    <div class="relative z-10 mt-4 sm:mt-6 md:mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-2 sm:gap-2.5 md:gap-3">
                         @php
                             // Always use a clear Reserve CTA for the primary action
                             $computedPrimaryLabel = 'Reserve your seat';
@@ -185,39 +185,65 @@
                             $secondaryCtaLabel = $event->secondary_cta_label ?: 'Learn more';
                             $secondaryCtaUrl = $event->secondary_cta_url ?: url('/about');
                         @endphp
-                        <a href="{{ $computedPrimaryUrl }}" class="group relative h-11 sm:h-11 md:h-12 px-5 sm:px-6 inline-flex items-center justify-center bg-teal-600 hover:bg-teal-500 text-white font-semibold text-sm sm:text-base rounded-full transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 shadow-lg hover:shadow-teal-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 text-center gap-2 w-full sm:w-auto">
+                        <a href="{{ $computedPrimaryUrl }}" class="group relative h-12 sm:h-12 md:h-12 px-6 sm:px-7 inline-flex items-center justify-center bg-teal-600 hover:bg-teal-500 text-white font-semibold text-sm sm:text-base rounded-full transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 shadow-[0_10px_30px_rgba(20,184,166,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 text-center gap-2 w-full sm:w-auto">
                             <span class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/10"></span>
                             <span class="relative">{{ $computedPrimaryLabel }}</span>
                             <svg class="relative w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                         </a>
-                        <a href="{{ $secondaryCtaUrl }}" class="h-11 sm:h-11 md:h-12 px-5 sm:px-6 inline-flex items-center justify-center bg-white/10 text-white hover:bg-white/15 font-semibold text-sm sm:text-base rounded-full border border-white/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 text-center w-full sm:w-auto">
-                            {{ $secondaryCtaLabel }}
+                        <a href="{{ $secondaryCtaUrl }}" class="h-12 sm:h-12 md:h-12 px-6 sm:px-7 inline-flex items-center justify-center bg-white/10 text-white hover:bg-white/15 font-semibold text-sm sm:text-base rounded-full border border-white/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 text-center w-full sm:w-auto">
+                        {{ $secondaryCtaLabel }}
                         </a>
+                    </div>
+
+                    <!-- Stats Row -->
+                    <div class="mt-5 sm:mt-6 grid grid-cols-3 gap-2 sm:gap-3 max-w-md sm:max-w-lg">
+                        <div class="rounded-xl bg-black/35 border border-white/10 px-3 py-2 text-center">
+                            <div class="text-lg sm:text-xl font-semibold text-white">6th</div>
+                            <div class="text-[10px] sm:text-xs text-white/70">Annual Edition</div>
+                        </div>
+                        <div class="rounded-xl bg-black/35 border border-white/10 px-3 py-2 text-center">
+                            <div class="text-lg sm:text-xl font-semibold text-white">500+</div>
+                            <div class="text-[10px] sm:text-xs text-white/70">Attendees</div>
+                        </div>
+                        <div class="rounded-xl bg-black/35 border border-white/10 px-3 py-2 text-center">
+                            <div class="text-lg sm:text-xl font-semibold text-white">20+</div>
+                            <div class="text-[10px] sm:text-xs text-white/70">Partners</div>
+                        </div>
                     </div>
 
                     @if($showPartners)
                         <div class="mt-4 sm:mt-6 md:mt-7 flex flex-wrap items-center gap-2 sm:gap-2.5 md:gap-3 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl bg-black/35 border border-white/15 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.35)]">
-                            <span class="text-[11px] sm:text-[13px] md:text-sm font-semibold text-white/90">#ALG2025 is brought to you by</span>
-                            <span class="inline-flex items-center rounded-md sm:rounded-lg px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white/5 border border-white/10 shadow-inner transition-transform duration-300 hover:-translate-y-0.5 group">
+                            <span class="text-[11px] sm:text-[13px] md:text-sm font-semibold text-white/90">ALG is an Initiative of</span>
+                            <span class="inline-flex items-center rounded-md sm:rounded-lg px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white/5 transition-transform duration-300 hover:-translate-y-0.5 group">
                                 <a href="https://leoafricainstitute.org/" target="_blank" rel="noopener" aria-label="LéO Africa Institute" class="inline-flex items-center">
-                                    <img src="/assets/logos/Leo-africa-institute-light.svg" alt="LéO Africa Institute" class="h-7 sm:h-8 md:h-9 lg:h-10 w-auto object-contain align-middle drop-shadow transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy">
+                                    <img src="/assets/logos/Leo-africa-institute-light.svg" alt="LéO Africa Institute" class="h-9 sm:h-10 md:h-11 lg:h-12 w-auto object-contain align-middle drop-shadow transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy">
                                 </a>
                             </span>
-                            <span class="text-[11px] sm:text-[13px] md:text-sm font-semibold text-white/90">in partnership with</span>
+                            <span class="text-[11px] sm:text-[13px] md:text-sm font-semibold text-white/90">, convened in partnership with</span>
                             <span class="inline-flex items-center gap-1.5 sm:gap-2">
-                                <span class="inline-flex items-center rounded-md sm:rounded-lg px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white/5 border border-white/10 shadow-inner transition-transform duration-300 hover:-translate-y-0.5">
+                                <span class="inline-flex items-center rounded-md sm:rounded-lg px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white/5 transition-transform duration-300 hover:-translate-y-0.5">
                                     <a href="https://www.kas.de/en/web/uganda" target="_blank" rel="noopener" aria-label="Konrad Adenauer Stiftung">
-                                        <img src="/assets/logos/KAS.png" alt="Konrad Adenauer Stiftung" class="h-7 sm:h-8 md:h-9 lg:h-10 w-auto object-contain align-middle drop-shadow" loading="lazy">
+                                        <img src="/assets/logos/KAS.png" alt="Konrad Adenauer Stiftung" class="h-9 sm:h-10 md:h-11 lg:h-12 w-auto object-contain align-middle drop-shadow" loading="lazy">
                                     </a>
                                 </span>
-                                <span class="inline-flex items-center rounded-md sm:rounded-lg px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white/5 border border-white/10 shadow-inner transition-transform duration-300 hover:-translate-y-0.5">
+                                <span class="inline-flex items-center rounded-md sm:rounded-lg px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white/5 transition-transform duration-300 hover:-translate-y-0.5">
                                     <a href="https://www.segalfamilyfoundation.org/" target="_blank" rel="noopener" aria-label="Segal Family Foundation">
-                                        <img src="/assets/logos/Segal-light.svg" alt="Segal Family Foundation" class="h-7 sm:h-8 md:h-9 lg:h-10 w-auto object-contain align-middle drop-shadow" loading="lazy">
+                                        <img src="/assets/logos/Segal-light.svg" alt="Segal Family Foundation" class="h-9 sm:h-10 md:h-11 lg:h-12 w-auto object-contain align-middle drop-shadow" loading="lazy">
                                     </a>
                                 </span>
                             </span>
                         </div>
                     @endif
+
+                    <!-- Partner Marquee -->
+                    <div class="mt-5 sm:mt-6 overflow-hidden" aria-hidden="true">
+                        <div class="flex items-center gap-6 animate-[scroll_30s_linear_infinite] opacity-80">
+                            <img src="/assets/logos/Leo-africa-institute-light.svg" alt="LéO Africa Institute" class="h-7 sm:h-8 w-auto object-contain">
+                            <img src="/assets/logos/KAS.png" alt="KAS" class="h-7 sm:h-8 w-auto object-contain">
+                            <img src="/assets/logos/Segal-light.svg" alt="Segal Family Foundation" class="h-7 sm:h-8 w-auto object-contain">
+                            <img src="/assets/logos/ALG.png" alt="ALG" class="h-7 sm:h-8 w-auto object-contain">
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Controls / Indicators -->
