@@ -274,7 +274,7 @@
         <div class="absolute -inset-1 bg-gradient-to-r from-white/5 via-white/0 to-white/0 rounded-3xl pointer-events-none"></div>
         <div class="relative grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 p-6 sm:p-8">
           <div class="md:col-span-2 flex items-center justify-center border-r border-white/10">
-            <div class="h-24 w-24 sm:h-28 sm:w-28 rounded-xl flex items-center justify-center p-3">
+            <div class="h-36 w-36 sm:h-42 sm:w-42 rounded-xl flex items-center justify-center p-4">
               <img src="{{ asset('assets/logos/ALG.png') }}" alt="ALG logo" class="w-full h-full object-contain" loading="lazy"/>
             </div>
           </div>
