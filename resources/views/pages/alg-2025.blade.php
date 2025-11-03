@@ -219,36 +219,54 @@
           </a>
         </div>
         <div class="mt-6">
-          @php
-            $gallery = [];
-            foreach (range(1, 8) as $n) {
-              foreach (['avif','webp','jpg','jpeg','png'] as $ext) {
-                $path = public_path(sprintf('assets/hero/hero%02d.%s', $n, $ext));
-                if (file_exists($path)) {
-                  $gallery[] = [
-                    'src' => asset(sprintf('assets/hero/hero%02d.%s', $n, $ext)),
-                    'alt' => 'ALG gallery image '.$n,
-                  ];
-                  break;
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+            <!-- Left: 2-column image grid (larger) -->
+            <div class="md:col-span-7">
+              @php
+                $gallery = [];
+                foreach (range(1, 12) as $n) {
+                  // Exclude hero01.* specifically
+                  if ($n === 1) { continue; }
+                  foreach (['avif','webp','jpg','jpeg','png'] as $ext) {
+                    $path = public_path(sprintf('assets/hero/hero%02d.%s', $n, $ext));
+                    if (file_exists($path)) {
+                      $gallery[] = [
+                        'src' => asset(sprintf('assets/hero/hero%02d.%s', $n, $ext)),
+                        'alt' => 'ALG gallery image '.$n,
+                      ];
+                      break;
+                    }
+                  }
                 }
-              }
-            }
-          @endphp
-          <div class="grid grid-cols-2 gap-3">
-            @foreach(array_slice($gallery, 0, 4) as $g)
-              <a href="https://www.flickr.com/photos/africaforum/albums/72177720322157081/" target="_blank" class="group relative block overflow-hidden rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-                <img src="{{ $g['src'] }}" alt="{{ $g['alt'] }}" class="w-full aspect-[4/3] object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy"/>
-                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
-              </a>
-            @endforeach
-            @if(empty($gallery))
-              <div class="col-span-2 text-gray-600 dark:text-gray-400 text-sm">Gallery coming soon.</div>
-            @endif
+              @endphp
+              <div class="grid grid-cols-2 gap-3">
+                @foreach(array_slice($gallery, 0, 4) as $g)
+                  <a href="https://www.flickr.com/photos/africaforum/albums/72177720322157081" target="_blank" class="group relative block overflow-hidden rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+                    <img src="{{ $g['src'] }}" alt="{{ $g['alt'] }}" class="w-full aspect-[4/3] object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy"/>
+                    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+                  </a>
+                @endforeach
+                @if(empty($gallery))
+                  <div class="col-span-2 text-gray-600 dark:text-gray-400 text-sm">Gallery coming soon.</div>
+                @endif
+              </div>
+            </div>
+            <!-- Right: Description -->
+            <div class="md:col-span-5">
+              <div class="rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-6 h-full flex flex-col justify-between">
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Annual Leaders Gathering 2024</h3>
+                  <p class="mt-3 text-gray-700 dark:text-gray-300">A visual story from our 2024 gathering. Explore moments of insight, connection, and action that set the stage for an even bigger 2025.</p>
+                </div>
+                <div class="mt-4 pt-2">
+                  <a href="https://www.flickr.com/photos/africaforum/albums/72177720322157081" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-600 text-white font-semibold hover:bg-teal-500 transition">
+                    <span>View full album on Flickr</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-          <a href="https://www.flickr.com/photos/africaforum/albums/72177720322157081/" target="_blank" class="mt-4 inline-flex items-center gap-2 text-teal-700 dark:text-teal-400 hover:underline">
-            <span>More photos on Flickr</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </a>
         </div>
       </div>
     </section>
