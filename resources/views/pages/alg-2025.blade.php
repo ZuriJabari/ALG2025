@@ -42,7 +42,7 @@
           <div class="hidden md:block md:col-span-5 relative">
             <div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-[0.28]">
               <div class="absolute inset-0"
-                   style="background-image:url('{{ asset('assets/logos/alg-bg.png') }}'); background-repeat:no-repeat; background-size:contain; background-position:right bottom; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.18));"></div>
+                   style="background-image: url('{{ asset('assets/logos/alg-bg.png') }}?v={{ file_exists(public_path('assets/logos/alg-bg.png')) ? filemtime(public_path('assets/logos/alg-bg.png')) : 0 }}'), url('https://live.staticflickr.com/65535/54163592488_ea309df851.jpg'); background-repeat:no-repeat; background-size:contain; background-position:right bottom; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.18));"></div>
             </div>
           </div>
         </div>
