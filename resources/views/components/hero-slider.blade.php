@@ -75,7 +75,7 @@
 
     <div class="relative w-full {{ $full ? ($fullOffset ? 'h-auto' : 'h-screen') : 'h-[80vh] sm:h-[75vh] lg:h-[78vh]' }}" x-data="{
         i: 0,
-        size: {{ count($resolvedSlides) }},
+        size: Math.min({{ count($resolvedSlides) }}, 2),
         auto: true,
         intervalMs: 6500,
         timer: null,
@@ -123,20 +123,44 @@
                          style="background: linear-gradient(90deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.52) 40%, rgba(0,0,0,0.32) 65%, rgba(0,0,0,0) 100%); backdrop-filter: blur(3px);"></div>
                     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 shadow-[0_0_0_1px_rgba(255,255,255,0.06)]">
                         <span class="w-2 h-2 rounded-full bg-teal-400"></span>
-                        <span class="text-xs font-semibold tracking-wider text-white/90">{{ $event->subtitle ?: 'ALG ' . ($event->year ?? '2025') }}</span>
+                        <template x-if="i !== 1">
+                            <span class="text-xs font-semibold tracking-wider text-white/90">6th Annual Leaders Gathering 2025</span>
+                        </template>
+                        <template x-if="i === 1">
+                            <span class="text-xs font-semibold tracking-wider text-white/90">The Annual Leaders Gathering (ALG)</span>
+                        </template>
                     </div>
                     @php
-                        $displayTitle = $title ?: ($event->title ?? 'Annual Leaders Gathering');
                         $desc = $description ?: ($hero?->description ?: ($event->hero_description ?: $event->description));
                     @endphp
-                    <h1 class="mt-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.08] sm:leading-[1.05] tracking-tight text-white">
-                        {{ $displayTitle }}
-                    </h1>
-                    @if($desc)
-                        <p class="mt-3 sm:mt-4 max-w-3xl text-[15px] sm:text-lg md:text-xl text-white/85">
-                            {{ $desc }}
-                        </p>
-                    @endif
+                    <!-- Slide 0: Building Together For Impact (no long paragraph) -->
+                    <template x-if="i === 0">
+                        <div>
+                            <h1 class="mt-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.08] sm:leading-[1.05] tracking-tight text-white">Building Together For Impact</h1>
+                            <p class="mt-2 text-lg sm:text-xl md:text-2xl text-white/90">Inspiring Excellence Through Transformative Leadership</p>
+                        </div>
+                    </template>
+                    <!-- Slide 1: About ALG (with long paragraph) -->
+                    <template x-if="i === 1">
+                        <div>
+                            <h1 class="mt-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.08] sm:leading-[1.05] tracking-tight text-white">About ALG</h1>
+                            <p class="mt-3 sm:mt-4 max-w-3xl text-[15px] sm:text-lg md:text-xl text-white/85">
+                                The Annual Leaders Gathering is the LéO Africa Institute’s signature convening platform. It brings together its growing networks of leaders for significant conversations, networking, and deliberation on actions necessary to address the day's challenges.
+                            </p>
+                        </div>
+                    </template>
+                    <!-- Slide 2: Announcing 2025 ALG Speakers -->
+                    <template x-if="i === 2">
+                        <div>
+                            <h1 class="mt-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.08] sm:leading-[1.05] tracking-tight text-white">Announcing 2025 ALG Speakers</h1>
+                        </div>
+                    </template>
+                    <!-- Slide 3: Previous ALG Editions -->
+                    <template x-if="i === 3">
+                        <div>
+                            <h1 class="mt-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.08] sm:leading-[1.05] tracking-tight text-white">Previous ALG Editions</h1>
+                        </div>
+                    </template>
 
                     @php
                         $dt = $event?->start_at ? \Illuminate\Support\Carbon::parse($event->start_at) : \Illuminate\Support\Carbon::create(2025,12,13,9,0);
@@ -155,8 +179,9 @@
                     </div>
                     <div class="relative z-10 mt-5 sm:mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-2.5 sm:gap-3">
                         @php
-                            $computedPrimaryLabel = $primaryCtaLabel ?: ($event->primary_cta_label ?: 'Reserve your seat');
-                            $computedPrimaryUrl = $primaryCtaUrl ?: ($event->primary_cta_url ?: route('seat-reservations.create'));
+                            // Always use a clear Reserve CTA for the primary action
+                            $computedPrimaryLabel = 'Reserve your seat';
+                            $computedPrimaryUrl = url('/reserve-seat');
                             $secondaryCtaLabel = $event->secondary_cta_label ?: 'Learn more';
                             $secondaryCtaUrl = $event->secondary_cta_url ?: url('/about');
                         @endphp
@@ -203,6 +228,9 @@
                         </button>
                         <div class="flex items-center gap-1.5">
                             @foreach($resolvedSlides as $idx => $_)
+                                @if($idx > 1)
+                                    @break
+                                @endif
                                 <button type="button" @click="i={{ $idx }}" class="h-2.5 w-2.5 rounded-full transition-all duration-300" :class="i==={{ $idx }} ? 'bg-white shadow-[0_0_0_3px_rgba(255,255,255,0.35)] scale-110' : 'bg-white/40 hover:bg-white/60'" aria-label="Go to slide {{ $idx+1 }}"></button>
                             @endforeach
                         </div>

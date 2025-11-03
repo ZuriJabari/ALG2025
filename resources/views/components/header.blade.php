@@ -19,10 +19,11 @@
             </a>
         </div>
 
-        <!-- Right: ALG2025 Link -->
+        <!-- Right: #ALG2025 Button -->
         <div class="flex items-center justify-end pr-4 sm:pr-6">
-            <a href="{{ url('/alg-2025') }}" class="inline-flex px-4 sm:px-5 py-2 text-xs sm:text-sm rounded-full border border-white/20 text-white/90 hover:text-white hover:bg-transparent transition-all duration-300">
-                ALG2025
+            <a href="{{ url('/alg-2025') }}" class="group relative inline-flex items-center gap-2 h-10 sm:h-11 px-4 sm:px-5 rounded-full bg-teal-600 text-white font-semibold shadow-lg hover:bg-teal-500 transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40">
+                <span>#ALG2025</span>
+                <svg class="w-4 h-4 opacity-90 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
         </div>
     </nav>
