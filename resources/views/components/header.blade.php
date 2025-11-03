@@ -1,5 +1,5 @@
 <header class="absolute top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent pointer-events-none" x-data="{ mobileMenuOpen: false }" x-effect="document.body.classList.toggle('overflow-hidden', mobileMenuOpen)">
-    <nav class="w-full px-0 sm:px-0 lg:px-0 py-2 sm:py-3 md:py-4 grid grid-cols-3 items-center bg-transparent pointer-events-auto">
+    <nav class="w-full px-0 sm:px-0 lg:px-0 py-2 sm:py-3 md:py-4 grid grid-cols-3 items-center bg-transparent pointer-events-auto" style="padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right));">
         <!-- Left: Hamburger -->
         <div class="flex items-center pl-4 sm:pl-4 md:pl-6">
             <button class="inline-flex items-center justify-center h-9 w-9 sm:h-10 sm:w-10 text-gray-200 hover:text-white transition-all duration-300" @click="mobileMenuOpen = !mobileMenuOpen" :aria-expanded="mobileMenuOpen.toString()" aria-label="Open menu">

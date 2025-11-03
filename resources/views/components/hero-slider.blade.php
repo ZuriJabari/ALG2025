@@ -167,14 +167,18 @@
                         $when = $dt->format('F j, Y • g:i A');
                         $where = $event->location ?: 'Kampala, Uganda';
                     @endphp
-                    <div class="mt-3.5 sm:mt-5 md:mt-6 flex flex-col sm:flex-row gap-1.5 sm:gap-2.5 md:gap-3 text-white">
-                        <div class="inline-flex items-center gap-1 sm:gap-1.5 px-1.5 sm:px-2.5 md:px-3 py-0.5 sm:py-1.5 rounded-full bg-black/40 border border-white/35 backdrop-blur-sm shadow-md shadow-black/10">
-                            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                            <span class="text-[11px] sm:text-[12.5px] md:text-[13.5px] font-medium tracking-normal leading-none">{{ $when }}</span>
+                    <div class="mt-3.5 sm:mt-5 md:mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-2.5 md:gap-3 text-white">
+                        <div class="inline-flex items-center justify-center sm:justify-start gap-2 sm:gap-2.5 px-3 sm:px-3.5 md:px-4 py-1.5 sm:py-1.5 rounded-full bg-black/55 border border-white/35 backdrop-blur-sm shadow-md shadow-black/10">
+                            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white/10 border border-white/20">
+                                <svg class="w-3.5 h-3.5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                            </span>
+                            <span class="text-[12.5px] sm:text-[13px] md:text-[14px] font-medium leading-none">{{ $when }}</span>
                         </div>
-                        <div class="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 rounded-full bg-black/40 border border-white/35 backdrop-blur-sm shadow-md shadow-black/10">
-                            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a7 7 0 00-7 7c0 5.25 7 11 7 11s7-5.75 7-11a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
-                            <span class="text-[11px] sm:text-[12.5px] md:text-[13.5px] font-medium tracking-normal leading-none">{{ $where }}</span>
+                        <div class="inline-flex items-center justify-center sm:justify-start gap-2 sm:gap-2.5 px-3 sm:px-3.5 md:px-4 py-1.5 sm:py-1.5 rounded-full bg-black/55 border border-white/35 backdrop-blur-sm shadow-md shadow-black/10">
+                            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white/10 border border-white/20">
+                                <svg class="w-3.5 h-3.5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a7 7 0 00-7 7c0 5.25 7 11 7 11s7-5.75 7-11a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                            </span>
+                            <span class="text-[12.5px] sm:text-[13px] md:text-[14px] font-medium leading-none">{{ $where }}</span>
                         </div>
                     </div>
                     <div class="relative z-10 mt-4 sm:mt-6 md:mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-2 sm:gap-2.5 md:gap-3">
@@ -198,7 +202,7 @@
                     
 
                     @if($showPartners)
-                        <div class="mt-3.5 sm:mt-6 md:mt-7 flex flex-wrap items-center gap-2 sm:gap-2.5 md:gap-3">
+                        <div class="mt-4 sm:mt-6 md:mt-7 flex flex-wrap items-center justify-center sm:justify-start gap-x-2 sm:gap-x-3 gap-y-1.5 sm:gap-y-2">
                             <span class="text-[10px] sm:text-[13px] md:text-sm font-medium text-white/90">ALG is an Initiative of</span>
                             <span class="inline-flex items-center group">
                                 <a href="https://leoafricainstitute.org/" target="_blank" rel="noopener" aria-label="LéO Africa Institute" class="inline-flex items-center">
@@ -206,7 +210,7 @@
                                 </a>
                             </span>
                             <span class="text-[10px] sm:text-[13px] md:text-sm font-medium text-white/90 block sm:inline mt-0.5 sm:mt-0">convened in partnership with</span>
-                            <span class="inline-flex items-center gap-1.5 sm:gap-3 w-full sm:w-auto">
+                            <span class="inline-flex items-center gap-x-2 sm:gap-x-3 gap-y-1.5 w-full sm:w-auto justify-center sm:justify-start flex-wrap">
                                 <span class="inline-flex items-center group">
                                     <a href="https://www.kas.de/en/web/uganda" target="_blank" rel="noopener" aria-label="Konrad Adenauer Stiftung">
                                         <img src="/assets/logos/KAS.png" alt="Konrad Adenauer Stiftung" class="h-8 sm:h-10 md:h-11 lg:h-12 w-auto object-contain align-middle drop-shadow transition-transform duration-300 hover:scale-105 group-hover:scale-105 cursor-pointer" loading="lazy">
