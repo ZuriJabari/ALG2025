@@ -12,6 +12,21 @@
   <x-header />
 
   <main>
+    @php
+      $event = \App\Models\Domain\Event::where('year', 2025)->first();
+      $singleSlide = [ ['src' => asset('assets/hero/hero01.jpg'), 'alt' => 'ALG 2025 hero'] ];
+      $heroTitle = 'Building Together For Impact';
+      $heroSub = 'Inspiring Excellence Through Transformative Leadership';
+    @endphp
+    <x-hero-slider :event="$event"
+                   :slides="$singleSlide"
+                   :title="$heroTitle"
+                   :description="$heroSub"
+                   :show-partners="true"
+                   :full="true"
+                   primary-cta-label="Reserve your seat"
+                   primary-cta-url="{{ url('/reserve-seat') }}" />
+
     <section class="relative overflow-hidden">
       <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image:url('{{ asset('assets/1x/artwork.png') }}');background-repeat:no-repeat;background-position:right -60px top -40px;background-size:640px auto"></div>
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-12 sm:pb-20">
