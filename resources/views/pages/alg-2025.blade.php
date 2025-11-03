@@ -7,8 +7,8 @@
   <title>ALG 2025 – Annual Leaders Gathering</title>
   @include('partials.analytics')
   @if(app()->environment('production'))
-    <link rel="stylesheet" href="{{ asset('css/app-production.css') }}">
-    <script type="module" src="{{ asset('js/app-production.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/app-production.css') }}">
+    <script type="module" src="{{ asset('assets/app-production.js') }}"></script>
   @else
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   @endif
