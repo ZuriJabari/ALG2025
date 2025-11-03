@@ -118,7 +118,7 @@
         <div class="relative z-10 h-full">
             <div class="h-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 items-end pt-16 sm:pt-20 pb-2 sm:pb-4 md:pb-6 relative">
                 <div class="lg:col-span-9 relative flex h-full flex-col">
-                    <div style="height:18vh"></div>
+                    <div style="height:calc(18vh + 50px)"></div>
                     <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 shadow-[0_0_0_1px_rgba(255,255,255,0.06)] w-auto max-w-max whitespace-nowrap">
                         <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-teal-400"></span>
                         <template x-if="i !== 1">
