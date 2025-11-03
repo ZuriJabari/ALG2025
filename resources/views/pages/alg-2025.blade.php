@@ -92,7 +92,7 @@
       </div>
     </section>
 
-    <section class="relative py-12 sm:py-20 bg-gray-50 dark:bg-slate-900">
+    <section class="relative py-12 sm:py-20 bg-gray-50 dark:bg-slate-900" x-data="{ open:false, idx:0, items: [] }" x-init="$nextTick(()=>{ try { items = JSON.parse($refs.galleryJson.textContent); } catch(e){} })" @keydown.window.escape="open=false">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-baseline justify-between">
           <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">Multimedia</h2>
@@ -102,27 +102,27 @@
           </a>
         </div>
         <div class="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
-          <!-- Highlight Video -->
           <div class="lg:col-span-7">
-            <div class="group relative rounded-2xl overflow-hidden border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-lg lg:shadow-2xl">
+            <div class="group relative rounded-2xl overflow-hidden border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-xl hover:shadow-2xl transition-all duration-300">
               <div class="relative aspect-video">
                 <iframe class="w-full h-full" src="https://www.youtube.com/embed/9OaNTDzFtAE" title="ALG Highlight Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <div class="pointer-events-none absolute inset-0 ring-1 ring-black/5 dark:ring-white/10"></div>
+                <div class="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/40 to-transparent"></div>
               </div>
-              <div class="px-4 sm:px-5 py-3 border-t border-gray-200 dark:border-slate-800">
+              <div class="px-5 py-3 border-t border-gray-200 dark:border-slate-800 flex items-center justify-between">
                 <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300 text-sm">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                   <span>Highlight Video</span>
                 </div>
+                <span class="text-xs text-gray-500 dark:text-gray-400">00:00 / 02:34</span>
               </div>
             </div>
           </div>
 
-          <!-- Photo Gallery -->
           <div class="lg:col-span-5">
             @php
               $gallery = [];
-              foreach (range(1, 9) as $n) {
+              foreach (range(1, 12) as $n) {
                 foreach (['avif','webp','jpg','jpeg','png'] as $ext) {
                   $path = public_path(sprintf('assets/hero/hero%02d.%s', $n, $ext));
                   if (file_exists($path)) {
@@ -137,10 +137,10 @@
             @endphp
             <div class="grid grid-cols-3 gap-2 sm:gap-3">
               @foreach(array_slice($gallery, 0, 9) as $g)
-                <a href="{{ $g['src'] }}" target="_blank" class="group relative block overflow-hidden rounded-xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-                  <img src="{{ $g['src'] }}" alt="{{ $g['alt'] }}" class="w-full h-24 sm:h-28 object-cover transition duration-300 group-hover:scale-[1.03]" loading="lazy">
-                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
-                </a>
+                <button type="button" @click="open=true; idx={{ $loop->index }}" class="group relative block overflow-hidden rounded-xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-teal-500/40 ring-offset-0">
+                  <img src="{{ $g['src'] }}" alt="{{ $g['alt'] }}" class="w-full aspect-square object-cover transition duration-300 group-hover:scale-[1.04]" loading="lazy">
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+                </button>
               @endforeach
               @if(empty($gallery))
                 <div class="col-span-3 text-gray-600 dark:text-gray-400 text-sm">Gallery coming soon.</div>
@@ -150,10 +150,32 @@
               <span>More photos on Flickr</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
+            <script type="application/json" x-ref="galleryJson">@json(array_values(array_map(fn($i) => $i['src'], $gallery)))</script>
           </div>
         </div>
 
-        <!-- Resources / Contact -->
+        <div x-show="open" x-transition.opacity class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4" @keydown.window.arrow-right.prevent="idx = (idx + 1) % items.length" @keydown.window.arrow-left.prevent="idx = (idx - 1 + items.length) % items.length">
+          <div class="relative max-w-7xl w-full">
+            <button @click="open=false" class="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 transition">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-black">
+              <img :src="items[idx]" alt="ALG gallery" class="w-full h-auto max-h-[80vh] object-contain">
+              <div class="absolute inset-0 pointer-events-none ring-1 ring-white/10"></div>
+            </div>
+            <div class="mt-3 flex items-center justify-between">
+              <button @click="idx = (idx - 1 + items.length) % items.length" class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/10 text-white hover:bg-white/15 transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                <span class="text-sm">Previous</span>
+              </button>
+              <button @click="idx = (idx + 1) % items.length" class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/10 text-white hover:bg-white/15 transition">
+                <span class="text-sm">Next</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
         <div class="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
           <div class="lg:col-span-7"></div>
           <div class="lg:col-span-5 grid gap-4">
