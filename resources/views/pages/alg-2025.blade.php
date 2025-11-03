@@ -32,8 +32,8 @@
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Artistic background -->
         <div aria-hidden="true" class="pointer-events-none absolute -inset-x-8 -top-8 bottom-0">
-          <div class="absolute right-[-6%] top-[-10%] w-[780px] sm:w-[880px] lg:w-[980px] aspect-[4/3] opacity-[0.08] sm:opacity-[0.12] mix-blend-overlay"
-               style="background-image:url('{{ asset('assets/alg-bg.png') }}'); background-repeat:no-repeat; background-size:contain; background-position:right top; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));"></div>
+          <div class="absolute right-[-4%] bottom-[-6%] w-[720px] sm:w-[860px] lg:w-[980px] aspect-[4/3] opacity-[0.14] sm:opacity-[0.18] mix-blend-overlay"
+               style="background-image:url('{{ asset('assets/logos/alg-bg.png') }}'); background-repeat:no-repeat; background-size:contain; background-position:right bottom; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));"></div>
         </div>
         <div class="relative max-w-3xl">
           <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">About the 2025 ALG</h2>
