@@ -15,7 +15,7 @@
         <!-- Center: Logo -->
         <div class="flex items-center justify-center">
             <a href="/" class="flex items-center gap-2 group flex-shrink-0">
-                <img src="/assets/dark-logo.png" alt="ALG" class="h-10 sm:h-12 md:h-14 lg:h-16 w-auto transition-transform group-hover:scale-105">
+                <img src="/assets/logos/ALG-light.svg" alt="ALG" class="h-10 sm:h-12 md:h-14 lg:h-16 w-auto transition-transform group-hover:scale-105">
             </a>
         </div>
 
