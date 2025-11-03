@@ -73,7 +73,7 @@
     <div class="pointer-events-none absolute inset-0 opacity-[0.08] mix-blend-overlay" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><filter id=\"n\"><feTurbulence type=\"fractalNoise\" baseFrequency=\"0.65\" numOctaves=\"2\" stitchTiles=\"stitch\"/></filter><rect width=\"100%\" height=\"100%\" filter=\"url(%23n)\" opacity=\"0.35\"/></svg>');"></div>
     <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_80%_10%,rgba(20,184,166,0.18),transparent_60%)]"></div>
 
-    <div class="relative w-full {{ $full ? ($fullOffset ? 'h-auto' : 'h-screen') : 'h-[95vh] sm:h-[90vh] lg:h-[92vh]' }}" x-data="{
+    <div class="relative w-full {{ $full ? ($fullOffset ? 'h-auto' : 'h-screen') : 'h-screen' }}" x-data="{
         i: 0,
         size: Math.min({{ count($resolvedSlides) }}, 2),
         auto: true,
@@ -118,7 +118,7 @@
         <div class="relative z-10 h-full">
             <div class="h-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 items-end pt-16 sm:pt-20 pb-2 sm:pb-4 md:pb-6 relative">
                 <div class="lg:col-span-9 relative flex h-full flex-col">
-                    <div class="h-[16vh] sm:h-[12vh] md:h-[12vh]"></div>
+                    <div style="height:16vh"></div>
                     <div class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 shadow-[0_0_0_1px_rgba(255,255,255,0.06)] w-auto max-w-max whitespace-nowrap">
                         <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-teal-400"></span>
                         <template x-if="i !== 1">
