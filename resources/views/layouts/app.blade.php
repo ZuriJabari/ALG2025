@@ -16,7 +16,12 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @if(file_exists(public_path('assets/app-production.css')) && file_exists(public_path('assets/app-production.js')))
+            <link rel="stylesheet" href="{{ asset('assets/app-production.css') }}?v={{ filemtime(public_path('assets/app-production.css')) }}">
+            <script type="module" src="{{ asset('assets/app-production.js') }}?v={{ filemtime(public_path('assets/app-production.js')) }}"></script>
+        @else
+            @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @endif
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

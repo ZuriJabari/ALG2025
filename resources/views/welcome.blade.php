@@ -15,7 +15,10 @@
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
         <!-- Styles / Scripts -->
-        @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+        @if(file_exists(public_path('assets/app-production.css')) && file_exists(public_path('assets/app-production.js')))
+            <link rel="stylesheet" href="{{ asset('assets/app-production.css') }}?v={{ filemtime(public_path('assets/app-production.css')) }}">
+            <script type="module" src="{{ asset('assets/app-production.js') }}?v={{ filemtime(public_path('assets/app-production.js')) }}"></script>
+        @elseif (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
             @vite(['resources/css/app.css', 'resources/js/app.js'])
         @else
             <style>

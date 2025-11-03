@@ -5,6 +5,14 @@
 
     RewriteEngine On
 
+    # Fallback for legacy Vite build paths -> serve production assets
+    # CSS
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^build/assets/app-.*\.css$ assets/app-production.css [L,NC]
+    # JS
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^build/assets/app-.*\.js$ assets/app-production.js [L,NC]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

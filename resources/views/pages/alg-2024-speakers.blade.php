@@ -9,7 +9,12 @@
     <script>
         
     </script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @if(app()->environment('production'))
+        <link rel="stylesheet" href="{{ asset('assets/app-production.css') }}?v={{ @file_exists(public_path('assets/app-production.css')) ? @filemtime(public_path('assets/app-production.css')) : time() }}">
+        <script type="module" src="{{ asset('assets/app-production.js') }}?v={{ @file_exists(public_path('assets/app-production.js')) ? @filemtime(public_path('assets/app-production.js')) : time() }}"></script>
+    @else
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
     <style>
         .brand-gradient { background-image: linear-gradient(120deg, #00C2B3 0%, #FF8C00 100%); }
     </style>
