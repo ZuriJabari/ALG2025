@@ -6,6 +6,7 @@ use App\Models\PageView;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class VisitorStatsWidget extends BaseWidget
 {
@@ -13,6 +14,15 @@ class VisitorStatsWidget extends BaseWidget
 
     protected function getStats(): array
     {
+        if (!Schema::hasTable('page_views')) {
+            return [
+                Stat::make("Today's Page Views", '0')->description('+0% from yesterday')->color('gray'),
+                Stat::make('This Week', '0')->description('+0% from last week')->color('gray'),
+                Stat::make('This Month', '0')->description('+0% from last month')->color('gray'),
+                Stat::make('Unique Visitors Today', '0')->description('0% mobile traffic')->color('gray'),
+            ];
+        }
+
         // Today's views
         $todayViews = PageView::whereDate('viewed_at', today())->count();
         $yesterdayViews = PageView::whereDate('viewed_at', today()->subDay())->count();
@@ -83,6 +93,9 @@ class VisitorStatsWidget extends BaseWidget
 
     private function getLastSevenDaysChart(): array
     {
+        if (!Schema::hasTable('page_views')) {
+            return [0,0,0,0,0,0,0];
+        }
         $data = [];
         for ($i = 6; $i >= 0; $i--) {
             $date = today()->subDays($i);

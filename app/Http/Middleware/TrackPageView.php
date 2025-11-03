@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\PageView;
+use Illuminate\Support\Facades\Schema;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,18 +24,20 @@ class TrackPageView
             !$request->is('livewire/*')) {
             
             try {
-                $userAgent = $request->userAgent() ?? '';
-                
-                PageView::create([
-                    'url' => $request->fullUrl(),
-                    'page_title' => null, // Can be set via JavaScript if needed
-                    'referrer' => $request->header('referer'),
-                    'user_agent' => $userAgent,
-                    'ip_address' => $request->ip(),
-                    'country' => null, // Can add GeoIP lookup if needed
-                    'device_type' => $this->detectDeviceType($userAgent),
-                    'viewed_at' => now(),
-                ]);
+                if (Schema::hasTable('page_views')) {
+                    $userAgent = $request->userAgent() ?? '';
+                    
+                    PageView::create([
+                        'url' => $request->fullUrl(),
+                        'page_title' => null, // Can be set via JavaScript if needed
+                        'referrer' => $request->header('referer'),
+                        'user_agent' => $userAgent,
+                        'ip_address' => $request->ip(),
+                        'country' => null, // Can add GeoIP lookup if needed
+                        'device_type' => $this->detectDeviceType($userAgent),
+                        'viewed_at' => now(),
+                    ]);
+                }
             } catch (\Throwable $e) {
                 // Silently fail - don't break the request if tracking fails
                 \Log::warning('Page view tracking failed: ' . $e->getMessage());
