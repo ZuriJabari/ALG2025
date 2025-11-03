@@ -39,10 +39,16 @@
               <p>In an era marked by rapid change, complex challenges, and unprecedented opportunities, the imperative for collaborative and transformative leadership has never been greater. The 2025 gathering recognizes that sustainable impact is not achieved in isolation but through collective effort, shared vision, and a commitment to excellence that transcends individual achievements.</p>
             </div>
           </div>
-          <div class="hidden md:block md:col-span-5 relative">
-            <div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-[0.28]">
-              <div class="absolute inset-0"
-                   style="background-image: url('{{ asset('assets/logos/alg-bg.png') }}?v={{ file_exists(public_path('assets/logos/alg-bg.png')) ? filemtime(public_path('assets/logos/alg-bg.png')) : 0 }}'), url('https://live.staticflickr.com/65535/54163592488_ea309df851.jpg'); background-repeat:no-repeat; background-size:contain; background-position:right bottom; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.18));"></div>
+          <div class="hidden md:block md:col-span-5 relative md:min-h-[380px] lg:min-h-[460px]">
+            <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+              <img
+                src="{{ asset('assets/logos/alg-bg.png') }}?v={{ file_exists(public_path('assets/logos/alg-bg.png')) ? filemtime(public_path('assets/logos/alg-bg.png')) : 0 }}"
+                onerror="this.onerror=null;this.src='https://live.staticflickr.com/65535/54163592488_ea309df851.jpg'"
+                alt="ALG background artwork"
+                class="absolute right-0 bottom-0 max-w-[85%] h-auto opacity-[0.45] select-none"
+                style="filter: drop-shadow(0 24px 48px rgba(0,0,0,0.18));"
+                loading="lazy"
+                />
             </div>
           </div>
         </div>
@@ -255,6 +261,42 @@
       </div>
     </section>
   </main>
+  
+  <!-- Subscribe Block -->
+  <section class="relative py-10 sm:py-14 bg-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div x-data="{ open:false }" class="relative overflow-hidden rounded-3xl border border-gray-200/60 dark:border-slate-800/60 bg-slate-900 text-white">
+        <div class="absolute -inset-1 bg-gradient-to-r from-white/5 via-white/0 to-white/0 rounded-3xl pointer-events-none"></div>
+        <div class="relative grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 p-6 sm:p-8">
+          <div class="md:col-span-2 flex items-center justify-center">
+            <div class="h-24 w-24 sm:h-28 sm:w-28 rounded-xl bg-white flex items-center justify-center">
+              <img src="{{ asset('assets/logos/ALG.png') }}" alt="ALG logo" class="h-14 w-auto" loading="lazy"/>
+            </div>
+          </div>
+          <div class="md:col-span-7">
+            <h3 class="text-2xl sm:text-3xl font-semibold leading-tight">ALG newsletter</h3>
+            <p class="mt-2 text-slate-300">Bringing you curated insights and updates on the Annual Leaders Gathering and LéO Africa Institute community.</p>
+          </div>
+          <div class="md:col-span-3 flex items-center justify-start md:justify-end">
+            <button @click="open = !open" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full ring-1 ring-white/20 hover:ring-white/40 bg-white/5 hover:bg-white/10 transition">
+              <span>Subscribe today</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+        <div x-show="open" x-transition.origin.top.duration.300 class="relative px-6 sm:px-8 pb-8 -mt-4">
+          <form class="mt-2 grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <input type="text" name="name" placeholder="Your name" class="col-span-1 sm:col-span-1 rounded-xl bg-white/10 border border-white/10 px-4 py-3 placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-teal-400/40"/>
+            <input type="email" name="email" placeholder="Email address" class="col-span-1 sm:col-span-1 rounded-xl bg-white/10 border border-white/10 px-4 py-3 placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-teal-400/40"/>
+            <button type="submit" class="col-span-1 inline-flex items-center justify-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-500 text-white px-4 py-3 font-semibold transition">
+              <span>Subscribe</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <x-footer />
 </body>
