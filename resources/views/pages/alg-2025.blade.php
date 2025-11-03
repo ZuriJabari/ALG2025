@@ -136,54 +136,74 @@
 
     <section class="relative py-12 sm:py-20 bg-gray-50 dark:bg-slate-900">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="flex items-baseline justify-between">
+          <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">Multimedia</h2>
+          <a href="https://www.flickr.com/photos/africaforum/" target="_blank" class="inline-flex items-center gap-2 text-teal-700 dark:text-teal-400 hover:underline">
+            <span>View more on Flickr</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+          <!-- Highlight Video -->
           <div class="lg:col-span-7">
-            <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">Highlights from the 2024 Annual Leaders Gathering</h2>
-            <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <a href="{{ url('/events/2024') }}" class="group relative overflow-hidden rounded-xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-4 hover:bg-gray-50 dark:hover:bg-slate-900 transition">
-                <div class="flex items-center gap-3">
-                  <div class="w-12 h-12 rounded-lg bg-teal-600"></div>
-                  <div>
-                    <p class="text-[11px] uppercase tracking-wide text-gray-600 dark:text-gray-400">Explore</p>
-                    <p class="text-gray-900 dark:text-white font-semibold">Highlight Video</p>
-                  </div>
+            <div class="group relative rounded-2xl overflow-hidden border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-lg lg:shadow-2xl">
+              <div class="relative aspect-video">
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/9OaNTDzFtAE" title="ALG Highlight Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div class="pointer-events-none absolute inset-0 ring-1 ring-black/5 dark:ring-white/10"></div>
+              </div>
+              <div class="px-4 sm:px-5 py-3 border-t border-gray-200 dark:border-slate-800">
+                <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300 text-sm">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  <span>Highlight Video</span>
                 </div>
-              </a>
-              <a href="{{ url('/alg-2024') }}" class="group relative overflow-hidden rounded-xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-4 hover:bg-gray-50 dark:hover:bg-slate-900 transition">
-                <div class="flex items-center gap-3">
-                  <div class="w-12 h-12 rounded-lg bg-orange-500"></div>
-                  <div>
-                    <p class="text-[11px] uppercase tracking-wide text-gray-600 dark:text-gray-400">See</p>
-                    <p class="text-gray-900 dark:text-white font-semibold">More videos</p>
-                  </div>
-                </div>
-              </a>
-              <a href="https://www.flickr.com/photos/africaforum/" target="_blank" class="group relative overflow-hidden rounded-xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-4 hover:bg-gray-50 dark:hover:bg-slate-900 transition">
-                <div class="flex items-center gap-3">
-                  <div class="w-12 h-12 rounded-lg bg-blue-600"></div>
-                  <div>
-                    <p class="text-[11px] uppercase tracking-wide text-gray-600 dark:text-gray-400">Gallery</p>
-                    <p class="text-gray-900 dark:text-white font-semibold">Photo Gallery</p>
-                  </div>
-                </div>
-              </a>
-              <a href="{{ url('/alg-2024/speakers') }}" class="group relative overflow-hidden rounded-xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-4 hover:bg-gray-50 dark:hover:bg-slate-900 transition">
-                <div class="flex items-center gap-3">
-                  <div class="w-12 h-12 rounded-lg bg-rose-600"></div>
-                  <div>
-                    <p class="text-[11px] uppercase tracking-wide text-gray-600 dark:text-gray-400">Stories</p>
-                    <p class="text-gray-900 dark:text-white font-semibold">News and articles from 2024</p>
-                  </div>
-                </div>
-              </a>
+              </div>
             </div>
           </div>
+
+          <!-- Photo Gallery -->
           <div class="lg:col-span-5">
+            @php
+              $gallery = [];
+              foreach (range(1, 9) as $n) {
+                foreach (['avif','webp','jpg','jpeg','png'] as $ext) {
+                  $path = public_path(sprintf('assets/hero/hero%02d.%s', $n, $ext));
+                  if (file_exists($path)) {
+                    $gallery[] = [
+                      'src' => asset(sprintf('assets/hero/hero%02d.%s', $n, $ext)),
+                      'alt' => 'ALG gallery image '.$n,
+                    ];
+                    break;
+                  }
+                }
+              }
+            @endphp
+            <div class="grid grid-cols-3 gap-2 sm:gap-3">
+              @foreach(array_slice($gallery, 0, 9) as $g)
+                <a href="{{ $g['src'] }}" target="_blank" class="group relative block overflow-hidden rounded-xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+                  <img src="{{ $g['src'] }}" alt="{{ $g['alt'] }}" class="w-full h-24 sm:h-28 object-cover transition duration-300 group-hover:scale-[1.03]" loading="lazy">
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+                </a>
+              @endforeach
+              @if(empty($gallery))
+                <div class="col-span-3 text-gray-600 dark:text-gray-400 text-sm">Gallery coming soon.</div>
+              @endif
+            </div>
+            <a href="https://www.flickr.com/photos/africaforum/" target="_blank" class="mt-3 inline-flex items-center gap-2 text-teal-700 dark:text-teal-400 hover:underline">
+              <span>More photos on Flickr</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Resources / Contact -->
+        <div class="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+          <div class="lg:col-span-7"></div>
+          <div class="lg:col-span-5 grid gap-4">
             <div class="rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-6">
               <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Reports & other Resources</h3>
               <p class="mt-2 text-gray-700 dark:text-gray-300">Coming soon.</p>
             </div>
-            <div class="mt-4 rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-6">
+            <div class="rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-6">
               <h3 class="text-lg font-semibold text-gray-900 dark:text-white">For more information</h3>
               <div class="mt-2 text-gray-700 dark:text-gray-300">
                 <p>LéO Africa Institute</p>
