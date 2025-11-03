@@ -8,8 +8,17 @@ use App\Models\Domain\Event;
 use App\Http\Controllers\NewsletterSubscriptionController;
 use App\Http\Controllers\SeatReservationController;
 
-Route::get('/', [EventController::class, 'redirect'])->name('home');
+// New minimal home page with full-screen hero only
+Route::view('/', 'pages.home')->name('home');
 Route::get('/events/{year}', [EventController::class, 'show'])->name('events.show');
+// Dedicated ALG 2025 landing (alias)
+Route::get('/alg-2025', function () {
+    $event = Event::where('year', 2025)->first();
+    if ($event) {
+        return redirect()->route('events.show', ['year' => 2025]);
+    }
+    abort(404);
+})->name('events.2025');
 Route::post('/newsletter/subscribe', [NewsletterSubscriptionController::class, 'store'])->name('newsletter.subscribe');
 
 // Reserve Seat flow

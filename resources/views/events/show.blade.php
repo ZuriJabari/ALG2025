@@ -11,29 +11,11 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     
     @include('partials.analytics')
-    <script>
-        // Initialize theme before CSS loads: default DARK unless user explicitly set otherwise
-        (function(){
-            try {
-                var persisted = localStorage.getItem('darkMode');
-                var isDark = (persisted === null) ? true : (persisted === 'true');
-                document.documentElement.classList.toggle('dark', !!isDark);
-            } catch (e) {}
-        })();
-    </script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Plyr Video Player -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 </head>
-<body class="antialiased bg-white dark:bg-slate-950" x-data="{ darkMode: (localStorage.getItem('darkMode') === null) ? true : (localStorage.getItem('darkMode') === 'true') }" x-init="
-    // Ensure html reflects state on init
-    document.documentElement.classList.toggle('dark', darkMode);
-    // Watch for changes to keep html class and localStorage in sync
-    $watch('darkMode', value => {
-        document.documentElement.classList.toggle('dark', value);
-        try { localStorage.setItem('darkMode', value ? 'true' : 'false'); } catch(e) {}
-    });
-">
+<body class="antialiased bg-white dark:bg-slate-950">
     <x-header />
     
     @php
@@ -55,17 +37,26 @@
         <!-- Partners Strip -->
         <section class="py-10 bg-gray-50 dark:bg-slate-900">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
-                    <p class="text-sm font-semibold text-gray-800 dark:text-gray-200 whitespace-nowrap">Convened in partnership with</p>
+                <div class="flex flex-col gap-4 sm:gap-6">
+                    <div class="flex items-center flex-wrap gap-3">
+                        <p class="text-sm font-semibold text-gray-800 dark:text-gray-200">The Annual Leaders Gathering is brought to you by</p>
+                        <span class="inline-flex items-center">
+                            <img src="/assets/logos/Leo-africa-institute-light.svg" alt="LéO Africa Institute" class="h-8 md:h-9 w-auto object-contain align-middle shrink-0 dark:hidden drop-shadow" loading="lazy">
+                            <img src="/assets/logos/Leo-Africa-institute.png" alt="LéO Africa Institute" class="h-8 md:h-9 w-auto object-contain align-middle shrink-0 hidden dark:block" loading="lazy">
+                        </span>
+                        <p class="text-sm font-semibold text-gray-800 dark:text-gray-200">in partnership with</p>
+                    </div>
                     <div class="flex flex-wrap items-center gap-3 sm:gap-4" x-data="{ ready:false }" x-init="setTimeout(()=>ready=true, 30)">
                         <a href="https://www.kas.de/en/web/uganda" target="_blank" rel="noopener" class="inline-flex items-center group transition-all duration-500 ease-out" :class="ready ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'" style="transition-delay: 0ms" aria-label="Konrad Adenauer Stiftung">
-                            <span class="inline-flex items-center px-3 py-2 rounded-md bg-white dark:bg-white border border-gray-200 shadow-sm ring-1 ring-black/5 transition-all duration-300 transform group-hover:-translate-y-0.5 group-hover:scale-105 group-hover:ring-teal-500/30 group-hover:shadow-md group-hover:backdrop-blur-sm">
-                                <img src="/assets/logos/konrad-adenauer-stiftung.png" alt="Konrad Adenauer Stiftung" class="h-8 sm:h-10 w-auto object-contain" loading="lazy">
+                            <span class="inline-flex items-center px-3 py-2 rounded-md transition-all duration-300 transform group-hover:-translate-y-0.5 group-hover:scale-105">
+                                <img src="/assets/logos/KAS-light.svg" alt="Konrad Adenauer Stiftung" class="h-9 sm:h-10 w-auto object-contain shrink-0 dark:hidden drop-shadow" loading="lazy">
+                                <img src="/assets/logos/KAS.png" alt="Konrad Adenauer Stiftung" class="h-9 sm:h-10 w-auto object-contain shrink-0 hidden dark:block" loading="lazy">
                             </span>
                         </a>
                         <a href="https://www.segalfamilyfoundation.org/" target="_blank" rel="noopener" class="inline-flex items-center group transition-all duration-500 ease-out" :class="ready ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'" style="transition-delay: 120ms" aria-label="Segal Family Foundation">
-                            <span class="inline-flex items-center px-3 py-2 rounded-md bg-white dark:bg-white border border-gray-200 shadow-sm ring-1 ring-black/5 transition-all duration-300 transform group-hover:-translate-y-0.5 group-hover:scale-105 group-hover:ring-teal-500/30 group-hover:shadow-md group-hover:backdrop-blur-sm">
-                                <img src="/assets/logos/segal-family-foundation.svg" alt="Segal Family Foundation" class="h-8 sm:h-10 w-auto object-contain" loading="lazy">
+                            <span class="inline-flex items-center px-3 py-2 rounded-md transition-all duration-300 transform group-hover:-translate-y-0.5 group-hover:scale-105">
+                                <img src="/assets/logos/Segal-light.svg" alt="Segal Family Foundation" class="h-9 sm:h-10 w-auto object-contain shrink-0 dark:hidden drop-shadow" loading="lazy">
+                                <img src="/assets/logos/Segal.png" alt="Segal Family Foundation" class="h-9 sm:h-10 w-auto object-contain shrink-0 hidden dark:block" loading="lazy">
                             </span>
                         </a>
                     </div>
@@ -539,14 +530,6 @@
             fullscreen: { enabled: true, fallback: true },
         }));
 
-        // Dark mode persistence
-        const darkModeToggle = document.querySelector('[aria-label="Toggle dark mode"]');
-        if (darkModeToggle) {
-            darkModeToggle.addEventListener('click', () => {
-                const isDark = document.documentElement.classList.contains('dark');
-                localStorage.setItem('darkMode', !isDark);
-            });
-        }
     </script>
 </body>
 </html>

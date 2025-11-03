@@ -1,11 +1,12 @@
-<footer class="relative bg-gray-900 dark:bg-slate-950 text-white" style="background-image: url('{{ asset('assets/1x/artwork.png') }}'), url('{{ asset('assets/1x/hero-bg1.png') }}'); background-position: right -80px bottom -40px, left -80px bottom -40px; background-repeat: no-repeat, no-repeat; background-size: 520px auto, 520px auto;">
+<footer class="relative bg-gray-900 dark:bg-slate-950 text-white" style="background-image: url('{{ asset('assets/1x/artwork.png') }}'), url('{{ asset('assets/1x/hero-bg1.png') }}'); background-position: right -80px bottom -40px, left -80px bottom -40px; background-repeat: no-repeat, no-repeat; background-size: 780px auto, 780px auto;">
     <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
     <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 z-10">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div class="space-y-4">
-                <a href="https://leoafricainstitute.org/" target="_blank" rel="noopener" aria-label="LéO Africa Institute" class="inline-flex items-center p-2 rounded-lg bg-white transition-transform hover:-translate-y-0.5">
-                    <img src="/assets/logos/leo-africa-institute.png" alt="LéO Africa Institute" class="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy">
+                <a href="https://leoafricainstitute.org/" target="_blank" rel="noopener" aria-label="LéO Africa Institute" class="inline-flex items-center p-2 rounded-lg transition-transform hover:-translate-y-0.5">
+                    <img src="/assets/logos/Leo-Africa-institute.png" alt="LéO Africa Institute" class="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105 dark:hidden" loading="lazy">
+                    <img src="/assets/logos/leo-africa-institute.png" alt="LéO Africa Institute" class="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105 hidden dark:block" loading="lazy">
                 </a>
                 <p class="text-gray-300 text-sm leading-relaxed">The Annual Leaders Gathering is the LéO Africa Institute's signature convening platform. It brings together its growing networks of leaders for significant conversations, networking, and deliberation on actions necessary to address the day's challenges.</p>
             </div>
@@ -76,21 +77,21 @@
             <div>
                 <h4 class="text-xs font-semibold tracking-[0.18em] text-teal-400 uppercase">Programs</h4>
                 <div class="mt-5 grid grid-cols-1 gap-4">
-                    <a href="https://leoafricainstitute.org/huduma/" target="_blank" rel="noopener" class="group flex items-center justify-between gap-4 p-3 h-16 rounded-xl bg-white dark:bg-white transition transform hover:-translate-y-0.5">
-                        <span class="flex-1 flex items-center justify-center">
-                            <img src="/assets/logos/huduma-fellowship.svg" alt="Huduma Fellowship" class="max-h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy">
+                    <a href="https://leoafricainstitute.org/huduma/" target="_blank" rel="noopener" class="group flex items-center justify-start gap-4 p-3 h-16 rounded-xl transition transform hover:-translate-y-0.5">
+                        <span class="flex items-center justify-start">
+                            <img src="/assets/logos/Huduma.png" alt="Huduma Fellowship" class="max-h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy">
                         </span>
                         <svg class="w-4 h-4 text-white/60 group-hover:text-teal-400 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </a>
-                    <a href="https://leoafricainstitute.org/yelp/" target="_blank" rel="noopener" class="group flex items-center justify-between gap-4 p-3 h-16 rounded-xl bg-white dark:bg-white transition transform hover:-translate-y-0.5">
-                        <span class="flex-1 flex items-center justify-center">
-                            <img src="/assets/logos/yelp.svg" alt="Young & Emerging Leaders Project (YELP)" class="max-h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy">
+                    <a href="https://leoafricainstitute.org/yelp/" target="_blank" rel="noopener" class="group flex items-center justify-start gap-4 p-3 h-16 rounded-xl transition transform hover:-translate-y-0.5">
+                        <span class="flex items-center justify-start">
+                            <img src="/assets/logos/Yelp.png" alt="Young & Emerging Leaders Project (YELP)" class="max-h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy">
                         </span>
                         <svg class="w-4 h-4 text-white/60 group-hover:text-teal-400 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </a>
-                    <a href="https://leoafricareview.com" target="_blank" rel="noopener" class="group flex items-center justify-between gap-4 p-3 h-16 rounded-xl bg-white dark:bg-white transition transform hover:-translate-y-0.5">
-                        <span class="flex-1 flex items-center justify-center">
-                            <img src="/assets/logos/leo-africa-review.png" alt="LéO Africa Review" class="max-h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy">
+                    <a href="https://leoafricareview.com" target="_blank" rel="noopener" class="group flex items-center justify-start gap-4 p-3 h-16 rounded-xl transition transform hover:-translate-y-0.5">
+                        <span class="flex items-center justify-start">
+                            <img src="/assets/logos/Leo-africa-review.png" alt="LéO Africa Review" class="max-h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy">
                         </span>
                         <svg class="w-4 h-4 text-white/60 group-hover:text-teal-400 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </a>

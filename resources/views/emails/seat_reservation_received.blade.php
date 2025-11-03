@@ -16,7 +16,7 @@
 <body>
   <div class="container">
     <div style="text-align:center; margin-bottom:20px;">
-      <img src="{{ url('/assets/logo.png') }}" alt="Annual Leaders Gathering" style="height:40px; width:auto; display:inline-block;" />
+      <img src="{{ url('/assets/logos/ALG.png') }}" alt="Annual Leaders Gathering" style="height:40px; width:auto; display:inline-block;" />
     </div>
     <span class="badge">ALG 2025</span>
     <h1 style="margin-top:16px; font-size:24px; font-weight:600;">Dear {{ $fullName }},</h1>

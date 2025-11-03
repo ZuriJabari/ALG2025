@@ -1,4 +1,17 @@
-@props(['slides' => null, 'event' => null, 'hero' => null, 'title' => null, 'description' => null, 'exclude' => null])
+@props([
+    'slides' => null,
+    'event' => null,
+    'hero' => null,
+    'title' => null,
+    'description' => null,
+    'exclude' => null,
+    // new optional customizations
+    'primaryCtaUrl' => null,
+    'primaryCtaLabel' => null,
+    'showPartners' => false,
+    'full' => false,
+    'fullOffset' => null,
+])
 
 @php
     /** @var \App\Models\Domain\Event|null $event */
@@ -58,8 +71,9 @@
 <section class="relative overflow-hidden bg-black text-white">
     <!-- Subtle noise overlay for luxurious texture -->
     <div class="pointer-events-none absolute inset-0 opacity-[0.08] mix-blend-overlay" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><filter id=\"n\"><feTurbulence type=\"fractalNoise\" baseFrequency=\"0.65\" numOctaves=\"2\" stitchTiles=\"stitch\"/></filter><rect width=\"100%\" height=\"100%\" filter=\"url(%23n)\" opacity=\"0.35\"/></svg>');"></div>
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_80%_10%,rgba(20,184,166,0.18),transparent_60%)]"></div>
 
-    <div class="relative w-full h-[80vh] sm:h-[75vh] lg:h-[78vh]" x-data="{
+    <div class="relative w-full {{ $full ? ($fullOffset ? 'h-auto' : 'h-screen') : 'h-[80vh] sm:h-[75vh] lg:h-[78vh]' }}" x-data="{
         i: 0,
         size: {{ count($resolvedSlides) }},
         auto: true,
@@ -76,7 +90,7 @@
         ts(e){ this._sx = e.touches[0].clientX },
         tm(e){ this._dx = e.touches[0].clientX - this._sx },
         te(){ if(Math.abs(this._dx) > 40){ this._dx < 0 ? this.next() : this.prev() } this._sx = 0; this._dx = 0; }
-    }" x-init="start()" @mouseenter="stop()" @mouseleave="start()" @touchstart.passive="ts($event)" @touchmove.passive="tm($event)" @touchend.passive="te()">
+    }" x-init="start()" @mouseenter="stop()" @mouseleave="start()" @touchstart.passive="ts($event)" @touchmove.passive="tm($event)" @touchend.passive="te()" style="{{ $full && $fullOffset ? 'min-height: calc(100vh - ' . intval($fullOffset) . 'px)' : '' }}">
         <!-- Slides -->
         <div class="absolute inset-0">
             @foreach($resolvedSlides as $idx => $s)
@@ -97,8 +111,8 @@
         <div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-15 md:opacity-25"
              style="background-image:url('{{ asset('assets/1x/artwork.png') }}');
                     background-repeat:no-repeat;
-                    background-position:right -40px bottom -20px;
-                    background-size:clamp(260px,40%,520px) auto;"></div>
+                    background-position:right 0 bottom -20px;
+                    background-size:clamp(390px,60%,780px) auto;"></div>
 
         <!-- Content -->
         <div class="relative z-10 h-full">
@@ -107,7 +121,7 @@
                     <!-- Local text scrim for legibility (focused under text only) -->
                     <div aria-hidden="true" class="absolute -inset-x-4 -top-6 bottom-[-16px] sm:inset-x-auto sm:-left-8 sm:top-[-20px] sm:bottom-[-20px] sm:max-w-3xl rounded-[32px] pointer-events-none"
                          style="background: linear-gradient(90deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.52) 40%, rgba(0,0,0,0.32) 65%, rgba(0,0,0,0) 100%); backdrop-filter: blur(3px);"></div>
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 shadow-[0_0_0_1px_rgba(255,255,255,0.06)]">
                         <span class="w-2 h-2 rounded-full bg-teal-400"></span>
                         <span class="text-xs font-semibold tracking-wider text-white/90">{{ $event->subtitle ?: 'ALG ' . ($event->year ?? '2025') }}</span>
                     </div>
@@ -141,33 +155,58 @@
                     </div>
                     <div class="relative z-10 mt-5 sm:mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-2.5 sm:gap-3">
                         @php
-                            $primaryCtaLabel = $event->primary_cta_label ?: 'Reserve your seat';
-                            $primaryCtaUrl = $event->primary_cta_url ?: route('seat-reservations.create');
+                            $computedPrimaryLabel = $primaryCtaLabel ?: ($event->primary_cta_label ?: 'Reserve your seat');
+                            $computedPrimaryUrl = $primaryCtaUrl ?: ($event->primary_cta_url ?: route('seat-reservations.create'));
                             $secondaryCtaLabel = $event->secondary_cta_label ?: 'Learn more';
                             $secondaryCtaUrl = $event->secondary_cta_url ?: url('/about');
                         @endphp
-                        <a href="{{ $primaryCtaUrl }}" class="h-12 sm:h-11 px-6 inline-flex items-center justify-center bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 shadow-lg hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 text-center gap-2 w-full sm:w-auto">
-                            <span>{{ $primaryCtaLabel }}</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        <a href="{{ $computedPrimaryUrl }}" class="group relative h-12 sm:h-11 px-6 inline-flex items-center justify-center bg-teal-600 hover:bg-teal-500 text-white font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 shadow-lg hover:shadow-teal-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 text-center gap-2 w-full sm:w-auto">
+                            <span class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/10"></span>
+                            <span class="relative">{{ $computedPrimaryLabel }}</span>
+                            <svg class="relative w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                         </a>
-                        <a href="{{ $secondaryCtaUrl }}" class="h-12 sm:h-11 px-6 inline-flex items-center justify-center bg-white/10 text-white hover:bg-white/15 font-semibold rounded-full border border-white/30 transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 text-center w-full sm:w-auto">
+                        <a href="{{ $secondaryCtaUrl }}" class="h-12 sm:h-11 px-6 inline-flex items-center justify-center bg-white/10 text-white hover:bg-white/15 font-semibold rounded-full border border-white/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 text-center w-full sm:w-auto">
                             {{ $secondaryCtaLabel }}
                         </a>
                     </div>
+
+                    @if($showPartners)
+                        <div class="mt-7 inline-flex items-center gap-3 px-3 py-2 rounded-2xl bg-black/35 border border-white/15 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.35)]">
+                            <span class="text-[13px] sm:text-sm font-semibold text-white/90">#ALG2025 is brought to you by</span>
+                            <span class="inline-flex items-center rounded-lg px-2 py-1 bg-white/5 border border-white/10 shadow-inner transition-transform duration-300 hover:-translate-y-0.5 group">
+                                <a href="https://leoafricainstitute.org/" target="_blank" rel="noopener" aria-label="LéO Africa Institute" class="inline-flex items-center">
+                                    <img src="/assets/logos/Leo-africa-institute-light.svg" alt="LéO Africa Institute" class="h-9 md:h-10 w-auto object-contain align-middle drop-shadow transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy">
+                                </a>
+                            </span>
+                            <span class="text-[13px] sm:text-sm font-semibold text-white/90">in partnership with</span>
+                            <span class="inline-flex items-center gap-2">
+                                <span class="inline-flex items-center rounded-lg px-2 py-1 bg-white/5 border border-white/10 shadow-inner transition-transform duration-300 hover:-translate-y-0.5">
+                                    <a href="https://www.kas.de/en/web/uganda" target="_blank" rel="noopener" aria-label="Konrad Adenauer Stiftung">
+                                        <img src="/assets/logos/KAS.png" alt="Konrad Adenauer Stiftung" class="h-9 md:h-10 w-auto object-contain align-middle drop-shadow" loading="lazy">
+                                    </a>
+                                </span>
+                                <span class="inline-flex items-center rounded-lg px-2 py-1 bg-white/5 border border-white/10 shadow-inner transition-transform duration-300 hover:-translate-y-0.5">
+                                    <a href="https://www.segalfamilyfoundation.org/" target="_blank" rel="noopener" aria-label="Segal Family Foundation">
+                                        <img src="/assets/logos/Segal-light.svg" alt="Segal Family Foundation" class="h-9 md:h-10 w-auto object-contain align-middle drop-shadow" loading="lazy">
+                                    </a>
+                                </span>
+                            </span>
+                        </div>
+                    @endif
                 </div>
 
                 <!-- Controls / Indicators -->
                 <div class="lg:col-span-3 flex justify-center lg:justify-end items-end mt-8 lg:mt-6 sm:absolute sm:z-20 lg:static sm:bottom-5 sm:right-5">
                     <div class="flex items-center gap-3 bg-white/10 border border-white/15 rounded-full px-2 py-1 backdrop-blur shadow-md shadow-black/20">
-                        <button type="button" @click="prev()" class="h-9 w-9 inline-flex items-center justify-center rounded-full text-white hover:bg-white/10">
+                        <button type="button" @click="prev()" class="h-9 w-9 inline-flex items-center justify-center rounded-full text-white hover:bg-white/15 transition-all duration-300 hover:scale-105">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                         </button>
                         <div class="flex items-center gap-1.5">
                             @foreach($resolvedSlides as $idx => $_)
-                                <button type="button" @click="i={{ $idx }}" class="h-2.5 w-2.5 rounded-full" :class="i==={{ $idx }} ? 'bg-white' : 'bg-white/40'" aria-label="Go to slide {{ $idx+1 }}"></button>
+                                <button type="button" @click="i={{ $idx }}" class="h-2.5 w-2.5 rounded-full transition-all duration-300" :class="i==={{ $idx }} ? 'bg-white shadow-[0_0_0_3px_rgba(255,255,255,0.35)] scale-110' : 'bg-white/40 hover:bg-white/60'" aria-label="Go to slide {{ $idx+1 }}"></button>
                             @endforeach
                         </div>
-                        <button type="button" @click="next()" class="h-9 w-9 inline-flex items-center justify-center rounded-full text-white hover:bg-white/10">
+                        <button type="button" @click="next()" class="h-9 w-9 inline-flex items-center justify-center rounded-full text-white hover:bg-white/15 transition-all duration-300 hover:scale-105">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                         </button>
                     </div>

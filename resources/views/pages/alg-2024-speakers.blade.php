@@ -7,20 +7,14 @@
     <title>Speakers – ALG 2024</title>
     @include('partials.analytics')
     <script>
-        (function(){
-            try {
-                var persisted = localStorage.getItem('darkMode');
-                var isDark = (persisted === null) ? true : (persisted === 'true');
-                document.documentElement.classList.toggle('dark', !!isDark);
-            } catch (e) {}
-        })();
+        
     </script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         .brand-gradient { background-image: linear-gradient(120deg, #00C2B3 0%, #FF8C00 100%); }
     </style>
 </head>
-<body class="antialiased bg-white dark:bg-slate-950" x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }" x-init="document.documentElement.classList.toggle('dark', darkMode); $watch('darkMode', v => { document.documentElement.classList.toggle('dark', v); try{ localStorage.setItem('darkMode', v ? 'true':'false') }catch(e){} })">
+<body class="antialiased bg-white dark:bg-slate-950">
     <x-header />
 
     <!-- Hero Section -->
