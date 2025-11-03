@@ -165,7 +165,7 @@
                     @php
                         $dt = $event?->start_at ? \Illuminate\Support\Carbon::parse($event->start_at) : \Illuminate\Support\Carbon::create(2025,12,13,9,0);
                         $when = $dt->format('F j, Y • g:i A');
-                        $where = $event->location ?: 'Kampala, Uganda';
+                        $where = $event->location ?: 'Four Points by Sheraton';
                     @endphp
                     <div class="mt-3.5 sm:mt-5 md:mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-2.5 md:gap-3 text-white">
                         <div class="inline-flex items-center justify-center sm:justify-start gap-2 sm:gap-2.5 px-3 sm:px-3.5 md:px-4 py-1.5 sm:py-1.5 rounded-full bg-black/55 border border-white/35 backdrop-blur-sm shadow-md shadow-black/10">
@@ -202,15 +202,20 @@
                     
 
                     @if($showPartners)
-                        <div class="mt-4 sm:mt-6 md:mt-7 flex flex-wrap items-center justify-center sm:justify-start gap-x-2 sm:gap-x-3 gap-y-1.5 sm:gap-y-2">
-                            <span class="text-[10px] sm:text-[13px] md:text-sm font-medium text-white/90">ALG is an Initiative of</span>
-                            <span class="inline-flex items-center group">
-                                <a href="https://leoafricainstitute.org/" target="_blank" rel="noopener" aria-label="LéO Africa Institute" class="inline-flex items-center">
-                                    <img src="/assets/logos/Leo-africa-institute-light.svg" alt="LéO Africa Institute" class="h-8 sm:h-10 md:h-11 lg:h-12 w-auto object-contain align-middle drop-shadow transition-transform duration-300 hover:scale-105 group-hover:scale-105 cursor-pointer" loading="lazy">
-                                </a>
-                            </span>
-                            <span class="text-[10px] sm:text-[13px] md:text-sm font-medium text-white/90 block sm:inline mt-0.5 sm:mt-0">convened in partnership with</span>
-                            <span class="inline-flex items-center gap-x-2 sm:gap-x-3 gap-y-1.5 w-full sm:w-auto justify-center sm:justify-start flex-wrap">
+                        <div class="mt-4 sm:mt-6 md:mt-7 flex flex-col sm:flex-row items-start sm:items-center justify-start sm:justify-start gap-y-2.5 sm:gap-y-0 gap-x-0 sm:gap-x-4">
+                            <!-- Row 1: Initiative -->
+                            <div class="inline-flex items-center gap-2 sm:gap-2.5">
+                                <span class="text-[10px] sm:text-[13px] md:text-sm font-medium text-white/90">ALG is an Initiative of</span>
+                                <span class="inline-flex items-center group">
+                                    <a href="https://leoafricainstitute.org/" target="_blank" rel="noopener" aria-label="LéO Africa Institute" class="inline-flex items-center">
+                                        <img src="/assets/logos/Leo-africa-institute-light.svg" alt="LéO Africa Institute" class="h-8 sm:h-10 md:h-11 lg:h-12 w-auto object-contain align-middle drop-shadow transition-transform duration-300 hover:scale-105 group-hover:scale-105 cursor-pointer" loading="lazy">
+                                    </a>
+                                </span>
+                            </div>
+
+                            <!-- Row 2: Partners -->
+                            <div class="inline-flex items-center gap-2 sm:gap-2.5 sm:ml-4">
+                                <span class="text-[10px] sm:text-[13px] md:text-sm font-medium text-white/90">Convened in partnership with</span>
                                 <span class="inline-flex items-center group">
                                     <a href="https://www.kas.de/en/web/uganda" target="_blank" rel="noopener" aria-label="Konrad Adenauer Stiftung">
                                         <img src="/assets/logos/KAS.png" alt="Konrad Adenauer Stiftung" class="h-8 sm:h-10 md:h-11 lg:h-12 w-auto object-contain align-middle drop-shadow transition-transform duration-300 hover:scale-105 group-hover:scale-105 cursor-pointer" loading="lazy">
@@ -221,7 +226,7 @@
                                         <img src="/assets/logos/Segal-light.svg" alt="Segal Family Foundation" class="h-9 sm:h-12 md:h-14 lg:h-16 w-auto object-contain align-middle drop-shadow transition-transform duration-300 will-change-transform scale-110 hover:scale-125 group-hover:scale-125 cursor-pointer" loading="lazy">
                                     </a>
                                 </span>
-                            </span>
+                            </div>
                         </div>
                     @endif
 

@@ -166,7 +166,7 @@
                                                         </span>
                                                         <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/8 border border-white/15 text-white/90">
                                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a7 7 0 00-7 7c0 5.25 7 11 7 11s7-5.75 7-11a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
-                                                            <span class="text-sm">Victoria Hall, Kampala Sheraton Hotel</span>
+                                                            <span class="text-sm">Four Points by Sheraton</span>
                                                         </span>
                                                     </div>
                                                     <div class="my-4 border-t border-white/10"></div>
