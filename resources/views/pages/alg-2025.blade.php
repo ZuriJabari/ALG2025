@@ -219,36 +219,20 @@
           </a>
         </div>
         <div class="mt-6">
+          <style>
+            .gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+            @media (min-width:640px){.gallery-grid{gap:.75rem}}
+          </style>
           <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
-            <!-- Left: 2-column image grid (larger) -->
+            <!-- Left: Embedded Flickr album image/card -->
             <div class="md:col-span-7">
-              @php
-                $gallery = [];
-                foreach (range(1, 12) as $n) {
-                  // Exclude hero01.* specifically
-                  if ($n === 1) { continue; }
-                  foreach (['avif','webp','jpg','jpeg','png'] as $ext) {
-                    $path = public_path(sprintf('assets/hero/hero%02d.%s', $n, $ext));
-                    if (file_exists($path)) {
-                      $gallery[] = [
-                        'src' => asset(sprintf('assets/hero/hero%02d.%s', $n, $ext)),
-                        'alt' => 'ALG gallery image '.$n,
-                      ];
-                      break;
-                    }
-                  }
-                }
-              @endphp
-              <div class="grid grid-cols-2 gap-3">
-                @foreach(array_slice($gallery, 0, 4) as $g)
-                  <a href="https://www.flickr.com/photos/africaforum/albums/72177720322157081" target="_blank" class="group relative block overflow-hidden rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-                    <img src="{{ $g['src'] }}" alt="{{ $g['alt'] }}" class="w-full aspect-[4/3] object-cover transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy"/>
-                    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+              <div class="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-2 sm:p-3">
+                <div class="relative w-full">
+                  <a data-flickr-embed="true" data-header="true" data-footer="true" href="https://www.flickr.com/photos/africaforum/albums/72177720322157081" title="Annual Leaders Gathering 2024" class="block">
+                    <img src="https://live.staticflickr.com/65535/54163592488_ea309df851.jpg" width="500" height="375" alt="Annual Leaders Gathering 2024" class="w-full h-auto object-cover"/>
                   </a>
-                @endforeach
-                @if(empty($gallery))
-                  <div class="col-span-2 text-gray-600 dark:text-gray-400 text-sm">Gallery coming soon.</div>
-                @endif
+                  <script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+                </div>
               </div>
             </div>
             <!-- Right: Description -->
