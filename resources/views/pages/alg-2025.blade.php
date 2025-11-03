@@ -27,48 +27,6 @@
                    primary-cta-label="Reserve your seat"
                    primary-cta-url="{{ url('/reserve-seat') }}" />
 
-    <section class="relative overflow-hidden">
-      <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image:url('{{ asset('assets/1x/artwork.png') }}');background-repeat:no-repeat;background-position:right -60px top -40px;background-size:640px auto"></div>
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-12 sm:pb-20">
-        <div class="max-w-3xl">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 dark:bg-slate-900/60 border border-gray-200 dark:border-slate-800">
-            <span class="w-2 h-2 rounded-full" style="background:#00C2B3"></span>
-            <span class="text-xs font-semibold text-gray-700 dark:text-gray-200 tracking-wider">6th Annual Leaders Gathering 2025</span>
-          </div>
-          <h1 class="mt-5 text-4xl sm:text-5xl font-normal tracking-tight text-gray-900 dark:text-white">Building Together For Impact</h1>
-          <p class="mt-2 text-lg sm:text-xl text-gray-800 dark:text-gray-200">Inspiring Excellence Through Transformative Leadership</p>
-
-          <div class="mt-6 flex flex-wrap items-center gap-3 text-gray-900 dark:text-white/90">
-            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 dark:bg-white/10 border border-gray-200 dark:border-white/15">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-              <span>Date: 13th December 2025</span>
-            </span>
-            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 dark:bg-white/10 border border-gray-200 dark:border-white/15">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a7 7 0 00-7 7c0 5.25 7 11 7 11s7-5.75 7-11a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
-              <span>Venue: Victoria Hall, Kampala Sheraton Hotel</span>
-            </span>
-          </div>
-
-          <div class="mt-5 flex items-center gap-3">
-            <span class="text-gray-700 dark:text-white/80 text-sm">Convened in partnership with</span>
-            <span class="inline-flex items-center rounded-lg px-2 py-1 bg-white/60 dark:bg-white/5 border border-gray-200 dark:border-white/10">
-              <img src="/assets/logos/KAS.png" alt="Konrad Adenauer Stiftung" class="h-8 w-auto object-contain"/>
-            </span>
-            <span class="inline-flex items-center rounded-lg px-2 py-1 bg-white/60 dark:bg-white/5 border border-gray-200 dark:border-white/10">
-              <img src="/assets/logos/Segal-light.svg" alt="Segal Family Foundation" class="h-8 w-auto object-contain"/>
-            </span>
-          </div>
-
-          <div class="mt-8 flex flex-col sm:flex-row gap-3">
-            <a href="{{ url('/reserve-seat') }}" class="group h-11 px-6 inline-flex items-center justify-center rounded-full bg-teal-600 text-white font-semibold hover:bg-teal-500 transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 gap-2">
-              <span>Reserve your seat</span>
-              <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            </a>
-            <a href="{{ url('/speakers') }}" class="h-11 px-6 inline-flex items-center justify-center rounded-full bg-white dark:bg-slate-900 text-teal-600 dark:text-teal-400 border border-teal-600/40 dark:border-teal-400/40 font-semibold hover:bg-gray-50 dark:hover:bg-slate-800 transition-all duration-300 hover:-translate-y-0.5">Explore Speakers</a>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section class="relative py-12 sm:py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
