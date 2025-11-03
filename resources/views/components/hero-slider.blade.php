@@ -202,7 +202,7 @@
                     
 
                     @if($showPartners)
-                        <div class="mt-4 sm:mt-6 md:mt-7 flex flex-col sm:flex-row items-start sm:items-center justify-start sm:justify-start gap-y-2.5 sm:gap-y-0 gap-x-0 sm:gap-x-4">
+                        <div class="absolute left-3 sm:left-6 bottom-4 sm:bottom-6 z-20 flex flex-col sm:flex-row items-start sm:items-center justify-start sm:justify-start gap-y-2.5 sm:gap-y-0 gap-x-0 sm:gap-x-4">
                             <!-- Row 1: Initiative -->
                             <div class="inline-flex items-center gap-2 sm:gap-2.5">
                                 <span class="text-[10px] sm:text-[13px] md:text-sm font-medium text-white/90">ALG is an Initiative of</span>
