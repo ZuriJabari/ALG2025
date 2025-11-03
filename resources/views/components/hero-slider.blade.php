@@ -198,23 +198,23 @@
                     
 
                     @if($showPartners)
-                        <div class="mt-4 sm:mt-6 md:mt-7 flex flex-wrap items-center gap-2 sm:gap-2.5 md:gap-3 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl bg-black/35 border border-white/15 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.35)]">
-                            <span class="text-[11px] sm:text-[13px] md:text-sm font-semibold text-white/90">ALG is an Initiative of</span>
+                        <div class="mt-4 sm:mt-6 md:mt-7 flex flex-wrap items-center gap-2 sm:gap-2.5 md:gap-3">
+                            <span class="text-[11px] sm:text-[13px] md:text-sm font-medium text-white/90">ALG is an Initiative of</span>
                             <span class="inline-flex items-center group">
                                 <a href="https://leoafricainstitute.org/" target="_blank" rel="noopener" aria-label="LéO Africa Institute" class="inline-flex items-center">
-                                    <img src="/assets/logos/Leo-africa-institute-light.svg" alt="LéO Africa Institute" class="h-9 sm:h-10 md:h-11 lg:h-12 w-auto object-contain align-middle drop-shadow transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy">
+                                    <img src="/assets/logos/Leo-africa-institute-light.svg" alt="LéO Africa Institute" class="h-9 sm:h-10 md:h-11 lg:h-12 w-auto object-contain align-middle drop-shadow transition-transform duration-300 hover:scale-105 group-hover:scale-105 cursor-pointer" loading="lazy">
                                 </a>
                             </span>
-                            <span class="text-[11px] sm:text-[13px] md:text-sm font-semibold text-white/90">, convened in partnership with</span>
-                            <span class="inline-flex items-center gap-1.5 sm:gap-2">
-                                <span class="inline-flex items-center">
+                            <span class="text-[11px] sm:text-[13px] md:text-sm font-medium text-white/90">convened in partnership with</span>
+                            <span class="inline-flex items-center gap-2 sm:gap-3">
+                                <span class="inline-flex items-center group">
                                     <a href="https://www.kas.de/en/web/uganda" target="_blank" rel="noopener" aria-label="Konrad Adenauer Stiftung">
-                                        <img src="/assets/logos/KAS.png" alt="Konrad Adenauer Stiftung" class="h-9 sm:h-10 md:h-11 lg:h-12 w-auto object-contain align-middle drop-shadow" loading="lazy">
+                                        <img src="/assets/logos/KAS.png" alt="Konrad Adenauer Stiftung" class="h-9 sm:h-10 md:h-11 lg:h-12 w-auto object-contain align-middle drop-shadow transition-transform duration-300 hover:scale-105 group-hover:scale-105 cursor-pointer" loading="lazy">
                                     </a>
                                 </span>
-                                <span class="inline-flex items-center">
+                                <span class="inline-flex items-center group ml-2 sm:ml-3 md:ml-4">
                                     <a href="https://www.segalfamilyfoundation.org/" target="_blank" rel="noopener" aria-label="Segal Family Foundation">
-                                        <img src="/assets/logos/Segal-light.svg" alt="Segal Family Foundation" class="h-9 sm:h-10 md:h-11 lg:h-12 w-auto object-contain align-middle drop-shadow" loading="lazy">
+                                        <img src="/assets/logos/Segal-light.svg" alt="Segal Family Foundation" class="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain align-middle drop-shadow transition-transform duration-300 will-change-transform scale-110 hover:scale-125 group-hover:scale-125 cursor-pointer" loading="lazy">
                                     </a>
                                 </span>
                             </span>
