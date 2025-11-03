@@ -29,8 +29,13 @@
 
 
     <section class="relative py-12 sm:py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl">
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Artistic background -->
+        <div aria-hidden="true" class="pointer-events-none absolute -inset-x-8 -top-8 bottom-0">
+          <div class="absolute right-[-6%] top-[-10%] w-[780px] sm:w-[880px] lg:w-[980px] aspect-[4/3] opacity-[0.08] sm:opacity-[0.12] mix-blend-overlay"
+               style="background-image:url('{{ asset('assets/alg-bg.png') }}'); background-repeat:no-repeat; background-size:contain; background-position:right top; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));"></div>
+        </div>
+        <div class="relative max-w-3xl">
           <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">About the 2025 ALG</h2>
           <div class="mt-4 space-y-4 text-gray-700 dark:text-gray-300 text-[15px] sm:text-base leading-relaxed">
             <p>The Annual Leaders Gathering is LéO Africa Institute/s premier platform for catalyzing conversations on transformative leadership in Africa & the world.</p>
