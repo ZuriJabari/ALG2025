@@ -52,7 +52,7 @@
                   onerror="this.onerror=null;this.src='https://live.staticflickr.com/65535/54163592488_ea309df851.jpg'"
                   alt="ALG background artwork"
                   class="absolute right-0 bottom-0 h-auto opacity-[0.45] select-none will-change-transform"
-                  :style="`bottom:-100px; max-width:191.25%; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.18)); transform-origin: bottom right; transform: translateY(${prm ? 0 : y}px);`"
+                  :style="`bottom:0; max-width:191.25%; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.18)); transform-origin: bottom right; transform: translateY(${prm ? 0 : y}px);`"
                   loading="lazy"
                   />
             </div>
