@@ -44,14 +44,15 @@
               <p>In an era marked by rapid change, complex challenges, and unprecedented opportunities, the imperative for collaborative and transformative leadership has never been greater. The 2025 gathering recognizes that sustainable impact is not achieved in isolation but through collective effort, shared vision, and a commitment to excellence that transcends individual achievements.</p>
             </div>
           </div>
-          <div class="hidden md:block md:col-span-5 relative md:min-h-[380px] lg:min-h-[460px]">
+          <div class="hidden md:block md:col-span-5 relative md:min-h-[380px] lg:min-h-[460px]"
+               x-data="{ y: 0, ticking: false, factor: 0.15, prm: window.matchMedia('(prefers-reduced-motion: reduce)').matches, init(){ if(this.prm) return; const onScroll = () => { if(this.ticking) return; this.ticking = true; requestAnimationFrame(() => { this.y = window.scrollY * this.factor; this.ticking = false; }); }; window.addEventListener('scroll', onScroll, { passive: true }); } }">
             <div aria-hidden="true" class="pointer-events-none absolute inset-0">
                 <img
                   src="{{ asset('assets/logos/alg-bg.png') }}?v={{ file_exists(public_path('assets/logos/alg-bg.png')) ? filemtime(public_path('assets/logos/alg-bg.png')) : 0 }}"
                   onerror="this.onerror=null;this.src='https://live.staticflickr.com/65535/54163592488_ea309df851.jpg'"
                   alt="ALG background artwork"
-                  class="absolute right-0 bottom-0 h-auto opacity-[0.45] select-none"
-                  style="bottom:-100px; max-width:191.25%; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.18)); transform-origin: bottom right;"
+                  class="absolute right-0 bottom-0 h-auto opacity-[0.45] select-none will-change-transform"
+                  :style="`bottom:-100px; max-width:191.25%; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.18)); transform-origin: bottom right; transform: translateY(${prm ? 0 : y}px);`"
                   loading="lazy"
                   />
             </div>
