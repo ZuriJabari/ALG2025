@@ -111,7 +111,7 @@
         <div aria-hidden="true" class="hidden sm:block pointer-events-none absolute inset-0 opacity-15 md:opacity-25"
              style="background-image:url('{{ asset('assets/1x/artwork.png') }}');
                     background-repeat:no-repeat;
-                    background-position:right -50px bottom -20px;
+                    background-position:right -70px bottom -20px;
                     background-size:clamp(390px,60%,780px) auto;"></div>
 
         <!-- Content -->
