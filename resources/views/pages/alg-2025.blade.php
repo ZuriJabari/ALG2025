@@ -33,7 +33,7 @@
                    primary-cta-url="{{ url('/reserve-seat') }}" />
 
 
-    <section class="relative py-8 sm:py-12 md:py-20">
+    <section class="relative py-8 sm:py-12 md:py-20 reveal">
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-stretch">
           <div class="relative z-10 md:col-span-7 max-w-3xl">
@@ -62,7 +62,7 @@
     </section>
 
 
-    <section class="relative py-8 sm:py-12 md:py-20 bg-gray-50 dark:bg-slate-900">
+    <section class="relative py-8 sm:py-12 md:py-20 bg-gray-50 dark:bg-slate-900 reveal">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl">
           <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">Contextualising the Theme</h2>
@@ -168,7 +168,7 @@
     </section>
 
     <!-- Highlight Video -->
-    <section class="relative py-8 sm:py-12 md:py-20 bg-[#FDFDFC] dark:bg-slate-950">
+    <section class="relative py-8 sm:py-12 md:py-20 bg-[#FDFDFC] dark:bg-slate-950 reveal">
       <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-b from-teal-50/60 via-transparent to-transparent dark:from-teal-900/10"></div>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-start">
@@ -192,14 +192,19 @@
               <!-- Ambient glow behind card -->
               <div class="absolute -inset-6 -z-10 rounded-[28px] bg-gradient-to-r from-teal-500/12 via-cyan-500/10 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
               <div class="absolute -inset-0.5 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-teal-500/15 via-cyan-500/10 to-transparent blur-lg opacity-80 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-              <div class="relative aspect-video rounded-2xl sm:rounded-3xl overflow-hidden">
-                <iframe class="w-full h-full transition-transform duration-500 group-hover:scale-[1.01]" src="https://www.youtube.com/embed/9OaNTDzFtAE?modestbranding=1&rel=0&playsinline=1" title="ALG Highlight Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <div class="relative aspect-video rounded-2xl sm:rounded-3xl overflow-hidden" x-data="{ play:false }">
+                <template x-if="!play">
+                  <img src="https://i.ytimg.com/vi/9OaNTDzFtAE/hqdefault.jpg" alt="ALG Highlight Video" class="w-full h-full object-cover" loading="lazy"/>
+                </template>
+                <template x-if="play">
+                  <iframe class="w-full h-full transition-transform duration-500 group-hover:scale-[1.01]" src="https://www.youtube.com/embed/9OaNTDzFtAE?modestbranding=1&rel=0&playsinline=1&autoplay=1" title="ALG Highlight Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </template>
                 <!-- Play overlay (visual, non-blocking) -->
-                <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
-                  <div class="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 rounded-full bg-white/90 text-teal-600 shadow-lg shadow-black/10 ring-1 ring-black/5 transition-all duration-500 opacity-95 group-hover:opacity-0 scale-100 group-hover:scale-95">
+                <button @click="play=true" aria-label="Play video" class="absolute inset-0 flex items-center justify-center">
+                  <span class="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 rounded-full bg-white/90 text-teal-600 shadow-lg shadow-black/10 ring-1 ring-black/5 transition-all duration-300 hover:scale-105">
                     <svg class="w-6 h-6 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                  </div>
-                </div>
+                  </span>
+                </button>
                 <div class="pointer-events-none absolute inset-0 ring-1 ring-black/5 dark:ring-white/10"></div>
                 <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent"></div>
               </div>
@@ -240,11 +245,11 @@
             <!-- Left: Embedded Flickr album image/card -->
             <div class="md:col-span-7">
               <div class="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-2 sm:p-3">
-                <div class="relative w-full">
+                <div class="relative w-full" id="flickr-album">
                   <a data-flickr-embed="true" data-header="true" data-footer="true" href="https://www.flickr.com/photos/africaforum/albums/72177720322157081" title="Annual Leaders Gathering 2024" class="block">
-                    <img src="https://live.staticflickr.com/65535/54163592488_ea309df851.jpg" width="500" height="375" alt="Annual Leaders Gathering 2024" class="w-full h-auto object-cover"/>
+                    <img src="https://live.staticflickr.com/65535/54163592488_ea309df851.jpg" width="500" height="375" alt="Annual Leaders Gathering 2024" class="w-full h-auto object-cover" loading="lazy"/>
                   </a>
-                  <script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+                  <div id="flickr-script-placeholder"></div>
                 </div>
               </div>
             </div>
@@ -269,6 +274,31 @@
     </section>
   </main>
   
+  <style>
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.is-inview{opacity:1;transform:none}
+    @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}}
+  </style>
+  <script>
+    (function(){
+      var prm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var els=document.querySelectorAll('.reveal');
+      if(prm){ els.forEach(function(el){ el.classList.add('is-inview'); }); }
+      else if('IntersectionObserver' in window){
+        var io=new IntersectionObserver(function(entries){
+          entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-inview'); io.unobserve(e.target); } });
+        },{root:null,rootMargin:'0px 0px -10% 0px',threshold:0.1});
+        els.forEach(function(el){ io.observe(el); });
+      } else { els.forEach(function(el){ el.classList.add('is-inview'); }); }
+      var album=document.getElementById('flickr-album');
+      var load=function(){ if(document.getElementById('flickr-client')) return; var s=document.createElement('script'); s.id='flickr-client'; s.async=true; s.src='//embedr.flickr.com/assets/client-code.js'; document.body.appendChild(s); };
+      if(prm){ load(); }
+      else if(album && 'IntersectionObserver' in window){
+        var io2=new IntersectionObserver(function(entries){ if(entries[0].isIntersecting){ load(); io2.disconnect(); } },{root:null,rootMargin:'200px',threshold:0});
+        io2.observe(album);
+      } else { load(); }
+    })();
+  </script>
   <!-- Subscribe Block -->
   <section class="relative py-8 sm:py-10 md:py-14 bg-transparent">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
