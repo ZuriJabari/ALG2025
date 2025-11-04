@@ -46,14 +46,14 @@
           </div>
           <div class="hidden md:block md:col-span-5 relative md:min-h-[380px] lg:min-h-[460px]">
             <div aria-hidden="true" class="pointer-events-none absolute inset-0">
-              <img
-                src="{{ asset('assets/logos/alg-bg.png') }}?v={{ file_exists(public_path('assets/logos/alg-bg.png')) ? filemtime(public_path('assets/logos/alg-bg.png')) : 0 }}"
-                onerror="this.onerror=null;this.src='https://live.staticflickr.com/65535/54163592488_ea309df851.jpg'"
-                alt="ALG background artwork"
-                class="absolute right-0 bottom-0 max-w-[85%] h-auto opacity-[0.45] select-none"
-                style="filter: drop-shadow(0 24px 48px rgba(0,0,0,0.18));"
-                loading="lazy"
-                />
+                <img
+                  src="{{ asset('assets/logos/alg-bg.png') }}?v={{ file_exists(public_path('assets/logos/alg-bg.png')) ? filemtime(public_path('assets/logos/alg-bg.png')) : 0 }}"
+                  onerror="this.onerror=null;this.src='https://live.staticflickr.com/65535/54163592488_ea309df851.jpg'"
+                  alt="ALG background artwork"
+                  class="absolute right-0 bottom-0 h-auto opacity-[0.45] select-none"
+                  style="bottom:-100px; max-width:127.5%; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.18)); transform-origin: bottom right;"
+                  loading="lazy"
+                  />
             </div>
           </div>
         </div>
