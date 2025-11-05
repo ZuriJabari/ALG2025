@@ -80,7 +80,7 @@
           </div>
 
           <div class="sm:col-span-2">
-            <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Are you a fellow?</span>
+            <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">Are you a fellow of the LéO Africa Institute or part of the KAS Network?</span>
             <div class="mt-2 flex items-center gap-6">
               <label class="inline-flex items-center gap-2">
                 <input type="radio" name="is_fellow" value="1" @change="isFellow=1" {{ old('is_fellow')==='1' ? 'checked' : '' }} class="h-4 w-4 text-teal-600 border-gray-300 focus:ring-teal-600" />
@@ -99,7 +99,7 @@
             <div class="mt-2 relative">
               <select id="fellowship" name="fellowship" class="appearance-none w-full h-12 rounded-xl bg-white dark:bg-slate-950 border border-gray-200 dark:border-slate-800 px-4 pr-10 text-gray-900 dark:text-gray-100 outline-none transition-colors focus:ring-4 focus:ring-teal-500/15 focus:border-teal-500/60">
                 <option value="" disabled {{ old('fellowship') ? '' : 'selected' }}>Select fellowship</option>
-                @foreach(['YELP','HUDUMA','The Griot Fellowship'] as $f)
+                @foreach(['YELP','HUDUMA','The Griot Fellowship','KAS Network'] as $f)
                   <option value="{{ $f }}" @selected(old('fellowship')===$f)>{{ $f }}</option>
                 @endforeach
               </select>
