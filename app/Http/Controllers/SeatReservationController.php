@@ -23,7 +23,7 @@ class SeatReservationController extends Controller
             'email' => ['required','email','max:255'],
             'phone' => ['nullable','string','max:40'],
             'is_fellow' => ['required','in:0,1'],
-            'fellowship' => ['nullable','in:YELP,HUDUMA,The Griot Fellowship'],
+            'fellowship' => ['nullable','in:YELP,HUDUMA,The Griot Fellowship,KAS Network,Africa Champions Invite,Member of Faculty,Board/Management,Partner/Affiliate'],
         ]);
 
         // Conditional requirement: fellowship when is_fellow=1

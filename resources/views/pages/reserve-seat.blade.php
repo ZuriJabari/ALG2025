@@ -99,7 +99,7 @@
             <div class="mt-2 relative">
               <select id="fellowship" name="fellowship" class="appearance-none w-full h-12 rounded-xl bg-white dark:bg-slate-950 border border-gray-200 dark:border-slate-800 px-4 pr-10 text-gray-900 dark:text-gray-100 outline-none transition-colors focus:ring-4 focus:ring-teal-500/15 focus:border-teal-500/60">
                 <option value="" disabled {{ old('fellowship') ? '' : 'selected' }}>Select fellowship</option>
-                @foreach(['YELP','HUDUMA','The Griot Fellowship','KAS Network'] as $f)
+                @foreach(['YELP','HUDUMA','The Griot Fellowship','KAS Network','Africa Champions Invite','Member of Faculty','Board/Management','Partner/Affiliate'] as $f)
                   <option value="{{ $f }}" @selected(old('fellowship')===$f)>{{ $f }}</option>
                 @endforeach
               </select>
