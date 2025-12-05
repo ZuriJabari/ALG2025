@@ -86,7 +86,7 @@
                   <span>View ALG 2025 details</span>
                   <svg class="w-3.5 h-3.5 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
                 </a>
-                <button type="button" @click="algClosedOpen = false" class="inline-flex items-center justify-center px-4 sm:px-5 py-2 rounded-full bg-white text-xs sm:text-sm font-semibold text-slate-900 hover:bg-slate-100 transition">
+                <button type="button" @click="algClosedOpen = false" class="inline-flex items-center justify-center px-4 sm:px-5 py-2 rounded-full bg-slate-100 text-xs sm:text-sm font-semibold text-slate-900 hover:bg-white/90 dark:bg-white dark:text-slate-900 hover:bg-slate-100 transition">
                   Close
                 </button>
               </div>
