@@ -182,13 +182,28 @@
                     </div>
                     <div class="relative z-10 mt-4 sm:mt-6 md:mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-2 sm:gap-2.5 md:gap-3">
                         @php
-                            // Always use a clear Reserve CTA for the primary action
-                            $computedPrimaryLabel = 'Reserve your seat';
-                            $computedPrimaryUrl = url('/reserve-seat');
+                            // Primary CTA: prefer explicit props; otherwise, use a non-registration CTA for ALG 2025
+                            $computedPrimaryLabel = $primaryCtaLabel;
+                            $computedPrimaryUrl = $primaryCtaUrl;
+
+                            if (!$computedPrimaryLabel || !$computedPrimaryUrl) {
+                                $year = (int) ($event->year ?? 0);
+                                if ($year === 2025) {
+                                    $computedPrimaryLabel = 'Registration is closed – view update';
+                                    $computedPrimaryUrl = url('/reserve-seat');
+                                } else {
+                                    $computedPrimaryLabel = 'Reserve your seat';
+                                    $computedPrimaryUrl = url('/reserve-seat');
+                                }
+                            }
+
                             $secondaryCtaLabel = $event->secondary_cta_label ?: 'Learn more';
                             $secondaryCtaUrl = $event->secondary_cta_url ?: url('/about');
+
+                            // Special case: when the URL is a sentinel hash, let callers open a modal instead of navigating
+                            $useClosedModalTrigger = $computedPrimaryUrl === '#alg2025-registration-closed-modal';
                         @endphp
-                        <a href="{{ $computedPrimaryUrl }}" class="group relative h-12 sm:h-12 md:h-12 px-5 sm:px-7 inline-flex items-center justify-center bg-teal-600 hover:bg-teal-500 text-white font-semibold text-sm sm:text-base rounded-full transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 shadow-[0_10px_30px_rgba(20,184,166,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 text-center gap-2 w-full sm:w-auto">
+                        <a href="{{ $computedPrimaryUrl }}" @if($useClosedModalTrigger) @click.prevent="$dispatch('alg-closed-modal-open')" @endif class="group relative h-12 sm:h-12 md:h-12 px-5 sm:px-7 inline-flex items-center justify-center bg-teal-600 hover:bg-teal-500 text-white font-semibold text-sm sm:text-base rounded-full transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 shadow-[0_10px_30px_rgba(20,184,166,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 text-center gap-2 w-full sm:w-auto">
                             <span class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/10"></span>
                             <span class="relative">{{ $computedPrimaryLabel }}</span>
                             <svg class="relative w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>

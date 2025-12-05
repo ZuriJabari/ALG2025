@@ -453,15 +453,26 @@
 
     <!-- CTA Band -->
     @php
-        $ctaLabel = $event->hero_cta_label ?? $event->primary_cta_label;
-        $ctaUrl = $event->hero_cta_url ?? $event->primary_cta_url;
+        if ((int) $event->year === 2025) {
+            $ctaLabel = 'View registration update';
+            $ctaUrl = url('/reserve-seat');
+        } else {
+            $ctaLabel = $event->hero_cta_label ?? $event->primary_cta_label;
+            $ctaUrl = $event->hero_cta_url ?? $event->primary_cta_url;
+        }
     @endphp
     @if($ctaLabel && $ctaUrl)
         <section class="py-16 bg-gradient-to-r from-teal-500 to-orange-500">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-6"
                      x-data="{ open:false, email:'', loading:false, submitted:false, error:null, openToggle(){ this.open=!this.open; if(this.open){ this.$nextTick(()=> this.$refs.ctaEmail?.focus()); } }, async submit(){ if(!this.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email)){ this.error='Please enter a valid email.'; return; } this.loading=true; this.error=null; try{ const res = await fetch('{{ route('newsletter.subscribe') }}', { method:'POST', headers:{ 'Content-Type':'application/json', 'X-CSRF-TOKEN':'{{ csrf_token() }}' }, body: JSON.stringify({ email:this.email }) }); if(!res.ok){ const d = await res.json(); throw new Error((d.errors && (d.errors.email?.[0]||'Invalid email'))||'Subscription failed'); } this.submitted=true; this.email=''; setTimeout(()=>{ this.submitted=false; this.open=false; }, 2200); }catch(e){ this.error = e.message || 'Something went wrong'; } finally{ this.loading=false; } } }">
-                    <h3 class="text-2xl md:text-3xl font-bold text-white">Be part of ALG {{ $event->year }} — reserve your seat today.</h3>
+                    <h3 class="text-2xl md:text-3xl font-bold text-white">
+                        @if((int) $event->year === 2025)
+                            Be part of ALG {{ $event->year }} — join the conversation virtually.
+                        @else
+                            Be part of ALG {{ $event->year }} — reserve your seat today.
+                        @endif
+                    </h3>
                     <div class="flex flex-wrap items-center gap-3">
                         <a href="{{ $ctaUrl }}" class="shrink-0 whitespace-nowrap px-8 py-4 bg-white/95 text-teal-700 font-semibold rounded-full hover:bg-white transition">{{ $ctaLabel }}</a>
                         <button type="button" @click="openToggle()" :aria-expanded="open.toString()" class="shrink-0 whitespace-nowrap px-8 py-4 rounded-full bg-teal-700/20 text-white font-semibold hover:bg-teal-700/30 transition">Get updates</button>

@@ -96,11 +96,16 @@
                         $primaryCtaUrl = route('events.show', ['year' => 2025]);
                         $secondaryCtaLabel = 'Explore the #ALG2024 Speakers';
                         $secondaryCtaUrl = route('speakers.alg-2024');
-                    } else {
-                        $primaryCtaLabel = 'Reserve your seat';
-                        $primaryCtaUrl = route('seat-reservations.create');
+                    } elseif ((int) ($event->year ?? 0) === 2025) {
+                        $primaryCtaLabel = 'View ALG 2025 details';
+                        $primaryCtaUrl = url('/alg-2025');
                         $secondaryCtaLabel = 'Learn more';
                         $secondaryCtaUrl = url('/about');
+                    } else {
+                        $primaryCtaLabel = 'Learn more';
+                        $primaryCtaUrl = url('/about');
+                        $secondaryCtaLabel = 'Explore ALG';
+                        $secondaryCtaUrl = url('/alg-2025');
                     }
                 @endphp
                 <a href="{{ $primaryCtaUrl }}" class="h-11 px-6 inline-flex items-center justify-center bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 shadow-lg hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 text-center gap-2">

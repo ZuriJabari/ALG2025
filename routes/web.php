@@ -16,7 +16,8 @@ Route::view('/alg-2025', 'pages.alg-2025')->name('events.2025');
 Route::post('/newsletter/subscribe', [NewsletterSubscriptionController::class, 'store'])->name('newsletter.subscribe');
 
 // Reserve Seat flow
-Route::get('/reserve-seat', [SeatReservationController::class, 'create'])->name('seat-reservations.create');
+Route::view('/reserve-seat', 'pages.reserve-seat')->name('seat-reservations.closed');
+Route::get('/reserve-seat/private', [SeatReservationController::class, 'create'])->name('seat-reservations.create');
 Route::post('/reserve-seat', [SeatReservationController::class, 'store'])->name('seat-reservations.store');
 // Simple CSV export for admin use
 Route::get('/admin/export/seat-reservations.csv', [SeatReservationController::class, 'exportCsv'])

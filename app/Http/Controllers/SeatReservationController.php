@@ -12,7 +12,7 @@ class SeatReservationController extends Controller
 {
     public function create()
     {
-        return view('pages.reserve-seat');
+        return view('pages.reserve-seat-form');
     }
 
     public function store(Request $request): RedirectResponse
