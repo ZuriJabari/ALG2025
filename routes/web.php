@@ -7,12 +7,16 @@ use App\Models\Domain\Speaker;
 use App\Models\Domain\Event;
 use App\Http\Controllers\NewsletterSubscriptionController;
 use App\Http\Controllers\SeatReservationController;
+use App\Http\Controllers\AttendanceController;
 
 // New minimal home page with full-screen hero only
 Route::view('/', 'pages.home')->name('home');
 Route::get('/events/{year}', [EventController::class, 'show'])->name('events.show');
 // Dedicated ALG 2025 landing page
 Route::view('/alg-2025', 'pages.alg-2025')->name('events.2025');
+// Attendance confirmation for ALG 2025 registrants
+Route::get('/alg-2025/attendance', [AttendanceController::class, 'show'])->name('attendance.show');
+Route::post('/alg-2025/attendance', [AttendanceController::class, 'store'])->name('attendance.store');
 Route::post('/newsletter/subscribe', [NewsletterSubscriptionController::class, 'store'])->name('newsletter.subscribe');
 
 // Reserve Seat flow
