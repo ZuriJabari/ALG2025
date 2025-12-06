@@ -2,6 +2,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\SeatReservationResource\Pages;
+use App\Mail\AttendanceConfirmationRequest;
 use App\Models\SeatReservation;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -9,6 +10,10 @@ use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
 
 class SeatReservationResource extends Resource
 {
@@ -59,6 +64,20 @@ class SeatReservationResource extends Resource
                 Tables\Columns\TextColumn::make('phone')->searchable(),
                 Tables\Columns\IconColumn::make('is_fellow')->boolean()->label('Fellow'),
                 Tables\Columns\TextColumn::make('fellowship')->label('Fellowship'),
+                Tables\Columns\TextColumn::make('attendance_mode')
+                    ->label('Attendance')
+                    ->formatStateUsing(function ($state) {
+                        return match ($state) {
+                            'physical' => 'In person',
+                            'virtual' => 'Virtual',
+                            default => null,
+                        };
+                    })
+                    ->badge()
+                    ->colors([
+                        'success' => 'physical',
+                        'info' => 'virtual',
+                    ]),
                 Tables\Columns\TextColumn::make('created_at')->dateTime()->sortable(),
             ])
             ->filters([])
@@ -75,6 +94,25 @@ class SeatReservationResource extends Resource
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
+                Tables\Actions\BulkAction::make('sendAttendanceEmail')
+                    ->label('Send attendance email')
+                    ->icon('heroicon-o-envelope')
+                    ->color('primary')
+                    ->requiresConfirmation()
+                    ->action(function (Collection $records): void {
+                        foreach ($records as $reservation) {
+                            if (! $reservation->attendance_token) {
+                                $reservation->attendance_token = (string) Str::uuid();
+                                $reservation->save();
+                            }
+
+                            $url = URL::route('attendance.show', ['t' => $reservation->attendance_token]);
+
+                            Mail::to($reservation->email)->send(
+                                new AttendanceConfirmationRequest($reservation->full_name, $url)
+                            );
+                        }
+                    }),
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }

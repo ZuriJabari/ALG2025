@@ -58,7 +58,7 @@ class SeatReservationController extends Controller
 
         $callback = function() {
             $handle = fopen('php://output', 'w');
-            fputcsv($handle, ['ID','Full Name','Sector','Email','Phone','Is Fellow','Fellowship','Created At']);
+            fputcsv($handle, ['ID','Full Name','Sector','Email','Phone','Is Fellow','Fellowship','Attendance Mode','Attendance Token','Created At']);
             SeatReservation::orderByDesc('id')->chunk(500, function($rows) use ($handle) {
                 foreach ($rows as $r) {
                     fputcsv($handle, [
@@ -69,6 +69,8 @@ class SeatReservationController extends Controller
                         $r->phone,
                         $r->is_fellow ? 'Yes' : 'No',
                         $r->fellowship,
+                        $r->attendance_mode,
+                        $r->attendance_token,
                         $r->created_at,
                     ]);
                 }
