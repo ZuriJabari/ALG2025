@@ -100,7 +100,10 @@ class SeatReservationResource extends Resource
                     ->color('primary')
                     ->requiresConfirmation()
                     ->action(function (Collection $records): void {
-                        foreach ($records as $reservation) {
+                        // Ensure we only send one email per email address in this bulk run
+                        $uniqueByEmail = $records->unique('email');
+
+                        $uniqueByEmail->each(function (SeatReservation $reservation) {
                             if (! $reservation->attendance_token) {
                                 $reservation->attendance_token = (string) Str::uuid();
                                 $reservation->save();
@@ -111,7 +114,7 @@ class SeatReservationResource extends Resource
                             Mail::to($reservation->email)->send(
                                 new AttendanceConfirmationRequest($reservation->full_name, $url)
                             );
-                        }
+                        });
                     }),
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
