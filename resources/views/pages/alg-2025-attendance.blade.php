@@ -18,8 +18,8 @@
 
   <main class="py-10 sm:py-16">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <section class="relative rounded-3xl border border-gray-200/70 dark:border-slate-800/70 bg-white/90 dark:bg-slate-950/95 shadow-xl overflow-hidden">
-        <div class="absolute -inset-1 bg-gradient-to-br from-teal-500/10 via-cyan-500/5 to-amber-400/5 opacity-70 pointer-events-none"></div>
+      <section class="relative rounded-3xl border border-gray-200/80 dark:border-slate-700 bg-white dark:bg-slate-950 shadow-2xl overflow-hidden">
+        <div class="absolute -inset-1 bg-gradient-to-br from-teal-500/10 via-cyan-500/5 to-amber-400/5 opacity-40 pointer-events-none"></div>
         <div class="relative p-6 sm:p-8">
           <div class="flex items-center justify-between gap-3">
             <div>
@@ -47,11 +47,11 @@
           @endif
 
           @if (! $reservation)
-            <p class="mt-6 text-sm sm:text-base text-gray-700 dark:text-gray-300">
+            <p class="mt-6 text-sm sm:text-base text-gray-800 dark:text-gray-100">
               This attendance confirmation link is invalid or has expired. Please contact the LéO Africa Institute team if you need assistance confirming your participation.
             </p>
           @else
-            <div class="mt-6 space-y-4 text-sm sm:text-base text-gray-700 dark:text-gray-300">
+            <div class="mt-6 space-y-4 text-sm sm:text-base text-gray-800 dark:text-gray-100">
               <p>Hi <span class="font-semibold text-gray-900 dark:text-white">{{ $reservation->full_name }}</span>,</p>
               <p>
                 Thank you for reserving your seat for <span class="font-semibold text-gray-900 dark:text-white">ALG 2025 – Building Together for Impact</span>.
