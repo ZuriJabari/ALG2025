@@ -16,9 +16,9 @@
 <body class="antialiased bg-white dark:bg-slate-950">
   <x-header />
 
-  <main class="py-10 sm:py-16">
+  <main class="py-12 sm:py-16 md:py-20">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <section class="relative rounded-3xl border border-gray-200/80 dark:border-slate-700 bg-white dark:bg-slate-950 shadow-2xl overflow-hidden">
+      <section class="relative mt-6 sm:mt-10 rounded-3xl border border-gray-200/80 dark:border-slate-700 bg-white dark:bg-slate-950 shadow-2xl overflow-hidden">
         <div class="absolute -inset-1 bg-gradient-to-br from-teal-500/10 via-cyan-500/5 to-amber-400/5 opacity-40 pointer-events-none"></div>
         <div class="relative p-6 sm:p-8">
           <div class="flex items-center justify-between gap-3">
