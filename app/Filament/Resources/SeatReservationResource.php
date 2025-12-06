@@ -11,6 +11,7 @@ use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
@@ -99,6 +100,7 @@ class SeatReservationResource extends Resource
                     ->icon('heroicon-o-envelope')
                     ->color('primary')
                     ->requiresConfirmation()
+                    ->successNotificationTitle('Attendance emails have been sent (one per email address).')
                     ->action(function (Collection $records): void {
                         // Ensure we only send one email per email address in this bulk run
                         $uniqueByEmail = $records->unique('email');
@@ -111,9 +113,13 @@ class SeatReservationResource extends Resource
 
                             $url = URL::route('attendance.show', ['t' => $reservation->attendance_token]);
 
-                            Mail::to($reservation->email)->send(
-                                new AttendanceConfirmationRequest($reservation->full_name, $url)
-                            );
+                            try {
+                                Mail::to($reservation->email)->send(
+                                    new AttendanceConfirmationRequest($reservation->full_name, $url)
+                                );
+                            } catch (\Throwable $e) {
+                                Log::warning('Attendance email failed for reservation ID '.$reservation->id.': '.$e->getMessage());
+                            }
                         });
                     }),
                 Tables\Actions\DeleteBulkAction::make(),
