@@ -37,6 +37,11 @@
         Mr. Mudiwa will share powerful insights on building together for impact&mdash;with a focus on <strong>"Excellence as a Standard: Sustaining High-Performance Leadership in Challenging Contexts"</strong>.
       </p>
 
+      <p style="margin-top:10px; font-size:14px; line-height:1.7;">
+        You can read more about his keynote and background here:
+        <a href="https://leoafricainstitute.org/blog/charles-mudiwa-to-deliver-keynote-address-at-alg2025/" target="_blank" rel="noopener">Charles Mudiwa to deliver keynote address at ALG 2025</a>.
+      </p>
+
       <hr class="hr" style="margin:18px 0;" />
 
       <p style="margin:0; font-size:14px; line-height:1.7;">
