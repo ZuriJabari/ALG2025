@@ -50,6 +50,7 @@
 
       <p style="margin-top:10px; font-size:12px; line-height:1.6; color:#6B7280;">
         This personalised link will allow you to choose whether you are attending <strong>in person in Kampala</strong> or <strong>joining virtually online</strong>.
+        If you have already confirmed how you will attend, you do not need to take any further action and may simply ignore this reminder.
       </p>
 
       <hr class="hr" style="margin:18px 0;" />

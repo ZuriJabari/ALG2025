@@ -129,15 +129,10 @@ class SeatReservationResource extends Resource
                     ->icon('heroicon-o-megaphone')
                     ->color('secondary')
                     ->requiresConfirmation()
-                    ->successNotificationTitle('Keynote reminder emails have been sent to attendees who have not yet confirmed their mode of attendance (one per email address).')
+                    ->successNotificationTitle('Keynote reminder emails have been sent to attendees (one per email address).')
                     ->action(function (Collection $records): void {
-                        // Only target reservations that have not yet confirmed how they will attend
-                        $pending = $records->filter(function (SeatReservation $reservation) {
-                            return $reservation->attendance_mode === null;
-                        });
-
                         // Ensure we only send one email per email address in this bulk run
-                        $uniqueByEmail = $pending->unique('email');
+                        $uniqueByEmail = $records->unique('email');
 
                         $uniqueByEmail->each(function (SeatReservation $reservation) {
                             if (! $reservation->attendance_token) {
