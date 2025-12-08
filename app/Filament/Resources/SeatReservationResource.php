@@ -3,6 +3,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\SeatReservationResource\Pages;
 use App\Mail\AttendanceConfirmationRequest;
+use App\Mail\KeynoteAttendanceReminder;
 use App\Models\SeatReservation;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -122,6 +123,40 @@ class SeatReservationResource extends Resource
                             }
                         });
                     }),
+
+                Tables\Actions\BulkAction::make('sendKeynoteReminderEmail')
+                    ->label('Send keynote + reminder email')
+                    ->icon('heroicon-o-megaphone')
+                    ->color('secondary')
+                    ->requiresConfirmation()
+                    ->successNotificationTitle('Keynote reminder emails have been sent to attendees who have not yet confirmed their mode of attendance (one per email address).')
+                    ->action(function (Collection $records): void {
+                        // Only target reservations that have not yet confirmed how they will attend
+                        $pending = $records->filter(function (SeatReservation $reservation) {
+                            return $reservation->attendance_mode === null;
+                        });
+
+                        // Ensure we only send one email per email address in this bulk run
+                        $uniqueByEmail = $pending->unique('email');
+
+                        $uniqueByEmail->each(function (SeatReservation $reservation) {
+                            if (! $reservation->attendance_token) {
+                                $reservation->attendance_token = (string) Str::uuid();
+                                $reservation->save();
+                            }
+
+                            $url = URL::route('attendance.show', ['t' => $reservation->attendance_token]);
+
+                            try {
+                                Mail::to($reservation->email)->send(
+                                    new KeynoteAttendanceReminder($reservation->full_name, $url)
+                                );
+                            } catch (\Throwable $e) {
+                                Log::warning('Keynote reminder email failed for reservation ID '.$reservation->id.': '.$e->getMessage());
+                            }
+                        });
+                    }),
+
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
