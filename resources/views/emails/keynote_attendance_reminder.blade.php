@@ -29,7 +29,7 @@
       <p style="margin:0; font-size:15px; line-height:1.7;">We're thrilled to announce our first keynote speaker for the 2025 Annual Leaders Gathering:</p>
 
       <p style="margin-top:12px; font-size:15px; line-height:1.7;">
-        <strong>Mr. Chairs Mudiwa</strong><br/>
+        <strong>Mr. Charles Mudiwa</strong><br/>
         Managing Director &amp; CEO, DFCU Bank
       </p>
 
