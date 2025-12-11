@@ -105,53 +105,6 @@
                     </div>
                 @endif
 
-                <!-- Panel Speakers -->
-                @if($panelSpeakers->isNotEmpty())
-                    <div class="mb-20">
-                        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-10">Panel Speakers</h2>
-                        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            @foreach($panelSpeakers as $speaker)
-                                @php
-                                    $avatar = $speaker->getFirstMediaUrl('headshot', 'avatar') ?: $speaker->getFirstMediaUrl('headshot');
-                                    $initials = collect(explode(' ', $speaker->name))->map(fn($w) => strtoupper(substr($w, 0, 1)))->take(2)->join('');
-                                @endphp
-                                <article class="group bg-white dark:bg-slate-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-                                    <div class="aspect-[4/3] overflow-hidden bg-gradient-to-br from-teal-100 to-teal-200 dark:from-teal-900/30 dark:to-teal-800/30 flex items-center justify-center">
-                                        @if($avatar)
-                                            <img src="{{ $avatar }}" alt="{{ $speaker->name }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500" loading="lazy">
-                                        @else
-                                            <div class="w-24 h-24 rounded-full bg-teal-300 dark:bg-teal-700 flex items-center justify-center">
-                                                <span class="text-3xl font-bold text-teal-800 dark:text-teal-200">{{ $initials }}</span>
-                                            </div>
-                                        @endif
-                                    </div>
-                                    <div class="p-5">
-                                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">{{ $speaker->name }}</h3>
-                                        @if($speaker->title || $speaker->company)
-                                            <p class="text-xs font-semibold text-teal-600 dark:text-teal-400 mb-2">{{ $speaker->title }}@if($speaker->title && $speaker->company), @endif{{ $speaker->company }}</p>
-                                        @endif
-                                        @if($speaker->short_bio)
-                                            <p class="text-xs text-gray-600 dark:text-gray-300 line-clamp-3">{{ $speaker->short_bio }}</p>
-                                        @endif
-                                        @if($speaker->twitter || $speaker->linkedin || $speaker->website)
-                                            <div class="mt-3 flex gap-3 text-xs">
-                                                @if($speaker->twitter)
-                                                    <a href="{{ $speaker->twitter }}" target="_blank" class="text-teal-600 dark:text-teal-400 hover:underline">Twitter</a>
-                                                @endif
-                                                @if($speaker->linkedin)
-                                                    <a href="{{ $speaker->linkedin }}" target="_blank" class="text-teal-600 dark:text-teal-400 hover:underline">LinkedIn</a>
-                                                @endif
-                                                @if($speaker->website)
-                                                    <a href="{{ $speaker->website }}" target="_blank" class="text-teal-600 dark:text-teal-400 hover:underline">Website</a>
-                                                @endif
-                                            </div>
-                                        @endif
-                                    </div>
-                                </article>
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
 
                 <!-- Moderators -->
                 @if($moderators->isNotEmpty())
