@@ -282,7 +282,7 @@
               </div>
               <div class="mt-4 pt-3 border-t border-gray-200 dark:border-slate-800 flex items-center justify-between gap-3">
                 <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">PDF &bull; Breakfast programme &amp; flow</p>
-                <a href="{{ route('acb') }}#programme" class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-amber-500 text-slate-900 text-xs sm:text-sm font-semibold hover:bg-amber-400 dark:bg-amber-400 dark:text-slate-900 dark:hover:bg-amber-300 transition">
+                <a href="{{ route('acb') }}#programme" class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white text-slate-900 text-xs sm:text-sm font-semibold hover:bg-gray-100 dark:bg-white dark:text-slate-900 dark:hover:bg-gray-100 transition shadow-sm">
                   <span>Open programme page</span>
                   <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
                 </a>
