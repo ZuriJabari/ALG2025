@@ -19,10 +19,13 @@
         <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden">
             <!-- Header -->
             <div class="bg-gradient-to-r from-teal-600 to-amber-500 px-6 py-8 text-center">
+                <div class="mb-4">
+                    <img src="{{ url('/assets/logos/ALG.png') }}" alt="Annual Leaders Gathering" class="h-12 w-auto mx-auto" />
+                </div>
                 <h1 class="text-2xl sm:text-3xl font-bold text-white mb-2">
-                    ALG 2025 - Attendance Verification
+                    Attendance Verification
                 </h1>
-                <p class="text-teal-50">Africa Champions Breakfast</p>
+                <p class="text-teal-50 font-semibold">#ALG2025 • Africa Champions Breakfast</p>
             </div>
 
             <!-- Content -->
@@ -109,8 +112,8 @@
             <!-- Footer -->
             <div class="bg-gray-50 dark:bg-slate-700/50 px-6 py-4 text-center border-t border-gray-200 dark:border-slate-600">
                 <p class="text-sm text-gray-600 dark:text-gray-400">
-                    <strong>LéO Africa Institute</strong> • ALG 2025<br>
-                    Saturday, 13th December 2025
+                    <strong>LéO Africa Institute</strong><br>
+                    <span class="font-semibold text-teal-600 dark:text-teal-400">#ALG2025</span> • Saturday, 13th December 2025
                 </p>
             </div>
         </div>
