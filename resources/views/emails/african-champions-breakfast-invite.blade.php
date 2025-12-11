@@ -22,85 +22,41 @@
     </div>
 
     <span class="badge">Africa Champions Breakfast</span>
-    <h1 style="margin-top:16px; font-size:24px; font-weight:600;">Dear {{ $reservation->full_name }},</h1>
+    <h1 style="margin-top:16px; font-size:20px; font-weight:600;">Dear {{ $reservation->full_name }},</h1>
 
     <div class="card" style="margin-top:16px; padding:20px 22px;">
       <p style="margin:0; font-size:15px; line-height:1.7;">
-        We are excited for you to join us for the <strong>#ALG2025</strong>, and in particular, to confirm your attendance at the <strong>Africa Champions Breakfast</strong> happening this Saturday.
+        In appreciation of the remarkable value you have added to the LéO Africa Institute through your time, leadership and unwavering commitment to our mission, we are pleased to extend a special invitation to you to join us for the <strong>Africa Champions Breakfast</strong>. This will happen as a side event before the main <strong>#ALG2025</strong> event.
       </p>
 
-      <p style="margin-top:12px; font-size:15px; line-height:1.7;">
-        Your presence at this inaugural gathering is deeply meaningful to us.
+      <p style="margin-top:14px; font-size:14px; line-height:1.7; font-weight:600; color:#0F766E;">
+        📅 Date: December 13th, 2025<br/>
+        ⏰ Time: 7:30am to 10:00am<br/>
+        📍 Venue: Four Points by Sheraton, Kampala
       </p>
 
-      <p style="margin-top:12px; font-size:15px; line-height:1.7;">
-        If you have not yet confirmed for the Breakfast session, we kindly request that you confirm your attendance, so we can make the necessary preparations for an intimate and seamless experience. If you have already sent in your confirmation, we are excited to see you.
+      <p style="margin-top:14px; font-size:15px; line-height:1.7;">
+        <strong>The agenda for the Breakfast has been attached to this email.</strong>
       </p>
 
-      <hr class="hr" style="margin:18px 0;" />
-
-      <!-- QR Code Notice -->
-      <div class="qr-box">
-        <p style="margin:0 0 12px 0; font-weight:600; font-size:14px; color:#92400E; text-transform:uppercase; letter-spacing:0.05em;">
-          🎫 Your Personal QR Code
-        </p>
-        <p style="margin:12px 0 0 0; font-size:14px; line-height:1.6; color:#78350f;">
-          Your personal QR code is <strong>attached to this email</strong>. Please <strong>download and print it</strong> or <strong>save it to your device</strong> for quick check-in at the entrance.
-        </p>
-      </div>
-
-      <hr class="hr" style="margin:18px 0;" />
-
-      <!-- Attendance Confirmation -->
-      <p style="margin:0; font-size:14px; line-height:1.7;">
-        If you haven't yet confirmed how you will attend <strong>#ALG2025</strong>, please do so as soon as possible.
-        This helps us finalise logistics and ensure your experience is seamless.
+      <p style="margin-top:14px; font-size:15px; line-height:1.7;">
+        As we launch the Africa Champions Network, we would be honoured to have you present as part of this journey. Your continued contribution and voice are essential as we build together for greater impact across the continent.
       </p>
 
-      <p style="margin-top:14px; text-align:center;">
-        <a href="{{ $attendanceUrl }}" class="btn">Confirm how I'll attend (in person or virtual)</a>
-      </p>
-
-      <p style="margin-top:10px; font-size:12px; line-height:1.6; color:#92400E;">
-        This personalised link will allow you to choose whether you are attending <strong>in person in Kampala</strong> or <strong>joining virtually online</strong>.
-        If you have already confirmed how you will attend, you do not need to take any further action.
+      <p style="margin-top:14px; font-size:15px; line-height:1.7;">
+        We look forward to sharing this milestone moment with you.
       </p>
 
       <hr class="hr" style="margin:18px 0;" />
 
-      <p style="margin:0; font-size:14px; line-height:1.7; background:#FEF3C7; padding:12px 16px; border-radius:8px; border-left:3px solid #D97706;">
-        <strong>📎 Attachments:</strong> The agenda for the Africa Champions Breakfast & Full Schedule for the main #ALG2025 are attached for your attention.
-      </p>
-
-      <hr class="hr" style="margin:18px 0;" />
-
-      <p style="margin:0; font-size:14px; line-height:1.7;">
-        Thank you once more for your steadfast support, your belief in our vision, and your commitment to Africa's future.
-      </p>
-
-      <p style="margin-top:12px; font-size:14px; line-height:1.7;">
-        We look forward to hosting you for this special breakfast.
-      </p>
-
-      <div style="margin-top:18px; padding:14px 16px; border-radius:14px; background:#FEF3C7; border:1px solid #FDE68A;">
-        <p style="margin:0 0 4px 0; font-weight:600; font-size:14px;">Event Details:</p>
-        <ul style="margin:8px 0 0 18px; padding:0; font-size:14px; line-height:1.7; color:#4B5563;">
-          <li>📅 Saturday, 13th December 2025</li>
-          <li>⏰ 7:30 AM - 10:00 AM</li>
-          <li>📍 Four Points by Sheraton, Kampala</li>
-        </ul>
-      </div>
-
-      <p style="margin-top:16px; font-size:14px; line-height:1.7; color:#374151;">
-        <a href="{{ route('acb') }}" class="btn">View Breakfast Programme</a>
+      <p style="margin:0; text-align:center;">
+        <a href="{{ $attendanceUrl }}" class="btn">RSVP Here</a>
       </p>
     </div>
 
     <p style="margin-top:24px; font-size:14px; line-height:1.6; color:#4B5563;">
       Warm regards,<br/>
-      <strong>Emmanuel Awori</strong><br/>
-      Partnerships & Development Lead<br/>
-      +256 787 648584
+      <strong>The LéO Africa Institute Team</strong>
     </p>
     
     <p style="margin-top:12px; font-size:13px; line-height:1.5; color:#6B7280; text-align:center;">
