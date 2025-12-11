@@ -22,21 +22,21 @@
     </div>
 
     <span class="badge">ALG 2025</span>
-    <h1 style="margin-top:16px; font-size:24px; font-weight:600;">Dear {{ $reservation->full_name }},</h1>
+    <h1 style="margin-top:16px; font-size:24px; font-weight:600; color:#DC2626;">IMPORTANT: Announcing the Full #ALG2025 Agenda + FINAL RSVP Required by Tomorrow 11:00 AM</h1>
+
+    <p style="margin-top:16px; font-size:15px; line-height:1.7;">Dear {{ $reservation->full_name }},</p>
 
     <div class="card" style="margin-top:16px; padding:20px 22px;">
-      <h2 style="margin-top:0; margin-bottom:8px; font-size:20px; font-weight:600;">Your Invitation to ALG 2025</h2>
-
       <p style="margin:0; font-size:15px; line-height:1.7;">
-        We are thrilled to confirm your registration for the <strong>Annual Leaders Gathering 2025</strong> happening this Saturday, 13th December 2025.
+        We are pleased to share with you the <strong>official programme for the Annual Leaders Gathering 2025</strong>, happening this Saturday, 13th December.
       </p>
 
-      <p style="margin-top:12px; font-size:15px; line-height:1.7;">
-        This year's gathering brings together Africa's emerging and established leaders for a full day of inspiring keynotes, panel discussions, and meaningful connections around our theme: <strong>"Building Together For Impact"</strong>.
+      <p style="margin-top:14px; text-align:center;">
+        <a href="{{ route('events.2025.programme') }}" class="btn">View OR Download Full Programme</a>
       </p>
 
-      <p style="margin-top:12px; font-size:15px; line-height:1.7;">
-        Your presence and participation will contribute to the rich dialogue and collaborative spirit that defines ALG.
+      <p style="margin-top:14px; font-size:15px; line-height:1.7;">
+        This year's programme brings together some of Africa's leading thinkers and practitioners for a full day of keynotes, high-impact panel discussions, and collaborative leadership sessions under the theme <strong>"Building Together for Impact."</strong>
       </p>
 
       <hr class="hr" style="margin:18px 0;" />
@@ -53,29 +53,27 @@
 
       <hr class="hr" style="margin:18px 0;" />
 
-      <!-- Attendance Confirmation -->
-      <p style="margin:0; font-size:14px; line-height:1.7;">
-        If you haven't yet confirmed how you will attend <strong>#ALG2025</strong>, please do so as soon as possible.
-        This helps us finalise logistics and ensure your experience is seamless.
-      </p>
-
-      <p style="margin-top:14px; text-align:center;">
-        <a href="{{ $attendanceUrl }}" class="btn">Confirm how I'll attend (in person or virtual)</a>
-      </p>
-
-      <p style="margin-top:10px; font-size:12px; line-height:1.6; color:#0F766E;">
-        This personalised link will allow you to choose whether you are attending <strong>in person in Kampala</strong> or <strong>joining virtually online</strong>.
-        If you have already confirmed how you will attend, you do not need to take any further action.
-      </p>
+      <!-- ACTION REQUIRED -->
+      <div style="padding:16px; background:#FEF2F2; border:2px solid #DC2626; border-radius:12px; margin:16px 0;">
+        <p style="margin:0 0 12px 0; font-weight:700; font-size:15px; color:#DC2626; text-transform:uppercase;">⚠️ ACTION REQUIRED: Confirm Your Attendance Mode</p>
+        <p style="margin:0; font-size:14px; line-height:1.7; color:#7F1D1D;">
+          To help us finalize logistics—including seating, security, and hospitality—all participants must RSVP.
+        </p>
+        <p style="margin-top:14px; text-align:center;">
+          <a href="{{ $attendanceUrl }}" class="btn" style="background:#DC2626;">RSVP Here (In-Person or Virtual)</a>
+        </p>
+        <p style="margin-top:12px; font-size:13px; line-height:1.6; color:#7F1D1D;">
+          <strong>RSVP Deadline: Tomorrow, Friday 12th December, at 11:00 AM (Strictly)</strong>
+        </p>
+        <p style="margin-top:10px; font-size:13px; line-height:1.6; color:#7F1D1D;">
+          If we do not receive your response by the deadline, you will automatically be registered for virtual attendance.
+        </p>
+      </div>
 
       <hr class="hr" style="margin:18px 0;" />
 
       <p style="margin:0; font-size:14px; line-height:1.7;">
-        We look forward to welcoming you to what promises to be an inspiring and transformative gathering.
-      </p>
-
-      <p style="margin-top:12px; font-size:14px; line-height:1.7;">
-        See you on Saturday!
+        We look forward to hosting you for what promises to be an insightful and inspiring <strong>#ALG2025</strong> experience.
       </p>
 
       <div style="margin-top:18px; padding:14px 16px; border-radius:14px; background:#F0FDFA; border:1px solid #CCFBF1;">
@@ -88,9 +86,6 @@
         </ul>
       </div>
 
-      <p style="margin-top:16px; font-size:14px; line-height:1.7; color:#374151;">
-        <a href="{{ route('events.2025.programme') }}" class="btn">View Full Programme</a>
-      </p>
     </div>
 
     <p style="margin-top:24px; font-size:14px; line-height:1.6; color:#4B5563;">
