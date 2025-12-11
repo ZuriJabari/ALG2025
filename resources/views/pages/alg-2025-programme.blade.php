@@ -75,8 +75,8 @@
               </div>
               <div class="relative bg-white dark:bg-slate-950">
                 <div class="px-4 sm:px-6 py-5 sm:py-6">
-                  <ol class="space-y-2 sm:space-y-3 text-sm sm:text-[15px] text-gray-800 dark:text-gray-100">
-                    <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 bg-white/0 dark:bg-transparent even:bg-teal-50/30 even:dark:bg-slate-900/40 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-300 hover:bg-teal-50/50 dark:hover:bg-slate-900/60">
+                  <ol class="space-y-0 text-sm sm:text-[15px] text-gray-800 dark:text-gray-100">
+                    <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 even:bg-teal-50/40 even:dark:bg-slate-900/50 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-300 hover:bg-teal-50/60 dark:hover:bg-slate-900/70">
                       <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                         <p class="font-semibold text-teal-700 dark:text-teal-300">10:00 &ndash; 10:20 AM</p>
                       </div>
