@@ -22,4 +22,10 @@
     .dark .programme-list-amber > li:nth-child(even) {
         background-color: rgba(30 41 59 / 0.8); /* slate-800/80 */
     }
+
+    /* Thin horizontal separators for programme items */
+    .programme-list > li,
+    .programme-list-amber > li {
+        border-top-width: 0.5px;
+    }
 }
