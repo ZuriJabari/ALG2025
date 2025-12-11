@@ -2,22 +2,25 @@
 
 namespace App\Mail;
 
+use App\Models\SeatReservation;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class GeneralALGInvite extends Mailable
+class GeneralALGInvite extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct()
-    {
+    public function __construct(
+        public SeatReservation $reservation
+    ) {
         //
     }
 
@@ -27,7 +30,7 @@ class GeneralALGInvite extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'General A L G Invite',
+            subject: 'Your Invitation to ALG 2025 | Saturday, 13th December',
         );
     }
 
@@ -36,9 +39,30 @@ class GeneralALGInvite extends Mailable
      */
     public function content(): Content
     {
+        // Generate QR code URL
+        $qrCodeUrl = $this->generateQRCode();
+
         return new Content(
-            view: 'view.name',
+            view: 'emails.general-alg-invite',
+            with: [
+                'reservation' => $this->reservation,
+                'qrCodeUrl' => $qrCodeUrl,
+            ],
         );
+    }
+
+    /**
+     * Generate QR code for attendance verification
+     */
+    protected function generateQRCode(): string
+    {
+        $verificationUrl = route('attendance.verify', ['token' => $this->reservation->attendance_token]);
+        
+        return \SimpleSoftwareIO\QrCode\Facades\QrCode::format('png')
+            ->size(200)
+            ->margin(1)
+            ->errorCorrection('H')
+            ->generate($verificationUrl);
     }
 
     /**
@@ -48,6 +72,10 @@ class GeneralALGInvite extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [
+            Attachment::fromPath(public_path('assets/1x/FINAL Main Program ALG 2025.pdf'))
+                ->as('FINAL Main Program ALG 2025.pdf')
+                ->withMime('application/pdf'),
+        ];
     }
 }
