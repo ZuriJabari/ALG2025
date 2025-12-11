@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Speakers - ALG 2025 | LéO Africa Institute</title>
     <meta name="description" content="Meet the distinguished leaders, innovators, and changemakers who will share their insights at #ALG2025">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @include('partials.analytics')
+    @if(app()->environment('production'))
+        <link rel="stylesheet" href="{{ asset('assets/app-production.css') }}?v={{ @file_exists(public_path('assets/app-production.css')) ? @filemtime(public_path('assets/app-production.css')) : time() }}">
+        <script type="module" src="{{ asset('assets/app-production.js') }}?v={{ @file_exists(public_path('assets/app-production.js')) ? @filemtime(public_path('assets/app-production.js')) : time() }}"></script>
+    @else
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
 </head>
-<body class="font-sans antialiased bg-white dark:bg-slate-900">
-  <x-navigation />
+<body class="antialiased bg-white dark:bg-slate-950">
+  <x-header />
 
   <main>
     <!-- Hero Section -->
