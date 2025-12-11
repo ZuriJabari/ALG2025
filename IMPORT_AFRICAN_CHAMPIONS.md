@@ -3,6 +3,28 @@
 ## Overview
 This guide explains how to import African Champions from the Excel file into the seat reservations database.
 
+## Setup (First Time Only)
+
+On your production server, run these commands:
+
+```bash
+# Pull the latest code
+git pull origin main
+
+# Install the Excel package dependency
+composer install --no-dev
+
+# Clear Laravel caches
+php artisan config:clear
+php artisan cache:clear
+php artisan view:clear
+
+# Verify the command is available
+php artisan list | grep import
+```
+
+You should see `import:african-champions` in the list.
+
 ## What It Does
 - Imports names and emails from `assets/1x/Email list- Olara.xlsx`
 - Marks all imported records with `fellowship = 'Africa Champions Invite'`
