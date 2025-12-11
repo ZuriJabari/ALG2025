@@ -43,27 +43,27 @@
                     </div>
 
                     <!-- Attendee Details -->
-                    <div class="bg-gray-50 dark:bg-slate-700/50 rounded-xl p-6 mb-6">
+                    <div class="bg-white dark:bg-slate-800 border-2 border-gray-200 dark:border-slate-600 rounded-xl p-6 mb-6">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Attendee Information</h3>
-                        <div class="space-y-3">
-                            <div class="flex justify-between">
-                                <span class="text-gray-600 dark:text-gray-400">Name:</span>
-                                <span class="font-semibold text-gray-900 dark:text-white">{{ $reservation->full_name }}</span>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700 dark:text-gray-300 font-medium">Name:</span>
+                                <span class="font-bold text-gray-900 dark:text-white">{{ $reservation->full_name }}</span>
                             </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-600 dark:text-gray-400">Email:</span>
-                                <span class="font-medium text-gray-900 dark:text-white">{{ $reservation->email }}</span>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700 dark:text-gray-300 font-medium">Email:</span>
+                                <span class="font-semibold text-gray-900 dark:text-white">{{ $reservation->email }}</span>
                             </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-600 dark:text-gray-400">Fellowship:</span>
-                                <span class="inline-flex px-3 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-200 rounded-full text-sm font-medium">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700 dark:text-gray-300 font-medium">Fellowship:</span>
+                                <span class="inline-flex px-3 py-1 bg-amber-500 text-white rounded-full text-sm font-bold shadow-sm">
                                     {{ $reservation->fellowship }}
                                 </span>
                             </div>
                             @if($reservation->attendance_mode)
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600 dark:text-gray-400">Status:</span>
-                                    <span class="inline-flex px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full text-sm font-medium">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium">Status:</span>
+                                    <span class="inline-flex px-3 py-1 bg-green-500 text-white rounded-full text-sm font-bold shadow-sm">
                                         ✓ Checked In
                                     </span>
                                 </div>
