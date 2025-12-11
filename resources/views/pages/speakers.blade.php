@@ -41,18 +41,18 @@
                 $hosts = $speakers->filter(fn($s) => in_array(strtolower($s->category ?? ''), ['host', 'co-host']));
             @endphp
 
-            @if($speakers->isEmpty())
-                <div class="relative rounded-3xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 sm:p-12 shadow-sm overflow-hidden">
-                    <div class="absolute -top-10 -right-10 w-56 h-56 bg-teal-500/10 rounded-full blur-2xl"></div>
-                    <div class="absolute -bottom-10 -left-10 w-56 h-56 bg-orange-500/10 rounded-full blur-2xl"></div>
-                    <div class="relative">
-                        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Coming Soon</h2>
-                        <p class="mt-3 text-gray-600 dark:text-gray-300 max-w-2xl">We're curating an exceptional roster of speakers for ALG 2025. Check back shortly, or revisit the highlights from ALG 2024.</p>
-                        <div class="mt-6 flex flex-wrap gap-3">
-                            <a href="/events/2024" class="shrink-0 whitespace-nowrap inline-flex items-center justify-center h-11 px-6 rounded-full bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold transition-all hover:-translate-y-0.5">Explore ALG 2024</a>
-                        </div>
+            <div class="max-w-3xl">
+                <div class="rounded-2xl bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 p-8 sm:p-12">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Speakers to be announced shortly</h2>
+                    <p class="mt-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">We're curating an exceptional roster of distinguished leaders, innovators, and changemakers for ALG 2025. The full speaker lineup will be announced soon.</p>
+                    <p class="mt-4 text-gray-600 dark:text-gray-400">In the meantime, explore the highlights from our previous gathering:</p>
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <a href="/events/2024" class="shrink-0 whitespace-nowrap inline-flex items-center justify-center h-11 px-6 rounded-full bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold transition-all hover:-translate-y-0.5">Explore ALG 2024</a>
                     </div>
                 </div>
+            </div>
+
+            @if(false)
             @else
                 <!-- Keynote Speakers -->
                 @if($keynoteSpeakers->isNotEmpty())
