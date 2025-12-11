@@ -66,20 +66,170 @@
               <div class="relative px-4 sm:px-5 py-3 sm:py-4 flex items-center justify-between gap-3 border-b border-gray-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/90 backdrop-blur">
                 <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-700 dark:text-gray-300">
                   <span class="inline-flex w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 items-center justify-center"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M5 4h14v16H5z"/></svg></span>
-                  <span>Main Programme &mdash; PDF viewer</span>
+                  <span>Main Programme &mdash; Full schedule</span>
                 </div>
-                <a href="{{ asset('assets/1x/FINAL Main Program ALG 2025.pdf') }}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs sm:text-sm text-teal-700 dark:text-teal-300 hover:underline">
-                  <span>Open in new tab</span>
-                  <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5h10v10M9 15l10-10"/></svg>
+                <a href="{{ asset('assets/1x/FINAL Main Program ALG 2025.pdf') }}" download class="inline-flex items-center gap-1.5 text-xs sm:text-sm text-teal-700 dark:text-teal-300 hover:underline">
+                  <span>Download PDF</span>
+                  <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>
                 </a>
               </div>
-              <div class="relative bg-slate-900/95 dark:bg-slate-950">
-                <object data="{{ asset('assets/1x/FINAL Main Program ALG 2025.pdf') }}" type="application/pdf" class="w-full h-[520px] sm:h-[640px]">
-                  <p class="p-4 text-sm text-gray-200">
-                    Your browser is unable to display this programme. You can
-                    <a href="{{ asset('assets/1x/FINAL Main Program ALG 2025.pdf') }}" class="underline hover:text-teal-300" target="_blank" rel="noopener">download the ALG 2025 Main Programme PDF here</a>.
-                  </p>
-                </object>
+              <div class="relative bg-white dark:bg-slate-950">
+                <div class="px-4 sm:px-6 py-5 sm:py-6">
+                  <ol class="space-y-4 sm:space-y-5 text-sm sm:text-[15px] text-gray-800 dark:text-gray-100">
+                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                      <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                        <p class="font-semibold text-teal-700 dark:text-teal-300">10:00 &ndash; 10:20 AM</p>
+                      </div>
+                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Arrival &amp; Hosting</p>
+                        <p class="mt-1 font-semibold">Guest arrival and settling in</p>
+                        <p class="mt-1 text-gray-700 dark:text-gray-300">Programme Director &amp; Event Host: <span class="font-medium">Edgar Mwine</span>, YELP Fellow &amp; Programme Officer, KAS for Security in Africa, with co-host <span class="font-medium">Lisa Kanyomozi Rabwoni</span>, Huduma Fellow (Class of 2024).</p>
+                      </div>
+                    </li>
+                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                      <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                        <p class="font-semibold text-teal-700 dark:text-teal-300">10:20 &ndash; 10:25 AM</p>
+                      </div>
+                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Welcome</p>
+                        <p class="mt-1 font-semibold">Welcome remarks</p>
+                        <p class="mt-1 text-gray-700 dark:text-gray-300">By <span class="font-medium">Awel Uwihanganye</span>, Co-founder &amp; Team Lead, LéO Africa Institute.</p>
+                      </div>
+                    </li>
+                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                      <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                        <p class="font-semibold text-teal-700 dark:text-teal-300">10:25 &ndash; 10:40 AM</p>
+                      </div>
+                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Opening keynote</p>
+                        <p class="mt-1 font-semibold">Keynote address</p>
+                        <p class="mt-1 text-gray-700 dark:text-gray-300">Speaker: <span class="font-medium">Charles Mudiwa</span>, Managing Director, Dfcu Bank.</p>
+                        <p class="mt-1 text-gray-700 dark:text-gray-300">Topic: <span class="italic">&ldquo;Excellence as a Standard: Sustaining High-Performance Leadership in Challenging Contexts.&rdquo;</span></p>
+                      </div>
+                    </li>
+                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                      <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                        <p class="font-semibold text-teal-700 dark:text-teal-300">10:40 &ndash; 11:30 AM</p>
+                      </div>
+                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Fireside conversation</p>
+                        <p class="mt-1 font-semibold">Moderated conversation with keynote speaker</p>
+                        <p class="mt-1 text-gray-700 dark:text-gray-300">Joined by <span class="font-medium">Anna Reismann</span>, Country Representative, Konrad Adenauer Stiftung Uganda &amp; South Sudan.</p>
+                        <p class="mt-1 text-gray-700 dark:text-gray-300">Moderated by <span class="font-medium">Awel Uwihanganye</span>.</p>
+                      </div>
+                    </li>
+                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                      <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                        <p class="font-semibold text-teal-700 dark:text-teal-300">11:30 &ndash; 11:50 AM</p>
+                      </div>
+                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Cultural interlude</p>
+                        <p class="mt-1 font-semibold">&ldquo;We Are All Africa!&rdquo; &mdash; Cultural presentation</p>
+                        <p class="mt-1 text-gray-700 dark:text-gray-300">By <span class="font-medium">Joseph Irankunda &amp; Co.</span></p>
+                      </div>
+                    </li>
+                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                      <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                        <p class="font-semibold text-teal-700 dark:text-teal-300">11:50 AM &ndash; 1:10 PM</p>
+                      </div>
+                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Panel I</p>
+                        <p class="mt-1 font-semibold">Panel discussion: &ldquo;From Individual Excellence to Collective Impact: Building Strategic Partnerships Across Sectors&rdquo;</p>
+                        <p class="mt-1 text-gray-700 dark:text-gray-300">Moderator: <span class="font-medium">Raymond Mujuni</span>, Deputy Director, African Institute for Investigative Journalism; YELP Fellow (Class of 2017).</p>
+                        <p class="mt-2 text-gray-700 dark:text-gray-300 font-medium">Panelists:</p>
+                        <ul class="mt-1 space-y-1.5 text-gray-700 dark:text-gray-300">
+                          <li>&bull; <span class="font-medium">Michael Kayemba</span>, Associate Partner, AXUM.</li>
+                          <li>&bull; <span class="font-medium">Emmanuel Awori</span>, Partnerships Lead, LéO Africa Institute.</li>
+                          <li>&bull; <span class="font-medium">Okash Mohammed</span>, Director, ICE Institute &mdash; Research, Strategy, Foresight &amp; Policy; YELP Fellow (Class of 2018).</li>
+                          <li>&bull; <span class="font-medium">Lucy Mbabazi</span>, Managing Director, Better Than Cash Alliance; Emeritus Board Chair, LéO Africa Institute.</li>
+                          <li>&bull; <span class="font-medium">Linda Mutesi</span>, Co-founder, Future Generations Foundation.</li>
+                        </ul>
+                        <p class="mt-2 text-gray-700 dark:text-gray-300">Includes Q&amp;A and audience engagement.</p>
+                      </div>
+                    </li>
+                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                      <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                        <p class="font-semibold text-teal-700 dark:text-teal-300">1:30 &ndash; 2:30 PM</p>
+                      </div>
+                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Lunch</p>
+                        <p class="mt-1 font-semibold">Lunch break &amp; networking</p>
+                        <p class="mt-1 text-gray-700 dark:text-gray-300">Open networking opportunity over lunch.</p>
+                      </div>
+                    </li>
+                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                      <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                        <p class="font-semibold text-teal-700 dark:text-teal-300">2:30 &ndash; 2:50 PM</p>
+                      </div>
+                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Artistic reflection</p>
+                        <p class="mt-1 font-semibold">&ldquo;The Psalm of Life!&rdquo; &mdash; Musical poetry presentation</p>
+                        <p class="mt-1 text-gray-700 dark:text-gray-300">By <span class="font-medium">Matovu Matia</span> (Poet) and <span class="font-medium">Frank Baguma</span> (Violinist).</p>
+                      </div>
+                    </li>
+                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                      <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                        <p class="font-semibold text-teal-700 dark:text-teal-300">2:50 &ndash; 3:30 PM</p>
+                      </div>
+                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Afternoon keynote</p>
+                        <p class="mt-1 font-semibold">Afternoon keynote address</p>
+                        <p class="mt-1 text-gray-700 dark:text-gray-300">Speaker: <span class="font-medium">Susan Nsibirwa</span>, Managing Director, Nation Media Group.</p>
+                        <p class="mt-1 text-gray-700 dark:text-gray-300">Topic: <span class="italic">&ldquo;Leading with Purpose: The Imperative of Collaborative Leadership in Africa's Next Decade.&rdquo;</span></p>
+                        <p class="mt-2 text-gray-700 dark:text-gray-300">Followed by a fireside conversation moderated by <span class="font-medium">Angelo Izama</span>, Team Lead, Verification Registration Services; Faculty Head Emeritus, LéO Africa Institute.</p>
+                      </div>
+                    </li>
+                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                      <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                        <p class="font-semibold text-teal-700 dark:text-teal-300">3:30 &ndash; 4:30 PM</p>
+                      </div>
+                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Panel II</p>
+                        <p class="mt-1 font-semibold">Panel discussion II: &ldquo;Frontiers of Opportunity: Innovation and Enterprise Growth Where Excellence is the Standard for Success&rdquo;</p>
+                        <p class="mt-1 text-gray-700 dark:text-gray-300">Moderator: <span class="font-medium">Diana Ondoga</span>, Manager Corporate Social Investment, Stanbic Bank Uganda.</p>
+                        <p class="mt-2 text-gray-700 dark:text-gray-300 font-medium">Panelists:</p>
+                        <ul class="mt-1 space-y-1.5 text-gray-700 dark:text-gray-300">
+                          <li>&bull; <span class="font-medium">Silajji Kanyesigye</span>, Managing Partner, RKA &amp; Co; tax advisor and certified chartered public accountant.</li>
+                          <li>&bull; <span class="font-medium">Lydia Paula Nakiggude</span>, ESG / Sustainability Manager, MTN Uganda.</li>
+                          <li>&bull; <span class="font-medium">Reginald Tumusime</span>, Chief Executive Officer, Capital Savvy.</li>
+                          <li>&bull; <span class="font-medium">Catherinerose Barreto</span>, Co-founder, Binary Labs.</li>
+                          <li>&bull; <span class="font-medium">Conrad Mugisha</span>, Businessman; YELP Fellow (Class of 2017).</li>
+                        </ul>
+                        <p class="mt-2 text-gray-700 dark:text-gray-300">Includes Q&amp;A and audience engagement.</p>
+                      </div>
+                    </li>
+                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                      <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                        <p class="font-semibold text-teal-700 dark:text-teal-300">4:30 &ndash; 4:45 PM</p>
+                      </div>
+                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Entertainment</p>
+                        <p class="mt-1 font-semibold">Entertainment break</p>
+                      </div>
+                    </li>
+                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                      <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                        <p class="font-semibold text-teal-700 dark:text-teal-300">4:45 &ndash; 5:00 PM</p>
+                      </div>
+                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Closing</p>
+                        <p class="mt-1 font-semibold">Closing session</p>
+                        <p class="mt-1 text-gray-700 dark:text-gray-300">With <span class="font-medium">Dr. Abraham Korir Sing’ Oei</span>, Principal Secretary, Ministry of Foreign and Diaspora Affairs (State Department for Foreign Affairs).</p>
+                      </div>
+                    </li>
+                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                      <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                        <p class="font-semibold text-teal-700 dark:text-teal-300">5:30 &ndash; 7:00 PM</p>
+                      </div>
+                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Reception</p>
+                        <p class="mt-1 font-semibold">After Gathering reception</p>
+                        <p class="mt-1 text-gray-700 dark:text-gray-300">Over teas, coffee, and bites.</p>
+                      </div>
+                    </li>
+                  </ol>
+                  <p class="mt-6 text-xs sm:text-sm text-gray-500 dark:text-gray-400">*** Inspiring Excellence Through Transformative Leadership ***</p>
+                </div>
               </div>
             </div>
           </div>

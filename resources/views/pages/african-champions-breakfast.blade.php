@@ -51,18 +51,95 @@
               </div>
             </div>
 
-            <div class="mt-3 sm:mt-4 rounded-xl border border-gray-200 dark:border-slate-800 overflow-hidden bg-slate-900/95">
-              <object data="{{ asset('assets/1x/Africa Champions Breakfast ALG 2025.pdf') }}" type="application/pdf" class="w-full h-[480px] sm:h-[600px]">
-                <p class="p-4 text-sm text-gray-200">
-                  Your browser is unable to display this programme. You can
-                  <a href="{{ asset('assets/1x/Africa Champions Breakfast ALG 2025.pdf') }}" class="underline hover:text-amber-300" target="_blank" rel="noopener">download the Africa Champions Breakfast programme PDF here</a>.
-                </p>
-              </object>
+            <div class="mt-3 sm:mt-4 rounded-xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 sm:px-5 py-4 sm:py-5">
+              <ol class="space-y-3 sm:space-y-4 text-sm sm:text-[15px] text-gray-800 dark:text-gray-100">
+                <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                  <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                    <p class="font-semibold text-amber-700 dark:text-amber-300">7:30 &ndash; 8:00 AM</p>
+                  </div>
+                  <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                    <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Guest arrival</p>
+                    <p class="mt-1 font-semibold">Guest arrival &amp; welcome reception</p>
+                    <p class="mt-1 text-gray-700 dark:text-gray-300">Hosted by the Master of Ceremonies.</p>
+                  </div>
+                </li>
+                <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                  <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                    <p class="font-semibold text-amber-700 dark:text-amber-300">8:00 &ndash; 8:30 AM</p>
+                  </div>
+                  <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                    <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Networking breakfast</p>
+                    <p class="mt-1 font-semibold">Networking breakfast</p>
+                    <p class="mt-1 text-gray-700 dark:text-gray-300">An informal opportunity for Africa Champions and partners to connect.</p>
+                  </div>
+                </li>
+                <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                  <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                    <p class="font-semibold text-amber-700 dark:text-amber-300">8:30 &ndash; 8:40 AM</p>
+                  </div>
+                  <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                    <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Welcome</p>
+                    <p class="mt-1 font-semibold">Welcome &amp; opening remarks</p>
+                    <p class="mt-1 text-gray-700 dark:text-gray-300">Framing the morning by the Master of Ceremonies.</p>
+                  </div>
+                </li>
+                <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                  <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                    <p class="font-semibold text-amber-700 dark:text-amber-300">8:40 &ndash; 8:50 AM</p>
+                  </div>
+                  <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                    <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Board welcome</p>
+                    <p class="mt-1 font-semibold">Welcome from the Board Chair</p>
+                    <p class="mt-1 text-gray-700 dark:text-gray-300">Remarks by <span class="font-medium">Magnus Mchunguzi</span>, Board Chairman.</p>
+                  </div>
+                </li>
+                <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                  <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                    <p class="font-semibold text-amber-700 dark:text-amber-300">8:50 &ndash; 9:10 AM</p>
+                  </div>
+                  <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                    <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Co-founder reflections</p>
+                    <p class="mt-1 font-semibold">Reflections from the Co-founder</p>
+                    <p class="mt-1 text-gray-700 dark:text-gray-300">Sharing the vision and journey by <span class="font-medium">Awel Uwihanganye</span>, Co-founder, LéO Africa Institute.</p>
+                  </div>
+                </li>
+                <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                  <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                    <p class="font-semibold text-amber-700 dark:text-amber-300">9:10 &ndash; 9:25 AM</p>
+                  </div>
+                  <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                    <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Partnerships</p>
+                    <p class="mt-1 font-semibold">Partnerships &amp; networks</p>
+                    <p class="mt-1 text-gray-700 dark:text-gray-300">Remarks by <span class="font-medium">Emmanuel Awori</span>, Partnerships Lead, on building together with African Champions.</p>
+                  </div>
+                </li>
+                <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                  <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                    <p class="font-semibold text-amber-700 dark:text-amber-300">9:25 &ndash; 9:40 AM</p>
+                  </div>
+                  <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                    <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Institute story &amp; keynote</p>
+                    <p class="mt-1 font-semibold">The LéO Africa Institute story &amp; African Champions Network</p>
+                    <p class="mt-1 text-gray-700 dark:text-gray-300">13 years of building together, and a presentation on the African Champions Network.</p>
+                    <p class="mt-1 text-gray-700 dark:text-gray-300">Keynote address by <span class="font-medium">David F. Mpanga</span>, Managing Partner, AF Mpanga.</p>
+                  </div>
+                </li>
+                <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                  <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
+                    <p class="font-semibold text-amber-700 dark:text-amber-300">9:40 &ndash; 10:00 AM</p>
+                  </div>
+                  <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                    <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Recognition &amp; closing</p>
+                    <p class="mt-1 font-semibold">Recognition &amp; closing reflections</p>
+                    <p class="mt-1 text-gray-700 dark:text-gray-300">Celebrating Africa Champions and drawing together key insights from the morning. Led by the Master of Ceremonies.</p>
+                  </div>
+                </li>
+              </ol>
             </div>
 
             <div class="mt-3 sm:mt-4 flex flex-wrap items-center justify-between gap-3">
               <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">PDF &bull; Programme overview</p>
-              <a href="{{ asset('assets/1x/Africa Champions Breakfast ALG 2025.pdf') }}" download class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-slate-900 text-white text-xs sm:text-sm font-semibold hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 transition">
+              <a href="{{ asset('assets/1x/Africa Champions Breakfast ALG 2025.pdf') }}" download class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-amber-500 text-slate-900 text-xs sm:text-sm font-semibold hover:bg-amber-400 dark:bg-amber-400 dark:hover:bg-amber-300 transition">
                 <span>Download programme (PDF)</span>
                 <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>
               </a>
