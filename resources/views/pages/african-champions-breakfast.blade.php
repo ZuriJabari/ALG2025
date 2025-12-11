@@ -53,7 +53,7 @@
 
             <div class="mt-3 sm:mt-4 rounded-xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 sm:px-5 py-4 sm:py-5">
               <ol class="space-y-2 sm:space-y-3 text-sm sm:text-[15px] text-gray-800 dark:text-gray-100">
-                <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 rounded-2xl px-3 sm:px-4 py-3 sm:py-4 bg-white/0 dark:bg-transparent even:bg-amber-50/40 even:dark:bg-slate-900/50 border-t border-amber-100/70 dark:border-amber-900/50 first:border-t-0 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:bg-amber-50/80 dark:hover:bg-slate-950/80">
+                <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 bg-white/0 dark:bg-transparent even:bg-amber-50/30 even:dark:bg-slate-900/40 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-300 hover:bg-amber-50/50 dark:hover:bg-slate-900/60">
                   <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                     <p class="font-semibold text-amber-700 dark:text-amber-300">7:30 &ndash; 8:00 AM</p>
                   </div>
