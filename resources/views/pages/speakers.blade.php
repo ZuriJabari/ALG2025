@@ -39,7 +39,7 @@
                         <span class="text-xs font-semibold text-gray-700 dark:text-gray-200">ALG 2025</span>
                     </div>
                     <h1 class="mt-4 text-4xl sm:text-5xl font-normal tracking-tight text-gray-900 dark:text-white">Speakers</h1>
-                    <p class="mt-3 text-lg text-gray-600 dark:text-gray-300 max-w-2xl">Speakers will be announced soon. Check again, please.</p>
+                    <p class="mt-3 text-lg text-gray-600 dark:text-gray-300 max-w-2xl">Meet the distinguished leaders, innovators, and changemakers who will share their insights at #ALG2025</p>
                     
                     <!-- Countdown Clock -->
                     <div class="mt-8 flex gap-2 sm:gap-3 max-w-full overflow-x-auto pb-2" x-data="{
@@ -119,6 +119,13 @@
     <!-- Content -->
     <section class="py-10 sm:py-14">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            @php
+                $keynoteSpeakers = $speakers->filter(fn($s) => strtolower($s->category ?? '') === 'keynote');
+                $panelSpeakers = $speakers->filter(fn($s) => in_array(strtolower($s->category ?? ''), ['panel', 'panelist', 'speaker', '']));
+                $moderators = $speakers->filter(fn($s) => strtolower($s->category ?? '') === 'moderator');
+                $hosts = $speakers->filter(fn($s) => in_array(strtolower($s->category ?? ''), ['host', 'co-host']));
+            @endphp
+
             @if($speakers->isEmpty())
                 <div class="relative rounded-3xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 sm:p-12 shadow-sm overflow-hidden">
                     <div class="absolute -top-10 -right-10 w-56 h-56 bg-teal-500/10 rounded-full blur-2xl"></div>
@@ -126,69 +133,216 @@
                     <div class="relative">
                         <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Coming Soon</h2>
                         <p class="mt-3 text-gray-600 dark:text-gray-300 max-w-2xl">We're curating an exceptional roster of speakers for ALG 2025. Check back shortly, or revisit the highlights from ALG 2024.</p>
-                        <div class="mt-6 flex flex-wrap gap-3" x-data="{ open:false, email:'', loading:false, submitted:false, error:null, openToggle(){ this.open=!this.open; if(this.open){ this.$nextTick(()=> this.$refs.panelEmail?.focus()); } }, async submit(){ if(!this.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email)){ this.error='Please enter a valid email.'; return; } this.loading=true; this.error=null; try{ const res = await fetch('{{ route('newsletter.subscribe') }}', { method:'POST', headers:{ 'Content-Type':'application/json', 'X-CSRF-TOKEN':'{{ csrf_token() }}' }, body: JSON.stringify({ email:this.email }) }); if(!res.ok){ const d = await res.json(); throw new Error((d.errors && (d.errors.email?.[0]||'Invalid email'))||'Subscription failed'); } this.submitted=true; this.email=''; setTimeout(()=>{ this.submitted=false; this.open=false; }, 2200); }catch(e){ this.error = e.message || 'Something went wrong'; } finally{ this.loading=false; } } }">
+                        <div class="mt-6 flex flex-wrap gap-3">
                             <a href="/events/2024" class="shrink-0 whitespace-nowrap inline-flex items-center justify-center h-11 px-6 rounded-full bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold transition-all hover:-translate-y-0.5">Explore ALG 2024</a>
-                            <button type="button" @click="openToggle()" class="shrink-0 whitespace-nowrap inline-flex items-center justify-center h-11 px-6 rounded-full border border-teal-600/40 dark:border-teal-400/40 text-teal-600 dark:text-teal-400 hover:bg-teal-50/50 dark:hover:bg-slate-800 transition-all" :aria-expanded="open.toString()">Get updates</button>
-                            <div class="basis-full w-full" x-show="open"
-                                 x-transition:enter="transition ease-out duration-500"
-                                 x-transition:enter-start="opacity-0 translate-y-2 scale-95"
-                                 x-transition:enter-end="opacity-100 translate-y-0 scale-100"
-                                 x-transition:leave="transition ease-in duration-400"
-                                 x-transition:leave-start="opacity-100 translate-y-0 scale-100"
-                                 x-transition:leave-end="opacity-0 translate-y-1 scale-95">
-                                <div class="mt-3 rounded-2xl bg-white/80 backdrop-blur px-3 py-2">
-                                <form @submit.prevent="submit" class="flex items-center gap-2" @keydown.enter.prevent="submit">
-                                    <label for="spk-panel-email" class="sr-only">Email</label>
-                                    <input id="spk-panel-email" x-ref="panelEmail" x-model="email" type="email" required placeholder="you@example.com" class="w-full sm:w-80 h-11 rounded-full bg-white text-gray-900 placeholder-gray-500 px-4 outline-none text-base" />
-                                    <button type="submit" :disabled="loading" class="inline-flex items-center justify-center h-11 px-5 rounded-full bg-teal-600 text-white font-semibold transition disabled:opacity-60">
-                                        <span x-show="!loading">Subscribe</span>
-                                        <span x-show="loading">Subscribing…</span>
-                                    </button>
-                                </form>
-                                </div>
-                                <p x-show="submitted" x-transition.opacity.duration.200ms class="mt-2 text-sm text-teal-600 dark:text-teal-300" aria-live="polite">Thanks! You’re on the list.</p>
-                                <p x-show="error" x-transition.opacity.duration.200ms x-text="error" class="mt-1 text-sm text-orange-500" aria-live="assertive"></p>
-                            </div>
                         </div>
                     </div>
                 </div>
             @else
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    @foreach($speakers as $speaker)
-                        @php
-                            $avatar = $speaker->getFirstMediaUrl('headshot', 'avatar') ?: $speaker->getFirstMediaUrl('headshot');
-                        @endphp
-                        <article class="group bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-                            <div class="aspect-square overflow-hidden bg-gray-50 dark:bg-slate-800">
-                                @if($avatar)
-                                    <img src="{{ $avatar }}" alt="{{ $speaker->name }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500" loading="lazy">
-                                @else
-                                    <div class="w-full h-full flex items-center justify-center text-gray-400">No image</div>
-                                @endif
-                            </div>
-                            <div class="p-5">
-                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{{ $speaker->name }}</h3>
-                                @if($speaker->title || $speaker->company)
-                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">{{ $speaker->title }}@if($speaker->title && $speaker->company), @endif{{ $speaker->company }}</p>
-                                @endif
-                                @if($speaker->short_bio)
-                                    <p class="mt-3 text-sm text-gray-500 dark:text-gray-400 line-clamp-3">{{ $speaker->short_bio }}</p>
-                                @endif
-                                <div class="mt-4 flex gap-3 text-sm">
-                                    @if($speaker->twitter)
-                                        <a href="{{ $speaker->twitter }}" target="_blank" class="text-teal-600 dark:text-teal-400 hover:underline">Twitter</a>
-                                    @endif
-                                    @if($speaker->linkedin)
-                                        <a href="{{ $speaker->linkedin }}" target="_blank" class="text-teal-600 dark:text-teal-400 hover:underline">LinkedIn</a>
-                                    @endif
-                                    @if($speaker->website)
-                                        <a href="{{ $speaker->website }}" target="_blank" class="text-teal-600 dark:text-teal-400 hover:underline">Website</a>
-                                    @endif
-                                </div>
-                            </div>
-                        </article>
-                    @endforeach
-                </div>
+                <!-- Keynote Speakers -->
+                @if($keynoteSpeakers->isNotEmpty())
+                    <div class="mb-16">
+                        <div class="flex items-center justify-center gap-3 mb-8">
+                            <div class="h-px flex-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
+                            <h2 class="text-2xl font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">Keynote Speakers</h2>
+                            <div class="h-px flex-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                            @foreach($keynoteSpeakers as $speaker)
+                                @php
+                                    $avatar = $speaker->getFirstMediaUrl('headshot', 'avatar') ?: $speaker->getFirstMediaUrl('headshot');
+                                    $initials = collect(explode(' ', $speaker->name))->map(fn($w) => strtoupper(substr($w, 0, 1)))->take(2)->join('');
+                                @endphp
+                                <article class="group bg-white dark:bg-slate-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 border-amber-200 dark:border-amber-900">
+                                    <div class="aspect-[4/3] overflow-hidden bg-gradient-to-br from-amber-100 to-amber-200 dark:from-amber-900/30 dark:to-amber-800/30 flex items-center justify-center">
+                                        @if($avatar)
+                                            <img src="{{ $avatar }}" alt="{{ $speaker->name }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500" loading="lazy">
+                                        @else
+                                            <div class="w-32 h-32 rounded-full bg-amber-300 dark:bg-amber-700 flex items-center justify-center">
+                                                <span class="text-4xl font-bold text-amber-800 dark:text-amber-200">{{ $initials }}</span>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="p-6">
+                                        <div class="inline-block px-3 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-200 rounded-full text-xs font-bold mb-3">
+                                            KEYNOTE SPEAKER
+                                        </div>
+                                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{{ $speaker->name }}</h3>
+                                        @if($speaker->title || $speaker->company)
+                                            <p class="text-sm font-semibold text-amber-600 dark:text-amber-400 mb-3">{{ $speaker->title }}@if($speaker->title && $speaker->company), @endif{{ $speaker->company }}</p>
+                                        @endif
+                                        @if($speaker->short_bio)
+                                            <p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-4">{{ $speaker->short_bio }}</p>
+                                        @endif
+                                        @if($speaker->twitter || $speaker->linkedin || $speaker->website)
+                                            <div class="mt-4 flex gap-3 text-sm">
+                                                @if($speaker->twitter)
+                                                    <a href="{{ $speaker->twitter }}" target="_blank" class="text-amber-600 dark:text-amber-400 hover:underline">Twitter</a>
+                                                @endif
+                                                @if($speaker->linkedin)
+                                                    <a href="{{ $speaker->linkedin }}" target="_blank" class="text-amber-600 dark:text-amber-400 hover:underline">LinkedIn</a>
+                                                @endif
+                                                @if($speaker->website)
+                                                    <a href="{{ $speaker->website }}" target="_blank" class="text-amber-600 dark:text-amber-400 hover:underline">Website</a>
+                                                @endif
+                                            </div>
+                                        @endif
+                                    </div>
+                                </article>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
+                <!-- Panel Speakers -->
+                @if($panelSpeakers->isNotEmpty())
+                    <div class="mb-16">
+                        <h2 class="text-2xl font-bold text-teal-600 dark:text-teal-400 text-center mb-8 uppercase tracking-wider">Panel Speakers</h2>
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            @foreach($panelSpeakers as $speaker)
+                                @php
+                                    $avatar = $speaker->getFirstMediaUrl('headshot', 'avatar') ?: $speaker->getFirstMediaUrl('headshot');
+                                    $initials = collect(explode(' ', $speaker->name))->map(fn($w) => strtoupper(substr($w, 0, 1)))->take(2)->join('');
+                                @endphp
+                                <article class="group bg-white dark:bg-slate-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                                    <div class="aspect-[4/3] overflow-hidden bg-gradient-to-br from-teal-100 to-teal-200 dark:from-teal-900/30 dark:to-teal-800/30 flex items-center justify-center">
+                                        @if($avatar)
+                                            <img src="{{ $avatar }}" alt="{{ $speaker->name }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500" loading="lazy">
+                                        @else
+                                            <div class="w-24 h-24 rounded-full bg-teal-300 dark:bg-teal-700 flex items-center justify-center">
+                                                <span class="text-3xl font-bold text-teal-800 dark:text-teal-200">{{ $initials }}</span>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="p-5">
+                                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">{{ $speaker->name }}</h3>
+                                        @if($speaker->title || $speaker->company)
+                                            <p class="text-xs font-semibold text-teal-600 dark:text-teal-400 mb-2">{{ $speaker->title }}@if($speaker->title && $speaker->company), @endif{{ $speaker->company }}</p>
+                                        @endif
+                                        @if($speaker->short_bio)
+                                            <p class="text-xs text-gray-600 dark:text-gray-300 line-clamp-3">{{ $speaker->short_bio }}</p>
+                                        @endif
+                                        @if($speaker->twitter || $speaker->linkedin || $speaker->website)
+                                            <div class="mt-3 flex gap-3 text-xs">
+                                                @if($speaker->twitter)
+                                                    <a href="{{ $speaker->twitter }}" target="_blank" class="text-teal-600 dark:text-teal-400 hover:underline">Twitter</a>
+                                                @endif
+                                                @if($speaker->linkedin)
+                                                    <a href="{{ $speaker->linkedin }}" target="_blank" class="text-teal-600 dark:text-teal-400 hover:underline">LinkedIn</a>
+                                                @endif
+                                                @if($speaker->website)
+                                                    <a href="{{ $speaker->website }}" target="_blank" class="text-teal-600 dark:text-teal-400 hover:underline">Website</a>
+                                                @endif
+                                            </div>
+                                        @endif
+                                    </div>
+                                </article>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
+                <!-- Moderators -->
+                @if($moderators->isNotEmpty())
+                    <div class="mb-16">
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 text-center mb-8 uppercase tracking-wider">Moderators</h2>
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            @foreach($moderators as $speaker)
+                                @php
+                                    $avatar = $speaker->getFirstMediaUrl('headshot', 'avatar') ?: $speaker->getFirstMediaUrl('headshot');
+                                    $initials = collect(explode(' ', $speaker->name))->map(fn($w) => strtoupper(substr($w, 0, 1)))->take(2)->join('');
+                                @endphp
+                                <article class="group bg-white dark:bg-slate-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-gray-200 dark:border-slate-600">
+                                    <div class="aspect-[4/3] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800/30 dark:to-gray-700/30 flex items-center justify-center">
+                                        @if($avatar)
+                                            <img src="{{ $avatar }}" alt="{{ $speaker->name }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500" loading="lazy">
+                                        @else
+                                            <div class="w-24 h-24 rounded-full bg-gray-300 dark:bg-gray-700 flex items-center justify-center">
+                                                <span class="text-3xl font-bold text-gray-800 dark:text-gray-200">{{ $initials }}</span>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="inline-block px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs font-bold mb-2">
+                                            MODERATOR
+                                        </div>
+                                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">{{ $speaker->name }}</h3>
+                                        @if($speaker->title || $speaker->company)
+                                            <p class="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-2">{{ $speaker->title }}@if($speaker->title && $speaker->company), @endif{{ $speaker->company }}</p>
+                                        @endif
+                                        @if($speaker->short_bio)
+                                            <p class="text-xs text-gray-600 dark:text-gray-300 line-clamp-3">{{ $speaker->short_bio }}</p>
+                                        @endif
+                                        @if($speaker->twitter || $speaker->linkedin || $speaker->website)
+                                            <div class="mt-3 flex gap-3 text-xs">
+                                                @if($speaker->twitter)
+                                                    <a href="{{ $speaker->twitter }}" target="_blank" class="text-gray-600 dark:text-gray-400 hover:underline">Twitter</a>
+                                                @endif
+                                                @if($speaker->linkedin)
+                                                    <a href="{{ $speaker->linkedin }}" target="_blank" class="text-gray-600 dark:text-gray-400 hover:underline">LinkedIn</a>
+                                                @endif
+                                                @if($speaker->website)
+                                                    <a href="{{ $speaker->website }}" target="_blank" class="text-gray-600 dark:text-gray-400 hover:underline">Website</a>
+                                                @endif
+                                            </div>
+                                        @endif
+                                    </div>
+                                </article>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
+                <!-- Event Hosts -->
+                @if($hosts->isNotEmpty())
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 text-center mb-8 uppercase tracking-wider">Event Hosts</h2>
+                        <div class="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                            @foreach($hosts as $speaker)
+                                @php
+                                    $avatar = $speaker->getFirstMediaUrl('headshot', 'avatar') ?: $speaker->getFirstMediaUrl('headshot');
+                                    $initials = collect(explode(' ', $speaker->name))->map(fn($w) => strtoupper(substr($w, 0, 1)))->take(2)->join('');
+                                @endphp
+                                <article class="group bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-purple-200 dark:border-purple-800">
+                                    <div class="aspect-[4/3] overflow-hidden bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/30 dark:to-purple-800/30 flex items-center justify-center">
+                                        @if($avatar)
+                                            <img src="{{ $avatar }}" alt="{{ $speaker->name }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500" loading="lazy">
+                                        @else
+                                            <div class="w-24 h-24 rounded-full bg-purple-300 dark:bg-purple-700 flex items-center justify-center">
+                                                <span class="text-3xl font-bold text-purple-800 dark:text-purple-200">{{ $initials }}</span>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="inline-block px-2 py-0.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded text-xs font-bold mb-2">
+                                            HOST
+                                        </div>
+                                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">{{ $speaker->name }}</h3>
+                                        @if($speaker->title || $speaker->company)
+                                            <p class="text-xs font-semibold text-purple-600 dark:text-purple-400 mb-2">{{ $speaker->title }}@if($speaker->title && $speaker->company), @endif{{ $speaker->company }}</p>
+                                        @endif
+                                        @if($speaker->short_bio)
+                                            <p class="text-xs text-gray-600 dark:text-gray-300">{{ $speaker->short_bio }}</p>
+                                        @endif
+                                        @if($speaker->twitter || $speaker->linkedin || $speaker->website)
+                                            <div class="mt-3 flex gap-3 text-xs">
+                                                @if($speaker->twitter)
+                                                    <a href="{{ $speaker->twitter }}" target="_blank" class="text-purple-600 dark:text-purple-400 hover:underline">Twitter</a>
+                                                @endif
+                                                @if($speaker->linkedin)
+                                                    <a href="{{ $speaker->linkedin }}" target="_blank" class="text-purple-600 dark:text-purple-400 hover:underline">LinkedIn</a>
+                                                @endif
+                                                @if($speaker->website)
+                                                    <a href="{{ $speaker->website }}" target="_blank" class="text-purple-600 dark:text-purple-400 hover:underline">Website</a>
+                                                @endif
+                                            </div>
+                                        @endif
+                                    </div>
+                                </article>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
             @endif
         </div>
     </section>
