@@ -29,8 +29,8 @@
                    :exclude="[2]"
                    :show-partners="true"
                    :full="true"
-                   primary-cta-label="Reserve your seat"
-                   primary-cta-url="#alg2025-registration-closed-modal" />
+                   primary-cta-label="Explore ALG 2025 programmes"
+                   primary-cta-url="/alg-2025#alg-2025-programmes" />
 
     <!-- ALG 2025 Registration Closed Modal -->
     <div x-show="algClosedOpen"

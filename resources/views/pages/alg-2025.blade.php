@@ -31,8 +31,8 @@
                      :description="$heroSub"
                      :show-partners="true"
                      :full="true"
-                     primary-cta-label="Registration is closed – view update"
-                     primary-cta-url="#alg2025-registration-closed-modal" />
+                     primary-cta-label="Explore ALG 2025 programmes"
+                     primary-cta-url="#alg-2025-programmes" />
 
       <!-- ALG 2025 Registration Closed Modal -->
       <div x-show="algClosedOpen"
@@ -235,7 +235,7 @@
     </section>
 
     <!-- Programmes -->
-    <section class="relative py-8 sm:py-12 md:py-20 bg-gray-50 dark:bg-slate-900 reveal">
+    <section id="alg-2025-programmes" class="relative py-8 sm:py-12 md:py-20 bg-gray-50 dark:bg-slate-900 reveal">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl">
           <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">Programmes</h2>

@@ -182,15 +182,15 @@
                     </div>
                     <div class="relative z-10 mt-4 sm:mt-6 md:mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-2 sm:gap-2.5 md:gap-3">
                         @php
-                            // Primary CTA: prefer explicit props; otherwise, use a non-registration CTA for ALG 2025
+                            // Primary CTA: prefer explicit props; otherwise, for ALG 2025 promote programmes instead of registration
                             $computedPrimaryLabel = $primaryCtaLabel;
                             $computedPrimaryUrl = $primaryCtaUrl;
 
                             if (!$computedPrimaryLabel || !$computedPrimaryUrl) {
                                 $year = (int) ($event->year ?? 0);
                                 if ($year === 2025) {
-                                    $computedPrimaryLabel = 'Registration is closed – view update';
-                                    $computedPrimaryUrl = url('/reserve-seat');
+                                    $computedPrimaryLabel = 'Explore ALG 2025 programmes';
+                                    $computedPrimaryUrl = url('/alg-2025#alg-2025-programmes');
                                 } else {
                                     $computedPrimaryLabel = 'Reserve your seat';
                                     $computedPrimaryUrl = url('/reserve-seat');
