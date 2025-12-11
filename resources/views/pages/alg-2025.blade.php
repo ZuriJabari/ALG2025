@@ -32,7 +32,7 @@
                      :show-partners="true"
                      :full="true"
                      primary-cta-label="Explore ALG 2025 programmes"
-                     primary-cta-url="#alg-2025-programmes" />
+                     primary-cta-url="{{ route('events.2025.programme') }}" />
 
       <!-- ALG 2025 Registration Closed Modal -->
       <div x-show="algClosedOpen"
