@@ -22,7 +22,7 @@
     </div>
 
     <span class="badge">ALG 2025</span>
-    <h1 style="margin-top:16px; font-size:24px; font-weight:600; color:#DC2626;">IMPORTANT: Announcing the Full #ALG2025 Agenda + FINAL RSVP Required by Tomorrow 11:00 AM</h1>
+    <h1 style="margin-top:16px; font-size:24px; font-weight:600; color:#0F766E;">IMPORTANT: Announcing the Full #ALG2025 Agenda + FINAL RSVP Required by Tomorrow 11:00 AM</h1>
 
     <p style="margin-top:16px; font-size:15px; line-height:1.7;">Dear {{ $reservation->full_name }},</p>
 
@@ -42,18 +42,18 @@
       <hr class="hr" style="margin:18px 0;" />
 
       <!-- ACTION REQUIRED -->
-      <div style="padding:16px; background:#FEF2F2; border:2px solid #DC2626; border-radius:12px; margin:16px 0;">
-        <p style="margin:0 0 12px 0; font-weight:700; font-size:15px; color:#DC2626; text-transform:uppercase;">⚠️ ACTION REQUIRED: Confirm Your Attendance Mode</p>
-        <p style="margin:0; font-size:14px; line-height:1.7; color:#7F1D1D;">
+      <div style="padding:16px; background:#F0FDFA; border:2px solid #0FB5A8; border-radius:12px; margin:16px 0;">
+        <p style="margin:0 0 12px 0; font-weight:700; font-size:15px; color:#0F766E; text-transform:uppercase;">⚠️ ACTION REQUIRED: Confirm Your Attendance Mode</p>
+        <p style="margin:0; font-size:14px; line-height:1.7; color:#115e59;">
           To help us finalize logistics—including seating, security, and hospitality—all participants must RSVP.
         </p>
         <p style="margin-top:14px; text-align:center;">
-          <a href="{{ $attendanceUrl }}" class="btn" style="background:#DC2626;">RSVP Here (In-Person or Virtual)</a>
+          <a href="{{ $attendanceUrl }}" class="btn" style="background:#0FB5A8;">RSVP Here (In-Person or Virtual)</a>
         </p>
-        <p style="margin-top:12px; font-size:13px; line-height:1.6; color:#7F1D1D;">
+        <p style="margin-top:12px; font-size:13px; line-height:1.6; color:#115e59;">
           <strong>RSVP Deadline: Tomorrow, Friday 12th December, at 11:00 AM (Strictly)</strong>
         </p>
-        <p style="margin-top:10px; font-size:13px; line-height:1.6; color:#7F1D1D;">
+        <p style="margin-top:10px; font-size:13px; line-height:1.6; color:#115e59;">
           If we do not receive your response by the deadline, you will automatically be registered for virtual attendance.
         </p>
       </div>
