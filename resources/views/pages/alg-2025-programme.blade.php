@@ -42,20 +42,33 @@
     <section class="relative py-10 sm:py-14 md:py-18 bg-gray-50 dark:bg-slate-900">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 gap-8 sm:gap-10 items-start">
-          <div class="max-w-xl">
-            <h2 class="text-xl sm:text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">At a glance</h2>
-            <div class="mt-3 space-y-3 text-sm sm:text-base text-gray-700 dark:text-gray-300">
-              <p><span class="font-semibold text-gray-900 dark:text-white">Date:</span> Saturday, 13th December 2025</p>
-              <p><span class="font-semibold text-gray-900 dark:text-white">Venue:</span> Four Points by Sheraton, Kampala</p>
-              <p><span class="font-semibold text-gray-900 dark:text-white">Theme:</span> Building Together For Impact &mdash; Inspiring Excellence Through Transformative Leadership</p>
-              <p>
-                The programme weaves together keynotes, panel conversations, and reflective sessions that bring Africa's emerging and established leaders into dialogue around excellence, partnership, and lasting impact.
-              </p>
-              <div class="mt-4">
-                <a href="{{ asset('assets/1x/FINAL Main Program ALG 2025.pdf') }}" download class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-teal-600 text-white text-sm sm:text-base font-semibold hover:bg-teal-500 transition">
-                  <span>Download full programme (PDF)</span>
-                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>
-                </a>
+          <div class="max-w-2xl">
+            <div class="rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-5 sm:p-6 shadow-sm">
+              <h2 class="text-xl sm:text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">At a glance</h2>
+              <div class="mt-4 space-y-3.5 text-sm sm:text-base">
+                <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
+                  <span class="font-semibold text-teal-700 dark:text-teal-300 min-w-[80px]">Date:</span>
+                  <span class="text-gray-700 dark:text-gray-300">Saturday, 13th December 2025</span>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
+                  <span class="font-semibold text-teal-700 dark:text-teal-300 min-w-[80px]">Venue:</span>
+                  <span class="text-gray-700 dark:text-gray-300">Four Points by Sheraton, Kampala</span>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
+                  <span class="font-semibold text-teal-700 dark:text-teal-300 min-w-[80px]">Theme:</span>
+                  <span class="text-gray-700 dark:text-gray-300">Building Together For Impact &mdash; Inspiring Excellence Through Transformative Leadership</span>
+                </div>
+                <div class="pt-2 border-t border-gray-200 dark:border-slate-800">
+                  <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    The programme weaves together keynotes, panel conversations, and reflective sessions that bring Africa's emerging and established leaders into dialogue around excellence, partnership, and lasting impact.
+                  </p>
+                </div>
+                <div class="pt-2">
+                  <a href="{{ asset('assets/1x/FINAL Main Program ALG 2025.pdf') }}" download class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-teal-600 text-white text-sm sm:text-base font-semibold hover:bg-teal-500 transition">
+                    <span>Download full programme (PDF)</span>
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
