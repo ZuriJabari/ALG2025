@@ -4,6 +4,8 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\SeatReservationResource\Pages;
 use App\Mail\AttendanceConfirmationRequest;
 use App\Mail\KeynoteAttendanceReminder;
+use App\Mail\AfricanChampionsBreakfastInvite;
+use App\Mail\GeneralALGInvite;
 use App\Models\SeatReservation;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -82,7 +84,35 @@ class SeatReservationResource extends Resource
                     ]),
                 Tables\Columns\TextColumn::make('created_at')->dateTime()->sortable(),
             ])
-            ->filters([])
+            ->filters([
+                Tables\Filters\SelectFilter::make('fellowship')
+                    ->options([
+                        'YELP' => 'YELP',
+                        'HUDUMA' => 'HUDUMA',
+                        'The Griot Fellowship' => 'The Griot Fellowship',
+                        'KAS Network' => 'KAS Network',
+                        'Africa Champions Invite' => 'Africa Champions Invite',
+                        'Member of Faculty' => 'Member of Faculty',
+                        'Board/Management' => 'Board/Management',
+                        'Partner/Affiliate' => 'Partner/Affiliate',
+                    ])
+                    ->label('Fellowship/Category'),
+                Tables\Filters\SelectFilter::make('attendance_mode')
+                    ->options([
+                        'physical' => 'In Person',
+                        'virtual' => 'Virtual',
+                    ])
+                    ->label('Attendance Mode'),
+                Tables\Filters\TernaryFilter::make('attendance_token')
+                    ->label('Has QR Code')
+                    ->nullable()
+                    ->trueLabel('Has QR Code')
+                    ->falseLabel('No QR Code')
+                    ->queries(
+                        true: fn ($query) => $query->whereNotNull('attendance_token'),
+                        false: fn ($query) => $query->whereNull('attendance_token'),
+                    ),
+            ])
             ->headerActions([
                 Action::make('exportCsv')
                     ->label('Export CSV')
@@ -148,6 +178,62 @@ class SeatReservationResource extends Resource
                                 );
                             } catch (\Throwable $e) {
                                 Log::warning('Keynote reminder email failed for reservation ID '.$reservation->id.': '.$e->getMessage());
+                            }
+                        });
+                    }),
+
+                Tables\Actions\BulkAction::make('sendAfricanChampionsEmail')
+                    ->label('🎫 Send Africa Champions Breakfast Email')
+                    ->icon('heroicon-o-star')
+                    ->color('warning')
+                    ->requiresConfirmation()
+                    ->modalHeading('Send Africa Champions Breakfast Invitation')
+                    ->modalDescription('This will send the Africa Champions Breakfast invitation email with QR code to the selected participants.')
+                    ->successNotificationTitle('Africa Champions emails have been sent!')
+                    ->action(function (Collection $records): void {
+                        $uniqueByEmail = $records->unique('email');
+
+                        $uniqueByEmail->each(function (SeatReservation $reservation) {
+                            // Generate token if missing
+                            if (! $reservation->attendance_token) {
+                                $reservation->attendance_token = Str::random(32);
+                                $reservation->save();
+                            }
+
+                            try {
+                                Mail::to($reservation->email)->send(
+                                    new AfricanChampionsBreakfastInvite($reservation)
+                                );
+                            } catch (\Throwable $e) {
+                                Log::warning('Africa Champions email failed for reservation ID '.$reservation->id.': '.$e->getMessage());
+                            }
+                        });
+                    }),
+
+                Tables\Actions\BulkAction::make('sendGeneralALGEmail')
+                    ->label('📧 Send General ALG 2025 Email')
+                    ->icon('heroicon-o-envelope')
+                    ->color('success')
+                    ->requiresConfirmation()
+                    ->modalHeading('Send General ALG 2025 Invitation')
+                    ->modalDescription('This will send the general ALG 2025 invitation email with QR code to the selected participants.')
+                    ->successNotificationTitle('ALG 2025 emails have been sent!')
+                    ->action(function (Collection $records): void {
+                        $uniqueByEmail = $records->unique('email');
+
+                        $uniqueByEmail->each(function (SeatReservation $reservation) {
+                            // Generate token if missing
+                            if (! $reservation->attendance_token) {
+                                $reservation->attendance_token = Str::random(32);
+                                $reservation->save();
+                            }
+
+                            try {
+                                Mail::to($reservation->email)->send(
+                                    new GeneralALGInvite($reservation)
+                                );
+                            } catch (\Throwable $e) {
+                                Log::warning('General ALG email failed for reservation ID '.$reservation->id.': '.$e->getMessage());
                             }
                         });
                     }),
