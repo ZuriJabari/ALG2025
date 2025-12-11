@@ -45,16 +45,16 @@
       <div style="padding:16px; background:#F0FDFA; border:2px solid #0FB5A8; border-radius:12px; margin:16px 0;">
         <p style="margin:0 0 12px 0; font-weight:700; font-size:15px; color:#0F766E; text-transform:uppercase;">⚠️ ACTION REQUIRED: Confirm Your Attendance Mode</p>
         <p style="margin:0; font-size:14px; line-height:1.7; color:#115e59;">
-          To help us finalize logistics—including seating, security, and hospitality—all participants must RSVP.
+          To help us finalize logistics—including seating, security, and hospitality—we need you to confirm whether you'll be joining us <strong>in person in Kampala</strong> or <strong>virtually online</strong>.
         </p>
         <p style="margin-top:14px; text-align:center;">
-          <a href="{{ $attendanceUrl }}" class="btn" style="background:#0FB5A8;">RSVP Here (In-Person or Virtual)</a>
+          <a href="{{ $attendanceUrl }}" class="btn" style="background:#0FB5A8;">Confirm Your Attendance</a>
         </p>
         <p style="margin-top:12px; font-size:13px; line-height:1.6; color:#115e59;">
-          <strong>RSVP Deadline: Tomorrow, Friday 12th December, at 11:00 AM (Strictly)</strong>
+          <strong>Deadline: Friday 12th December, 11:00 AM (Strictly)</strong>
         </p>
         <p style="margin-top:10px; font-size:13px; line-height:1.6; color:#115e59;">
-          If we do not receive your response by the deadline, you will automatically be registered for virtual attendance.
+          If you have already confirmed your attendance mode, no further action is required from you. If we do not receive your confirmation by the deadline, you will automatically be registered for virtual attendance.
         </p>
       </div>
 
