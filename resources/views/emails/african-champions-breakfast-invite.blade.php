@@ -84,7 +84,12 @@
 
     <p style="margin-top:24px; font-size:14px; line-height:1.6; color:#4B5563;">
       Warm regards,<br/>
-      <strong>The LéO Africa Institute Team</strong><br/>
+      <strong>Emmanuel Awori</strong><br/>
+      Partnerships & Development Lead<br/>
+      +256 787 648584
+    </p>
+    
+    <p style="margin-top:12px; font-size:13px; line-height:1.5; color:#6B7280; text-align:center;">
       #ALG2025 | Building Together for Impact
     </p>
 
