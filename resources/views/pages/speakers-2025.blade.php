@@ -18,48 +18,105 @@
   <x-header />
 
   <main>
-    <!-- Hero Section -->
-    <section class="relative overflow-hidden -mb-6">
-        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('/assets/artwork.png'); background-repeat:no-repeat; background-position:right center; background-size:contain"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-            <div class="flex flex-col md:flex-row items-end justify-between gap-6">
-                <div class="flex-1">
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 dark:bg-slate-900/60 border border-gray-200 dark:border-slate-700 shadow-sm">
-                        <span class="w-2 h-2 rounded-full" style="background:#00C2B3"></span>
-                        <span class="text-xs font-semibold text-gray-700 dark:text-gray-200">ALG 2025</span>
-                    </div>
-                    <h1 class="mt-4 text-4xl sm:text-5xl font-normal tracking-tight text-gray-900 dark:text-white">Speakers</h1>
-                    <p class="mt-3 text-lg text-gray-600 dark:text-gray-300 max-w-2xl">Meet the distinguished leaders, innovators, and changemakers who will share their insights at #ALG2025</p>
+    <!-- Luxurious Hero Section -->
+    <section class="relative h-[70vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0">
+            <img src="{{ asset('assets/hero/hero04.jpg') }}" alt="ALG 2025" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/70 to-slate-900/90"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-teal-900/20 to-amber-900/20"></div>
+        </div>
+        
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-teal-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl mb-8">
+                <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                <span class="text-sm font-semibold text-white tracking-wider">ALG 2025</span>
+            </div>
+            
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
+                Visionary
+                <span class="block mt-2 bg-gradient-to-r from-teal-400 via-cyan-300 to-amber-400 bg-clip-text text-transparent">Speakers</span>
+            </h1>
+            
+            <p class="text-xl sm:text-2xl text-gray-200 max-w-3xl mx-auto mb-8 leading-relaxed">
+                Meet the distinguished leaders, innovators, and changemakers shaping Africa's future
+            </p>
+            
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <div class="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                    <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    <span class="text-sm font-medium text-white">20+ Speakers</span>
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                    <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                    </svg>
+                    <span class="text-sm font-medium text-white">2 Keynotes</span>
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                    <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span class="text-sm font-medium text-white">Pan-African</span>
                 </div>
             </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
         </div>
     </section>
 
     <!-- Speakers Content -->
-    <section class="py-16 sm:py-20 bg-gradient-to-br from-gray-50 via-white to-teal-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+    <section class="py-20 sm:py-28 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Keynote Speakers -->
-        <div class="mb-16">
-          <div class="flex items-center justify-center gap-3 mb-8">
-            <div class="h-px flex-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
-            <h2 class="text-2xl font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">Keynote Speakers</h2>
-            <div class="h-px flex-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
+        <!-- Section Header -->
+        <div class="text-center mb-20">
+          <div class="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-teal-50 to-amber-50 dark:from-teal-950/50 dark:to-amber-950/50 border border-teal-200/50 dark:border-teal-800/50 mb-6">
+            <svg class="w-5 h-5 text-teal-600 dark:text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+            </svg>
+            <span class="text-sm font-semibold text-gray-700 dark:text-gray-300 tracking-wider">FEATURED</span>
           </div>
+          <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            Keynote Speakers
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Transformational leaders setting the agenda for Africa's future
+          </p>
+        </div>
+
+        <!-- Keynote Speakers -->
+        <div class="mb-24">
           
-          <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
             <!-- Dr. Korir Sing'oei -->
-            <div class="group bg-white dark:bg-slate-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 border-amber-200 dark:border-amber-900">
-              <div class="aspect-[4/3] bg-gradient-to-br from-amber-100 to-amber-200 dark:from-amber-900/30 dark:to-amber-800/30 flex items-center justify-center">
-                <div class="w-32 h-32 rounded-full bg-amber-300 dark:bg-amber-700 flex items-center justify-center">
-                  <span class="text-4xl font-bold text-amber-800 dark:text-amber-200">KS</span>
+            <div class="group relative bg-gradient-to-br from-white to-amber-50/30 dark:from-slate-800 dark:to-amber-950/20 rounded-3xl shadow-2xl hover:shadow-amber-500/20 dark:hover:shadow-amber-500/10 transition-all duration-500 overflow-hidden border border-amber-200/50 dark:border-amber-900/50 hover:-translate-y-2">
+              <div class="absolute top-4 right-4 z-10">
+                <div class="px-4 py-1.5 bg-gradient-to-r from-amber-500 to-amber-600 text-white text-xs font-bold rounded-full shadow-lg">
+                  KEYNOTE
                 </div>
               </div>
-              <div class="p-6">
-                <div class="inline-block px-3 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-200 rounded-full text-xs font-bold mb-3">
-                  KEYNOTE SPEAKER
+              <div class="aspect-[4/3] bg-gradient-to-br from-amber-100 to-amber-200 dark:from-amber-900/30 dark:to-amber-800/30 flex items-center justify-center">
+                <div class="w-32 h-32 rounded-full bg-amber-300 dark:bg-amber-700 flex items-center justify-center">
+                  <span class="text-5xl font-bold text-white drop-shadow-lg">KS</span>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Dr. Korir Sing'oei</h3>
-                <p class="text-sm font-semibold text-amber-600 dark:text-amber-400 mb-3">Principal Secretary, Ministry of Foreign Affairs, Kenya</p>
+              </div>
+              <div class="p-8">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">Dr. Korir Sing'oei</h3>
+                <p class="text-sm font-bold text-amber-700 dark:text-amber-400 mb-4 uppercase tracking-wide">Principal Secretary, Ministry of Foreign Affairs, Kenya</p>
                 <p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-4">
                   Legal and policy expert with a focus on human rights law, minority and indigenous rights, decentralization, land and resource governance. PhD in Energy, Environment and Resources Law from the University of Cape Town.
                 </p>
@@ -67,18 +124,21 @@
             </div>
 
             <!-- Charles Mudiwa -->
-            <div class="group bg-white dark:bg-slate-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 border-amber-200 dark:border-amber-900">
-              <div class="aspect-[4/3] bg-gradient-to-br from-amber-100 to-amber-200 dark:from-amber-900/30 dark:to-amber-800/30 flex items-center justify-center">
-                <div class="w-32 h-32 rounded-full bg-amber-300 dark:bg-amber-700 flex items-center justify-center">
-                  <span class="text-4xl font-bold text-amber-800 dark:text-amber-200">CM</span>
+            <div class="group relative bg-gradient-to-br from-white to-amber-50/30 dark:from-slate-800 dark:to-amber-950/20 rounded-3xl shadow-2xl hover:shadow-amber-500/20 dark:hover:shadow-amber-500/10 transition-all duration-500 overflow-hidden border border-amber-200/50 dark:border-amber-900/50 hover:-translate-y-2">
+              <div class="absolute top-4 right-4 z-10">
+                <div class="px-4 py-1.5 bg-gradient-to-r from-amber-500 to-amber-600 text-white text-xs font-bold rounded-full shadow-lg">
+                  KEYNOTE
                 </div>
               </div>
-              <div class="p-6">
-                <div class="inline-block px-3 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-200 rounded-full text-xs font-bold mb-3">
-                  KEYNOTE SPEAKER
+              <div class="aspect-[4/3] bg-gradient-to-br from-amber-100 via-amber-50 to-amber-200 dark:from-amber-900/30 dark:via-amber-900/20 dark:to-amber-800/30 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(251,191,36,0.1),transparent)]"></div>
+                <div class="relative w-36 h-36 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 dark:from-amber-600 dark:to-amber-800 flex items-center justify-center shadow-2xl ring-4 ring-white/50 dark:ring-slate-900/50">
+                  <span class="text-5xl font-bold text-white drop-shadow-lg">CM</span>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Charles Mudiwa</h3>
-                <p class="text-sm font-semibold text-amber-600 dark:text-amber-400 mb-3">CEO & MD, DFCU Bank, Uganda</p>
+              </div>
+              <div class="p-8">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">Charles Mudiwa</h3>
+                <p class="text-sm font-bold text-amber-700 dark:text-amber-400 mb-4 uppercase tracking-wide">CEO & MD, DFCU Bank, Uganda</p>
                 <p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-4">
                   Experienced banker with a career spanning over three decades across Eastern and Southern Africa. Credited as a transformational leader and turn-around expert. Top Executive Coach working with professionals to enhance their Executive presence.
                 </p>
@@ -88,10 +148,23 @@
         </div>
 
         <!-- Panel Speakers & Moderators -->
-        <div class="mb-12">
-          <h2 class="text-2xl font-bold text-teal-600 dark:text-teal-400 text-center mb-8 uppercase tracking-wider">Panel Speakers & Moderators</h2>
+        <div class="mb-20">
+          <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-teal-50 to-cyan-50 dark:from-teal-950/50 dark:to-cyan-950/50 border border-teal-200/50 dark:border-teal-800/50 mb-6">
+              <svg class="w-5 h-5 text-teal-600 dark:text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+              <span class="text-sm font-semibold text-gray-700 dark:text-gray-300 tracking-wider">EXPERT PANEL</span>
+            </div>
+            <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+              Panel Speakers & Moderators
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Thought leaders driving critical conversations on Africa's development
+            </p>
+          </div>
           
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <!-- Magnus Mchunguzi -->
             <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
               <div class="aspect-[4/3] bg-gradient-to-br from-teal-100 to-teal-200 dark:from-teal-900/30 dark:to-teal-800/30 flex items-center justify-center">
@@ -390,9 +463,22 @@
 
         <!-- Event Hosts -->
         <div>
-          <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 text-center mb-8 uppercase tracking-wider">Event Hosts</h2>
+          <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/50 dark:to-pink-950/50 border border-purple-200/50 dark:border-purple-800/50 mb-6">
+              <svg class="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+              </svg>
+              <span class="text-sm font-semibold text-gray-700 dark:text-gray-300 tracking-wider">PROGRAM DIRECTORS</span>
+            </div>
+            <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+              Event Hosts
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Guiding the conversation and ensuring a memorable experience
+            </p>
+          </div>
           
-          <div class="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div class="grid sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <!-- Edgar Mwine -->
             <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-purple-200 dark:border-purple-800">
               <div class="aspect-[4/3] bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/30 dark:to-purple-800/30 flex items-center justify-center">
