@@ -14,13 +14,9 @@ class EditSpeaker extends EditRecord
     protected static string $resource = SpeakerResource::class;
 
     protected array $appearances = [];
-    protected array $eventIds = [];
 
     protected function mutateFormDataBeforeFill(array $data): array
     {
-        // Load selected events for Quick Event Assignment
-        $data['event_ids'] = $this->record->events->pluck('id')->toArray();
-
         // Build from day pivots first
         $sessionsByDay = $this->record->sessions->groupBy('day_id');
         $fromDays = $this->record->eventDays->map(function ($day) use ($sessionsByDay) {
@@ -65,26 +61,12 @@ class EditSpeaker extends EditRecord
     protected function mutateFormDataBeforeSave(array $data): array
     {
         $this->appearances = Arr::get($data, 'appearances', []);
-        $this->eventIds = Arr::get($data, 'event_ids', []);
         unset($data['appearances']);
-        unset($data['event_ids']);
         return $data;
     }
 
     protected function afterSave(): void
     {
-        // Sync selected events from Quick Event Assignment
-        if (!empty($this->eventIds)) {
-            $eventPivot = [];
-            foreach ($this->eventIds as $eventId) {
-                $eventPivot[(int)$eventId] = ['role' => null, 'ordering' => 0];
-            }
-            $this->record->events()->sync($eventPivot);
-        } else {
-            // If no events selected, detach all
-            $this->record->events()->detach();
-        }
-
         $dayPivot = [];
         foreach ($this->appearances as $row) {
             $eventId = isset($row['event_id']) ? (int) $row['event_id'] : null;

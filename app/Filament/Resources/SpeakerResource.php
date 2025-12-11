@@ -27,37 +27,22 @@ class SpeakerResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('Quick Event Assignment')
-                    ->description('Select which events this speaker appears in. You can select multiple events.')
+                Forms\Components\Section::make('Link to Event')
+                    ->visibleOn('create')
                     ->schema([
-                        Forms\Components\CheckboxList::make('event_ids')
-                            ->label('Events')
+                        Forms\Components\Select::make('primary_event_id')
+                            ->label('Event (required)')
                             ->options(fn () => Event::query()->orderByDesc('year')->pluck('year','id'))
-                            ->columns(4)
-                            ->gridDirection('row')
-                            ->required()
-                            ->helperText('Select all events where this speaker appears'),
-                    ])
-                    ->collapsible(),
+                            ->searchable()
+                            ->required(),
+                    ]),
                 Forms\Components\Section::make('Speaker Details')
                     ->columns(2)
                     ->schema([
                         Forms\Components\TextInput::make('name')->required()->maxLength(255),
                         Forms\Components\TextInput::make('title')->maxLength(255),
                         Forms\Components\TextInput::make('company')->maxLength(255),
-                        Forms\Components\Select::make('category')
-                            ->label('Speaker Category')
-                            ->options([
-                                'Keynote' => 'Keynote',
-                                'Panel' => 'Panel',
-                                'Panelist' => 'Panelist',
-                                'Speaker' => 'Speaker',
-                                'Moderator' => 'Moderator',
-                                'Host' => 'Host',
-                                'Co-Host' => 'Co-Host',
-                            ])
-                            ->searchable()
-                            ->helperText('Category determines how the speaker is displayed on the website'),
+                        Forms\Components\TextInput::make('category')->label('Speaker Category')->maxLength(255),
                         Forms\Components\Textarea::make('short_bio')->rows(4)->columnSpanFull(),
                         Forms\Components\Textarea::make('quote')->label('Quote / Statement')->rows(3)->columnSpanFull(),
                     ]),

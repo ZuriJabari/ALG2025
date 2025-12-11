@@ -32,9 +32,16 @@ Route::get('/admin/export/seat-reservations.csv', [SeatReservationController::cl
     ->middleware(['auth'])
     ->name('admin.export.seat-reservations');
 
-// Public: Speakers index (2025) - Static mockup
+// Public: Speakers index (2025)
 Route::get('/speakers', function () {
-    return view('pages.speakers-2025');
+    $speakers = Speaker::query()
+        ->with(['media'])
+        ->whereHas('events', function ($q) {
+            $q->where('year', 2025);
+        })
+        ->orderBy('name')
+        ->get();
+    return view('pages.speakers', compact('speakers'));
 })->name('speakers.index');
 
 // Public: ALG 2024 Speakers

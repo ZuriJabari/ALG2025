@@ -119,61 +119,26 @@
     <!-- Content -->
     <section class="py-10 sm:py-14">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Keynote Speakers -->
-            <div class="mb-16">
-                <div class="flex items-center justify-center gap-3 mb-8">
-                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
-                    <h2 class="text-2xl font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">Keynote Speakers</h2>
-                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                    <!-- Dr. Korir Sing'oei -->
-                    <div class="group bg-white dark:bg-slate-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 border-amber-200 dark:border-amber-900">
-                        <div class="aspect-[4/3] bg-gradient-to-br from-amber-100 to-amber-200 dark:from-amber-900/30 dark:to-amber-800/30 flex items-center justify-center">
-                            <div class="w-32 h-32 rounded-full bg-amber-300 dark:bg-amber-700 flex items-center justify-center">
-                                <span class="text-4xl font-bold text-amber-800 dark:text-amber-200">KS</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="inline-block px-3 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-200 rounded-full text-xs font-bold mb-3">
-                                KEYNOTE SPEAKER
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Dr. Korir Sing'oei</h3>
-                            <p class="text-sm font-semibold text-amber-600 dark:text-amber-400 mb-3">Principal Secretary, Ministry of Foreign Affairs, Kenya</p>
-                            <p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-4">
-                                Legal and policy expert with a focus on human rights law, minority and indigenous rights, decentralization, land and resource governance. PhD in Energy, Environment and Resources Law from the University of Cape Town.
-                            </p>
-                        </div>
-                    </div>
+            @php
+                $keynoteSpeakers = $speakers->filter(fn($s) => strtolower($s->category ?? '') === 'keynote');
+                $panelSpeakers = $speakers->filter(fn($s) => in_array(strtolower($s->category ?? ''), ['panel', 'panelist', 'speaker', '']));
+                $moderators = $speakers->filter(fn($s) => strtolower($s->category ?? '') === 'moderator');
+                $hosts = $speakers->filter(fn($s) => in_array(strtolower($s->category ?? ''), ['host', 'co-host']));
+            @endphp
 
-                    <!-- Charles Mudiwa -->
-                    <div class="group bg-white dark:bg-slate-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 border-amber-200 dark:border-amber-900">
-                        <div class="aspect-[4/3] bg-gradient-to-br from-amber-100 to-amber-200 dark:from-amber-900/30 dark:to-amber-800/30 flex items-center justify-center">
-                            <div class="w-32 h-32 rounded-full bg-amber-300 dark:bg-amber-700 flex items-center justify-center">
-                                <span class="text-4xl font-bold text-amber-800 dark:text-amber-200">CM</span>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="inline-block px-3 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-200 rounded-full text-xs font-bold mb-3">
-                                KEYNOTE SPEAKER
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Charles Mudiwa</h3>
-                            <p class="text-sm font-semibold text-amber-600 dark:text-amber-400 mb-3">CEO & MD, DFCU Bank, Uganda</p>
-                            <p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-4">
-                                Experienced banker with a career spanning over three decades across Eastern and Southern Africa. Credited as a transformational leader and turn-around expert. Top Executive Coach working with professionals to enhance their Executive presence.
-                            </p>
+            @if($speakers->isEmpty())
+                <div class="relative rounded-3xl border border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 sm:p-12 shadow-sm overflow-hidden">
+                    <div class="absolute -top-10 -right-10 w-56 h-56 bg-teal-500/10 rounded-full blur-2xl"></div>
+                    <div class="absolute -bottom-10 -left-10 w-56 h-56 bg-orange-500/10 rounded-full blur-2xl"></div>
+                    <div class="relative">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Coming Soon</h2>
+                        <p class="mt-3 text-gray-600 dark:text-gray-300 max-w-2xl">We're curating an exceptional roster of speakers for ALG 2025. Check back shortly, or revisit the highlights from ALG 2024.</p>
+                        <div class="mt-6 flex flex-wrap gap-3">
+                            <a href="/events/2024" class="shrink-0 whitespace-nowrap inline-flex items-center justify-center h-11 px-6 rounded-full bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold transition-all hover:-translate-y-0.5">Explore ALG 2024</a>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Panel Speakers & Moderators -->
-            <div class="mb-12">
-                <h2 class="text-2xl font-bold text-teal-600 dark:text-teal-400 text-center mb-8 uppercase tracking-wider">Panel Speakers & Moderators</h2>
-                
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Magnus Mchunguzi -->
+            @else
                 <!-- Keynote Speakers -->
                 @if($keynoteSpeakers->isNotEmpty())
                     <div class="mb-16">

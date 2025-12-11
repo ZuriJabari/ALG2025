@@ -14,26 +14,24 @@ class CreateSpeaker extends CreateRecord
     protected static string $resource = SpeakerResource::class;
 
     protected array $appearances = [];
-    protected array $eventIds = [];
+    protected ?int $primaryEventId = null;
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
         $this->appearances = Arr::get($data, 'appearances', []);
-        $this->eventIds = Arr::get($data, 'event_ids', []);
+        $this->primaryEventId = isset($data['primary_event_id']) ? (int) $data['primary_event_id'] : null;
         unset($data['appearances']);
-        unset($data['event_ids']);
+        unset($data['primary_event_id']);
         return $data;
     }
 
     protected function afterCreate(): void
     {
-        // Attach to selected events from Quick Event Assignment
-        if (!empty($this->eventIds)) {
-            $eventPivot = [];
-            foreach ($this->eventIds as $eventId) {
-                $eventPivot[(int)$eventId] = ['role' => null, 'ordering' => 0];
-            }
-            $this->record->events()->sync($eventPivot);
+        // Attach to required primary event
+        if ($this->primaryEventId) {
+            $this->record->events()->syncWithoutDetaching([
+                $this->primaryEventId => ['role' => null, 'ordering' => 0],
+            ]);
         }
 
         $dayPivot = [];
