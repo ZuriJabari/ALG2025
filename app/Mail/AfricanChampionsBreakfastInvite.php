@@ -39,12 +39,30 @@ class AfricanChampionsBreakfastInvite extends Mailable implements ShouldQueue
      */
     public function content(): Content
     {
+        // Generate QR code URL
+        $qrCodeUrl = $this->generateQRCode();
+
         return new Content(
             view: 'emails.african-champions-breakfast-invite',
             with: [
                 'reservation' => $this->reservation,
+                'qrCodeUrl' => $qrCodeUrl,
             ],
         );
+    }
+
+    /**
+     * Generate QR code for attendance verification
+     */
+    protected function generateQRCode(): string
+    {
+        $verificationUrl = route('attendance.verify', ['token' => $this->reservation->attendance_token]);
+        
+        return \SimpleSoftwareIO\QrCode\Facades\QrCode::format('png')
+            ->size(200)
+            ->margin(1)
+            ->errorCorrection('H')
+            ->generate($verificationUrl);
     }
 
     /**

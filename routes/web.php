@@ -18,6 +18,9 @@ Route::view('/alg-2025/programme', 'pages.alg-2025-programme')->name('events.202
 // Attendance confirmation for ALG 2025 registrants
 Route::get('/alg-2025/attendance', [AttendanceController::class, 'show'])->name('attendance.show');
 Route::post('/alg-2025/attendance', [AttendanceController::class, 'store'])->name('attendance.store');
+// QR Code verification for attendance
+Route::get('/attendance/verify/{token}', [AttendanceController::class, 'verify'])->name('attendance.verify');
+Route::post('/attendance/verify/{token}', [AttendanceController::class, 'markPresent'])->name('attendance.mark-present');
 Route::post('/newsletter/subscribe', [NewsletterSubscriptionController::class, 'store'])->name('newsletter.subscribe');
 
 // Reserve Seat flow

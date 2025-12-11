@@ -42,6 +42,27 @@
                                 If you have not yet confirmed for the Breakfast session, we kindly request that you confirm your attendance, so we can make the necessary preparations for an intimate and seamless experience. If you have already sent in your confirmation, we are excited to see you.
                             </p>
 
+                            <!-- QR Code Section -->
+                            <table role="presentation" style="width: 100%; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px; margin: 30px 0; padding: 30px; text-align: center;">
+                                <tr>
+                                    <td>
+                                        <p style="margin: 0 0 15px 0; color: #92400e; font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+                                            🎫 Your Personal QR Code
+                                        </p>
+                                        <div style="background-color: #ffffff; padding: 20px; border-radius: 8px; display: inline-block; margin: 0 auto;">
+                                            <img src="{{ $qrCodeUrl }}" alt="Attendance QR Code" style="width: 200px; height: 200px; display: block;">
+                                        </div>
+                                        <p style="margin: 20px 0 10px 0; color: #78350f; font-size: 15px; font-weight: 600;">
+                                            Please bring this QR code to the event
+                                        </p>
+                                        <p style="margin: 0; color: #92400e; font-size: 14px; line-height: 1.6;">
+                                            You can either <strong>print this email</strong> or <strong>show it on your device</strong><br>
+                                            for quick check-in at the entrance.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+
                             <!-- CTA Button -->
                             <table role="presentation" style="margin: 30px 0; width: 100%;">
                                 <tr>

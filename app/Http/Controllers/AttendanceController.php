@@ -50,4 +50,39 @@ class AttendanceController extends Controller
             ->route('attendance.show', ['t' => $data['token']])
             ->with('status', $message);
     }
+
+    public function verify(Request $request, string $token): View
+    {
+        $reservation = SeatReservation::where('attendance_token', $token)->first();
+
+        if (!$reservation) {
+            return view('pages.attendance-verify', [
+                'reservation' => null,
+                'error' => 'Invalid QR code or attendance token.',
+            ]);
+        }
+
+        return view('pages.attendance-verify', [
+            'reservation' => $reservation,
+            'error' => null,
+        ]);
+    }
+
+    public function markPresent(Request $request, string $token): RedirectResponse
+    {
+        $reservation = SeatReservation::where('attendance_token', $token)->first();
+
+        if (!$reservation) {
+            return redirect()->route('attendance.verify', ['token' => $token])
+                ->with('error', 'Invalid attendance token.');
+        }
+
+        // Mark as present
+        $reservation->update([
+            'attendance_mode' => 'physical',
+        ]);
+
+        return redirect()->route('attendance.verify', ['token' => $token])
+            ->with('status', 'Attendance confirmed! Welcome to ALG 2025.');
+    }
 }

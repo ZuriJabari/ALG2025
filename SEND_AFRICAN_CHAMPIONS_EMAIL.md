@@ -6,6 +6,8 @@ This guide explains how to send the beautifully designed Africa Champions Breakf
 ## Email Features
 - ✅ Personalized with recipient's name
 - ✅ Beautiful amber/gold gradient design
+- ✅ **Unique QR code for each attendee** (for check-in verification)
+- ✅ Instructions to print or show QR code on device
 - ✅ Includes both PDF attachments:
   - Africa Champions Breakfast ALG 2025.pdf
   - FINAL Main Program ALG 2025.pdf
@@ -15,7 +17,16 @@ This guide explains how to send the beautifully designed Africa Champions Breakf
 
 ## Before Sending
 
-### 1. Test the Email First
+### 1. Generate Attendance Tokens (QR Codes)
+First, generate unique attendance tokens for all Africa Champions:
+
+```bash
+php artisan attendance:generate-tokens --fellowship="Africa Champions Invite"
+```
+
+This creates a unique token for each Africa Champion that will be embedded in their QR code.
+
+### 2. Test the Email First
 Always test with a single recipient before sending to everyone:
 
 ```bash
@@ -28,7 +39,7 @@ This will send the email to only the first Africa Champion so you can verify:
 - All links work
 - Personalization is correct
 
-### 2. Check Your Mail Configuration
+### 3. Check Your Mail Configuration
 Make sure your `.env` file has correct mail settings:
 
 ```env
@@ -101,7 +112,21 @@ All 52 people with `fellowship = 'Africa Champions Invite'` will receive the ema
 Africa Champions Breakfast - ALG 2025 | Saturday, 13th December
 ```
 
+## QR Code Scanning at Event
+
+Each email contains a unique QR code that links to:
+```
+https://yoursite.com/attendance/verify/{unique-token}
+```
+
+When scanned at the entrance:
+1. Shows attendee information
+2. Confirms their fellowship status
+3. Allows staff to mark them as present
+4. Prevents duplicate check-ins
+
 ## Need Help?
+- Generate tokens: `php artisan attendance:generate-tokens --fellowship="Africa Champions Invite"`
 - Test mode: `php artisan email:african-champions --test`
 - Check logs: `tail -f storage/logs/laravel.log`
 - List champions: `php artisan tinker --execute="App\Models\SeatReservation::where('fellowship', 'Africa Champions Invite')->get(['full_name', 'email'])"`
