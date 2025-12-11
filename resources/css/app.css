@@ -4,20 +4,22 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Striped rows for programme schedules */
-.programme-list > li:nth-child(even) {
-    background-color: rgb(240 253 250); /* teal-50 */
-}
+@layer components {
+    /* Striped rows for programme schedules */
+    .programme-list > li:nth-child(even) {
+        background-color: rgb(240 253 250); /* teal-50 */
+    }
 
-.programme-list-amber > li:nth-child(even) {
-    background-color: rgb(255 251 235); /* amber-50 */
-}
+    .programme-list-amber > li:nth-child(even) {
+        background-color: rgb(255 251 235); /* amber-50 */
+    }
 
-/* Dark mode */
-.dark .programme-list > li:nth-child(even) {
-    background-color: rgba(30 41 59 / 0.8); /* slate-800/80 */
-}
+    /* Dark mode */
+    .dark .programme-list > li:nth-child(even) {
+        background-color: rgba(30 41 59 / 0.8); /* slate-800/80 */
+    }
 
-.dark .programme-list-amber > li:nth-child(even) {
-    background-color: rgba(30 41 59 / 0.8); /* slate-800/80 */
+    .dark .programme-list-amber > li:nth-child(even) {
+        background-color: rgba(30 41 59 / 0.8); /* slate-800/80 */
+    }
 }
