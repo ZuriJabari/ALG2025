@@ -20,6 +20,12 @@
     <section class="relative overflow-hidden">
       <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image:url('{{ asset('assets/1x/artwork.png') }}');background-repeat:no-repeat;background-position:right -60px top -40px;background-size:720px auto"></div>
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+        <div class="flex items-center justify-between gap-3 mb-6">
+          <a href="{{ route('events.2025') }}" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white hover:underline decoration-teal-500/60 decoration-2 underline-offset-4">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            <span>Back to ALG 2025 overview</span>
+          </a>
+        </div>
         <div class="max-w-3xl">
           <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 dark:bg-slate-900/70 border border-gray-200 dark:border-slate-800">
             <span class="w-2 h-2 rounded-full" style="background:#00C2B3"></span>
