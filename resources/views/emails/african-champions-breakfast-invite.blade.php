@@ -49,6 +49,18 @@
 
       <hr class="hr" style="margin:18px 0;" />
 
+      <!-- QR Code Notice -->
+      <div class="qr-box">
+        <p style="margin:0 0 12px 0; font-weight:600; font-size:14px; color:#92400E; text-transform:uppercase; letter-spacing:0.05em;">
+          🎫 Your Personal QR Code
+        </p>
+        <p style="margin:12px 0 0 0; font-size:14px; line-height:1.6; color:#78350f;">
+          Your personal QR code is <strong>attached to this email</strong>. Please <strong>download and print it</strong> or <strong>save it to your device</strong> for quick check-in at the entrance.
+        </p>
+      </div>
+
+      <hr class="hr" style="margin:18px 0;" />
+
       <p style="margin:0; text-align:center;">
         <a href="{{ $attendanceUrl }}" class="btn">RSVP Here</a>
       </p>
