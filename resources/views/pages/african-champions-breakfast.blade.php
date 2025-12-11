@@ -53,7 +53,7 @@
 
             <div class="mt-3 sm:mt-4 rounded-xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 sm:px-5 py-4 sm:py-5">
               <ol class="space-y-0 text-sm sm:text-[15px] text-gray-800 dark:text-gray-100">
-                <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 even:bg-amber-50/40 even:dark:bg-slate-900/50 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-300 hover:bg-amber-50/60 dark:hover:bg-slate-900/70">
+                <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 odd:bg-white odd:dark:bg-slate-950 even:bg-amber-50/50 even:dark:bg-slate-900/60 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-200 hover:bg-amber-100/40 dark:hover:bg-slate-800/70">
                   <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                     <p class="font-semibold text-amber-700 dark:text-amber-300">7:30 &ndash; 8:00 AM</p>
                   </div>
@@ -63,7 +63,7 @@
                     <p class="mt-1 text-gray-700 dark:text-gray-300">Hosted by the Master of Ceremonies.</p>
                   </div>
                 </li>
-                <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 even:bg-amber-50/40 even:dark:bg-slate-900/50 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-300 hover:bg-amber-50/60 dark:hover:bg-slate-900/70">
+                <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 odd:bg-white odd:dark:bg-slate-950 even:bg-amber-50/50 even:dark:bg-slate-900/60 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-200 hover:bg-amber-100/40 dark:hover:bg-slate-800/70">
                   <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                     <p class="font-semibold text-amber-700 dark:text-amber-300">8:00 &ndash; 8:30 AM</p>
                   </div>
@@ -73,7 +73,7 @@
                     <p class="mt-1 text-gray-700 dark:text-gray-300">An informal opportunity for Africa Champions and partners to connect.</p>
                   </div>
                 </li>
-                <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 even:bg-amber-50/40 even:dark:bg-slate-900/50 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-300 hover:bg-amber-50/60 dark:hover:bg-slate-900/70">
+                <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 odd:bg-white odd:dark:bg-slate-950 even:bg-amber-50/50 even:dark:bg-slate-900/60 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-200 hover:bg-amber-100/40 dark:hover:bg-slate-800/70">
                   <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                     <p class="font-semibold text-amber-700 dark:text-amber-300">8:30 &ndash; 8:40 AM</p>
                   </div>
@@ -83,7 +83,7 @@
                     <p class="mt-1 text-gray-700 dark:text-gray-300">Framing the morning by the Master of Ceremonies.</p>
                   </div>
                 </li>
-                <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 even:bg-amber-50/40 even:dark:bg-slate-900/50 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-300 hover:bg-amber-50/60 dark:hover:bg-slate-900/70">
+                <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 odd:bg-white odd:dark:bg-slate-950 even:bg-amber-50/50 even:dark:bg-slate-900/60 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-200 hover:bg-amber-100/40 dark:hover:bg-slate-800/70">
                   <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                     <p class="font-semibold text-amber-700 dark:text-amber-300">8:40 &ndash; 8:50 AM</p>
                   </div>
@@ -93,7 +93,7 @@
                     <p class="mt-1 text-gray-700 dark:text-gray-300">Remarks by <span class="font-medium">Magnus Mchunguzi</span>, Board Chairman.</p>
                   </div>
                 </li>
-                <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 even:bg-amber-50/40 even:dark:bg-slate-900/50 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-300 hover:bg-amber-50/60 dark:hover:bg-slate-900/70">
+                <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 odd:bg-white odd:dark:bg-slate-950 even:bg-amber-50/50 even:dark:bg-slate-900/60 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-200 hover:bg-amber-100/40 dark:hover:bg-slate-800/70">
                   <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                     <p class="font-semibold text-amber-700 dark:text-amber-300">8:50 &ndash; 9:10 AM</p>
                   </div>
@@ -103,7 +103,7 @@
                     <p class="mt-1 text-gray-700 dark:text-gray-300">Sharing the vision and journey by <span class="font-medium">Awel Uwihanganye</span>, Co-founder, LéO Africa Institute.</p>
                   </div>
                 </li>
-                <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 even:bg-amber-50/40 even:dark:bg-slate-900/50 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-300 hover:bg-amber-50/60 dark:hover:bg-slate-900/70">
+                <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 odd:bg-white odd:dark:bg-slate-950 even:bg-amber-50/50 even:dark:bg-slate-900/60 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-200 hover:bg-amber-100/40 dark:hover:bg-slate-800/70">
                   <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                     <p class="font-semibold text-amber-700 dark:text-amber-300">9:10 &ndash; 9:25 AM</p>
                   </div>
@@ -113,7 +113,7 @@
                     <p class="mt-1 text-gray-700 dark:text-gray-300">Remarks by <span class="font-medium">Emmanuel Awori</span>, Partnerships Lead, on building together with African Champions.</p>
                   </div>
                 </li>
-                <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 even:bg-amber-50/40 even:dark:bg-slate-900/50 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-300 hover:bg-amber-50/60 dark:hover:bg-slate-900/70">
+                <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 odd:bg-white odd:dark:bg-slate-950 even:bg-amber-50/50 even:dark:bg-slate-900/60 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-200 hover:bg-amber-100/40 dark:hover:bg-slate-800/70">
                   <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                     <p class="font-semibold text-amber-700 dark:text-amber-300">9:25 &ndash; 9:40 AM</p>
                   </div>
@@ -124,7 +124,7 @@
                     <p class="mt-1 text-gray-700 dark:text-gray-300">Keynote address by <span class="font-medium">David F. Mpanga</span>, Managing Partner, AF Mpanga.</p>
                   </div>
                 </li>
-                <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 even:bg-amber-50/40 even:dark:bg-slate-900/50 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-300 hover:bg-amber-50/60 dark:hover:bg-slate-900/70">
+                <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 odd:bg-white odd:dark:bg-slate-950 even:bg-amber-50/50 even:dark:bg-slate-900/60 border-t border-gray-200/60 dark:border-slate-800/60 first:border-t-0 transition-all duration-200 hover:bg-amber-100/40 dark:hover:bg-slate-800/70">
                   <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                     <p class="font-semibold text-amber-700 dark:text-amber-300">9:40 &ndash; 10:00 AM</p>
                   </div>
