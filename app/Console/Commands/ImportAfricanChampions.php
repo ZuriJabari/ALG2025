@@ -74,10 +74,15 @@ class ImportAfricanChampions extends Command
                 $imported++;
             } else {
                 // Check if already exists
-                $exists = SeatReservation::where('email', $email)->exists();
+                $existing = SeatReservation::where('email', $email)->first();
                 
-                if ($exists) {
-                    $this->warn("Skipping {$email}: Already exists");
+                if ($existing) {
+                    // Update existing record to mark as Africa Champion
+                    $existing->update([
+                        'is_fellow' => true,
+                        'fellowship' => 'Africa Champions Invite',
+                    ]);
+                    $this->info("✓ Updated existing: {$name} ({$email}) - Now marked as Africa Champion");
                     $skipped++;
                     continue;
                 }
@@ -100,8 +105,8 @@ class ImportAfricanChampions extends Command
 
         $this->newLine();
         $this->info("Import completed!");
-        $this->info("Imported: {$imported}");
-        $this->info("Skipped: {$skipped}");
+        $this->info("New imports: {$imported}");
+        $this->info("Updated existing: {$skipped}");
 
         return 0;
     }
