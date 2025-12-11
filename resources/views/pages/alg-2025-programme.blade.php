@@ -64,7 +64,7 @@
                   </p>
                 </div>
                 <div class="pt-4">
-                  <a href="{{ asset('assets/1x/FINAL Main Program ALG 2025.pdf') }}" download="FINAL Main Program ALG 2025.pdf" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-teal-600 text-white text-sm sm:text-base font-semibold hover:bg-teal-500 transition">
+                  <a href="{{ route('download.programme') }}" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-teal-600 text-white text-sm sm:text-base font-semibold hover:bg-teal-500 transition">
                     <span>Download full programme (PDF)</span>
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>
                   </a>
@@ -81,7 +81,7 @@
                   <span class="inline-flex w-6 h-6 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 items-center justify-center"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M5 4h14v16H5z"/></svg></span>
                   <span>Main Programme &mdash; Full schedule</span>
                 </div>
-                <a href="{{ asset('assets/1x/FINAL Main Program ALG 2025.pdf') }}" download="FINAL Main Program ALG 2025.pdf" class="inline-flex items-center gap-1.5 text-xs sm:text-sm text-teal-700 dark:text-teal-300 hover:underline">
+                <a href="{{ route('download.programme') }}" class="inline-flex items-center gap-1.5 text-xs sm:text-sm text-teal-700 dark:text-teal-300 hover:underline">
                   <span>Download PDF</span>
                   <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>
                 </a>

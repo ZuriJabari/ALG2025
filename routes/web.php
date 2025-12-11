@@ -75,6 +75,23 @@ Route::view('/about', 'pages.about')->name('about');
 Route::view('/contact', 'pages.contact')->name('contact');
 Route::view('/african-champions-breakfast', 'pages.african-champions-breakfast')->name('acb');
 
+// PDF downloads
+Route::get('/download/programme', function () {
+    $filePath = public_path('assets/1x/FINAL Main Program ALG 2025.pdf');
+    if (!file_exists($filePath)) {
+        abort(404, 'Programme PDF not found');
+    }
+    return response()->download($filePath, 'FINAL Main Program ALG 2025.pdf');
+})->name('download.programme');
+
+Route::get('/download/acb-programme', function () {
+    $filePath = public_path('assets/1x/Africa Champions Breakfast ALG 2025.pdf');
+    if (!file_exists($filePath)) {
+        abort(404, 'ACB Programme PDF not found');
+    }
+    return response()->download($filePath, 'Africa Champions Breakfast ALG 2025.pdf');
+})->name('download.acb-programme');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
