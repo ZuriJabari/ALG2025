@@ -40,12 +40,14 @@ class GeneralALGInvite extends Mailable
     public function content(): Content
     {
         $verificationUrl = route('attendance.verify', ['token' => $this->reservation->attendance_token]);
+        $attendanceUrl = \Illuminate\Support\Facades\URL::route('attendance.show', ['t' => $this->reservation->attendance_token]);
 
         return new Content(
             view: 'emails.general-alg-invite',
             with: [
                 'reservation' => $this->reservation,
                 'verificationUrl' => $verificationUrl,
+                'attendanceUrl' => $attendanceUrl,
             ],
         );
     }

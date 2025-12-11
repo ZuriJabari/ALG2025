@@ -51,6 +51,23 @@
 
       <hr class="hr" style="margin:18px 0;" />
 
+      <!-- Attendance Confirmation -->
+      <p style="margin:0; font-size:14px; line-height:1.7;">
+        If you haven't yet confirmed how you will attend <strong>#ALG2025</strong>, please do so as soon as possible.
+        This helps us finalise logistics and ensure your experience is seamless.
+      </p>
+
+      <p style="margin-top:14px; text-align:center;">
+        <a href="{{ $attendanceUrl }}" class="btn">Confirm how I'll attend (in person or virtual)</a>
+      </p>
+
+      <p style="margin-top:10px; font-size:12px; line-height:1.6; color:#92400E;">
+        This personalised link will allow you to choose whether you are attending <strong>in person in Kampala</strong> or <strong>joining virtually online</strong>.
+        If you have already confirmed how you will attend, you do not need to take any further action.
+      </p>
+
+      <hr class="hr" style="margin:18px 0;" />
+
       <p style="margin:0; font-size:14px; line-height:1.7; background:#FEF3C7; padding:12px 16px; border-radius:8px; border-left:3px solid #D97706;">
         <strong>📎 Attachments:</strong> The agenda for the Africa Champions Breakfast & Full Schedule for the main #ALG2025 are attached for your attention.
       </p>

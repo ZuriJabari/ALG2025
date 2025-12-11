@@ -40,12 +40,14 @@ class AfricanChampionsBreakfastInvite extends Mailable
     public function content(): Content
     {
         $verificationUrl = route('attendance.verify', ['token' => $this->reservation->attendance_token]);
+        $attendanceUrl = \Illuminate\Support\Facades\URL::route('attendance.show', ['t' => $this->reservation->attendance_token]);
 
         return new Content(
             view: 'emails.african-champions-breakfast-invite',
             with: [
                 'reservation' => $this->reservation,
                 'verificationUrl' => $verificationUrl,
+                'attendanceUrl' => $attendanceUrl,
             ],
         );
     }
