@@ -58,11 +58,15 @@ class AfricanChampionsBreakfastInvite extends Mailable implements ShouldQueue
     {
         $verificationUrl = route('attendance.verify', ['token' => $this->reservation->attendance_token]);
         
-        return \SimpleSoftwareIO\QrCode\Facades\QrCode::format('png')
+        // Use SVG format (doesn't require imagick)
+        $svg = \SimpleSoftwareIO\QrCode\Facades\QrCode::format('svg')
             ->size(200)
             ->margin(1)
             ->errorCorrection('H')
             ->generate($verificationUrl);
+        
+        // Convert SVG to data URL for email embedding
+        return 'data:image/svg+xml;base64,' . base64_encode($svg);
     }
 
     /**
