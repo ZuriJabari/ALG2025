@@ -40,9 +40,9 @@
     </section>
 
     <section class="relative py-10 sm:py-14 md:py-18 bg-gray-50 dark:bg-slate-900">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
-          <div class="lg:col-span-4 max-w-xl">
+      <div class="max-w-5xl md:max-w-6xl lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-8 sm:gap-10 items-start">
+          <div class="max-w-xl">
             <h2 class="text-xl sm:text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">At a glance</h2>
             <div class="mt-3 space-y-3 text-sm sm:text-base text-gray-700 dark:text-gray-300">
               <p><span class="font-semibold text-gray-900 dark:text-white">Date:</span> Saturday, 13th December 2025</p>
@@ -60,7 +60,7 @@
             </div>
           </div>
 
-          <div class="lg:col-span-8">
+          <div>
             <div class="group relative rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-lg sm:shadow-xl overflow-hidden">
               <div class="absolute -inset-6 -z-10 rounded-[28px] bg-gradient-to-r from-teal-500/15 via-cyan-500/10 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
               <div class="relative px-4 sm:px-5 py-3 sm:py-4 flex items-center justify-between gap-3 border-b border-gray-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/90 backdrop-blur">
