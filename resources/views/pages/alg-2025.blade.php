@@ -234,6 +234,65 @@
       </div>
     </section>
 
+    <!-- Programmes -->
+    <section class="relative py-8 sm:py-12 md:py-20 bg-gray-50 dark:bg-slate-900 reveal">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">Programmes</h2>
+          <p class="mt-2 text-sm sm:text-base text-gray-700 dark:text-gray-300">Explore the full ALG 2025 programme, including the Main Gathering and the Africa Champions Breakfast experience.</p>
+        </div>
+        <div class="mt-6 sm:mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          <!-- Main Program -->
+          <div class="group relative rounded-xl sm:rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-5 sm:p-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 overflow-hidden">
+            <div class="absolute -inset-px rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-br from-teal-500/15 via-cyan-500/10 to-transparent"></div>
+            <div class="relative flex flex-col h-full">
+              <div class="flex items-start gap-3">
+                <span class="inline-flex w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-teal-500/15 text-teal-600 dark:text-teal-400 items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M5 4h14v16H5z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 8h6"/></svg>
+                </span>
+                <div>
+                  <p class="text-xs font-semibold tracking-[0.18em] uppercase text-teal-600 dark:text-teal-300">ALG 2025</p>
+                  <h3 class="mt-1 text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Main Programme</h3>
+                  <p class="mt-2 text-sm sm:text-base text-gray-700 dark:text-gray-300">Full day programme for the 2025 Annual Leaders Gathering, including keynotes, panels, and networking sessions.</p>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t border-gray-200 dark:border-slate-800 flex items-center justify-between gap-3">
+                <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">PDF &bull; Detailed schedule &amp; session flow</p>
+                <a href="{{ route('events.2025.programme') }}" class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-teal-600 text-white text-xs sm:text-sm font-semibold hover:bg-teal-500 transition">
+                  <span>Open programme page</span>
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Africa Champions Breakfast -->
+          <div class="group relative rounded-xl sm:rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-5 sm:p-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 overflow-hidden">
+            <div class="absolute -inset-px rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-br from-amber-400/20 via-rose-400/10 to-transparent"></div>
+            <div class="relative flex flex-col h-full">
+              <div class="flex items-start gap-3">
+                <span class="inline-flex w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-400/15 text-amber-600 dark:text-amber-300 items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 12h10M4 16h6"/></svg>
+                </span>
+                <div>
+                  <p class="text-xs font-semibold tracking-[0.18em] uppercase text-amber-600 dark:text-amber-300">ALG Programme</p>
+                  <h3 class="mt-1 text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Africa Champions Breakfast</h3>
+                  <p class="mt-2 text-sm sm:text-base text-gray-700 dark:text-gray-300">Intimate high-level breakfast convening, curated for Africa Champions and partners ahead of the main gathering.</p>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t border-gray-200 dark:border-slate-800 flex items-center justify-between gap-3">
+                <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">PDF &bull; Breakfast programme &amp; flow</p>
+                <a href="{{ route('acb') }}#programme" class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-slate-900 text-white text-xs sm:text-sm font-semibold hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 transition">
+                  <span>Open programme page</span>
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Highlight Video -->
     <section class="relative py-8 sm:py-12 md:py-20 bg-[#FDFDFC] dark:bg-slate-950 reveal">
       <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-b from-teal-50/60 via-transparent to-transparent dark:from-teal-900/10"></div>
