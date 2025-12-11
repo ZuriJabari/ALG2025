@@ -29,11 +29,20 @@
         In appreciation of the remarkable value you have added to the LéO Africa Institute through your time, leadership and unwavering commitment to our mission, we are pleased to extend a special invitation to you to join us for the <strong>Africa Champions Breakfast</strong>. This will happen as a side event before the main <strong>#ALG2025</strong> event.
       </p>
 
-      <p style="margin-top:14px; font-size:14px; line-height:1.7; font-weight:600; color:#0F766E;">
-        📅 Date: December 13th, 2025<br/>
-        ⏰ Time: 7:30am to 10:00am<br/>
-        📍 Venue: Four Points by Sheraton, Kampala
-      </p>
+      <div style="margin-top:18px; padding:16px; border-radius:12px; background:#F0FDFA; border-left:4px solid #0FB5A8;">
+        <div style="margin-bottom:12px;">
+          <p style="margin:0 0 4px 0; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:#0F766E;">📅 Date</p>
+          <p style="margin:0; font-size:15px; font-weight:600; color:#115e59;">December 13th, 2025</p>
+        </div>
+        <div style="margin-bottom:12px;">
+          <p style="margin:0 0 4px 0; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:#0F766E;">⏰ Time</p>
+          <p style="margin:0; font-size:15px; font-weight:600; color:#115e59;">7:30 AM - 10:00 AM</p>
+        </div>
+        <div>
+          <p style="margin:0 0 4px 0; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:#0F766E;">📍 Venue</p>
+          <p style="margin:0; font-size:15px; font-weight:600; color:#115e59;">Four Points by Sheraton, Kampala</p>
+        </div>
+      </div>
 
       <p style="margin-top:14px; font-size:15px; line-height:1.7;">
         <strong>The agenda for the Breakfast has been attached to this email.</strong>
