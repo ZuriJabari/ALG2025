@@ -45,9 +45,10 @@
                 <div class="rounded-2xl bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 p-8 sm:p-12">
                     <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Speakers to be announced shortly</h2>
                     <p class="mt-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">We're curating an exceptional roster of distinguished leaders, innovators, and changemakers for ALG 2025. The full speaker lineup will be announced soon.</p>
-                    <p class="mt-4 text-gray-600 dark:text-gray-400">In the meantime, explore the highlights from our previous gathering:</p>
+                    <p class="mt-4 text-gray-600 dark:text-gray-400">In the meantime, explore the full programme and highlights from our previous gathering:</p>
                     <div class="mt-6 flex flex-wrap gap-3">
-                        <a href="/events/2024" class="shrink-0 whitespace-nowrap inline-flex items-center justify-center h-11 px-6 rounded-full bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold transition-all hover:-translate-y-0.5">Explore ALG 2024</a>
+                        <a href="{{ route('events.2025.programme') }}" class="shrink-0 whitespace-nowrap inline-flex items-center justify-center h-11 px-6 rounded-full bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold transition-all hover:-translate-y-0.5">Explore Programme</a>
+                        <a href="/events/2024" class="shrink-0 whitespace-nowrap inline-flex items-center justify-center h-11 px-6 rounded-full border border-teal-600/40 dark:border-teal-400/40 text-teal-700 dark:text-teal-300 hover:bg-teal-50/50 dark:hover:bg-slate-900/50 transition">Explore ALG 2024</a>
                     </div>
                 </div>
             </div>
