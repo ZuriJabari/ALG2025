@@ -75,7 +75,7 @@
               </div>
               <div class="relative bg-white dark:bg-slate-950">
                 <div class="px-4 sm:px-6 py-5 sm:py-6">
-                  <ol class="space-y-0 text-sm sm:text-[15px] text-gray-800 dark:text-gray-100 [&>li:nth-child(even)]:bg-teal-50 dark:[&>li:nth-child(even)]:bg-slate-800/80">
+                  <ol class="programme-list space-y-0 text-sm sm:text-[15px] text-gray-800 dark:text-gray-100">
                     <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 border-t border-gray-200/60 dark:border-slate-700/60 first:border-t-0 transition-all duration-200 hover:bg-teal-100/70 dark:hover:bg-slate-700/90">
                       <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                         <p class="font-semibold text-teal-700 dark:text-teal-300">10:00 &ndash; 10:20 AM</p>
