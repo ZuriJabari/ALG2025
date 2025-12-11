@@ -25,8 +25,6 @@
     <h1 style="margin-top:16px; font-size:24px; font-weight:600;">Dear {{ $reservation->full_name }},</h1>
 
     <div class="card" style="margin-top:16px; padding:20px 22px;">
-      <h2 style="margin-top:0; margin-bottom:8px; font-size:20px; font-weight:600;">You're Invited to the Africa Champions Breakfast</h2>
-
       <p style="margin:0; font-size:15px; line-height:1.7;">
         We are excited for you to join us for the <strong>#ALG2025</strong>, and in particular, to confirm your attendance at the <strong>Africa Champions Breakfast</strong> happening this Saturday.
       </p>
@@ -36,7 +34,7 @@
       </p>
 
       <p style="margin-top:12px; font-size:15px; line-height:1.7;">
-        If you have not yet confirmed for the Breakfast session, we kindly request that you confirm your attendance, so we can make the necessary preparations for an intimate and seamless experience.
+        If you have not yet confirmed for the Breakfast session, we kindly request that you confirm your attendance, so we can make the necessary preparations for an intimate and seamless experience. If you have already sent in your confirmation, we are excited to see you.
       </p>
 
       <hr class="hr" style="margin:18px 0;" />
@@ -53,6 +51,12 @@
           Please <strong>print this email</strong> or <strong>show it on your device</strong> for quick check-in at the entrance.
         </p>
       </div>
+
+      <hr class="hr" style="margin:18px 0;" />
+
+      <p style="margin:0; font-size:14px; line-height:1.7; background:#FEF3C7; padding:12px 16px; border-radius:8px; border-left:3px solid #D97706;">
+        <strong>📎 Attachments:</strong> The agenda for the Africa Champions Breakfast & Full Schedule for the main #ALG2025 are attached for your attention.
+      </p>
 
       <hr class="hr" style="margin:18px 0;" />
 
