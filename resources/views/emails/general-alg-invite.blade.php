@@ -41,16 +41,13 @@
 
       <hr class="hr" style="margin:18px 0;" />
 
-      <!-- QR Code Section -->
+      <!-- QR Code Notice -->
       <div class="qr-box">
         <p style="margin:0 0 12px 0; font-weight:600; font-size:14px; color:#0F766E; text-transform:uppercase; letter-spacing:0.05em;">
           🎫 Your Personal QR Code
         </p>
-        <div style="background:#fff; padding:16px; border-radius:8px; display:inline-block;">
-          <img src="{{ $qrCode }}" alt="QR Code" style="width:180px; height:180px; display:block;" />
-        </div>
-        <p style="margin:12px 0 0 0; font-size:13px; line-height:1.6; color:#115e59;">
-          Please <strong>print this email</strong> or <strong>show it on your device</strong> for quick check-in at the entrance.
+        <p style="margin:12px 0 0 0; font-size:14px; line-height:1.6; color:#115e59;">
+          Your personal QR code is <strong>attached to this email</strong>. Please <strong>download and print it</strong> or <strong>save it to your device</strong> for quick check-in at the entrance.
         </p>
       </div>
 
