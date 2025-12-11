@@ -139,7 +139,7 @@
 
             <div class="mt-3 sm:mt-4 flex flex-wrap items-center justify-between gap-3">
               <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">PDF &bull; Programme overview</p>
-              <a href="{{ asset('assets/1x/Africa Champions Breakfast ALG 2025.pdf') }}" download class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-amber-500 text-slate-900 text-xs sm:text-sm font-semibold hover:bg-amber-400 dark:bg-amber-400 dark:hover:bg-amber-300 transition">
+              <a href="{{ asset('assets/1x/Africa Champions Breakfast ALG 2025.pdf') }}" download="Africa Champions Breakfast ALG 2025.pdf" class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-amber-500 text-slate-900 text-xs sm:text-sm font-semibold hover:bg-amber-400 dark:bg-amber-400 dark:hover:bg-amber-300 transition">
                 <span>Download programme (PDF)</span>
                 <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/></svg>
               </a>
