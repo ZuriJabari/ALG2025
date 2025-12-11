@@ -11,7 +11,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class AfricanChampionsBreakfastInvite extends Mailable implements ShouldQueue
+class AfricanChampionsBreakfastInvite extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -39,11 +39,15 @@ class AfricanChampionsBreakfastInvite extends Mailable implements ShouldQueue
      */
     public function content(): Content
     {
+        $verificationUrl = route('attendance.verify', ['token' => $this->reservation->attendance_token]);
+        $qrCode = \App\Helpers\QrCodeHelper::generateBase64($verificationUrl, 180);
+
         return new Content(
             view: 'emails.african-champions-breakfast-invite',
             with: [
                 'reservation' => $this->reservation,
-                'verificationUrl' => route('attendance.verify', ['token' => $this->reservation->attendance_token]),
+                'verificationUrl' => $verificationUrl,
+                'qrCode' => $qrCode,
             ],
         );
     }
