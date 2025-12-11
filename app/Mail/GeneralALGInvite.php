@@ -39,34 +39,13 @@ class GeneralALGInvite extends Mailable implements ShouldQueue
      */
     public function content(): Content
     {
-        // Generate QR code URL
-        $qrCodeUrl = $this->generateQRCode();
-
         return new Content(
             view: 'emails.general-alg-invite',
             with: [
                 'reservation' => $this->reservation,
-                'qrCodeUrl' => $qrCodeUrl,
+                'verificationUrl' => route('attendance.verify', ['token' => $this->reservation->attendance_token]),
             ],
         );
-    }
-
-    /**
-     * Generate QR code for attendance verification
-     */
-    protected function generateQRCode(): string
-    {
-        $verificationUrl = route('attendance.verify', ['token' => $this->reservation->attendance_token]);
-        
-        // Use SVG format (doesn't require imagick)
-        $svg = \SimpleSoftwareIO\QrCode\Facades\QrCode::format('svg')
-            ->size(200)
-            ->margin(1)
-            ->errorCorrection('H')
-            ->generate($verificationUrl);
-        
-        // Convert SVG to data URL for email embedding
-        return 'data:image/svg+xml;base64,' . base64_encode($svg);
     }
 
     /**

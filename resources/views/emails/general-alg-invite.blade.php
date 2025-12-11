@@ -47,7 +47,7 @@
           🎫 Your Personal QR Code
         </p>
         <div style="background:#fff; padding:16px; border-radius:8px; display:inline-block;">
-          <img src="{{ $qrCodeUrl }}" alt="Attendance QR Code" style="width:180px; height:180px; display:block;" />
+          {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(180)->margin(1)->errorCorrection('H')->generate($verificationUrl) !!}
         </div>
         <p style="margin:12px 0 0 0; font-size:13px; line-height:1.6; color:#115e59;">
           Please <strong>print this email</strong> or <strong>show it on your device</strong> for quick check-in at the entrance.
