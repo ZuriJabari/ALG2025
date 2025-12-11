@@ -75,64 +75,64 @@
               </div>
               <div class="relative bg-white dark:bg-slate-950">
                 <div class="px-4 sm:px-6 py-5 sm:py-6">
-                  <ol class="space-y-4 sm:space-y-5 text-sm sm:text-[15px] text-gray-800 dark:text-gray-100">
-                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                  <ol class="space-y-3 sm:space-y-4 text-sm sm:text-[15px] text-gray-800 dark:text-gray-100">
+                    <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 rounded-2xl px-3 sm:px-4 py-3 sm:py-4 bg-white/0 dark:bg-transparent even:bg-teal-50/40 even:dark:bg-slate-900/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:bg-teal-50/80 dark:hover:bg-slate-950/80">
                       <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                         <p class="font-semibold text-teal-700 dark:text-teal-300">10:00 &ndash; 10:20 AM</p>
                       </div>
-                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                      <div class="flex-1 border-l border-teal-100 dark:border-teal-900/50 pl-4 transition-colors duration-300 group-hover:border-teal-400/80">
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Arrival &amp; Hosting</p>
                         <p class="mt-1 font-semibold">Guest arrival and settling in</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">Programme Director &amp; Event Host: <span class="font-medium">Edgar Mwine</span>, YELP Fellow &amp; Programme Officer, KAS for Security in Africa, with co-host <span class="font-medium">Lisa Kanyomozi Rabwoni</span>, Huduma Fellow (Class of 2024).</p>
                       </div>
                     </li>
-                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                    <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 rounded-2xl px-3 sm:px-4 py-3 sm:py-4 bg-white/0 dark:bg-transparent even:bg-teal-50/40 even:dark:bg-slate-900/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:bg-teal-50/80 dark:hover:bg-slate-950/80">
                       <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                         <p class="font-semibold text-teal-700 dark:text-teal-300">10:20 &ndash; 10:25 AM</p>
                       </div>
-                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                      <div class="flex-1 border-l border-teal-100 dark:border-teal-900/50 pl-4 transition-colors duration-300 group-hover:border-teal-400/80">
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Welcome</p>
                         <p class="mt-1 font-semibold">Welcome remarks</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">By <span class="font-medium">Awel Uwihanganye</span>, Co-founder &amp; Team Lead, LéO Africa Institute.</p>
                       </div>
                     </li>
-                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                    <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 rounded-2xl px-3 sm:px-4 py-3 sm:py-4 bg-white/0 dark:bg-transparent even:bg-teal-50/40 even:dark:bg-slate-900/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:bg-teal-50/80 dark:hover:bg-slate-950/80">
                       <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                         <p class="font-semibold text-teal-700 dark:text-teal-300">10:25 &ndash; 10:40 AM</p>
                       </div>
-                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                      <div class="flex-1 border-l border-teal-100 dark:border-teal-900/50 pl-4 transition-colors duration-300 group-hover:border-teal-400/80">
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Opening keynote</p>
                         <p class="mt-1 font-semibold">Keynote address</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">Speaker: <span class="font-medium">Charles Mudiwa</span>, Managing Director, Dfcu Bank.</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">Topic: <span class="italic">&ldquo;Excellence as a Standard: Sustaining High-Performance Leadership in Challenging Contexts.&rdquo;</span></p>
                       </div>
                     </li>
-                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                    <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 rounded-2xl px-3 sm:px-4 py-3 sm:py-4 bg-white/0 dark:bg-transparent even:bg-teal-50/40 even:dark:bg-slate-900/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:bg-teal-50/80 dark:hover:bg-slate-950/80">
                       <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                         <p class="font-semibold text-teal-700 dark:text-teal-300">10:40 &ndash; 11:30 AM</p>
                       </div>
-                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                      <div class="flex-1 border-l border-teal-100 dark:border-teal-900/50 pl-4 transition-colors duration-300 group-hover:border-teal-400/80">
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Fireside conversation</p>
                         <p class="mt-1 font-semibold">Moderated conversation with keynote speaker</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">Joined by <span class="font-medium">Anna Reismann</span>, Country Representative, Konrad Adenauer Stiftung Uganda &amp; South Sudan.</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">Moderated by <span class="font-medium">Awel Uwihanganye</span>.</p>
                       </div>
                     </li>
-                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                    <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 rounded-2xl px-3 sm:px-4 py-3 sm:py-4 bg-white/0 dark:bg-transparent even:bg-teal-50/40 even:dark:bg-slate-900/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:bg-teal-50/80 dark:hover:bg-slate-950/80">
                       <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                         <p class="font-semibold text-teal-700 dark:text-teal-300">11:30 &ndash; 11:50 AM</p>
                       </div>
-                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                      <div class="flex-1 border-l border-teal-100 dark:border-teal-900/50 pl-4 transition-colors duration-300 group-hover:border-teal-400/80">
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Cultural interlude</p>
                         <p class="mt-1 font-semibold">&ldquo;We Are All Africa!&rdquo; &mdash; Cultural presentation</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">By <span class="font-medium">Joseph Irankunda &amp; Co.</span></p>
                       </div>
                     </li>
-                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                    <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 rounded-2xl px-3 sm:px-4 py-3 sm:py-4 bg-white/0 dark:bg-transparent even:bg-teal-50/40 even:dark:bg-slate-900/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:bg-teal-50/80 dark:hover:bg-slate-950/80">
                       <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                         <p class="font-semibold text-teal-700 dark:text-teal-300">11:50 AM &ndash; 1:10 PM</p>
                       </div>
-                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                      <div class="flex-1 border-l border-teal-100 dark:border-teal-900/50 pl-4 transition-colors duration-300 group-hover:border-teal-400/80">
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Panel I</p>
                         <p class="mt-1 font-semibold">Panel discussion: &ldquo;From Individual Excellence to Collective Impact: Building Strategic Partnerships Across Sectors&rdquo;</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">Moderator: <span class="font-medium">Raymond Mujuni</span>, Deputy Director, African Institute for Investigative Journalism; YELP Fellow (Class of 2017).</p>
@@ -147,31 +147,31 @@
                         <p class="mt-2 text-gray-700 dark:text-gray-300">Includes Q&amp;A and audience engagement.</p>
                       </div>
                     </li>
-                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                    <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 rounded-2xl px-3 sm:px-4 py-3 sm:py-4 bg-white/0 dark:bg-transparent even:bg-teal-50/40 even:dark:bg-slate-900/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:bg-teal-50/80 dark:hover:bg-slate-950/80">
                       <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                         <p class="font-semibold text-teal-700 dark:text-teal-300">1:30 &ndash; 2:30 PM</p>
                       </div>
-                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                      <div class="flex-1 border-l border-teal-100 dark:border-teal-900/50 pl-4 transition-colors duration-300 group-hover:border-teal-400/80">
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Lunch</p>
                         <p class="mt-1 font-semibold">Lunch break &amp; networking</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">Open networking opportunity over lunch.</p>
                       </div>
                     </li>
-                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                    <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 rounded-2xl px-3 sm:px-4 py-3 sm:py-4 bg-white/0 dark:bg-transparent even:bg-teal-50/40 even:dark:bg-slate-900/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:bg-teal-50/80 dark:hover:bg-slate-950/80">
                       <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                         <p class="font-semibold text-teal-700 dark:text-teal-300">2:30 &ndash; 2:50 PM</p>
                       </div>
-                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                      <div class="flex-1 border-l border-teal-100 dark:border-teal-900/50 pl-4 transition-colors duration-300 group-hover:border-teal-400/80">
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Artistic reflection</p>
                         <p class="mt-1 font-semibold">&ldquo;The Psalm of Life!&rdquo; &mdash; Musical poetry presentation</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">By <span class="font-medium">Matovu Matia</span> (Poet) and <span class="font-medium">Frank Baguma</span> (Violinist).</p>
                       </div>
                     </li>
-                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                    <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 rounded-2xl px-3 sm:px-4 py-3 sm:py-4 bg-white/0 dark:bg-transparent even:bg-teal-50/40 even:dark:bg-slate-900/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:bg-teal-50/80 dark:hover:bg-slate-950/80">
                       <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                         <p class="font-semibold text-teal-700 dark:text-teal-300">2:50 &ndash; 3:30 PM</p>
                       </div>
-                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                      <div class="flex-1 border-l border-teal-100 dark:border-teal-900/50 pl-4 transition-colors duration-300 group-hover:border-teal-400/80">
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Afternoon keynote</p>
                         <p class="mt-1 font-semibold">Afternoon keynote address</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">Speaker: <span class="font-medium">Susan Nsibirwa</span>, Managing Director, Nation Media Group.</p>
@@ -179,11 +179,11 @@
                         <p class="mt-2 text-gray-700 dark:text-gray-300">Followed by a fireside conversation moderated by <span class="font-medium">Angelo Izama</span>, Team Lead, Verification Registration Services; Faculty Head Emeritus, LéO Africa Institute.</p>
                       </div>
                     </li>
-                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                    <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 rounded-2xl px-3 sm:px-4 py-3 sm:py-4 bg-white/0 dark:bg-transparent even:bg-teal-50/40 even:dark:bg-slate-900/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:bg-teal-50/80 dark:hover:bg-slate-950/80">
                       <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                         <p class="font-semibold text-teal-700 dark:text-teal-300">3:30 &ndash; 4:30 PM</p>
                       </div>
-                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                      <div class="flex-1 border-l border-teal-100 dark:border-teal-900/50 pl-4 transition-colors duration-300 group-hover:border-teal-400/80">
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Panel II</p>
                         <p class="mt-1 font-semibold">Panel discussion II: &ldquo;Frontiers of Opportunity: Innovation and Enterprise Growth Where Excellence is the Standard for Success&rdquo;</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">Moderator: <span class="font-medium">Diana Ondoga</span>, Manager Corporate Social Investment, Stanbic Bank Uganda.</p>
@@ -198,26 +198,26 @@
                         <p class="mt-2 text-gray-700 dark:text-gray-300">Includes Q&amp;A and audience engagement.</p>
                       </div>
                     </li>
-                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                    <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 rounded-2xl px-3 sm:px-4 py-3 sm:py-4 bg-white/0 dark:bg-transparent even:bg-teal-50/40 even:dark:bg-slate-900/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:bg-teal-50/80 dark:hover:bg-slate-950/80">
                       <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                         <p class="font-semibold text-teal-700 dark:text-teal-300">4:30 &ndash; 4:45 PM</p>
                       </div>
-                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                      <div class="flex-1 border-l border-teal-100 dark:border-teal-900/50 pl-4 transition-colors duration-300 group-hover:border-teal-400/80">
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Entertainment</p>
                         <p class="mt-1 font-semibold">Entertainment break</p>
                       </div>
                     </li>
-                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                    <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 rounded-2xl px-3 sm:px-4 py-3 sm:py-4 bg-white/0 dark:bg-transparent even:bg-teal-50/40 even:dark:bg-slate-900/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:bg-teal-50/80 dark:hover:bg-slate-950/80">
                       <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                         <p class="font-semibold text-teal-700 dark:text-teal-300">4:45 &ndash; 5:00 PM</p>
                       </div>
-                      <div class="flex-1 border-l border-gray-200 dark:border-slate-800 pl-4">
+                      <div class="flex-1 border-l border-teal-100 dark:border-teal-900/50 pl-4 transition-colors duration-300 group-hover:border-teal-400/80">
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Closing</p>
                         <p class="mt-1 font-semibold">Closing session</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">With <span class="font-medium">Dr. Abraham Korir Sing’ Oei</span>, Principal Secretary, Ministry of Foreign and Diaspora Affairs (State Department for Foreign Affairs).</p>
                       </div>
                     </li>
-                    <li class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
+                    <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 rounded-2xl px-3 sm:px-4 py-3 sm:py-4 bg-white/0 dark:bg-transparent even:bg-teal-50/40 even:dark:bg-slate-900/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:bg-teal-50/80 dark:hover:bg-slate-950/80">
                       <div class="sm:w-32 md:w-36 lg:w-40 flex-shrink-0">
                         <p class="font-semibold text-teal-700 dark:text-teal-300">5:30 &ndash; 7:00 PM</p>
                       </div>
