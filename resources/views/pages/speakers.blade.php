@@ -52,7 +52,9 @@
 
         $moderators = [
             ['name' => 'Raymond Mujuni', 'title' => 'Deputy Director, African Institute for Investigative Journalism', 'bio' => 'International relations and media specialist; Fellow of LéO Africa Institute. Former Head of Current Affairs at Nation Media Group Uganda; Oxford graduate in Diplomatic Studies.', 'avatar' => 'assets/speakers-25/Raymond-Mujuni.png'],
-            ['name' => 'Diana Ondoga', 'title' => 'Manager, Corporate Social Investment, Stanbic Bank Uganda', 'bio' => 'Leads Stanbic Bank Uganda’s socially beneficial investments; 20+ years in banking and customer care across Stanbic and DFCU.', 'avatar' => 'assets/speakers-25/Diana-Odonga.png'],
+            ['name' => 'Diana Ondoga', 'title' => 'Manager, Corporate Social Investment, Stanbic Bank Uganda', 'bio' => 'Leads Stanbic Bank Uganda's socially beneficial investments; 20+ years in banking and customer care across Stanbic and DFCU.', 'avatar' => 'assets/speakers-25/Diana-Odonga.png'],
+            ['name' => 'Edgar Mwine', 'title' => 'Director of Programme & Event Host', 'bio' => 'Project Manager at Konrad Adenauer Stiftung Uganda, overseeing development and execution of KAS activities. YELP Fellow and experienced programme coordinator.', 'avatar' => 'assets/speakers-25/Edgar-Mwine.png'],
+            ['name' => 'Kanyomozi Rabwoni', 'title' => 'Co-Host & Co-Director of Program', 'bio' => 'Executive Director of Yambi Community Outreach; media personality and Huduma Fellow of LéO Africa Institute, leading initiatives on period poverty and community impact.', 'avatar' => 'assets/speakers-25/Kanyomozi-Rabwoni.png'],
         ];
 
         $others = [
@@ -70,8 +72,6 @@
             ['name' => 'Lydia Paula Nakigudde', 'title' => 'Manager ESG, MTN Uganda', 'bio' => 'Environmental specialist and project manager ensuring MTN’s ESG impact. Former environmental consultant at Atacama Consulting, advancing sustainability and governance.', 'avatar' => 'assets/speakers-25/Lydia-Paula.png'],
             ['name' => 'Conrad Mugisha', 'title' => 'Entrepreneur; YELP Fellow', 'bio' => 'Businessman and YELP Fellow with background in banking and audit, bringing operational rigor to private ventures.', 'avatar' => 'assets/speakers-25/Conrad-Mugisha.png'],
             ['name' => 'Okash Mohammed', 'title' => 'Founding Director, Institute of Climate and Environment (ICE), Somalia', 'bio' => 'Founder of ICE Institute; Senior Lecturer at SIMAD University; member of the Global Future Council on Climate and Nature Governance; YELP Fellow and LéO Africa Institute Faculty Member.', 'avatar' => 'assets/speakers-25/Mohamed-Okash.png'],
-            ['name' => 'Edgar Mwine', 'title' => 'Director of Programme & Event Host', 'bio' => 'Project Manager at Konrad Adenauer Stiftung Uganda, overseeing development and execution of KAS activities. YELP Fellow and experienced programme coordinator.', 'avatar' => 'assets/speakers-25/Edgar-Mwine.png'],
-            ['name' => 'Kanyomozi Rabwoni', 'title' => 'Co-Host & Co-Director of Program', 'bio' => 'Executive Director of Yambi Community Outreach; media personality and Huduma Fellow of LéO Africa Institute, leading initiatives on period poverty and community impact.', 'avatar' => 'assets/speakers-25/Kanyomozi-Rabwoni.png'],
         ];
     @endphp
 
@@ -96,18 +96,18 @@
             <div class="grid md:grid-cols-3 gap-10">
                 @foreach($keynotes as $person)
                     @php $avatar = $avatarPath($person['avatar'] ?? null); @endphp
-                    <article class="speaker-card group">
-                        <div class="aspect-[3/4] overflow-hidden bg-slate-800 mb-5">
-                            <img src="{{ $avatar }}" alt="{{ $person['name'] }}" class="speaker-image w-full h-full object-cover" loading="lazy">
+                    <article class="speaker-card group flex flex-col">
+                        <div class="aspect-square overflow-hidden bg-slate-800 mb-5">
+                            <img src="{{ $avatar }}" alt="{{ $person['name'] }}" class="speaker-image w-full h-full object-cover object-top" loading="lazy">
                         </div>
-                        <div class="space-y-2">
-                            <span class="inline-block px-3 py-1 bg-amber-500 text-slate-900 text-xs font-semibold uppercase tracking-wider">Keynote</span>
+                        <div class="space-y-2 flex-1 flex flex-col">
+                            <span class="inline-block px-3 py-1 bg-amber-500 text-slate-900 text-xs font-semibold uppercase tracking-wider w-fit">Keynote</span>
                             <h3 class="text-xl font-bold text-white">{{ $person['name'] }}</h3>
                             @if(!empty($person['title']))
                                 <p class="text-amber-400 text-sm font-medium">{{ $person['title'] }}</p>
                             @endif
                             @if(!empty($person['bio']))
-                                <p class="text-slate-400 text-sm leading-relaxed">{{ $person['bio'] }}</p>
+                                <p class="text-slate-400 text-sm leading-relaxed line-clamp-4">{{ $person['bio'] }}</p>
                             @endif
                         </div>
                     </article>
