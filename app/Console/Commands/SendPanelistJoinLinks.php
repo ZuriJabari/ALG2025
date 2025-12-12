@@ -17,7 +17,8 @@ class SendPanelistJoinLinks extends Command
      */
     protected $signature = 'email:panelist-join-links 
         {file=assets/1x/alg-panelist-join-links.xlsx : Excel file with panelist names, emails, and join links} 
-        {--dry-run : Preview emails without sending}';
+        {--dry-run : Preview emails without sending}
+        {--only-emails= : Comma/semicolon-separated list of emails to send to (optional filter)}';
 
     /**
      * The console command description.
@@ -88,6 +89,20 @@ class SendPanelistJoinLinks extends Command
         $this->line(' - Email columns: ' . implode(', ', array_map(fn($idx) => $headers[$idx], $emailIndices)));
 
         $dryRun = $this->option('dry-run');
+        $onlyEmailsOption = (string) $this->option('only-emails');
+        $onlyEmails = [];
+        if (!empty($onlyEmailsOption)) {
+            $parts = preg_split('/[;,]+/', $onlyEmailsOption);
+            foreach ($parts as $p) {
+                $e = trim($p);
+                if ($e !== '' && filter_var($e, FILTER_VALIDATE_EMAIL)) {
+                    $onlyEmails[strtolower($e)] = true;
+                }
+            }
+            if (!empty($onlyEmails)) {
+                $this->info('Filtering to only these emails: ' . implode(', ', array_keys($onlyEmails)));
+            }
+        }
         $processedEmails = [];
         $sent = 0;
         $skipped = 0;
@@ -105,9 +120,17 @@ class SendPanelistJoinLinks extends Command
 
             $emails = [];
             foreach ($emailIndices as $emailIndex) {
-                $email = trim((string) ($row[$emailIndex] ?? ''));
-                if ($email !== '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $emails[] = $email;
+                $raw = trim((string) ($row[$emailIndex] ?? ''));
+                if ($raw === '') {
+                    continue;
+                }
+                // Support multiple emails in one cell separated by comma/semicolon
+                $parts = preg_split('/[;,]+/', $raw);
+                foreach ($parts as $part) {
+                    $email = trim($part);
+                    if ($email !== '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                        $emails[] = $email;
+                    }
                 }
             }
 
@@ -118,6 +141,12 @@ class SendPanelistJoinLinks extends Command
             }
 
             foreach ($emails as $email) {
+                // Optional filter: only send to specified emails
+                if (!empty($onlyEmails) && !isset($onlyEmails[strtolower($email)])) {
+                    $skipped++;
+                    continue;
+                }
+
                 // Deduplicate identical email entries across rows
                 if (isset($processedEmails[$email])) {
                     $this->warn("Skipping duplicate email: {$email} (first seen for {$processedEmails[$email]})");
