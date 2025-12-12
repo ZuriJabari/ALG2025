@@ -89,18 +89,22 @@
 
     <!-- Hero Section -->
     <section class="relative overflow-hidden bg-gradient-to-b from-white via-white to-gray-50 dark:from-slate-950 dark:via-slate-950 dark:to-slate-950">
-        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('{{ asset('assets/1x/artwork.png') }}'); background-repeat:no-repeat; background-position:right -120px top -40px; background-size:820px auto"></div>
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute -top-24 -left-32 w-80 h-80 bg-amber-300/20 rounded-full blur-3xl"></div>
+            <div class="absolute top-10 right-0 w-96 h-96 bg-teal-300/20 rounded-full blur-3xl"></div>
+            <div class="absolute inset-0 opacity-10" style="background-image: url('{{ asset('assets/1x/artwork.png') }}'); background-repeat:no-repeat; background-position:right -120px top -40px; background-size:820px auto"></div>
+        </div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-            <div class="max-w-4xl">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 dark:bg-slate-900/60 border border-gray-200 dark:border-slate-800 shadow-sm">
+            <div class="max-w-4xl space-y-6">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 dark:bg-slate-900/70 border border-gray-200 dark:border-slate-800 shadow-sm backdrop-blur">
                     <span class="w-2 h-2 rounded-full bg-amber-500"></span>
                     <span class="text-xs font-semibold text-gray-700 dark:text-gray-200 tracking-[0.18em] uppercase">ALG 2025</span>
                 </div>
-                <h1 class="mt-5 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-gray-900 dark:text-white leading-tight">ALG 2025 Distinguished Speakers</h1>
-                <p class="mt-6 text-lg sm:text-xl leading-relaxed text-gray-700 dark:text-gray-300 max-w-3xl">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-gray-900 dark:text-white leading-tight">ALG 2025 Distinguished Speakers</h1>
+                <p class="text-lg sm:text-xl leading-relaxed text-gray-700 dark:text-gray-300 max-w-3xl">
                     Meet the distinguished leaders, innovators, moderators, and faculty guiding the Annual Leaders Gathering 2025.
                 </p>
-                <div class="mt-8 flex flex-wrap gap-3">
+                <div class="flex flex-wrap gap-3">
                     <a href="{{ route('events.2025.programme') }}" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-teal-600 text-white font-semibold shadow-lg shadow-teal-500/20 hover:bg-teal-500 transition">
                         Explore programme
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
@@ -114,81 +118,94 @@
     </section>
 
     <!-- Keynote Speakers -->
-    <section class="py-20 sm:py-28">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 sm:space-y-24">
-            <div class="space-y-10">
-                <div class="flex items-center justify-between flex-wrap gap-4">
-                    <div>
-                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">ALG 2025 Speakers</p>
-                        <h2 class="mt-1 text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white">Keynote Speakers</h2>
+    <section class="relative overflow-hidden py-24 sm:py-28 bg-gradient-to-b from-white via-gray-50 to-white dark:from-slate-950 dark:via-slate-950 dark:to-slate-950">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute -left-10 top-16 w-72 h-72 bg-amber-200/25 rounded-full blur-3xl"></div>
+            <div class="absolute right-0 bottom-10 w-80 h-80 bg-amber-400/20 rounded-full blur-3xl"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+            <div class="flex items-start justify-between flex-wrap gap-4">
+                <div class="space-y-2">
+                    <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">ALG 2025 Speakers</p>
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white">Keynote Speakers</h2>
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full {{ $accentKeynote['pill'] }} border border-transparent text-sm font-semibold">
+                            <span class="w-2 h-2 rounded-full {{ $accentKeynote['dot'] }}"></span>
+                            <span class="uppercase tracking-wide">Keynotes</span>
+                        </span>
                     </div>
-                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full {{ $accentKeynote['pill'] }} border border-transparent text-sm font-semibold">
-                        <span class="w-2 h-2 rounded-full {{ $accentKeynote['dot'] }}"></span>
-                        <span class="uppercase tracking-wide">Keynotes</span>
-                    </span>
-                </div>
-
-                <div class="grid md:grid-cols-3 gap-8">
-                    @foreach($keynotes as $person)
-                        @php $avatar = $avatarPath($person['avatar'] ?? null); @endphp
-                        <article class="group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-2xl hover:shadow-[0_25px_60px_-20px_rgba(0,0,0,0.35)] hover:-translate-y-2 transition duration-300 {{ $accentKeynote['ring'] }}">
-                            <div class="absolute inset-0 bg-gradient-to-br {{ $accentKeynote['gradient'] }} opacity-80 pointer-events-none transition-opacity duration-300 group-hover:opacity-95"></div>
-                            <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-30 transition duration-300 bg-white mix-blend-soft-light"></div>
-                            <div class="relative">
-                                <div class="aspect-[4/3] overflow-hidden rounded-t-2xl">
-                                    <img src="{{ $avatar }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy">
-                                </div>
-                                <div class="p-6 space-y-3 bg-white/90 dark:bg-slate-950/80 rounded-b-2xl backdrop-blur">
-                                    <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-bold {{ $accentKeynote['pill'] }} bg-opacity-95">
-                                        Keynote Speaker
-                                    </div>
-                                    <div>
-                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white leading-tight">{{ $person['name'] }}</h3>
-                                        @if(!empty($person['title']))
-                                            <p class="mt-1 text-sm font-semibold text-gray-800 dark:text-gray-200">{{ $person['title'] }}</p>
-                                        @endif
-                                    </div>
-                                    @if(!empty($person['bio']))
-                                        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{{ $person['bio'] }}</p>
-                                    @endif
-                                </div>
-                            </div>
-                        </article>
-                    @endforeach
                 </div>
             </div>
 
+            <div class="grid md:grid-cols-3 gap-10">
+                @foreach($keynotes as $person)
+                    @php $avatar = $avatarPath($person['avatar'] ?? null); @endphp
+                    <article class="group relative overflow-hidden rounded-3xl bg-white dark:bg-slate-900 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.45)] hover:shadow-[0_35px_90px_-40px_rgba(0,0,0,0.55)] transition duration-400 {{ $accentKeynote['ring'] }}">
+                        <div class="absolute inset-0 bg-gradient-to-br {{ $accentKeynote['gradient'] }} opacity-90 pointer-events-none transition-opacity duration-500 group-hover:opacity-100"></div>
+                        <div class="relative">
+                            <div class="aspect-square overflow-hidden rounded-3xl">
+                                <img src="{{ $avatar }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover transition duration-700 group-hover:scale-[1.05]" loading="lazy">
+                            </div>
+                            <div class="p-7 space-y-3 bg-white/90 dark:bg-slate-950/85 backdrop-blur-xl rounded-3xl -mt-8 mx-4 shadow-xl">
+                                <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold {{ $accentKeynote['pill'] }} border border-white/40 dark:border-white/10 shadow-sm">
+                                    Keynote Speaker
+                                </div>
+                                <div class="space-y-1">
+                                    <h3 class="text-2xl font-semibold text-gray-900 dark:text-white leading-tight">{{ $person['name'] }}</h3>
+                                    @if(!empty($person['title']))
+                                        <p class="text-sm font-semibold text-gray-800 dark:text-gray-200">{{ $person['title'] }}</p>
+                                    @endif
+                                </div>
+                                @if(!empty($person['bio']))
+                                    <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{{ $person['bio'] }}</p>
+                                @endif
+                            </div>
+                        </div>
+                    </article>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <!-- Moderators & Speakers -->
+    <section class="relative overflow-hidden py-22 sm:py-26 bg-gradient-to-b from-white via-gray-50 to-white dark:from-slate-950 dark:via-slate-950 dark:to-slate-950">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute left-20 -top-16 w-64 h-64 bg-indigo-200/25 rounded-full blur-3xl"></div>
+            <div class="absolute right-10 bottom-0 w-72 h-72 bg-teal-200/25 rounded-full blur-3xl"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
             <!-- Moderators -->
             <div class="space-y-8">
                 <div class="flex items-center justify-between flex-wrap gap-4">
-                    <div>
+                    <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">ALG 2025 Speakers</p>
-                        <h2 class="mt-1 text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white">Moderators</h2>
+                        <div class="flex items-center gap-3">
+                            <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white">Moderators</h2>
+                            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full {{ $accentModerators['pill'] }} border border-transparent text-sm font-semibold">
+                                <span class="w-2 h-2 rounded-full {{ $accentModerators['dot'] }}"></span>
+                                <span class="uppercase tracking-wide">Moderators</span>
+                            </span>
+                        </div>
                     </div>
-                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full {{ $accentModerators['pill'] }} border border-transparent text-sm font-semibold">
-                        <span class="w-2 h-2 rounded-full {{ $accentModerators['dot'] }}"></span>
-                        <span class="uppercase tracking-wide">Moderators</span>
-                    </span>
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach($moderators as $person)
                         @php $avatar = $avatarPath($person['avatar'] ?? null); @endphp
-                        <article class="group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-xl hover:shadow-2xl hover:-translate-y-1.5 transition duration-300 {{ $accentModerators['ring'] }}">
-                            <div class="absolute inset-0 bg-gradient-to-br {{ $accentModerators['gradient'] }} opacity-70 pointer-events-none transition-opacity duration-300 group-hover:opacity-90"></div>
-                            <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 transition duration-300 bg-white mix-blend-soft-light"></div>
+                        <article class="group relative overflow-hidden rounded-3xl bg-white dark:bg-slate-900 shadow-[0_25px_70px_-45px_rgba(0,0,0,0.55)] hover:shadow-[0_30px_80px_-45px_rgba(0,0,0,0.6)] transition duration-400 {{ $accentModerators['ring'] }}">
+                            <div class="absolute inset-0 bg-gradient-to-br {{ $accentModerators['gradient'] }} opacity-75 pointer-events-none transition-opacity duration-500 group-hover:opacity-95"></div>
                             <div class="relative">
-                                <div class="aspect-[4/3] overflow-hidden rounded-t-2xl">
-                                    <img src="{{ $avatar }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+                                <div class="aspect-[4/3] overflow-hidden rounded-3xl">
+                                    <img src="{{ $avatar }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover transition duration-700 group-hover:scale-[1.04]" loading="lazy">
                                 </div>
-                                <div class="p-5 sm:p-6 space-y-3 bg-white/90 dark:bg-slate-950/80 rounded-b-2xl backdrop-blur">
-                                    <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-bold {{ $accentModerators['pill'] }} bg-opacity-90">
+                                <div class="p-5 sm:p-6 space-y-3 bg-white/92 dark:bg-slate-950/82 rounded-3xl -mt-6 mx-4 backdrop-blur shadow-lg">
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold {{ $accentModerators['pill'] }} border border-white/40 dark:border-white/10">
                                         Moderator
                                     </div>
-                                    <div>
+                                    <div class="space-y-1">
                                         <h3 class="text-xl font-semibold text-gray-900 dark:text-white leading-tight">{{ $person['name'] }}</h3>
                                         @if(!empty($person['title']))
-                                            <p class="mt-1 text-sm font-semibold text-gray-700 dark:text-gray-300">{{ $person['title'] }}</p>
+                                            <p class="text-sm font-semibold text-gray-700 dark:text-gray-300">{{ $person['title'] }}</p>
                                         @endif
                                     </div>
                                     @if(!empty($person['bio']))
@@ -201,37 +218,38 @@
                 </div>
             </div>
 
-            <!-- All Speakers -->
+            <!-- Speakers -->
             <div class="space-y-8">
                 <div class="flex items-center justify-between flex-wrap gap-4">
-                    <div>
+                    <div class="space-y-2">
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">ALG 2025 Speakers</p>
-                        <h2 class="mt-1 text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white">Speakers</h2>
+                        <div class="flex items-center gap-3">
+                            <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white">Speakers</h2>
+                            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full {{ $accentDefault['pill'] }} border border-transparent text-sm font-semibold">
+                                <span class="w-2 h-2 rounded-full {{ $accentDefault['dot'] }}"></span>
+                                <span class="uppercase tracking-wide">Featured lineup</span>
+                            </span>
+                        </div>
                     </div>
-                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full {{ $accentDefault['pill'] }} border border-transparent text-sm font-semibold">
-                        <span class="w-2 h-2 rounded-full {{ $accentDefault['dot'] }}"></span>
-                        <span class="uppercase tracking-wide">Featured lineup</span>
-                    </span>
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach($others as $person)
                         @php $avatar = $avatarPath($person['avatar'] ?? null); @endphp
-                        <article class="group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-xl hover:shadow-2xl hover:-translate-y-1.5 transition duration-300 {{ $accentDefault['ring'] }}">
-                            <div class="absolute inset-0 bg-gradient-to-br {{ $accentDefault['gradient'] }} opacity-70 pointer-events-none transition-opacity duration-300 group-hover:opacity-90"></div>
-                            <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 transition duration-300 bg-white mix-blend-soft-light"></div>
+                        <article class="group relative overflow-hidden rounded-3xl bg-white dark:bg-slate-900 shadow-[0_20px_60px_-45px_rgba(0,0,0,0.55)] hover:shadow-[0_24px_70px_-45px_rgba(0,0,0,0.6)] transition duration-400 {{ $accentDefault['ring'] }}">
+                            <div class="absolute inset-0 bg-gradient-to-br {{ $accentDefault['gradient'] }} opacity-70 pointer-events-none transition-opacity duration-500 group-hover:opacity-90"></div>
                             <div class="relative">
-                                <div class="aspect-[4/3] overflow-hidden rounded-t-2xl">
-                                    <img src="{{ $avatar }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+                                <div class="aspect-[4/3] overflow-hidden rounded-3xl">
+                                    <img src="{{ $avatar }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover transition duration-700 group-hover:scale-[1.03]" loading="lazy">
                                 </div>
-                                <div class="p-5 sm:p-6 space-y-3 bg-white/90 dark:bg-slate-950/80 rounded-b-2xl backdrop-blur">
-                                    <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-bold {{ $accentDefault['pill'] }} bg-opacity-90">
+                                <div class="p-5 sm:p-6 space-y-3 bg-white/90 dark:bg-slate-950/82 rounded-3xl -mt-5 mx-4 backdrop-blur shadow-lg">
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold {{ $accentDefault['pill'] }} border border-white/40 dark:border-white/10">
                                         Speaker
                                     </div>
-                                    <div>
+                                    <div class="space-y-1">
                                         <h3 class="text-xl font-semibold text-gray-900 dark:text-white leading-tight">{{ $person['name'] }}</h3>
                                         @if(!empty($person['title']))
-                                            <p class="mt-1 text-sm font-semibold text-gray-700 dark:text-gray-300">{{ $person['title'] }}</p>
+                                            <p class="text-sm font-semibold text-gray-700 dark:text-gray-300">{{ $person['title'] }}</p>
                                         @endif
                                     </div>
                                     @if(!empty($person['bio']))
