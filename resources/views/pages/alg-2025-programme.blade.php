@@ -128,7 +128,7 @@
                       <div class="flex-1 border-l border-teal-100 dark:border-teal-900/50 pl-4 transition-colors duration-300 group-hover:border-teal-400/80">
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Arrival &amp; Hosting</p>
                         <p class="mt-1 font-semibold">Guest arrival and settling in</p>
-                        <p class="mt-1 text-gray-700 dark:text-gray-300">Programme Director &amp; Event Host: <span class="font-medium">Edgar Mwine</span>, YELP Fellow &amp; Programme Officer, KAS for Security in Africa, with co-host <span class="font-medium">Lisa Kanyomozi Rabwoni</span>, Huduma Fellow (Class of 2024).</p>
+                        <p class="mt-1 text-gray-700 dark:text-gray-300">Programme Director &amp; Event Host: <span class="font-medium">Edgar Mwine</span>, Huduma Fellow &amp; Programme Officer, KAS for Security in Africa, with co-host <span class="font-medium">Lisa Kanyomozi Rabwoni</span>, Huduma Fellow (Class of 2024).</p>
                         <div class="mt-3 flex flex-wrap gap-2">
                           @if($getAvatar('Edgar Mwine'))<img src="{{ $getAvatar('Edgar Mwine') }}" alt="Edgar Mwine" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
                           @if($getAvatar('Lisa Kanyomozi Rabwoni'))<img src="{{ $getAvatar('Lisa Kanyomozi Rabwoni') }}" alt="Lisa Kanyomozi Rabwoni" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
