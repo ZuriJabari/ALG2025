@@ -53,8 +53,6 @@ class SendGeneralInviteEmails extends Command
                 ['email' => $email],
                 [
                     'full_name' => $name,
-                    'fellowship' => 'General Invite',
-                    'attendance_mode' => 'In-person',
                 ]
             );
 
