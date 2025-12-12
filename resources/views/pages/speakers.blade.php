@@ -123,7 +123,7 @@
                 <h2 class="text-2xl sm:text-3xl font-bold text-white">Session Moderators</h2>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl">
+            <div class="grid sm:grid-cols-2 gap-8">
                 @foreach($moderators as $person)
                     @php $avatar = $avatarPath($person['avatar'] ?? null); @endphp
                     <article class="speaker-card group flex gap-5">
