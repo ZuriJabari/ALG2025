@@ -16,6 +16,38 @@
 <body class="antialiased bg-white dark:bg-slate-950">
   <x-header />
 
+  @php
+    $speakerAvatars = [
+      'Edgar Mwine' => 'assets/speakers-25/Edgar-Mwine.png',
+      'Kanyomozi Rabwoni' => 'assets/speakers-25/Kanyomozi-Rabwoni.png',
+      'Lisa Kanyomozi Rabwoni' => 'assets/speakers-25/Kanyomozi-Rabwoni.png',
+      'Awel Uwihanganye' => 'assets/speakers-25/Awel.png',
+      'Charles Mudiwa' => 'assets/speakers-25/Charles-Mudiwa.png',
+      'Anna Reismann' => 'assets/speakers-25/Anna.png',
+      'Raymond Mujuni' => 'assets/speakers-25/Raymond-Mujuni.png',
+      'Michael Kayemba' => 'assets/speakers-25/Michael-Kayemba.png',
+      'Emmanuel Awori' => 'assets/speakers-25/Awori-Emmanuel.png',
+      'Okash Mohammed' => 'assets/speakers-25/Mohamed-Okash.png',
+      'Lucy Mbabazi' => 'assets/speakers-25/Lucy-Mbabazi.png',
+      'Linda Mutesi' => 'assets/speakers-25/Linda-Mutesi.png',
+      'Susan Nsibirwa' => 'assets/speakers-25/Susan_Nsibirwa.png',
+      'Angelo Izama' => 'assets/speakers-25/ANgelo-Izama.png',
+      'Diana Ondoga' => 'assets/speakers-25/Diana-Odonga.png',
+      'Silajji Kanyesigye' => 'assets/speakers-25/Silajji-Kanyesigye.png',
+      'Lydia Paula Nakiggude' => 'assets/speakers-25/Lydia-Paula.png',
+      'Reginald Tumusime' => 'assets/speakers-25/Reginald-Tumusiime.png',
+      'Catherinerose Barreto' => 'assets/speakers-25/Catherinerose-Baretto.png',
+      'Conrad Mugisha' => 'assets/speakers-25/Conrad-Mugisha.png',
+      'Kwezi Tabaro' => 'assets/speakers-25/Kwezi-Tabaro.png',
+    ];
+    
+    $getAvatar = function($name) use ($speakerAvatars) {
+      return isset($speakerAvatars[$name]) && file_exists(public_path($speakerAvatars[$name])) 
+        ? asset($speakerAvatars[$name]) 
+        : null;
+    };
+  @endphp
+
   <main>
     <section class="relative overflow-hidden">
       <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image:url('{{ asset('assets/1x/artwork.png') }}');background-repeat:no-repeat;background-position:right -60px top -40px;background-size:720px auto"></div>
@@ -97,6 +129,10 @@
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Arrival &amp; Hosting</p>
                         <p class="mt-1 font-semibold">Guest arrival and settling in</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">Programme Director &amp; Event Host: <span class="font-medium">Edgar Mwine</span>, YELP Fellow &amp; Programme Officer, KAS for Security in Africa, with co-host <span class="font-medium">Lisa Kanyomozi Rabwoni</span>, Huduma Fellow (Class of 2024).</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                          @if($getAvatar('Edgar Mwine'))<img src="{{ $getAvatar('Edgar Mwine') }}" alt="Edgar Mwine" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                          @if($getAvatar('Lisa Kanyomozi Rabwoni'))<img src="{{ $getAvatar('Lisa Kanyomozi Rabwoni') }}" alt="Lisa Kanyomozi Rabwoni" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                        </div>
                       </div>
                     </li>
                     <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 border-t border-gray-200/20 dark:border-slate-700/20 first:border-t-0 transition-all duration-200 hover:bg-teal-100/70 dark:hover:bg-slate-700/90">
@@ -107,6 +143,9 @@
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Welcome</p>
                         <p class="mt-1 font-semibold">Welcome remarks</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">By <span class="font-medium">Awel Uwihanganye</span>, Co-founder &amp; Team Lead, LéO Africa Institute.</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                          @if($getAvatar('Awel Uwihanganye'))<img src="{{ $getAvatar('Awel Uwihanganye') }}" alt="Awel Uwihanganye" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                        </div>
                       </div>
                     </li>
                     <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 border-t border-gray-200/20 dark:border-slate-700/20 first:border-t-0 transition-all duration-200 hover:bg-teal-100/70 dark:hover:bg-slate-700/90">
@@ -118,6 +157,9 @@
                         <p class="mt-1 font-semibold">Keynote address</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">Speaker: <span class="font-medium">Charles Mudiwa</span>, Managing Director, Dfcu Bank.</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">Topic: <span class="italic">&ldquo;Excellence as a Standard: Sustaining High-Performance Leadership in Challenging Contexts.&rdquo;</span></p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                          @if($getAvatar('Charles Mudiwa'))<img src="{{ $getAvatar('Charles Mudiwa') }}" alt="Charles Mudiwa" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                        </div>
                       </div>
                     </li>
                     <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 border-t border-gray-200/20 dark:border-slate-700/20 first:border-t-0 transition-all duration-200 hover:bg-teal-100/70 dark:hover:bg-slate-700/90">
@@ -129,6 +171,11 @@
                         <p class="mt-1 font-semibold">Moderated conversation with keynote speaker</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">Joined by <span class="font-medium">Anna Reismann</span>, Country Representative, Konrad Adenauer Stiftung Uganda &amp; South Sudan.</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">Moderated by <span class="font-medium">Awel Uwihanganye</span>.</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                          @if($getAvatar('Charles Mudiwa'))<img src="{{ $getAvatar('Charles Mudiwa') }}" alt="Charles Mudiwa" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                          @if($getAvatar('Anna Reismann'))<img src="{{ $getAvatar('Anna Reismann') }}" alt="Anna Reismann" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                          @if($getAvatar('Awel Uwihanganye'))<img src="{{ $getAvatar('Awel Uwihanganye') }}" alt="Awel Uwihanganye" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                        </div>
                       </div>
                     </li>
                     <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 border-t border-gray-200/20 dark:border-slate-700/20 first:border-t-0 transition-all duration-200 hover:bg-teal-100/70 dark:hover:bg-slate-700/90">
@@ -158,6 +205,14 @@
                           <li>&bull; <span class="font-medium">Linda Mutesi</span>, Co-founder, Future Generations Foundation.</li>
                         </ul>
                         <p class="mt-2 text-gray-700 dark:text-gray-300">Includes Q&amp;A and audience engagement.</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                          @if($getAvatar('Raymond Mujuni'))<img src="{{ $getAvatar('Raymond Mujuni') }}" alt="Raymond Mujuni" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                          @if($getAvatar('Michael Kayemba'))<img src="{{ $getAvatar('Michael Kayemba') }}" alt="Michael Kayemba" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                          @if($getAvatar('Emmanuel Awori'))<img src="{{ $getAvatar('Emmanuel Awori') }}" alt="Emmanuel Awori" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                          @if($getAvatar('Okash Mohammed'))<img src="{{ $getAvatar('Okash Mohammed') }}" alt="Okash Mohammed" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                          @if($getAvatar('Lucy Mbabazi'))<img src="{{ $getAvatar('Lucy Mbabazi') }}" alt="Lucy Mbabazi" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                          @if($getAvatar('Linda Mutesi'))<img src="{{ $getAvatar('Linda Mutesi') }}" alt="Linda Mutesi" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                        </div>
                       </div>
                     </li>
                     <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 border-t border-gray-200/20 dark:border-slate-700/20 first:border-t-0 transition-all duration-200 hover:bg-teal-100/70 dark:hover:bg-slate-700/90">
@@ -190,6 +245,10 @@
                         <p class="mt-1 text-gray-700 dark:text-gray-300">Speaker: <span class="font-medium">Susan Nsibirwa</span>, Managing Director, Nation Media Group.</p>
                         <p class="mt-1 text-gray-700 dark:text-gray-300">Topic: <span class="italic">&ldquo;Leading with Purpose: The Imperative of Collaborative Leadership in Africa's Next Decade.&rdquo;</span></p>
                         <p class="mt-2 text-gray-700 dark:text-gray-300">Followed by a fireside conversation moderated by <span class="font-medium">Angelo Izama</span>, Team Lead, Verification Registration Services; Faculty Head Emeritus, LéO Africa Institute.</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                          @if($getAvatar('Susan Nsibirwa'))<img src="{{ $getAvatar('Susan Nsibirwa') }}" alt="Susan Nsibirwa" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                          @if($getAvatar('Angelo Izama'))<img src="{{ $getAvatar('Angelo Izama') }}" alt="Angelo Izama" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                        </div>
                       </div>
                     </li>
                     <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 border-t border-gray-200/20 dark:border-slate-700/20 first:border-t-0 transition-all duration-200 hover:bg-teal-100/70 dark:hover:bg-slate-700/90">
@@ -209,6 +268,14 @@
                           <li>&bull; <span class="font-medium">Conrad Mugisha</span>, Businessman; YELP Fellow (Class of 2017).</li>
                         </ul>
                         <p class="mt-2 text-gray-700 dark:text-gray-300">Includes Q&amp;A and audience engagement.</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                          @if($getAvatar('Diana Ondoga'))<img src="{{ $getAvatar('Diana Ondoga') }}" alt="Diana Ondoga" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                          @if($getAvatar('Silajji Kanyesigye'))<img src="{{ $getAvatar('Silajji Kanyesigye') }}" alt="Silajji Kanyesigye" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                          @if($getAvatar('Lydia Paula Nakiggude'))<img src="{{ $getAvatar('Lydia Paula Nakiggude') }}" alt="Lydia Paula Nakiggude" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                          @if($getAvatar('Reginald Tumusime'))<img src="{{ $getAvatar('Reginald Tumusime') }}" alt="Reginald Tumusime" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                          @if($getAvatar('Catherinerose Barreto'))<img src="{{ $getAvatar('Catherinerose Barreto') }}" alt="Catherinerose Barreto" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                          @if($getAvatar('Conrad Mugisha'))<img src="{{ $getAvatar('Conrad Mugisha') }}" alt="Conrad Mugisha" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                        </div>
                       </div>
                     </li>
                     <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 border-t border-gray-200/20 dark:border-slate-700/20 first:border-t-0 transition-all duration-200 hover:bg-teal-100/70 dark:hover:bg-slate-700/90">
@@ -227,7 +294,10 @@
                       <div class="flex-1 border-l border-teal-100 dark:border-teal-900/50 pl-4 transition-colors duration-300 group-hover:border-teal-400/80">
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">Closing</p>
                         <p class="mt-1 font-semibold">Closing session</p>
-                        <p class="mt-1 text-gray-700 dark:text-gray-300">With <span class="font-medium">Dr. Abraham Korir Sing’ Oei</span>, Principal Secretary, Ministry of Foreign and Diaspora Affairs (State Department for Foreign Affairs).</p>
+                        <p class="mt-1 text-gray-700 dark:text-gray-300">With <span class="font-medium">Kwezi Tabaro</span>, Faculty Member, LéO Africa Institute.</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                          @if($getAvatar('Kwezi Tabaro'))<img src="{{ $getAvatar('Kwezi Tabaro') }}" alt="Kwezi Tabaro" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-sm">@endif
+                        </div>
                       </div>
                     </li>
                     <li class="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 px-3 sm:px-4 py-4 sm:py-5 border-t border-gray-200/20 dark:border-slate-700/20 first:border-t-0 transition-all duration-200 hover:bg-teal-100/70 dark:hover:bg-slate-700/90">
