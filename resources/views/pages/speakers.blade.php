@@ -20,6 +20,23 @@
         // Fallback to avoid undefined variable in older compiled views
         $groups = [];
 
+        $placeholder = 'assets/speakers-25/placeholder.png';
+
+        $avatarPath = function ($path) use ($placeholder) {
+            $candidate = trim($path ?: $placeholder);
+            $candidates = [$candidate];
+            // Also try removing stray spaces before the extension (e.g., "name .png")
+            $candidates[] = str_replace(' .png', '.png', $candidate);
+
+            foreach ($candidates as $option) {
+                if (file_exists(public_path($option))) {
+                    return asset($option);
+                }
+            }
+
+            return asset($placeholder);
+        };
+
         $accentKeynote = [
             'pill' => 'bg-amber-50 text-amber-800 dark:bg-amber-900/30 dark:text-amber-100',
             'ring' => 'ring-2 ring-amber-200/80 dark:ring-amber-800/70',
@@ -41,7 +58,7 @@
 
         $keynotes = [
             ['name' => 'Magnus Mchunguzi', 'title' => 'Chairperson of the Board, LéO Africa Institute', 'bio' => 'Co-founder and Chairman of the LéO Africa Institute; telecom and technology entrepreneur with 23+ years across Eastern, Western, and Southern Africa. Former senior roles at Ericsson and MTN; CEO of Yellow Dot Africa; YPO member.', 'avatar' => 'assets/speakers-25/Magnus-Mchunguzi.png'],
-            ['name' => 'Charles Mudiwa', 'title' => 'CEO & MD, DFCU Bank Uganda', 'bio' => 'Seasoned banker across Eastern and Southern Africa with Standard Bank Group and DFCU. Transformational leader and executive coach known for turnarounds and executive presence.', 'avatar' => 'assets/speakers-25/placeholder.png'],
+            ['name' => 'Charles Mudiwa', 'title' => 'CEO & MD, DFCU Bank Uganda', 'bio' => 'Seasoned banker across Eastern and Southern Africa with Standard Bank Group and DFCU. Transformational leader and executive coach known for turnarounds and executive presence.', 'avatar' => 'assets/speakers-25/Charles-Mudiwa.png'],
             ['name' => 'Susan Nsibirwa', 'title' => 'Managing Director, Nation Media Group Uganda', 'bio' => 'Media and communications leader; MD of Nation Media Group Uganda. Former marketing leader at MTN Uganda, DFCU, Vision Group; entrepreneur behind Urge Uganda and Ayiva Consulting.', 'avatar' => 'assets/speakers-25/Susan_Nsibirwa.png'],
         ];
 
@@ -65,8 +82,8 @@
             ['name' => 'Lydia Paula Nakigudde', 'title' => 'Manager ESG, MTN Uganda', 'bio' => 'Environmental specialist and project manager ensuring MTN’s ESG impact. Former environmental consultant at Atacama Consulting, advancing sustainability and governance.', 'avatar' => 'assets/speakers-25/Lydia-Paula.png'],
             ['name' => 'Conrad Mugisha', 'title' => 'Entrepreneur; YELP Fellow', 'bio' => 'Businessman and YELP Fellow with background in banking and audit, bringing operational rigor to private ventures.', 'avatar' => 'assets/speakers-25/Conrad-Mugisha.png'],
             ['name' => 'Okash Mohammed', 'title' => 'Founding Director, Institute of Climate and Environment (ICE), Somalia', 'bio' => 'Founder of ICE Institute; Senior Lecturer at SIMAD University; member of the Global Future Council on Climate and Nature Governance; YELP Fellow and LéO Africa Institute Faculty Member.', 'avatar' => 'assets/speakers-25/Mohamed-Okash.png'],
-            ['name' => 'Edgar Mwine', 'title' => 'Director of Programme & Event Host', 'bio' => 'Project Manager at Konrad Adenauer Stiftung Uganda, overseeing development and execution of KAS activities. YELP Fellow and experienced programme coordinator.', 'avatar' => 'assets/speakers-25/placeholder.png'],
-            ['name' => 'Kanyomozi Rabwoni', 'title' => 'Co-Host & Co-Director of Program', 'bio' => 'Executive Director of Yambi Community Outreach; media personality and Huduma Fellow of LéO Africa Institute, leading initiatives on period poverty and community impact.', 'avatar' => 'assets/speakers-25/placeholder.png'],
+            ['name' => 'Edgar Mwine', 'title' => 'Director of Programme & Event Host', 'bio' => 'Project Manager at Konrad Adenauer Stiftung Uganda, overseeing development and execution of KAS activities. YELP Fellow and experienced programme coordinator.', 'avatar' => 'assets/speakers-25/Edgar-Mwine.png'],
+            ['name' => 'Kanyomozi Rabwoni', 'title' => 'Co-Host & Co-Director of Program', 'bio' => 'Executive Director of Yambi Community Outreach; media personality and Huduma Fellow of LéO Africa Institute, leading initiatives on period poverty and community impact.', 'avatar' => 'assets/speakers-25/Kanyomozi-Rabwoni.png'],
         ];
     @endphp
 
@@ -97,8 +114,8 @@
     </section>
 
     <!-- Keynote Speakers -->
-    <section class="py-14 sm:py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14 sm:space-y-16">
+    <section class="py-18 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-18 sm:space-y-20">
             <div class="space-y-8">
                 <div class="flex items-center justify-between flex-wrap gap-4">
                     <div>
@@ -111,15 +128,15 @@
                     </span>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-6">
+                <div class="grid md:grid-cols-3 gap-8">
                     @foreach($keynotes as $person)
-                        @php $avatar = $person['avatar'] ?? 'assets/speakers-25/placeholder.png'; @endphp
+                        @php $avatar = $avatarPath($person['avatar'] ?? null); @endphp
                         <article class="group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-2xl hover:shadow-[0_25px_60px_-20px_rgba(0,0,0,0.35)] hover:-translate-y-2 transition duration-300 {{ $accentKeynote['ring'] }}">
                             <div class="absolute inset-0 bg-gradient-to-br {{ $accentKeynote['gradient'] }} opacity-80 pointer-events-none transition-opacity duration-300 group-hover:opacity-95"></div>
                             <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-30 transition duration-300 bg-white mix-blend-soft-light"></div>
                             <div class="relative">
                                 <div class="aspect-[4/3] overflow-hidden rounded-t-2xl">
-                                    <img src="{{ asset($avatar) }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy">
+                                    <img src="{{ $avatar }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy">
                                 </div>
                                 <div class="p-6 space-y-3">
                                     <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold {{ $accentKeynote['pill'] }} bg-opacity-90">
@@ -154,15 +171,15 @@
                     </span>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach($moderators as $person)
-                        @php $avatar = $person['avatar'] ?? 'assets/speakers-25/placeholder.png'; @endphp
+                        @php $avatar = $avatarPath($person['avatar'] ?? null); @endphp
                         <article class="group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-xl hover:shadow-2xl hover:-translate-y-1.5 transition duration-300 {{ $accentModerators['ring'] }}">
                             <div class="absolute inset-0 bg-gradient-to-br {{ $accentModerators['gradient'] }} opacity-70 pointer-events-none transition-opacity duration-300 group-hover:opacity-90"></div>
                             <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 transition duration-300 bg-white mix-blend-soft-light"></div>
                             <div class="relative">
                                 <div class="aspect-[4/3] overflow-hidden rounded-t-2xl">
-                                    <img src="{{ asset($avatar) }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+                                    <img src="{{ $avatar }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
                                 </div>
                                 <div class="p-5 sm:p-6 space-y-3">
                                     <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold {{ $accentModerators['pill'] }} bg-opacity-80">
@@ -197,15 +214,15 @@
                     </span>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach($others as $person)
-                        @php $avatar = $person['avatar'] ?? 'assets/speakers-25/placeholder.png'; @endphp
+                        @php $avatar = $avatarPath($person['avatar'] ?? null); @endphp
                         <article class="group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-xl hover:shadow-2xl hover:-translate-y-1.5 transition duration-300 {{ $accentDefault['ring'] }}">
                             <div class="absolute inset-0 bg-gradient-to-br {{ $accentDefault['gradient'] }} opacity-70 pointer-events-none transition-opacity duration-300 group-hover:opacity-90"></div>
                             <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 transition duration-300 bg-white mix-blend-soft-light"></div>
                             <div class="relative">
                                 <div class="aspect-[4/3] overflow-hidden rounded-t-2xl">
-                                    <img src="{{ asset($avatar) }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+                                    <img src="{{ $avatar }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
                                 </div>
                                 <div class="p-5 sm:p-6 space-y-3">
                                     <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold {{ $accentDefault['pill'] }} bg-opacity-80">
