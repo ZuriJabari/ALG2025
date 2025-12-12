@@ -38,21 +38,21 @@
         };
 
         $accentKeynote = [
-            'pill' => 'bg-amber-50 text-amber-800 dark:bg-amber-900/30 dark:text-amber-100',
-            'ring' => 'ring-2 ring-amber-200/80 dark:ring-amber-800/70',
-            'gradient' => 'from-amber-50 via-white to-orange-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900',
+            'pill' => 'bg-amber-100 text-amber-900 dark:bg-amber-800/85 dark:text-amber-50',
+            'ring' => 'ring-2 ring-amber-200/90 dark:ring-amber-700/70',
+            'gradient' => 'from-amber-50 via-white to-orange-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-950',
             'dot' => 'bg-amber-500',
         ];
         $accentModerators = [
-            'pill' => 'bg-indigo-50 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-100',
-            'ring' => 'ring-1 ring-indigo-100/80 dark:ring-indigo-700/60',
-            'gradient' => 'from-indigo-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900',
+            'pill' => 'bg-indigo-100 text-indigo-900 dark:bg-indigo-800/85 dark:text-indigo-50',
+            'ring' => 'ring-1 ring-indigo-200/90 dark:ring-indigo-700/70',
+            'gradient' => 'from-indigo-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-950',
             'dot' => 'bg-indigo-500',
         ];
         $accentDefault = [
-            'pill' => 'bg-teal-50 text-teal-700 dark:bg-teal-900/30 dark:text-teal-200',
-            'ring' => 'ring-1 ring-teal-100/80 dark:ring-teal-700/50',
-            'gradient' => 'from-teal-50 via-white to-cyan-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900',
+            'pill' => 'bg-teal-100 text-teal-900 dark:bg-teal-800/85 dark:text-teal-50',
+            'ring' => 'ring-1 ring-teal-200/90 dark:ring-teal-700/70',
+            'gradient' => 'from-teal-50 via-white to-cyan-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-950',
             'dot' => 'bg-teal-500',
         ];
 
@@ -114,17 +114,17 @@
     </section>
 
     <!-- Keynote Speakers -->
-    <section class="py-18 sm:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-18 sm:space-y-20">
-            <div class="space-y-8">
+    <section class="py-20 sm:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 sm:space-y-24">
+            <div class="space-y-10">
                 <div class="flex items-center justify-between flex-wrap gap-4">
                     <div>
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">ALG 2025 Speakers</p>
                         <h2 class="mt-1 text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white">Keynote Speakers</h2>
                     </div>
-                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full {{ $accentKeynote['pill'] }} border border-transparent">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full {{ $accentKeynote['pill'] }} border border-transparent text-sm font-semibold">
                         <span class="w-2 h-2 rounded-full {{ $accentKeynote['dot'] }}"></span>
-                        <span class="text-xs font-semibold uppercase tracking-wide">Keynotes</span>
+                        <span class="uppercase tracking-wide">Keynotes</span>
                     </span>
                 </div>
 
@@ -138,8 +138,8 @@
                                 <div class="aspect-[4/3] overflow-hidden rounded-t-2xl">
                                     <img src="{{ $avatar }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy">
                                 </div>
-                                <div class="p-6 space-y-3">
-                                    <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold {{ $accentKeynote['pill'] }} bg-opacity-90">
+                                <div class="p-6 space-y-3 bg-white/90 dark:bg-slate-950/80 rounded-b-2xl backdrop-blur">
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-bold {{ $accentKeynote['pill'] }} bg-opacity-95">
                                         Keynote Speaker
                                     </div>
                                     <div>
@@ -165,9 +165,9 @@
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">ALG 2025 Speakers</p>
                         <h2 class="mt-1 text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white">Moderators</h2>
                     </div>
-                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full {{ $accentModerators['pill'] }} border border-transparent">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full {{ $accentModerators['pill'] }} border border-transparent text-sm font-semibold">
                         <span class="w-2 h-2 rounded-full {{ $accentModerators['dot'] }}"></span>
-                        <span class="text-xs font-semibold uppercase tracking-wide">Moderators</span>
+                        <span class="uppercase tracking-wide">Moderators</span>
                     </span>
                 </div>
 
@@ -181,8 +181,8 @@
                                 <div class="aspect-[4/3] overflow-hidden rounded-t-2xl">
                                     <img src="{{ $avatar }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
                                 </div>
-                                <div class="p-5 sm:p-6 space-y-3">
-                                    <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold {{ $accentModerators['pill'] }} bg-opacity-80">
+                                <div class="p-5 sm:p-6 space-y-3 bg-white/90 dark:bg-slate-950/80 rounded-b-2xl backdrop-blur">
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-bold {{ $accentModerators['pill'] }} bg-opacity-90">
                                         Moderator
                                     </div>
                                     <div>
@@ -208,9 +208,9 @@
                         <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">ALG 2025 Speakers</p>
                         <h2 class="mt-1 text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white">Speakers</h2>
                     </div>
-                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full {{ $accentDefault['pill'] }} border border-transparent">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full {{ $accentDefault['pill'] }} border border-transparent text-sm font-semibold">
                         <span class="w-2 h-2 rounded-full {{ $accentDefault['dot'] }}"></span>
-                        <span class="text-xs font-semibold uppercase tracking-wide">Featured lineup</span>
+                        <span class="uppercase tracking-wide">Featured lineup</span>
                     </span>
                 </div>
 
@@ -224,8 +224,8 @@
                                 <div class="aspect-[4/3] overflow-hidden rounded-t-2xl">
                                     <img src="{{ $avatar }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
                                 </div>
-                                <div class="p-5 sm:p-6 space-y-3">
-                                    <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold {{ $accentDefault['pill'] }} bg-opacity-80">
+                                <div class="p-5 sm:p-6 space-y-3 bg-white/90 dark:bg-slate-950/80 rounded-b-2xl backdrop-blur">
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-bold {{ $accentDefault['pill'] }} bg-opacity-90">
                                         Speaker
                                     </div>
                                     <div>
