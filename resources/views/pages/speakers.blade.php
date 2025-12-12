@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +19,7 @@
         .speaker-image { transition: transform 0.5s ease; }
     </style>
 </head>
-<body class="antialiased bg-white text-gray-900">
+<body class="antialiased bg-slate-950 text-white">
     <x-header />
 
     @php
@@ -75,41 +75,39 @@
         ];
     @endphp
 
-    <!-- Hero Section - WEF Style -->
-    <section class="bg-[#000080] text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-            <div class="max-w-3xl">
-                <p class="text-sm font-medium tracking-wider uppercase text-white/70 mb-4">Annual Leaders Gathering 2025</p>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">Speakers</h1>
-                <p class="text-xl text-white/80 leading-relaxed">
-                    Meet the distinguished leaders, innovators, and change-makers shaping conversations at ALG 2025.
-                </p>
-            </div>
+    <!-- Hero Section -->
+    <section class="bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+            <p class="text-sm font-medium tracking-wider uppercase text-slate-400 mb-4">Annual Leaders Gathering 2025</p>
+            <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6">Speakers</h1>
+            <p class="text-xl text-slate-300 max-w-3xl">
+                Meet the distinguished leaders, innovators, and change-makers shaping conversations at ALG 2025.
+            </p>
         </div>
     </section>
 
     <!-- Keynote Speakers -->
-    <section class="bg-white py-20 sm:py-28">
+    <section class="bg-slate-950 py-16 sm:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="border-b-2 border-[#000080] pb-4 mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Keynote Speakers</h2>
+            <div class="border-b border-slate-700 pb-4 mb-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Keynote Speakers</h2>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-12">
+            <div class="grid md:grid-cols-3 gap-10">
                 @foreach($keynotes as $person)
                     @php $avatar = $avatarPath($person['avatar'] ?? null); @endphp
                     <article class="speaker-card group">
-                        <div class="aspect-[3/4] overflow-hidden bg-gray-100 mb-6">
+                        <div class="aspect-[3/4] overflow-hidden bg-slate-800 mb-5">
                             <img src="{{ $avatar }}" alt="{{ $person['name'] }}" class="speaker-image w-full h-full object-cover" loading="lazy">
                         </div>
-                        <div class="space-y-3">
-                            <span class="inline-block px-3 py-1 bg-[#000080] text-white text-xs font-semibold uppercase tracking-wider">Keynote</span>
-                            <h3 class="text-2xl font-bold text-gray-900">{{ $person['name'] }}</h3>
+                        <div class="space-y-2">
+                            <span class="inline-block px-3 py-1 bg-amber-500 text-slate-900 text-xs font-semibold uppercase tracking-wider">Keynote</span>
+                            <h3 class="text-xl font-bold text-white">{{ $person['name'] }}</h3>
                             @if(!empty($person['title']))
-                                <p class="text-[#000080] font-medium">{{ $person['title'] }}</p>
+                                <p class="text-amber-400 text-sm font-medium">{{ $person['title'] }}</p>
                             @endif
                             @if(!empty($person['bio']))
-                                <p class="text-gray-600 leading-relaxed">{{ $person['bio'] }}</p>
+                                <p class="text-slate-400 text-sm leading-relaxed">{{ $person['bio'] }}</p>
                             @endif
                         </div>
                     </article>
@@ -119,24 +117,24 @@
     </section>
 
     <!-- Moderators -->
-    <section class="bg-gray-50 py-20 sm:py-28">
+    <section class="bg-slate-900 py-16 sm:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="border-b-2 border-[#000080] pb-4 mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Session Moderators</h2>
+            <div class="border-b border-slate-700 pb-4 mb-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Session Moderators</h2>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12 max-w-4xl">
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl">
                 @foreach($moderators as $person)
                     @php $avatar = $avatarPath($person['avatar'] ?? null); @endphp
-                    <article class="speaker-card group flex gap-6">
-                        <div class="w-32 h-32 flex-shrink-0 overflow-hidden bg-gray-200">
+                    <article class="speaker-card group flex gap-5">
+                        <div class="w-28 h-28 flex-shrink-0 overflow-hidden bg-slate-800">
                             <img src="{{ $avatar }}" alt="{{ $person['name'] }}" class="speaker-image w-full h-full object-cover" loading="lazy">
                         </div>
-                        <div class="space-y-2">
-                            <span class="inline-block px-2 py-0.5 bg-gray-200 text-gray-700 text-xs font-semibold uppercase tracking-wider">Moderator</span>
-                            <h3 class="text-xl font-bold text-gray-900">{{ $person['name'] }}</h3>
+                        <div class="space-y-1">
+                            <span class="inline-block px-2 py-0.5 bg-slate-700 text-slate-300 text-xs font-semibold uppercase tracking-wider">Moderator</span>
+                            <h3 class="text-lg font-bold text-white">{{ $person['name'] }}</h3>
                             @if(!empty($person['title']))
-                                <p class="text-[#000080] text-sm font-medium">{{ $person['title'] }}</p>
+                                <p class="text-slate-400 text-sm">{{ $person['title'] }}</p>
                             @endif
                         </div>
                     </article>
@@ -146,23 +144,23 @@
     </section>
 
     <!-- All Speakers -->
-    <section class="bg-white py-20 sm:py-28">
+    <section class="bg-slate-950 py-16 sm:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="border-b-2 border-[#000080] pb-4 mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Speakers</h2>
+            <div class="border-b border-slate-700 pb-4 mb-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Speakers</h2>
             </div>
 
             <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 @foreach($others as $person)
                     @php $avatar = $avatarPath($person['avatar'] ?? null); @endphp
                     <article class="speaker-card group">
-                        <div class="aspect-square overflow-hidden bg-gray-100 mb-4">
+                        <div class="aspect-square overflow-hidden bg-slate-800 mb-4">
                             <img src="{{ $avatar }}" alt="{{ $person['name'] }}" class="speaker-image w-full h-full object-cover" loading="lazy">
                         </div>
                         <div class="space-y-1">
-                            <h3 class="text-lg font-bold text-gray-900">{{ $person['name'] }}</h3>
+                            <h3 class="text-base font-bold text-white">{{ $person['name'] }}</h3>
                             @if(!empty($person['title']))
-                                <p class="text-[#000080] text-sm font-medium">{{ $person['title'] }}</p>
+                                <p class="text-slate-400 text-sm">{{ $person['title'] }}</p>
                             @endif
                         </div>
                     </article>
