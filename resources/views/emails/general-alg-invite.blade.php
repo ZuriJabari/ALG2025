@@ -44,7 +44,7 @@
       <div style="padding:16px; background:#F0FDFA; border:1px solid #CCFBF1; border-radius:12px; margin:12px 0;">
         <p style="margin:0 0 8px 0; font-weight:700; font-size:14px; color:#0F766E; text-transform:uppercase; letter-spacing:0.04em;">🎫 Your Personal QR Code</p>
         <p style="margin:0; font-size:14px; line-height:1.7; color:#115e59;">
-          Please print this email or show it on your device for quick check-in at the entrance.
+          Your personal QR code is attached to this email. Please download and print it or save it to your device for quick check-in at the entrance.
         </p>
       </div>
 
