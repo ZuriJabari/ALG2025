@@ -5,6 +5,7 @@ namespace App\Console;
 use App\Console\Commands\GenerateAttendanceTokens;
 use App\Console\Commands\ImportAfricanChampions;
 use App\Console\Commands\SendAfricanChampionsEmail;
+use App\Console\Commands\SendGeneralInviteEmails;
 use App\Console\Commands\SendPanelistJoinLinks;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -20,6 +21,7 @@ class Kernel extends ConsoleKernel
         GenerateAttendanceTokens::class,
         ImportAfricanChampions::class,
         SendAfricanChampionsEmail::class,
+        SendGeneralInviteEmails::class,
         SendPanelistJoinLinks::class,
     ];
 
