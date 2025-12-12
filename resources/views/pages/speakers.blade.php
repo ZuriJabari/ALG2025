@@ -17,11 +17,20 @@
     <x-header />
 
     @php
+        // Fallback to avoid undefined variable in older compiled views
+        $groups = [];
+
         $accentKeynote = [
             'pill' => 'bg-amber-50 text-amber-800 dark:bg-amber-900/30 dark:text-amber-100',
             'ring' => 'ring-2 ring-amber-200/80 dark:ring-amber-800/70',
             'gradient' => 'from-amber-50 via-white to-orange-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900',
             'dot' => 'bg-amber-500',
+        ];
+        $accentModerators = [
+            'pill' => 'bg-indigo-50 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-100',
+            'ring' => 'ring-1 ring-indigo-100/80 dark:ring-indigo-700/60',
+            'gradient' => 'from-indigo-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900',
+            'dot' => 'bg-indigo-500',
         ];
         $accentDefault = [
             'pill' => 'bg-teal-50 text-teal-700 dark:bg-teal-900/30 dark:text-teal-200',
@@ -87,52 +96,136 @@
         </div>
     </section>
 
-    <!-- Speaker Groups -->
+    <!-- Keynote Speakers -->
     <section class="py-14 sm:py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14 sm:space-y-16">
-            @foreach($groups as $group)
-                @php $c = $accent[$group['accent']] ?? $accent['teal']; @endphp
-                <div class="space-y-8">
-                    <div class="flex items-center justify-between flex-wrap gap-4">
-                        <div>
-                            <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">ALG 2025 Speakers</p>
-                            <h2 class="mt-1 text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white">{{ $group['title'] }}</h2>
-                        </div>
-                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full {{ $c['pill'] }} border border-transparent">
-                            <span class="w-2 h-2 rounded-full {{ $c['dot'] }}"></span>
-                            <span class="text-xs font-semibold uppercase tracking-wide">Featured lineup</span>
-                        </span>
+            <div class="space-y-8">
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <div>
+                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">ALG 2025 Speakers</p>
+                        <h2 class="mt-1 text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white">Keynote Speakers</h2>
                     </div>
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full {{ $accentKeynote['pill'] }} border border-transparent">
+                        <span class="w-2 h-2 rounded-full {{ $accentKeynote['dot'] }}"></span>
+                        <span class="text-xs font-semibold uppercase tracking-wide">Keynotes</span>
+                    </span>
+                </div>
 
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        @foreach($group['people'] as $person)
-                            <article class="group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-xl hover:shadow-2xl hover:-translate-y-1.5 transition duration-300 {{ $c['ring'] }}">
-                                <div class="absolute inset-0 bg-gradient-to-br {{ $c['gradient'] }} opacity-70 pointer-events-none transition-opacity duration-300 group-hover:opacity-90"></div>
-                                <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 transition duration-300 bg-white mix-blend-soft-light"></div>
-                                <div class="relative">
-                                    <div class="aspect-[4/3] overflow-hidden rounded-t-2xl">
-                                        <img src="{{ asset($person['avatar']) }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+                <div class="grid md:grid-cols-3 gap-6">
+                    @foreach($keynotes as $person)
+                        @php $avatar = $person['avatar'] ?? 'assets/speakers-25/placeholder.png'; @endphp
+                        <article class="group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-2xl hover:shadow-[0_25px_60px_-20px_rgba(0,0,0,0.35)] hover:-translate-y-2 transition duration-300 {{ $accentKeynote['ring'] }}">
+                            <div class="absolute inset-0 bg-gradient-to-br {{ $accentKeynote['gradient'] }} opacity-80 pointer-events-none transition-opacity duration-300 group-hover:opacity-95"></div>
+                            <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-30 transition duration-300 bg-white mix-blend-soft-light"></div>
+                            <div class="relative">
+                                <div class="aspect-[4/3] overflow-hidden rounded-t-2xl">
+                                    <img src="{{ asset($avatar) }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" loading="lazy">
+                                </div>
+                                <div class="p-6 space-y-3">
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold {{ $accentKeynote['pill'] }} bg-opacity-90">
+                                        Keynote Speaker
                                     </div>
-                                    <div class="p-5 sm:p-6 space-y-3">
-                                        <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold {{ $c['pill'] }} bg-opacity-80">
-                                            {{ $group['title'] }}
-                                        </div>
-                                        <div>
-                                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white leading-tight">{{ $person['name'] }}</h3>
-                                            @if(!empty($person['title']))
-                                                <p class="mt-1 text-sm font-semibold text-gray-700 dark:text-gray-300">{{ $person['title'] }}</p>
-                                            @endif
-                                        </div>
-                                        @if(!empty($person['bio']))
-                                            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{{ $person['bio'] }}</p>
+                                    <div>
+                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white leading-tight">{{ $person['name'] }}</h3>
+                                        @if(!empty($person['title']))
+                                            <p class="mt-1 text-sm font-semibold text-gray-800 dark:text-gray-200">{{ $person['title'] }}</p>
                                         @endif
                                     </div>
+                                    @if(!empty($person['bio']))
+                                        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{{ $person['bio'] }}</p>
+                                    @endif
                                 </div>
-                            </article>
-                        @endforeach
-                    </div>
+                            </div>
+                        </article>
+                    @endforeach
                 </div>
-            @endforeach
+            </div>
+
+            <!-- Moderators -->
+            <div class="space-y-8">
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <div>
+                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">ALG 2025 Speakers</p>
+                        <h2 class="mt-1 text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white">Moderators</h2>
+                    </div>
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full {{ $accentModerators['pill'] }} border border-transparent">
+                        <span class="w-2 h-2 rounded-full {{ $accentModerators['dot'] }}"></span>
+                        <span class="text-xs font-semibold uppercase tracking-wide">Moderators</span>
+                    </span>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    @foreach($moderators as $person)
+                        @php $avatar = $person['avatar'] ?? 'assets/speakers-25/placeholder.png'; @endphp
+                        <article class="group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-xl hover:shadow-2xl hover:-translate-y-1.5 transition duration-300 {{ $accentModerators['ring'] }}">
+                            <div class="absolute inset-0 bg-gradient-to-br {{ $accentModerators['gradient'] }} opacity-70 pointer-events-none transition-opacity duration-300 group-hover:opacity-90"></div>
+                            <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 transition duration-300 bg-white mix-blend-soft-light"></div>
+                            <div class="relative">
+                                <div class="aspect-[4/3] overflow-hidden rounded-t-2xl">
+                                    <img src="{{ asset($avatar) }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+                                </div>
+                                <div class="p-5 sm:p-6 space-y-3">
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold {{ $accentModerators['pill'] }} bg-opacity-80">
+                                        Moderator
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white leading-tight">{{ $person['name'] }}</h3>
+                                        @if(!empty($person['title']))
+                                            <p class="mt-1 text-sm font-semibold text-gray-700 dark:text-gray-300">{{ $person['title'] }}</p>
+                                        @endif
+                                    </div>
+                                    @if(!empty($person['bio']))
+                                        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{{ $person['bio'] }}</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </article>
+                    @endforeach
+                </div>
+            </div>
+
+            <!-- All Speakers -->
+            <div class="space-y-8">
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <div>
+                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-gray-500 dark:text-gray-400">ALG 2025 Speakers</p>
+                        <h2 class="mt-1 text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white">Speakers</h2>
+                    </div>
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full {{ $accentDefault['pill'] }} border border-transparent">
+                        <span class="w-2 h-2 rounded-full {{ $accentDefault['dot'] }}"></span>
+                        <span class="text-xs font-semibold uppercase tracking-wide">Featured lineup</span>
+                    </span>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    @foreach($others as $person)
+                        @php $avatar = $person['avatar'] ?? 'assets/speakers-25/placeholder.png'; @endphp
+                        <article class="group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-xl hover:shadow-2xl hover:-translate-y-1.5 transition duration-300 {{ $accentDefault['ring'] }}">
+                            <div class="absolute inset-0 bg-gradient-to-br {{ $accentDefault['gradient'] }} opacity-70 pointer-events-none transition-opacity duration-300 group-hover:opacity-90"></div>
+                            <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 transition duration-300 bg-white mix-blend-soft-light"></div>
+                            <div class="relative">
+                                <div class="aspect-[4/3] overflow-hidden rounded-t-2xl">
+                                    <img src="{{ asset($avatar) }}" alt="{{ $person['name'] }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+                                </div>
+                                <div class="p-5 sm:p-6 space-y-3">
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold {{ $accentDefault['pill'] }} bg-opacity-80">
+                                        Speaker
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white leading-tight">{{ $person['name'] }}</h3>
+                                        @if(!empty($person['title']))
+                                            <p class="mt-1 text-sm font-semibold text-gray-700 dark:text-gray-300">{{ $person['title'] }}</p>
+                                        @endif
+                                    </div>
+                                    @if(!empty($person['bio']))
+                                        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{{ $person['bio'] }}</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </article>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </section>
 
