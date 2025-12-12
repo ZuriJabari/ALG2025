@@ -197,8 +197,8 @@
                                 }
                             }
 
-                            $secondaryCtaLabel = $event->secondary_cta_label ?: 'Learn more';
-                            $secondaryCtaUrl = $event->secondary_cta_url ?: url('/about');
+                            $secondaryCtaLabel = $event->secondary_cta_label ?: 'Meet Our Speakers';
+                            $secondaryCtaUrl = $event->secondary_cta_url ?: url('/speakers');
 
                             // Special case: when the URL is a sentinel hash, let callers open a modal instead of navigating
                             $useClosedModalTrigger = $computedPrimaryUrl === '#alg2025-registration-closed-modal';

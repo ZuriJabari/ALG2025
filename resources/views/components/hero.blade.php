@@ -99,8 +99,8 @@
                     } elseif ((int) ($event->year ?? 0) === 2025) {
                         $primaryCtaLabel = 'View ALG 2025 details';
                         $primaryCtaUrl = url('/alg-2025');
-                        $secondaryCtaLabel = 'Learn more';
-                        $secondaryCtaUrl = url('/about');
+                        $secondaryCtaLabel = 'Meet Our Speakers';
+                        $secondaryCtaUrl = url('/speakers');
                     } else {
                         $primaryCtaLabel = 'Learn more';
                         $primaryCtaUrl = url('/about');
