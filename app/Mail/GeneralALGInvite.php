@@ -4,7 +4,6 @@ namespace App\Mail;
 
 use App\Models\SeatReservation;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
@@ -59,10 +58,37 @@ class GeneralALGInvite extends Mailable
      */
     public function attachments(): array
     {
+        // Generate QR code for attendance verification
+        $verificationUrl = route('attendance.verify', ['token' => $this->reservation->attendance_token]);
+        $qrCodePath = storage_path('app/qrcodes/qr-' . $this->reservation->attendance_token . '.png');
+
+        if (!file_exists(dirname($qrCodePath))) {
+            mkdir(dirname($qrCodePath), 0755, true);
+        }
+
+        try {
+            \SimpleSoftwareIO\QrCode\Facades\QrCode::format('png')
+                ->size(300)
+                ->margin(2)
+                ->errorCorrection('H')
+                ->generate($verificationUrl, $qrCodePath);
+        } catch (\Exception $e) {
+            // Fallback to SVG if PNG fails
+            $svg = \SimpleSoftwareIO\QrCode\Facades\QrCode::format('svg')
+                ->size(300)
+                ->margin(2)
+                ->errorCorrection('H')
+                ->generate($verificationUrl);
+            file_put_contents($qrCodePath, $svg);
+        }
+
         return [
             Attachment::fromPath(public_path('assets/1x/FINAL Main Program ALG 2025.pdf'))
                 ->as('FINAL Main Program ALG 2025.pdf')
                 ->withMime('application/pdf'),
+            Attachment::fromPath($qrCodePath)
+                ->as('QR-Code-' . $this->reservation->full_name . '.png')
+                ->withMime('image/png'),
         ];
     }
 }
