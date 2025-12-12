@@ -18,7 +18,9 @@ class SendPanelistJoinLinks extends Command
     protected $signature = 'email:panelist-join-links 
         {file=assets/1x/alg-panelist-join-links.xlsx : Excel file with panelist names, emails, and join links} 
         {--dry-run : Preview emails without sending}
-        {--only-emails= : Comma/semicolon-separated list of emails to send to (optional filter)}';
+        {--only-emails= : Comma/semicolon-separated list of emails to send to (optional filter)}
+        {--override-name= : Override name if sending to emails not present in sheet}
+        {--override-link= : Override join link if sending to emails not present in sheet}';
 
     /**
      * The console command description.
@@ -90,6 +92,8 @@ class SendPanelistJoinLinks extends Command
 
         $dryRun = $this->option('dry-run');
         $onlyEmailsOption = (string) $this->option('only-emails');
+        $overrideName = (string) $this->option('override-name');
+        $overrideLink = (string) $this->option('override-link');
         $onlyEmails = [];
         if (!empty($onlyEmailsOption)) {
             $parts = preg_split('/[;,]+/', $onlyEmailsOption);
@@ -107,6 +111,7 @@ class SendPanelistJoinLinks extends Command
         $sent = 0;
         $skipped = 0;
         $rowCount = 0;
+        $filteredEmailsFound = [];
 
         foreach ($rows as $index => $row) {
             // Skip empty row
@@ -155,6 +160,7 @@ class SendPanelistJoinLinks extends Command
                 }
 
                 $processedEmails[$email] = $name;
+                $filteredEmailsFound[strtolower($email)] = true;
 
                 if ($dryRun) {
                     $this->info("[DRY RUN] Would send to: {$name} <{$email}> | {$joinUrl}");
@@ -174,6 +180,33 @@ class SendPanelistJoinLinks extends Command
         $this->newLine();
         $this->info("Processed rows: {$rowCount}");
         $this->info("Total recipients processed: " . count($processedEmails));
+
+        // Handle filtered emails that were not present in the sheet, using overrides if provided
+        if (!empty($onlyEmails)) {
+            $missingEmails = array_diff(array_keys($onlyEmails), array_keys($filteredEmailsFound));
+            if (!empty($missingEmails)) {
+                if ($overrideName !== '' && $overrideLink !== '') {
+                    foreach ($missingEmails as $email) {
+                        if ($dryRun) {
+                            $this->info("[DRY RUN] Would send (override) to: {$overrideName} <{$email}> | {$overrideLink}");
+                        } else {
+                            try {
+                                Mail::to($email)->send(new PanelistJoinLinkEmail($overrideName, $overrideLink));
+                                $this->info("✓ Sent (override) to: {$overrideName} <{$email}>");
+                                $sent++;
+                                $processedEmails[$email] = $overrideName;
+                            } catch (\Throwable $e) {
+                                $this->error("✗ Failed to send (override) to {$email}: " . $e->getMessage());
+                                $skipped++;
+                            }
+                        }
+                    }
+                } else {
+                    $this->warn('Some filtered emails were not found in the sheet and no override-name/override-link provided: ' . implode(', ', $missingEmails));
+                }
+            }
+        }
+
         if ($dryRun) {
             $this->info("Dry run complete. No emails sent.");
         } else {
